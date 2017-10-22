@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/index.css">
 </head>
 <body>
+	<!-- Navbar-->
 	<header>
 	  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 			<a class="navbar-brand" href="home.html">More-Recipes</a>
@@ -36,6 +37,48 @@
 		</nav>
   </header>
 
+	<div class="container">
+		<!-- View to add new recipes-->
+		<section>
+			<div class="row section-popular">
+				<div class="col-sm-6 col-6">
+					<p class="pt-3 headline">Add New recipe</p>
+				</div>
+				<div class="col-sm-6 col-6 pt-2 pb-2">
+					<button type="button" class="btn btn-primary rfloat" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
+					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header black">
+									<h5 class="modal-title black" id="exampleModalLabel">Add new recipe</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">×</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form>
+										<div class="form-group">
+											<label for="recipient-name" class="col-form-label black">Title :</label>
+											<input type="text" class="form-control" id="recipient-name">
+										</div>
+										<div class="form-group">
+											<label for="message-text" class="col-form-label black">Description :</label>
+											<textarea class="form-control" id="message-text"></textarea>
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary">Add recipe</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+  		</div>
+		</section>
+	</div>
+	
 
 	<!-- footer -->
 	<footer class="footer-section" id="footer-below">
