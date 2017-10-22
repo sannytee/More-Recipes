@@ -1,0 +1,22 @@
+.container.sign-container {
+  margin-top: 8%;
+}
+
+.card.sign-card {
+  padding: 40px 0px 20px;
+  background-color: #fff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, .5);
+  -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, .5)
+}
+
+form.sign-form {
+  max-width: 350px;
+  margin: auto;
+}
+button.signin-btn {
+  color: #ffffff;
+  background-color: #2882b5;
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
