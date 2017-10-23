@@ -190,3 +190,15 @@ h6 a{
 li{
   list-style: none;
 }
+
+#signin-btn {
+  color: #fff;
+  text-decoration: none;
+  text-decoration-color: #FFF;
+}
+
+#signup-btn {
+  color: #fff;
+  text-decoration: none;
+  text-decoration-color: #FFF;
+}
