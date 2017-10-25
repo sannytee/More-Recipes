@@ -37,3 +37,5 @@ db.review = [
     review: 'not tasty'
   }
 ];
+
+export default db;
