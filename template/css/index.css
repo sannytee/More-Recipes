@@ -1,5 +1,10 @@
 body {
  	background-color: #f5f8fa;
+  margin: 0 0 100px;
+}
+html {
+    position: relative;
+    min-height: 100%;
 }
 
 .about{
@@ -15,6 +20,11 @@ body {
  
 .footer-section {
  	background-color: #2882b5;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
 }
 
 .copyright {
@@ -72,6 +82,8 @@ button.signin-btn {
 }
 #headline{
   color: #fff;
+  font-family: 'Lora', serif;
+  padding-left: 10px;
 }
 .headline{
   color: #fff;
@@ -80,6 +92,8 @@ button.signin-btn {
 #Recipe-header{
   background-color: #2882b5;
   color: #fff;
+  font-family: 'Lora', serif;
+  padding-left: 10px;
 }
 .product-box{
   margin-bottom: 30px;
@@ -198,10 +212,8 @@ li{
   list-style: none;
 }
 
-#signin-btn {
-  color: #fff;
+#remove-link{
   text-decoration: none;
-  text-decoration-color: #FFF;
 }
 
 #signup-btn {
