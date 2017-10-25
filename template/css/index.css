@@ -3,8 +3,8 @@ body {
   margin: 0 0 100px;
 }
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 .about{
@@ -23,7 +23,6 @@ html {
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 100px;
   width: 100%;
 }
 
