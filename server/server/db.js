@@ -20,7 +20,7 @@ db.recipes = [
     level: 'Hard',
     description: 'blah blah blah',
     ingredients: ['rice', 'pepper', 'water'],
-    upvotes: 1,
+    upvotes: 50,
     downvotes: 40,
   },
 ];
