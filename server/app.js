@@ -1,6 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import routes from './server/routes';
 
 // Set up the express application
 const app = express();
@@ -13,6 +14,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
+routes(app);
 // set up a default catch-all route
 app.get('*', (req, res) => res.status(200).send({
   message: 'Welcome to the More-recipe app'
