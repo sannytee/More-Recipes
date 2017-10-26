@@ -99,4 +99,13 @@ export default class recipeController {
       message: 'Recipe Not found!'
     });
   }
+  /**
+   * get  all Recipe
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns a JSON object
+   */
+  static getRecipes(req, res) {
+    return res.status(200).send(db.recipes);
+  }
 }
