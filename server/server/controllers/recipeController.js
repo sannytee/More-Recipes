@@ -1,4 +1,5 @@
 import db from '../db';
+import voteController from './voteController';
 
 /**
  * @class recipeController
@@ -106,6 +107,10 @@ export default class recipeController {
    * @returns  {JSON} Returns a JSON object
    */
   static getRecipes(req, res) {
-    return res.status(200).send(db.recipes);
+    if (req.query.sort === 'upvotes' && req.query.order === 'des') {
+      voteController.getMostVotedRecipe(req, res);
+    } else {
+      res.status(200).send(db.recipes);
+    }
   }
 }
