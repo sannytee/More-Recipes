@@ -6,6 +6,6 @@ export default (app) => {
   }));
 
   app.post('/api/v1/recipes', recipeController.addRecipe);
-  app.put('/api/v1/recipe/:Id', recipeController.editRecipe);
+  app.put('/api/v1/recipes/:Id', recipeController.editRecipe);
   app.delete('/api/v1/recipes/:recipeId', recipeController.deleteRecipe);
 };
