@@ -50,7 +50,11 @@ export default class recipeController {
       downvotes: 0
     });
 
-    return res.status(201).send(db.recipes[id - 1]);
+    return res.status(201).send({
+      success: true,
+      data: db.recipes[id - 1],
+      message: 'Recipe created'
+    });
   }
 
   /**
@@ -72,7 +76,11 @@ export default class recipeController {
         recipe.description = description || recipe.description;
         recipe.ingredients = ingredients.split(',') || recipe.ingredients;
 
-        return res.status(200).send(recipe);
+        return res.status(200).send({
+          success: true,
+          message: 'Recipe successfully updated',
+          data: recipe
+        });
       }
     });
     res.status(404).send({
