@@ -39,6 +39,7 @@ export default class recipeController {
     const { length } = db.recipes;
     const id = length + 1;
 
+    
     db.recipes.push({
       id,
       userId,
@@ -65,7 +66,7 @@ export default class recipeController {
       recipeName, mealType, description, ingredients
     } = req.body;
 
-    db.recipe.forEach((recipe) => {
+    db.recipes.forEach((recipe) => {
       if (recipe.id === parseInt(id, 10)) {
         recipe.recipeName = recipeName || recipe.recipeName;
         recipe.mealType = mealType || recipe.mealType;
@@ -74,9 +75,9 @@ export default class recipeController {
 
         return res.status(200).send(recipe);
       }
-      return res.status(404).send({
-        message: 'Recipe Not found!'
-      });
+    });
+    res.status(404).send({
+      message: 'Recipe Not found!'
     });
   }
 }
