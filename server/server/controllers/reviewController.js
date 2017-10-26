@@ -23,7 +23,11 @@ export default class review {
         userId: req.body.userId,
         review: req.body.review
       });
-      res.status(201).send(db.review[id - 1]);
+      res.status(201).send({
+        success: true,
+        review: db.review[id - 1],
+        message: 'Review Added'
+      });
     }
   }
 }
