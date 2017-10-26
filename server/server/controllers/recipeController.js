@@ -38,8 +38,6 @@ export default class recipeController {
     ingredients = ingredients.split(',');
     const { length } = db.recipes;
     const id = length + 1;
-
-    
     db.recipes.push({
       id,
       userId,
@@ -78,6 +76,27 @@ export default class recipeController {
     });
     res.status(404).send({
       message: 'Recipe Not found!'
+    });
+  }
+
+  /**
+   * delete  a Recipe
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns a JSON object
+   */
+  static deleteRecipe(req, res) {
+    const { id } = req.params;
+    db.recipes.forEach((recipe) => {
+      if (recipe.id === parseInt(id, 10)) {
+        recipe.splice(id, 1);
+        return res.status(200).send({
+          message: 'Recipe has been Deleted'
+        });
+      }
+      return res.status(404).send({
+        message: 'Recipe Not found!'
+      });
     });
   }
 }
