@@ -5,16 +5,16 @@ import db from '../db';
 */
 export default class recipeController {
   /**
-   * Create a new User
+   * Create a new Recipe
    * @param {object} req
    * @param {object} res
    * @returns  {JSON} Returns a JSON object
    */
   static addRecipe(req, res) {
     const {
-      recipeName, mealType, description, userId
+      recipeName, mealType, description, userId,
     } = req.body;
-    const ingredients = req.body.ingredients.split(',');
+    let { ingredients } = req.body;
     if (!recipeName) {
       return res.status(400).send({
         message: 'Please Enter Recipe Name'
@@ -35,6 +35,7 @@ export default class recipeController {
         message: 'Please Enter  Ingridents required'
       });
     }
+    ingredients = ingredients.split(',');
     const { length } = db.recipes;
     const id = length + 1;
 
