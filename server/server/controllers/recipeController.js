@@ -86,17 +86,17 @@ export default class recipeController {
    * @returns  {JSON} Returns a JSON object
    */
   static deleteRecipe(req, res) {
-    const { id } = req.params;
+    const id = req.params.recipeId;
     db.recipes.forEach((recipe) => {
       if (recipe.id === parseInt(id, 10)) {
-        recipe.splice(id, 1);
+        db.recipes.splice(id, 1);
         return res.status(200).send({
           message: 'Recipe has been Deleted'
         });
       }
-      return res.status(404).send({
-        message: 'Recipe Not found!'
-      });
+    });
+    return res.status(404).send({
+      message: 'Recipe Not found!'
     });
   }
 }
