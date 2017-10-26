@@ -52,4 +52,31 @@ export default class recipeController {
 
     return res.status(201).send(db.recipes[id - 1]);
   }
+
+  /**
+   * modify a Recipe
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns a JSON object
+   */
+  static editRecipe(req, res) {
+    const id = req.params.Id;
+    const {
+      recipeName, mealType, description, ingredients
+    } = req.body;
+
+    db.recipe.forEach((recipe) => {
+      if (recipe.id === parseInt(id, 10)) {
+        recipe.recipeName = recipeName || recipe.recipeName;
+        recipe.mealType = mealType || recipe.mealType;
+        recipe.description = description || recipe.description;
+        recipe.ingredients = ingredients.split(',') || recipe.ingredients;
+
+        return res.status(200).send(recipe);
+      }
+      return res.status(404).send({
+        message: 'Recipe Not found!'
+      });
+    });
+  }
 }
