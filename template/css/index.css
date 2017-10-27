@@ -76,7 +76,7 @@ button.signin-btn {
 }
 #footer-below {
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
-  padding: 25px 0;
+  padding: 15px 0;
   text-align: center;
 }
 #headline{
@@ -219,4 +219,8 @@ li{
   color: #fff;
   text-decoration: none;
   text-decoration-color: #FFF;
+}
+
+.button-color{
+  background-color: #5CB85C;
 }
