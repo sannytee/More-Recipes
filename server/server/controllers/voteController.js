@@ -1,7 +1,7 @@
 import db from '../db';
 
 /**
- * @class recipeController
+ * @class votes
 */
 export default class votes {
   /**
