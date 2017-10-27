@@ -38,7 +38,7 @@ describe('More-Recipe Tests:', () => {
           done();
         });
     });
-    it('POST /api/v1/recipes/:recipeId does allow user to edit a recipe', (done) => {
+    it('PUT /api/v1/recipes/:recipeId does allow user to edit a recipe', (done) => {
       chai.request(app)
         .put('/api/v1/recipes/3')
         .send({
