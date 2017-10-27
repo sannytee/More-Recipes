@@ -4,7 +4,8 @@
   "description": "More-Recipes provides a platform for users to share the awesome and exciting recipe ideas they have invented or learnt. Suppose a user comes up with a food recipe, he/she can post it on More-Recipes and get feedback in form of reviews and votes from other users who explore that recipe. Users can also keep a list of their favorite recipes on the application.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "nodemon --exec babel-node -- ./server/bin/www",
+    "test": "mocha --compilers js:babel-core/register server/server/test --reporter spec --timeout 10000"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,15 @@
     "babel-preset-es2015": "^6.24.1",
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.7.0"
+    "eslint-plugin-import": "^2.8.0",
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "eslint": "^4.9.0",
+    "express": "^4.16.2",
+    "morgan": "^1.9.0"
   }
 }
