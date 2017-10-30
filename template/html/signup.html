@@ -10,7 +10,7 @@
   
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2b3034">
         <a class="navbar-brand" href="./../index.html">More-Recipes</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -28,40 +28,31 @@
         </div>
       </nav>
     </header>
-    <div class="container sign-container">
-      <div class="row">
-        <div class="col"></div>
-          <div class="col-sm-12 col-md-8">
-            <div class="card sign-card">
-              <div class="card-block">
-                <h1 class="text-center highlight">More-Recipes</h1>
-                <div>
-                  <p class="text-center highlight">Create a new account</p>
-                </div>
-                <form class="sign-form">
-                  <div class="form-group">
-                    <label for="userNameInput">Username</label>
-                    <input type="text" class="form-control" id="userNameInput" placeholder="Username">
-                  </div>
-                  <div class="form-group">
-                    <label for="emailInput">Email address</label>
-                    <input type="email" class="form-control" id="emailInput" placeholder="Email">
-                  </div>
-                  <div class="form-group">
-                    <label for="passwordInput">Password</label>
-                    <input type="password" class="form-control" id="passwordInput" placeholder="Password">
-                  </div>
-                  <button type="submit" class="btn signin-btn btn-lg"><a href="login.html" id="signup-btn">Create Account</a></button>
-                  <div class="form-group">
-                    <p>
-                      Already have an account? <a href="login.html">Log in.</a>
-                    </p>
-                  </div>
-                </form> 
-              </div>
-            </div>
+    <div class="container">
+      <div class="pt-5" style="text-align: center">
+        <form class="m-x-auto form card">
+          <h1 class="signin-text">More-Recipes</h1>
+          <div class="pb-4 pt-3 form-group">
+				    <input type="text" class="form-control" placeholder="Username">
+			    </div>
+          <div class="pb-4 form-group">
+				    <input type="email" class="form-control" placeholder="Email">
+			    </div>
+          <div class="pb-4 form-group">
+				    <input type="password" class="form-control" placeholder="Password">
+			    </div>
+          <div class="pb-4 form-group">
+				    <input type="password" class="form-control" placeholder="Conirm Password">
+			    </div>
+          <button type="submit" class="btn signin-btn btn-lg">
+            <a href="login.html" id="signup-btn">Create Account</a>
+          </button>
+          <div class="form-group">
+            <p>
+              Already have an account? <a href="login.html">Log in.</a>
+            </p>
           </div>
-        <div class="col"></div>
+        </form> 
       </div>
     </div>
     <footer class="footer-section" id="footer-below">
