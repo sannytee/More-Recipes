@@ -1,5 +1,5 @@
 **STATUS**
-[![Build Status](https://api.travis-ci.org/SannyTee/More-Recipes.svg?branch=develop) [![Coverage Status](https://coveralls.io/repos/github/SannyTee/Hello-Books/badge.svg?branch=develop)](https://coveralls.io/github/SannyTee/Hello-Books?branch=develop)] 
+[![Build Status](https://api.travis-ci.org/SannyTee/More-Recipes.svg?branch=develop) [![Coverage Status](https://coveralls.io/repos/github/SannyTee/More-Recipes/badge.svg?branch=develop)](https://coveralls.io/github/SannyTee/More-Recipes?branch=develop)] 
 
 # More-Recipes
 More-Recipes provides a platform for users to share the awesome and exciting  recipe ideas they have invented or learnt.  Suppose a user comes up with a food recipe,  he/she can post it on More-Recipes and  get feedback in form of reviews and votes from other users who explore that recipe. Users can also keep a list of their favorite recipes on the application.
