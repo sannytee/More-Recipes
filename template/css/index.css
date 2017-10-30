@@ -160,9 +160,7 @@ html {
     transition: background 0.4s linear;
 }
 
-a {
-  color: #f2b43c;
-}
+
 
 .row .col-sm-3{
  	padding-bottom: 20px;
@@ -184,6 +182,11 @@ a {
   margin-left: auto!important;
 }
 
+.cal-big{
+  font: 50px;
+  color: #fff;
+  display:block;
+}
 .form {
   max-width: 380px;
   margin-top: -25px;
@@ -214,6 +217,10 @@ button.signin-btn {
   padding-left: 10px;
 }
 .headline{
+  color: #fff;
+}
+.vote-button{
+  background-color: #2b3034;
   color: #fff;
 }
 
@@ -251,7 +258,7 @@ h6 a{
 
 .section-popular {
   margin-top: 30px;
-  background-color: #2882b5;
+  background-color: #2b3034;
   margin-bottom: 20px;
 }
 
@@ -342,7 +349,9 @@ li{
 
 #remove-link{
   text-decoration: none;
+  color: #2b3034;
 }
+
 h4{
   font-family: 'Satisfy', cursive;
 }
