@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "babel-node -- ./server/bin/www",
+    "seq": "sequelize init",
     "start:dev": "nodemon --exec babel-node -- ./server/bin/www",
     "test": "mocha --exit --compilers js:babel-core/register server/server/test",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
@@ -36,9 +37,13 @@
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
+    "dotenv": "^4.0.0",
     "eslint": "^4.9.0",
     "express": "^4.16.2",
     "mocha": "^4.0.1",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "pg": "^7.3.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.20.1"
   }
 }
