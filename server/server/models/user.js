@@ -40,5 +40,16 @@ export default (sequelize, DataTypes) => {
       }
     }
   });
+  User.associate = (models) => {
+    User.hasMany(models.Recipe, {
+      foreignKey: 'userId'
+    });
+    User.hasMany(models.favorites, {
+      foreignKey: 'userId'
+    });
+    User.hasMany(models.reviews, {
+      foreignKey: 'userId'
+    });
+  };
   return User;
 };
