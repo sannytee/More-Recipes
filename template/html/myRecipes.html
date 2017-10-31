@@ -13,10 +13,10 @@
 	<!-- Navbar-->
 	<header>
 	  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#2b3034">
-			<a class="navbar-brand" href="home.html">More-Recipes</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			  <span class="navbar-toggler-icon"></span>
-			</button>
+		<a class="navbar-brand" href="home.html">More-Recipes</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			  <ul class="navbar-nav ml-auto">
@@ -82,220 +82,223 @@
 		<!-- view to edit and delete recipes-->
 		<div class="row pt-4">
 			<div class="col-md-4 col-sm-6 recipe-card">
-				<div class="border border-primary">
-					<div style="padding: 10px 10px 10px 10px">
-						<img src="../images/11.jpg" class="img-fluid">
-						<h4 class="text-center "><a href="recipeDetails.html">Yummy sausage roll</a></h4>
-						<p>ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-						<div style="display: inline-flex;">
-							<!-- Edit button-->
-							<div style="margin-right:10px; ">
-								<button class="btn btn-primary" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-								<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLabel">Edit recipe</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">×</span>
-												</button>
-											</div>
-											<div class="modal-body">
-												<form>
-													<div class="form-group">
-														<label for="recipient-name" class="col-form-label black">Title :</label>
-														<input type="text" class="form-control" id="recipient-name">
-													</div>
-													<div class="form-group">
-														<label for="message-text" class="col-form-label black">Description :</label>
-														<textarea class="form-control" id="message-text"></textarea>
-													</div>
-												</form>
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-												<button type="button" class="btn btn-primary">Update</button>
+				<div class="card-deck">
+          <article class="card">
+            <img src="../images/recipe-5.jpg" class="card-img-top img-fluid">
+            <div class="card-body">
+              <h3 class="card-title"><a href="recipeDetails.html" id="remove-link">Spicy Chinese Pizza</a></h4>
+							<p class="card-text">ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="card-footer">
+              <div style="display: inline-flex;">
+								<!-- Edit button-->
+								<div style="margin-right:10px; ">
+									<button class="btn btn-primary" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+									<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Edit recipe</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">×</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<form>
+														<div class="form-group">
+															<label for="recipient-name" class="col-form-label black">Title :</label>
+															<input type="text" class="form-control" id="recipient-name">
+														</div>
+														<div class="form-group">
+															<label for="message-text" class="col-form-label black">Description :</label>
+															<textarea class="form-control" id="message-text"></textarea>
+														</div>
+													</form>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-primary">Update</button>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
 
-							<!--Delete Button -->
-							<div>
-								<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-								<div class="modal fade" id="deleteModal">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLabel">Delete recipe</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">×</span>
-												</button>
-											</div>
-											<div class="modal-body">
-												This action cannot be reversed, process with caution.
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-danger">Delete</button>
-												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<!--Delete Button -->
+								<div>
+									<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+									<div class="modal fade" id="deleteModal">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Delete recipe</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">×</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													This action cannot be reversed, process with caution.
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-danger">Delete</button>
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-	      </div>
+            </div>
+          </article>
+        </div>
       </div>
 			<div class="col-md-4 col-sm-6 recipe-card">
-				<div class="border border-primary">
-					<div style="padding: 10px 10px 10px 10px">
-						<img src="../images/11.jpg" class="img-fluid">
-						<h4 class="text-center "><a href="recipeDetails.html">Yummy sausage roll</a></h4>
-						<p>ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-						<div style="display: inline-flex;">
-							<!-- Edit button-->
-							<div style="margin-right:10px; ">
-								<button class="btn btn-primary" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-								<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLabel">Edit recipe</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">×</span>
-												</button>
-											</div>
-											<div class="modal-body">
-												<form>
-													<div class="form-group">
-														<label for="recipient-name" class="col-form-label black">Title :</label>
-														<input type="text" class="form-control" id="recipient-name">
-													</div>
-													<div class="form-group">
-														<label for="message-text" class="col-form-label black">Description :</label>
-														<textarea class="form-control" id="message-text"></textarea>
-													</div>
-												</form>
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-												<button type="button" class="btn btn-primary">Update</button>
+				<div class="card-deck">
+          <article class="card">
+            <img src="../images/recipe-5.jpg" class="card-img-top img-fluid">
+            <div class="card-body">
+              <h3 class="card-title"><a href="recipeDetails.html" id="remove-link">Spicy Chinese Pizza</a></h4>
+							<p class="card-text">ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="card-footer">
+              <div style="display: inline-flex;">
+								<!-- Edit button-->
+								<div style="margin-right:10px; ">
+									<button class="btn btn-primary" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+									<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Edit recipe</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">×</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<form>
+														<div class="form-group">
+															<label for="recipient-name" class="col-form-label black">Title :</label>
+															<input type="text" class="form-control" id="recipient-name">
+														</div>
+														<div class="form-group">
+															<label for="message-text" class="col-form-label black">Description :</label>
+															<textarea class="form-control" id="message-text"></textarea>
+														</div>
+													</form>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-primary">Update</button>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
 
-							<!--Delete Button -->
-							<div>
-								<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-								<div class="modal fade" id="deleteModal">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLabel">Delete recipe</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">×</span>
-												</button>
-											</div>
-											<div class="modal-body">
-												This action cannot be reversed, process with caution.
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-danger">Delete</button>
-												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<!--Delete Button -->
+								<div>
+									<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+									<div class="modal fade" id="deleteModal">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Delete recipe</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">×</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													This action cannot be reversed, process with caution.
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-danger">Delete</button>
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-	      </div>
+            </div>
+          </article>
+        </div>
       </div>
 			<div class="col-md-4 col-sm-6 recipe-card">
-				<div class="border border-primary">
-					<div style="padding: 10px 10px 10px 10px">
-						<img src="../images/11.jpg" class="img-fluid">
-						<h4 class="text-center "><a href="recipeDetails.html">Yummy sausage roll</a></h4>
-						<p>ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-						<div style="display: inline-flex;">
-							<!-- Edit button-->
-							<div style="margin-right:10px; ">
-								<button class="btn btn-primary" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-								<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLabel">Edit recipe</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">×</span>
-												</button>
-											</div>
-											<div class="modal-body">
-												<form>
-													<div class="form-group">
-														<label for="recipient-name" class="col-form-label black">Title :</label>
-														<input type="text" class="form-control" id="recipient-name">
-													</div>
-													<div class="form-group">
-														<label for="message-text" class="col-form-label black">Description :</label>
-														<textarea class="form-control" id="message-text"></textarea>
-													</div>
-												</form>
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-												<button type="button" class="btn btn-primary">Update</button>
+				<div class="card-deck">
+          <article class="card">
+            <img src="../images/recipe-5.jpg" class="card-img-top img-fluid">
+            <div class="card-body">
+              <h3 class="card-title"><a href="recipeDetails.html" id="remove-link">Spicy Chinese Pizza</a></h4>
+							<p class="card-text">ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="card-footer">
+              <div style="display: inline-flex;">
+								<!-- Edit button-->
+								<div style="margin-right:10px; ">
+									<button class="btn btn-primary" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+									<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Edit recipe</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">×</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<form>
+														<div class="form-group">
+															<label for="recipient-name" class="col-form-label black">Title :</label>
+															<input type="text" class="form-control" id="recipient-name">
+														</div>
+														<div class="form-group">
+															<label for="message-text" class="col-form-label black">Description :</label>
+															<textarea class="form-control" id="message-text"></textarea>
+														</div>
+													</form>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-primary">Update</button>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
 
-							<!--Delete Button -->
-							<div>
-								<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-								<div class="modal fade" id="deleteModal">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLabel">Delete recipe</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">×</span>
-												</button>
-											</div>
-											<div class="modal-body">
-												This action cannot be reversed, process with caution.
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-danger">Delete</button>
-												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<!--Delete Button -->
+								<div>
+									<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+									<div class="modal fade" id="deleteModal">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Delete recipe</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">×</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													This action cannot be reversed, process with caution.
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-danger">Delete</button>
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-	      </div>
+            </div>
+          </article>
+        </div>
       </div>
 			
 	</div>
