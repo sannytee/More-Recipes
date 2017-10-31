@@ -56,7 +56,25 @@ export default (sequelize, DataTypes) => {
     downvotes: {
       type: DataTypes.INTEGER,
       defaultValue: 0
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   });
+  Recipe.associate = (models) => {
+    Recipe.hasMany(models.reviews, {
+      foreignKey: 'recipeId'
+    });
+
+    Recipe.hasMany(models.favorites, {
+      foreignKey: 'recipeId'
+    });
+
+    Recipe.belongsTo(models.User, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE',
+    });
+  };
   return Recipe;
 };
