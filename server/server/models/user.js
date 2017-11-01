@@ -35,7 +35,7 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: {
-          msg: 'Password id required'
+          msg: 'Password is required'
         }
       }
     }

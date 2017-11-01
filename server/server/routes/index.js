@@ -1,6 +1,7 @@
 import recipeController from '../controllers/recipeController';
 import authentication from '../middlewares/authenticate';
 import userController from '../controllers/userController';
+import reviewController from '../controllers/reviewController';
 
 export default (app) => {
   app.get('/', (req, res) => res.status(200).send({
@@ -12,5 +13,6 @@ export default (app) => {
   app.post('/api/v1/recipes', authentication.verifyUser, recipeController.addRecipe);
   app.put('/api/v1/recipes/:recipeId', authentication.verifyUser, recipeController.updateRecipe);
   app.delete('/api/v1/recipes/:recipeId', authentication.verifyUser, recipeController.delete);
-  app.get('/api/v1/recipes', authentication.verifyUser, recipeController.get)
+  app.get('/api/v1/recipes', authentication.verifyUser, recipeController.get);
+  app.post('/api/v1/recipes/:recipeId/reviews', authentication.verifyUser, reviewController.add)
 };
