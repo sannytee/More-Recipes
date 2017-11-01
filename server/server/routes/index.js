@@ -1,5 +1,5 @@
 import recipeController from '../controllers/recipeController';
-import reviewController from '../controllers/reviewController';
+import authentication from '../middlewares/authenticate';
 import userController from '../controllers/userController';
 
 export default (app) => {
@@ -9,9 +9,5 @@ export default (app) => {
 
   app.post('/api/v1/users/signup', userController.signup);
   app.post('/api/v1/users/signin', userController.signIn);
-  app.post('/api/v1/recipes', recipeController.addRecipe);
-  app.put('/api/v1/recipes/:Id', recipeController.editRecipe);
-  app.delete('/api/v1/recipes/:recipeId', recipeController.deleteRecipe);
-  app.get('/api/v1/recipes', recipeController.getRecipes);
-  app.post('/api/v1/recipes/:recipeId/reviews', reviewController.addReview);
+  app.post('/api/v1/recipes', authentication.verifyUser, recipeController.addRecipe);
 };
