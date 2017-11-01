@@ -63,4 +63,33 @@ export default class recipe {
       })
       .catch(err => res.status(400).send(err));
   }
+  /**
+   * Delete a  Recipe
+   * @param {object} req
+   * @param {object} res
+   * @param {object} model
+   * @returns  {JSON} Returns success or failure message
+   */
+  static deleteRecipe(req, res, model) {
+    model
+      .find({
+        where: {
+          userId: req.decoded.id,
+          id: req.params.recipeId
+        }
+      })
+      .then((recipes) => {
+        if (!recipes) {
+          return res.status(404).send({
+            message: 'Recipe not found'
+          });
+        }
+        return recipes
+          .destroy()
+          .then(() => res.status(200).send({
+            message: 'recipe successfully deleted'
+          }));
+      })
+      .catch(error => res.status(400).send(error));
+  }
 }
