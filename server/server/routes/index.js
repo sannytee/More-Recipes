@@ -8,6 +8,7 @@ export default (app) => {
   }));
 
   app.post('/api/v1/users/signup', userController.signup);
+  app.post('/api/v1/users/signin', userController.signIn);
   app.post('/api/v1/recipes', recipeController.addRecipe);
   app.put('/api/v1/recipes/:Id', recipeController.editRecipe);
   app.delete('/api/v1/recipes/:recipeId', recipeController.deleteRecipe);
