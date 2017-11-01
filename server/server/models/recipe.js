@@ -60,7 +60,7 @@ export default (sequelize, DataTypes) => {
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false
-    }
+    },
   });
   Recipes.associate = (models) => {
     Recipes.hasMany(models.reviews, {
