@@ -14,11 +14,11 @@ export default (sequelize, DataTypes) => {
     }
   });
   reviews.associate = (models) => {
-    reviews.belongsTo(models.User, {
+    reviews.belongsTo(models.Users, {
       foreignKey: 'userId',
       onDelete: 'CASCADE',
     });
-    reviews.belongsTo(models.Recipe, {
+    reviews.belongsTo(models.Recipes, {
       foreignKey: 'recipeId',
       onDelete: 'CASCADE',
     });
