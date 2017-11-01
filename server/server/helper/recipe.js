@@ -92,4 +92,24 @@ export default class recipe {
       })
       .catch(error => res.status(400).send(error));
   }
+  /**
+   * Get  Recipes
+   * @param {object} req
+   * @param {object} res
+   * @param {object} model
+   * @returns  {JSON} Returns success or failure message
+   */
+  static getRecipe(req, res, model) {
+    return model
+      .all()
+      .then((recipes) => {
+        if (recipes.length === 0) {
+          return res.status(200).send({
+            message: 'No recipes have been added'
+          });
+        }
+        return res.status(200).send(recipes);
+      })
+      .catch(error => res.status(400).send(error));
+  }
 }
