@@ -11,4 +11,13 @@ export default {
   addRecipe(req, res) {
     recipeHelper.createRecipe(req, res, Recipes);
   },
+  /**
+   * Update a recipe
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns a JSON object
+   */
+  updateRecipe(req, res) {
+    recipeHelper.editRecipe(req, res, Recipes);
+  },
 };
