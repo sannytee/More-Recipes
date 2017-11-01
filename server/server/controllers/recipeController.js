@@ -20,4 +20,13 @@ export default {
   updateRecipe(req, res) {
     recipeHelper.editRecipe(req, res, Recipes);
   },
+  /**
+   * call a method to delete recipe
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns a JSON object
+   */
+  delete(req, res) {
+    recipeHelper.deleteRecipe(req, res, Recipes);
+  }
 };
