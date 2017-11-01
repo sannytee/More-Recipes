@@ -6,8 +6,18 @@ export default (sequelize, DataTypes) => {
     },
     recipeId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
   });
+  favorites.associate = (models) => {
+    favorites.belongsTo(models.Recipes, {
+      foreignKey: 'recipeId',
+      onDelete: 'CASCADE',
+    });
+    favorites.belongsTo(models.Users, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE',
+    });
+  };
   return favorites;
 };

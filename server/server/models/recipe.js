@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Recipe = sequelize.define('Recipe', {
+  const Recipes = sequelize.define('Recipes', {
     recipeName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -56,7 +56,25 @@ export default (sequelize, DataTypes) => {
     downvotes: {
       type: DataTypes.INTEGER,
       defaultValue: 0
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   });
-  return Recipe;
+  Recipes.associate = (models) => {
+    Recipes.hasMany(models.reviews, {
+      foreignKey: 'recipeId'
+    });
+
+    Recipes.hasMany(models.favorites, {
+      foreignKey: 'recipeId'
+    });
+
+    Recipes.belongsTo(models.User, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE',
+    });
+  };
+  return Recipes;
 };

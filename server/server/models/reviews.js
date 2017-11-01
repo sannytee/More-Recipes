@@ -13,5 +13,16 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
     }
   });
+  reviews.associate = (models) => {
+    reviews.belongsTo(models.User, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE',
+    });
+    reviews.belongsTo(models.Recipe, {
+      foreignKey: 'recipeId',
+      onDelete: 'CASCADE',
+    });
+  };
+
   return reviews;
 };
