@@ -28,5 +28,14 @@ export default {
    */
   delete(req, res) {
     recipeHelper.deleteRecipe(req, res, Recipes);
+  },
+  /**
+   * call a method to get recipe
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns a JSON object
+   */
+  get(req, res) {
+    recipeHelper.getRecipe(req, res, Recipes);
   }
 };
