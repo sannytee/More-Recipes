@@ -52,4 +52,34 @@ export default class favorite {
       })
       .catch(err => res.status(400).send(err));
   }
+  /**
+   * get  all favorite recipe
+   * @param {object} req
+   * @param {object} res
+   * @param {object} favorites
+   * @param {object} recipe
+   * @returns  {JSON} Returns success or failure message
+   */
+  static fetch(req, res, favorites, recipe) {
+    favorites
+      .findAll({
+        where: {
+          userId: req.decoded.id,
+        },
+        include: [
+          {
+            model: recipe
+          }
+        ]
+      })
+      .then((favorited) => {
+        if (!favorited) {
+          return res.status(404).send({
+            message: 'You have no favorite recipe yet'
+          });
+        }
+        res.status(200).send(favorited);
+      })
+      .catch(err => res.status(400).send(err));
+  }
 }
