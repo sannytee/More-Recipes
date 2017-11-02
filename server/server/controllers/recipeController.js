@@ -1,4 +1,4 @@
-import { Recipes } from '../models';
+import { Recipes, reviews } from '../models';
 import recipeHelper from '../helper/recipe';
 
 export default {
@@ -36,6 +36,24 @@ export default {
    * @returns  {JSON} Returns a JSON object
    */
   get(req, res) {
-    recipeHelper.getRecipe(req, res, Recipes);
+    recipeHelper.getRecipe(req, res, Recipes, reviews);
+  },
+  /**
+   * call a method to upvote recipe
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns a JSON object
+   */
+  upvote(req, res) {
+    recipeHelper.upvoteRecipes(req, res, Recipes);
+  },
+  /**
+   * call a method to downvote recipe
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns a JSON object
+   */
+  downvote(req, res) {
+    recipeHelper.downvoteRecipes(req, res, Recipes);
   }
 };
