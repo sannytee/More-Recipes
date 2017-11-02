@@ -10,6 +10,9 @@ export default {
       });
     }
     favoriteHelper.create(req, res, Recipes, favorites);
+  },
+  get(req, res) {
+    favoriteHelper.fetch(req, res, favorites, Recipes);
   }
 };
 
