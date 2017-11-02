@@ -39,6 +39,16 @@ export default {
     recipeHelper.getRecipe(req, res, Recipes, reviews);
   },
   /**
+   * call a method to get  a recipe
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns a JSON object
+   */
+  getOne(req, res) {
+    recipeHelper.getARecipe(req, res, Recipes, reviews);
+  },
+
+  /**
    * call a method to upvote recipe
    * @param {object} req
    * @param {object} res

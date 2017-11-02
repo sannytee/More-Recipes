@@ -128,6 +128,38 @@ export default class recipe {
       })
       .catch(error => res.status(400).send(error));
   }
+
+  /**
+   * Get  a particular Recipe
+   * @param {object} req
+   * @param {object} res
+   * @param {object} model
+   * @param {object} reviews
+   * @returns  {JSON} Returns success or failure message
+   */
+  static getARecipe(req, res, model, reviews) {
+    model
+      .find({
+        where: {
+          id: req.params.recipeId
+        },
+        include: [
+          {
+            model: reviews,
+            attributes: ['userId', 'recipeId', 'review'],
+          }
+        ]
+      })
+      .then((recipes) => {
+        if (!recipes) {
+          return res.status(404).send({
+            message: 'Recipe not found'
+          });
+        }
+        return res.status(200).send(recipes);
+      })
+      .catch(err => res.status(400).send(err));
+  }
   /**
    * upvotes  a  Recipe
    * @param {object} req

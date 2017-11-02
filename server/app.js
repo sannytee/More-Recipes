@@ -17,8 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 routes(app);
 // set up a default catch-all route
-app.get('*', (req, res) => res.status(200).send({
-  message: 'Welcome to the More-recipe app'
+app.get('*', (req, res) => res.status(400).send({
+  message: 'Resource cannot be found'
 }));
 
 export default app;
