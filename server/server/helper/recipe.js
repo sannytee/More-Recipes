@@ -97,9 +97,25 @@ export default class recipe {
    * @param {object} req
    * @param {object} res
    * @param {object} model
+   * @param {object} reviews
    * @returns  {JSON} Returns success or failure message
    */
-  static getRecipe(req, res, model) {
+  static getRecipe(req, res, model, reviews) {
+    if (req.query.order || req.query.sort) {
+      return model
+        .findAll({
+          order: [
+            [req.query.sort, 'DESC']
+          ],
+          include: [
+            {
+              model: reviews,
+              attributes: ['userId', 'recipeId', 'review'],
+            }
+          ]
+        })
+        .then(sortedRecipes => res.status(200).send(sortedRecipes));
+    }
     return model
       .all()
       .then((recipes) => {
@@ -111,5 +127,65 @@ export default class recipe {
         return res.status(200).send(recipes);
       })
       .catch(error => res.status(400).send(error));
+  }
+  /**
+   * upvotes  a  Recipe
+   * @param {object} req
+   * @param {object} res
+   * @param {object} model
+   * @returns  {JSON} Returns success or failure message
+   */
+  static upvoteRecipes(req, res, model) {
+    model
+      .find({
+        where: {
+          id: req.params.recipeId
+        }
+      })
+      .then((recipes) => {
+        if (!recipes) {
+          return res.status(404).send({
+            message: 'Recipe not found'
+          });
+        }
+        recipes.increment('upvotes')
+          .then(() => {
+            recipes.reload();
+            res.status(200).send({
+              message: `You have upvoted ${recipes.recipeName} recipe`
+            });
+          });
+      })
+      .catch(err => res.status(400).send(err));
+  }
+  /**
+   * upvotes  a  Recipe
+   * @param {object} req
+   * @param {object} res
+   * @param {object} model
+   * @returns  {JSON} Returns success or failure message
+   */
+  static downvoteRecipes(req, res, model) {
+    model
+      .find({
+        where: {
+          id: req.params.recipeId
+        }
+      })
+      .then((recipes) => {
+        if (!recipes) {
+          return res.status(404).send({
+            message: 'Recipe not found'
+          });
+        }
+        recipes.decrement('upvotes')
+          .then(() => {
+            recipes.reload();
+            res.status(200).send({
+              message: `You have downvoted ${recipes.recipeName} recipe`
+            });
+          });
+      })
+      .catch(err => res.status(400).send(err));
   }
 }
