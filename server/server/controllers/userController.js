@@ -29,6 +29,11 @@ export default {
    */
   signIn(req, res) {
     const { Op } = Sequelize;
+    if(!req.body.username || !req.body.password){
+      return res.status(400).send({
+        message: 'Username and password required'
+      });
+    }
     account.signInUser(req, res, Users, bcrypt, jwt, Op);
   }
 };
