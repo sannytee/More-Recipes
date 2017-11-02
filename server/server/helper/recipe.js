@@ -35,11 +35,12 @@ export default class recipe {
    * @returns  {JSON} Returns success or failure message
    */
   static editRecipe(req, res, model) {
+    const id = parseInt(req.params.recipeId, 10);
     model
       .find({
         where: {
           userId: req.decoded.id,
-          id: req.params.recipeId
+          id,
         }
       })
       .then((recipes) => {
