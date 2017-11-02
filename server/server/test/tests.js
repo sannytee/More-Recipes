@@ -1,67 +1,126 @@
 import chaiHttp from 'chai-http';
 import chai from 'chai';
 import app from '../../app';
+import { Users, Recipes, reviews, favorites} from '../models';
 
 const expect = chai.expect;
+
 chai.use(chaiHttp);
 
+Users.destroy({
+  cascade: true,
+  truncate: true,
+  restartIdentity: true
+});
+
+Recipes.destroy({
+  cascade: true,
+  truncate: true,
+  restartIdentity: true
+});
+
+reviews.destroy({
+  cascade: true,
+  truncate: true,
+  restartIdentity: true
+});
+
+favorites.destroy({
+  cascade: true,
+  truncate: true,
+  restartIdentity: true
+});
+
+let token;
+
 describe('More-Recipe Tests:', () => {
-  describe('Creating and updating data ', () => {
-    it('POST /api/v1/recipes does create new recipe', (done) => {
+  describe('Test for User', () => {
+    it('POST /api/v1/users/signup does create new user', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/')
+        .post('/api/v1/users/signup')
         .send({
-          userId: 5,
-          recipeName: 'Rice',
-          mealType: 'lunch',
-          description: 'Boil water for five minutes',
-          ingredients: 'water, goat, rice, blah,',
+          username: 'Thywo',
+          email: 'example@gmail.com',
+          password: 'example97'
         })
         .end((err, res) => {
           expect(res.body.success).equal(true);
           expect(res.status).equal(201);
-          expect(res.body.message).equal('Recipe created');
+          expect(res.body.message).equal('Account created');
+          expect(res.body.username).equal('Thywo');
           done();
         });
     });
-    it('POST /api/v1/recipes/:recipeId/reviews does allow user to post review', (done) => {
+    it('POST /api/v1/users/signin does allow user to signin with username', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/4/reviews')
+        .post('/api/v1/users/signin')
         .send({
-          userId: 5,
-          review: "It's so delicious"
-        })
-        .end((err, res) => {
-          expect(res.body.success).equal(true);
-          expect(res.status).equal(201);
-          expect(res.body.message).equal('Review Added');
-          done();
-        });
-    });
-    it('PUT /api/v1/recipes/:recipeId does allow user to edit a recipe', (done) => {
-      chai.request(app)
-        .put('/api/v1/recipes/3')
-        .send({
-          recipeName: 'Beans',
-          mealType: 'Dinner',
-          ingredients: 'beans, rice goat'
+          username: 'Thywo',
+          password: 'example97'
         })
         .end((err, res) => {
           expect(res.body.success).equal(true);
           expect(res.status).equal(200);
-          expect(res.body.message).equal('Recipe successfully updated');
+          token = res.body.token;
+          expect(res.body.message).equal('Token Generated. Signin successful!');
+          done();
+        });
+    });
+    it('POST /api/v1/users/signin does allow user to signin with email', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/signin')
+        .send({
+          email: 'example@gmail.com',
+          password: 'example97'
+        })
+        .end((err, res) => {
+          expect(res.body.success).equal(true);
+          expect(res.status).equal(200);
+          expect(res.body.message).equal('Token Generated. Signin successful!');
+          done();
+        });
+    });
+    it('returns 400 error when password parameter is not given', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/signin')
+        .type('form')
+        .send({
+          email: 'example@gmail.com',
+        })
+        .end((err, res) => {
+          expect(res.status).equal(400);
+          done();
+        });
+    });
+    it('returns 400 error when email parameter is not given', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/signin')
+        .type('form')
+        .send({
+          password: 'naruto'
+        })
+        .end((err, res) => {
+          expect(res.status).equal(400);
           done();
         });
     });
   });
-  describe('Retrieving data', () => {
-    it('GET /api/v1/recipes does get all recipes', (done) => {
+  describe('Creating and updating data', () => {
+    it('POST /api/v1/recipes does create   recipe', (done) => {
       chai.request(app)
-        .get('/api/v1/recipes/')
+        .post('/api/v1/recipes/')
+        .set('x-access-token', token)
+        .type('form')
+        .send({
+          recipeName: 'Goat',
+          mealType: 'breakfast',
+          ingredients: 'water, beans,hfj',
+          description: 'Buy the meat from market',
+          method: 'fry the yam for five minutes'
+        })
         .end((err, res) => {
-          expect(res.status).equals(200);
-          expect(res.body).to.be.an('array');
-          expect(res.body.length).equals(3);
+          expect(res.status).equal(201);
+          expect(res.body.message).equal('Recipe successfully added');
           done();
         });
     });
