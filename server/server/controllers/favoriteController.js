@@ -12,6 +12,11 @@ export default {
     favoriteHelper.create(req, res, Recipes, favorites);
   },
   get(req, res) {
+    if (parseInt(req.params.userId, 10) !== req.decoded.id) {
+      return res.status(403).send({
+        message: 'Permission denied '
+      });
+    }
     favoriteHelper.fetch(req, res, favorites, Recipes);
   }
 };

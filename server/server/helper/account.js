@@ -27,9 +27,16 @@ export default class account {
           id: user.id
         });
       })
-      .catch(err => res.status(400).send({
-        message: err
-      }));
+      .catch((err) => {
+        if (err.name === 'SequelizeUniqueConstraintError' || 'SequelizeValidationError') {
+          return res.status(400).send({
+            error: err.errors[0].message
+          });
+        }
+        return res.status(400).send({
+          message: err
+        });
+      })
   }
 
   /**

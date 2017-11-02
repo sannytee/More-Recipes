@@ -20,5 +20,14 @@ routes(app);
 app.get('*', (req, res) => res.status(400).send({
   message: 'Resource cannot be found'
 }));
+app.post('*', (req, res) => res.status(400).send({
+  message: 'Resource cannot be found'
+}));
+app.put('*', (req, res) => res.status(400).send({
+  message: 'Resource cannot be found'
+}));
+app.delete('*', (req, res) => res.status(400).send({
+  message: 'Resource cannot be found'
+}));
 
 export default app;

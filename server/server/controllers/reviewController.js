@@ -11,8 +11,13 @@ export default {
   add(req, res) {
     const id = req.params.recipeId;
     if (isNaN(id)) {
-      res.status(400).send({
+      return res.status(400).send({
         message: 'Parameter should be a nuber'
+      });
+    }
+    if (!req.body.review) {
+      return res.status(400).send({
+        message: 'Review cannot be empty'
       });
     }
     reviewHelper.addReview(req, res, Recipes, reviews);
