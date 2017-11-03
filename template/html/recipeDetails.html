@@ -17,6 +17,9 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+			    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			  </form>
 			  <ul class="navbar-nav ml-auto">
 			    <li class="nav-item">
 			      <a class="nav-link" href="profile.html">Profile</a>
@@ -28,10 +31,7 @@
 			      <a class="nav-link disabled" href="../index.html">Signout</a>
 			    </li>
 			  </ul>
-			  <form class="form-inline my-2 my-lg-0">
-			    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-			    <button class="btn btn-outline-success my-2 my-sm-0 button-color" type="submit">Search</button>
-			  </form>
+			  
 			</div>
 		</nav>
   </header>
@@ -42,7 +42,7 @@
       <div class="col-sm-2"></div>
   		<div class="col-sm-8">
   			<div class="card w-100" style="width: 20rem;">
-        	<img class="card-img-top" src="../images/15.jpg" alt="Card image cap" style="max-height: 350px;">
+        	<img class="card-img-top" src="../images/recipe-10.jpg" alt="Card image cap" style="max-height: 350px;">
         	<div class="card-body">
         		<div style="display: inline-flex;">
               <div>
@@ -67,15 +67,15 @@
             <hr>
             <div style="display: inline-flex;">
               <div>
-                <button class="btn btn-primary" type="button"><i class="fa fa-thumbs-up fa-2x" aria-hidden="true"></i></button>
+                <button class="btn vote-button" type="button"><i class="fa fa-thumbs-up fa-2x" aria-hidden="true"></i></button>
                 <span style="margin-left: 5px; margin-right:5px">50</span>
               </div>
             	<div style="margin-left: 8px;">
-                <button class="btn btn-primary" type="button"><i class="fa fa-thumbs-o-down fa-2x" aria-hidden="true"></i></button>
+                <button class="btn vote-button" type="button"><i class="fa fa-thumbs-o-down fa-2x" aria-hidden="true"></i></button>
                 <span style="margin-left: 5px; margin-right:5px">27</span>
               </div>
               <div style="margin-left: 8px;">
-                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-share fa-2x" aria-hidden="true"></i></button>
+                <button class="btn vote-button" type="button" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-share fa-2x" aria-hidden="true"></i></button>
                 <span style="margin-left: 5px; margin-right:5px">Share</span>
                 <div class="modal fade" id="exampleModal">
                   <div class="modal-dialog" role="document">
@@ -95,7 +95,7 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Share</button>
+                        <button type="button" class="btn">Share</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                       </div>
                     </div>
@@ -106,14 +106,10 @@
             <hr>
             <div>
             	<p> 2 Comments</p>
-            	<form>
-            		<input class="w-50" type="text" placeholder="Write a comment" name="Comment">
-            		<button type="button" class="btn btn-primary">Comment</button>
-            	</form>
             </div>
             <hr>
             <section class="border-recipes">
-              <h4 class="profile-preword">Reviews</h4>
+              <h4 class="profile-preword centered" style="background-color: #2b3034">Reviews</h4>
               <ul>
                 <li>
                   <div>
@@ -146,6 +142,11 @@
                   </div>
                 </li>
               </ul>
+              <hr>
+              <div class="form-group">
+                <label for="comment">Reviews:</label>
+                <textarea class="form-control" rows="5" id="comment"></textarea>
+              </div>
             </section>
           </div>
         </div>
