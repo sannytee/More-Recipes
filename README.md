@@ -27,6 +27,12 @@ To install this application,
 ## API
 The routes currently specified in the application are as follows:
 
+- **'/api/v1/users/signup'**
+    - **POST** - Allows a User to create account
+
+- **'/api/v1/users/signin'**
+    - **POST** - Allows a User to sigin
+
 - **'api/v1/recipes'**
     - **POST** - Creates a new recipe in the catalog
 
@@ -39,4 +45,15 @@ The routes currently specified in the application are as follows:
 - **'api/v1/recipes/:recipeId/reviews'**
     - **POST** - allows users to post a review for recipe  
 - **'api/v1/recipes/:recipeId'**
+    - **DETELE** - allows users to delete recipe 
+- **'api/v1/recipes/:recipeId'**
     - **DETELE** - allows users to delete recipe    
+- **'api/v1/recipes/:recipeId'**
+    - **GET** - allows users to get a particular recipe
+- **'/api/users/:userId/recipes'**
+    - **POST** - allows users to create favorite recipes
+- **'/api/users/:userId/recipes'**
+    - **GET** - allows users to get their favorite recipes
+- **'/api/v1/users/signup'**
+    - **POST** - Allows a User to create account
+
