@@ -31,80 +31,113 @@
       </div>
     </nav>
 	</header>
-  <div class="container">
-    <!-- A view for user profile-->
-    <section>
-      <div class="jumbotron profile">
-        <div>
-          <div class="row">
-            <div class="col-sm-5">
-              <div>
-                <img class="img-fluid" src="../images/avatar.png">
-              </div>
-            </div>
-            <div class="col-sm-7">
-              <h3 class="profile-preword">Username: <span>JonnyDoe</span></h3>
-              <h3 class="profile-preword">Email: <span>JohnD@example.com</span></h3>
-              <h3 class="profile-preword">Recipes Added : <span>10</span></h3>
-              <h3 class="profile-preword">Favourite Recipes: <span>4</span></h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- A view for favorite recipes-->
-    <section>
-      <div>
-				<h1 class="text-center">Favorite Recipes</h1>
-				<div>
-					<div class="row">
-						<div class="col-md-4 col-sm-6 recipe-card">
-							<div class="border border-primary">
-	              <img src="../images/11.jpg" class="img-fluid">
-	              <h4 class="text-center "><a href="recipeDetails.html">Yummy sausage roll</a></h4>
-	            </div>
-       			</div>
-       			<div class="col-md-4 col-sm-6 recipe-card">
-							<div class="border border-primary">
-	              <img src="../images/11.jpg" class="img-fluid">
-	              <h4 class="text-center "><a href="recipeDetails.html">Yummy sausage roll</a></h4>
-	            </div>
-       			</div>
-       			<div class="col-md-4 col-sm-6 recipe-card">
-							<div class="border border-primary">
-	              <img src="../images/11.jpg" class="img-fluid">
-	              <h4 class="text-center "><a href="recipeDetails.html">Yummy sausage roll</a></h4>
-	            </div>
-       			</div>
-       			<div class="col-md-4 col-sm-6 recipe-card">
-							<div class="border border-primary">
-	              <img src="../images/11.jpg" class="img-fluid">
-	              <h4 class="text-center "><a href="recipeDetails.html">Yummy sausage roll</a></h4>
-	            </div>
-       			</div>
-					</div>
-				</div>
-			</div>
-    </section>
-    <!-- Pagination for favorite recipes -->
-    <nav aria-label="Page navigation example">
-		  <ul class="pagination justify-content-center">
-		    <li class="page-item disabled">
-		      <a class="page-link" href="#" tabindex="-1">Previous</a>
-		    </li>
-		    <li class="page-item"><a class="page-link" href="#">1</a></li>
-		    <li class="page-item"><a class="page-link" href="#">2</a></li>
-		    <li class="page-item"><a class="page-link" href="#">3</a></li>
-		    <li class="page-item"><a class="page-link" href="#">4</a></li>
-		    <li class="page-item"><a class="page-link" href="#">5</a></li>
-		    <li class="page-item"><a class="page-link" href="#">6</a></li>
-		    <li class="page-item">
-		      <a class="page-link" href="#">Next</a>
-		    </li>
-		  </ul>
-		</nav>
-  </div>
+		<div class="container top-nav-bar">
+	<div class="row pb-3 centered" style="margin-top:10px;">
+		<div class="col-sm-12 profile-bg user-profile">
+			<img class="img-fluid rounded-circle" src="../images/user.png" alt="">
+			<h3>SannyTee</h3>
+			<p>recipe added: 20  <span class="vl user-text"></span> <span>email: example@gmail.com </span> <span class="vl user-text">favorite recipe: 20</span> </p>
+		</div>
+	</div>
+	<section class="row">
+		<div class="col-sm-12">
+			<h3 class="header-bg font">Favorite recipes</h3>
+		</div>
+	</section>
+		<section class="row">
+		<div class="col-md-6 col-lg-4 pb-3">
+			<img class="img-fluid" src="../images/recipe-5.jpg" alt="">
+      <h1>chinese spicy</h1>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star-half rating-cl" aria-hidden="true"></i>
+      <span>5k</span>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, fugit!</p>
+			<button type="button" class="btn btn-success">View recipe</button>
+		</div>
+		<div class="col-md-6 col-lg-4 pb-3">
+			<img class="img-fluid" src="../images/recipe-5.jpg" alt="">
+      <h1>chinese spicy</h1>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star-half rating-cl" aria-hidden="true"></i>
+      <span>7k</span>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, fugit!</p>
+			<button type="button" class="btn btn-success">View recipe</button>
+		</div>
+		<div class="col-md-6 col-lg-4 pb-3">
+			<img class="img-fluid" src="../images/recipe-5.jpg" alt="">
+      <h1>chinese spicy</h1>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star-half rating-cl" aria-hidden="true"></i>
+      <span>800</span>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, fugit!</p>
+			<button type="button" class="btn btn-success">View recipe</button>
+		</div>
+		<div class="col-md-6 col-lg-4 pb-3">
+			<img class="img-fluid" src="../images/recipe-5.jpg" alt="">
+      <h1>chinese spicy</h1>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star-half rating-cl" aria-hidden="true"></i>
+      <span>3k</span>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, fugit!</p>
+			<button type="button" class="btn btn-success">View recipe</button>
+		</div>
+		<div class="col-md-6 col-lg-4 pb-3">
+			<img class="img-fluid" src="../images/recipe-5.jpg" alt="">
+      <h1>chinese spicy</h1>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star-half rating-cl" aria-hidden="true"></i>
+      <span>6k</span>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, fugit!</p>
+			<button type="button" class="btn btn-success">View recipe</button>
+		</div>
+		<div class="col-md-6 col-lg-4 pb-3">
+			<img class="img-fluid" src="../images/recipe-5.jpg" alt="">
+      <h1>chinese spicy</h1>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star rating-cl" aria-hidden="true"></i>
+      <i class="fa fa-star-half rating-cl" aria-hidden="true"></i>
+      <span>2k</span>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, fugit!</p>
+			<button type="button" class="btn btn-success">View recipe</button>
+		</div>
+	</section>
+	<nav aria-label="Page navigation example" class="pt-3">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" id="pagination-color" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" id="pagination-color" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" id="pagination-color" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" id="pagination-color" href="#">4</a></li>
+    <li class="page-item"><a class="page-link" id="pagination-color" href="#">5</a></li>
+    <li class="page-item"><a class="page-link" id="pagination-color" href="#">6</a></li>
+    <li class="page-item"><a class="page-link" id="pagination-color" href="#">7</a></li>
+    <li class="page-item"><a class="page-link" id="pagination-color" href="#">8</a></li>
+    <li class="page-item"><a class="page-link" id="pagination-color" href="#">9</a></li>
+    <li class="page-item" id="pagination-color">
+      <a class="page-link" id="pagination-color" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+</div>
   
   <!-- footer -->
   <footer class="footer-section" id="footer-below">
