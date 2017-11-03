@@ -66,20 +66,6 @@ describe('More-Recipe Tests:', () => {
           done();
         });
     });
-    it('POST /api/v1/users/signin does allow user to signin with email', (done) => {
-      chai.request(app)
-        .post('/api/v1/users/signin')
-        .send({
-          email: 'example@gmail.com',
-          password: 'example97'
-        })
-        .end((err, res) => {
-          expect(res.body.success).equal(true);
-          expect(res.status).equal(200);
-          expect(res.body.message).equal('Token Generated. Signin successful!');
-          done();
-        });
-    });
     it('returns 400 error when password parameter is not given', (done) => {
       chai.request(app)
         .post('/api/v1/users/signin')
