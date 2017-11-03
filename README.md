@@ -54,6 +54,5 @@ The routes currently specified in the application are as follows:
     - **POST** - allows users to create favorite recipes
 - **'/api/users/:userId/recipes'**
     - **GET** - allows users to get their favorite recipes
-- **'/api/v1/users/signup'**
-    - **POST** - Allows a User to create account
+
 
