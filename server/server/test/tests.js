@@ -1,9 +1,9 @@
 import chaiHttp from 'chai-http';
 import chai from 'chai';
 import app from '../../app';
-import { Users, Recipes, reviews, favorites} from '../models';
+import { Users, Recipes, reviews, favorites } from '../models';
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -62,6 +62,20 @@ describe('More-Recipe Tests:', () => {
           expect(res.body.success).equal(true);
           expect(res.status).equal(200);
           token = res.body.token;
+          expect(res.body.message).equal('Token Generated. Signin successful!');
+          done();
+        });
+    });
+    it('POST /api/v1/users/signin does allow user to signin with email', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/signin')
+        .send({
+          email: 'example@gmail.com',
+          password: 'example97'
+        })
+        .end((err, res) => {
+          expect(res.body.success).equal(true);
+          expect(res.status).equal(200);
           expect(res.body.message).equal('Token Generated. Signin successful!');
           done();
         });
@@ -156,7 +170,6 @@ describe('More-Recipe Tests:', () => {
     it('GET /api/v1/recipes does get all recipe', (done) => {
       chai.request(app)
         .get('/api/v1/recipes')
-        .set('x-access-token', token)
         .end((err, res) => {
           expect(res.status).equal(200);
           expect(res.body).to.be.an('array');
@@ -166,10 +179,38 @@ describe('More-Recipe Tests:', () => {
     it('GET /api/v1/recipes does get a recipe', (done) => {
       chai.request(app)
         .get('/api/v1/recipes/1')
-        .set('x-access-token', token)
         .end((err, res) => {
           expect(res.status).equal(200);
           expect(res.body.id).equal(1);
+          done();
+        });
+    });
+  });
+  describe('Test for reviews and favorite', () => {
+    it('POST /api/v1/recipes/:recipeId/reviews does create review for a recipe', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/1/reviews')
+        .set('x-access-token', token)
+        .send({
+          review: 'This is so do spicy'
+        })
+        .end((err, res) => {
+          expect(res.body.message).equal('Review posted');
+          expect(res.status).equal(201);
+          expect(res.body.review).to.be.an('object');
+          done();
+        });
+    });
+    it('POST /api/v1/recipes/:recipeId/reviews does create review for a recipe', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/1/reviews')
+        .set('x-access-token', token)
+        .send({
+          review: ''
+        })
+        .end((err, res) => {
+          expect(res.body.message).equal('Review cannot be empty');
+          expect(res.status).equal(400);
           done();
         });
     });
