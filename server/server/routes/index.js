@@ -11,14 +11,15 @@ export default (app) => {
 
   app.post('/api/v1/users/signup', userController.signup);
   app.post('/api/v1/users/signin', userController.signIn);
-  app.post('/api/v1/recipes', authentication.verifyUser, recipeController.addRecipe);
-  app.put('/api/v1/recipes/:recipeId', authentication.verifyUser, recipeController.updateRecipe);
-  app.delete('/api/v1/recipes/:recipeId', authentication.verifyUser, recipeController.delete);
-  app.get('/api/v1/recipes', authentication.verifyUser, recipeController.get);
-  app.post('/api/v1/recipes/:recipeId/reviews', authentication.verifyUser, reviewController.add);
-  app.post('/api/v1/users/:userId/recipes', authentication.verifyUser, favoriteController.add);
-  app.get('/api/v1/users/:userId/recipes', authentication.verifyUser, favoriteController.get);
-  app.post('/api/v1/users/:recipeId/upvotes', authentication.verifyUser, recipeController.upvote);
-  app.post('/api/v1/users/:recipeId/downvotes', authentication.verifyUser, recipeController.downvote);
-  app.get('/api/v1/recipes/:recipeId', authentication.verifyUser, recipeController.getOne);
+  app.get('/api/v1/recipes', recipeController.get);
+  app.get('/api/v1/recipes/:recipeId', recipeController.getOne);
+  app.use(authentication.verifyUser);
+  app.post('/api/v1/recipes', recipeController.addRecipe);
+  app.put('/api/v1/recipes/:recipeId', recipeController.updateRecipe);
+  app.delete('/api/v1/recipes/:recipeId', recipeController.delete);
+  app.post('/api/v1/recipes/:recipeId/reviews', reviewController.add);
+  app.post('/api/v1/users/:userId/recipes', favoriteController.add);
+  app.get('/api/v1/users/:userId/recipes', favoriteController.get);
+  app.post('/api/v1/users/:recipeId/upvotes', recipeController.upvote);
+  app.post('/api/v1/users/:recipeId/downvotes', recipeController.downvote);
 };
