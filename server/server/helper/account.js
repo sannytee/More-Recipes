@@ -36,7 +36,7 @@ export default class account {
         return res.status(400).send({
           message: err
         });
-      })
+      });
   }
 
   /**
