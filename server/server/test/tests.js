@@ -255,6 +255,96 @@ describe('More-Recipe Tests:', () => {
           done();
         });
     });
+    it('returns error for empty recipeName', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes')
+        .set('x-access-token', token)
+        .type('form')
+        .send({
+          recipeName: '',
+          mealType: 'breakfast',
+          ingredients: 'water, beans,hfj',
+          description: 'Buy the meat from market',
+          method: 'fry the yam for five minutes'
+        })
+        .end((err, res) => {
+          expect(res.status).equal(400);
+          expect(res.body.message).equal('name of recipe required');
+          done();
+        });
+    });
+    it('returns error for empty mealType', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes')
+        .set('x-access-token', token)
+        .type('form')
+        .send({
+          recipeName: 'goat and meat',
+          mealType: '',
+          ingredients: 'water, beans,hfj',
+          description: 'Buy the meat from market',
+          method: 'fry the yam for five minutes'
+        })
+        .end((err, res) => {
+          expect(res.status).equal(400);
+          expect(res.body.message).equal('mealtype required');
+          done();
+        });
+    });
+    it('returns error for empty ingredients', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes')
+        .set('x-access-token', token)
+        .type('form')
+        .send({
+          recipeName: 'goat and meat',
+          mealType: 'breakfast',
+          ingredients: '',
+          description: 'Buy the meat from market',
+          method: 'fry the yam for five minutes'
+        })
+        .end((err, res) => {
+          expect(res.status).equal(400);
+          expect(res.body.message).equal('Input ingredients required');
+          done();
+        });
+    });
+    it('returns error for empty ingredients', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes')
+        .set('x-access-token', token)
+        .type('form')
+        .send({
+          recipeName: 'goat and meat',
+          mealType: 'breakfast',
+          ingredients: 'fish,meat,onions',
+          description: '',
+          method: 'fry the yam for five minutes'
+        })
+        .end((err, res) => {
+          expect(res.status).equal(400);
+          expect(res.body.message).equal('description required');
+          done();
+        });
+    });
+    it('returns error for empty ingredients', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes')
+        .set('x-access-token', token)
+        .type('form')
+        .send({
+          recipeName: 'goat and meat',
+          mealType: 'breakfast',
+          ingredients: 'fish,meat,onions',
+          description: 'A quick food to brighten up',
+          method: ''
+        })
+        .end((err, res) => {
+          expect(res.status).equal(400);
+          expect(res.body.message).equal('Method of cooking required');
+          done();
+        });
+    });
   });
   describe('Test for reviews and favorite', () => {
     it('POST /api/v1/recipes/:recipeId/reviews does create review for a recipe', (done) => {
