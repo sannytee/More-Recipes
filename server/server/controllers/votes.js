@@ -1,9 +1,8 @@
-import { votes, Recipes } from '../models';
-import voter from '../helper/votes';
+import { votes } from '../models';
+import recipe from '../helper/recipe';
 
 export default {
   upvote(req, res) {
-    const id = req.params.recipeId;
     votes
       .find({
         where: {
@@ -17,7 +16,7 @@ export default {
             message: 'You have already upvoted this recipe'
           });
         }
-        voter.findRecipeToUpdate(req, res, Recipes, id);
+        recipe.checkExistingRecipe(req, res);
       })
       .catch((err) => {
         res.status(400).send(err);
