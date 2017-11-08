@@ -1,4 +1,4 @@
-import { Recipes, reviews } from '../models';
+import { reviews } from '../models';
 import recipeHelper from '../helper/recipe';
 
 export default {
@@ -34,7 +34,7 @@ export default {
         message: 'Input ingredients required'
       });
     }
-    recipeHelper.createRecipe(req, res, Recipes);
+    recipeHelper.createRecipe(req, res);
   },
   /**
    * Update a recipe
@@ -43,7 +43,7 @@ export default {
    * @returns  {JSON} Returns a JSON object
    */
   updateRecipe(req, res) {
-    recipeHelper.editRecipe(req, res, Recipes);
+    recipeHelper.editRecipe(req, res);
   },
   /**
    * call a method to delete recipe
@@ -52,7 +52,7 @@ export default {
    * @returns  {JSON} Returns a JSON object
    */
   delete(req, res) {
-    recipeHelper.deleteRecipe(req, res, Recipes);
+    recipeHelper.deleteRecipe(req, res);
   },
   /**
    * call a method to get recipe
@@ -61,7 +61,7 @@ export default {
    * @returns  {JSON} Returns a JSON object
    */
   get(req, res) {
-    recipeHelper.getRecipe(req, res, Recipes, reviews);
+    recipeHelper.getRecipe(req, res, reviews);
   },
   /**
    * call a method to get  a recipe
@@ -70,25 +70,7 @@ export default {
    * @returns  {JSON} Returns a JSON object
    */
   getOne(req, res) {
-    recipeHelper.getARecipe(req, res, Recipes, reviews);
+    recipeHelper.getARecipe(req, res, reviews);
   },
 
-  /**
-   * call a method to upvote recipe
-   * @param {object} req
-   * @param {object} res
-   * @returns  {JSON} Returns a JSON object
-   */
-  upvote(req, res) {
-    recipeHelper.upvoteRecipes(req, res, Recipes);
-  },
-  /**
-   * call a method to downvote recipe
-   * @param {object} req
-   * @param {object} res
-   * @returns  {JSON} Returns a JSON object
-   */
-  downvote(req, res) {
-    recipeHelper.downvoteRecipes(req, res, Recipes);
-  }
 };
