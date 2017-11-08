@@ -1,3 +1,6 @@
+import voter from './voter';
+import { Recipes } from '../models';
+
 /**
  * @class recipe
  */
@@ -6,11 +9,10 @@ export default class recipe {
    * Create a new Recipe
    * @param {object} req
    * @param {object} res
-   * @param {object} model
    * @returns  {JSON} Returns success or failure message
    */
-  static createRecipe(req, res, model) {
-    model
+  static createRecipe(req, res) {
+    Recipes
       .create({
         userId: req.decoded.id,
         recipeName: req.body.recipeName,
@@ -34,9 +36,9 @@ export default class recipe {
    * @param {object} model
    * @returns  {JSON} Returns success or failure message
    */
-  static editRecipe(req, res, model) {
+  static editRecipe(req, res) {
     const id = parseInt(req.params.recipeId, 10);
-    model
+    Recipes
       .find({
         where: {
           userId: req.decoded.id,
@@ -68,11 +70,10 @@ export default class recipe {
    * Delete a  Recipe
    * @param {object} req
    * @param {object} res
-   * @param {object} model
    * @returns  {JSON} Returns success or failure message
    */
-  static deleteRecipe(req, res, model) {
-    model
+  static deleteRecipe(req, res) {
+    Recipes
       .find({
         where: {
           userId: req.decoded.id,
@@ -97,13 +98,12 @@ export default class recipe {
    * Get  Recipes
    * @param {object} req
    * @param {object} res
-   * @param {object} model
    * @param {object} reviews
    * @returns  {JSON} Returns success or failure message
    */
-  static getRecipe(req, res, model, reviews) {
+  static getRecipe(req, res, reviews) {
     if (req.query.order || req.query.sort) {
-      return model
+      return Recipes
         .findAll({
           order: [
             [req.query.sort, 'DESC']
@@ -117,7 +117,7 @@ export default class recipe {
         })
         .then(sortedRecipes => res.status(200).send(sortedRecipes));
     }
-    return model
+    return Recipes
       .all()
       .then((recipes) => {
         if (recipes.length === 0) {
@@ -134,12 +134,11 @@ export default class recipe {
    * Get  a particular Recipe
    * @param {object} req
    * @param {object} res
-   * @param {object} model
    * @param {object} reviews
    * @returns  {JSON} Returns success or failure message
    */
-  static getARecipe(req, res, model, reviews) {
-    model
+  static getARecipe(req, res, reviews) {
+    Recipes
       .find({
         where: {
           id: req.params.recipeId
@@ -158,6 +157,29 @@ export default class recipe {
           });
         }
         return res.status(200).send(recipes);
+      })
+      .catch(err => res.status(400).send(err));
+  }
+  /**
+   * check if recipe exists
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns success or failure message
+   */
+  static checkExistingRecipe(req, res) {
+    Recipes
+      .find({
+        where: {
+          id: req.params.recipeId,
+        }
+      })
+      .then((found) => {
+        if (!found) {
+          return res.status(404).send({
+            message: 'Recipe not found'
+          });
+        }
+        voter.createUpvotes(req, res);
       })
       .catch(err => res.status(400).send(err));
   }
