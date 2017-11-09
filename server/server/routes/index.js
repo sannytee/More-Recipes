@@ -3,7 +3,7 @@ import authentication from '../middlewares/authenticate';
 import userController from '../controllers/userController';
 import reviewController from '../controllers/reviewController';
 import favoriteController from '../controllers/favoriteController';
-import voteController from '../controllers/votes';
+import voteController from '../controllers/voteController';
 
 export default (app) => {
   app.get('/', (req, res) => res.status(200).send({
@@ -21,6 +21,6 @@ export default (app) => {
   app.post('/api/v1/recipes/:recipeId/reviews', reviewController.add);
   app.post('/api/v1/users/:userId/recipes', favoriteController.add);
   app.get('/api/v1/users/:userId/recipes', favoriteController.get);
-  app.post('/api/v1/users/:recipeId/upvotes', voteController.upvote);
-  app.post('/api/v1/users/:recipeId/downvotes', recipeController.downvote);
+  app.post('/api/v1/recipes/:recipeId/upvotes', voteController.upvote);
+  app.post('/api/v1/recipes/:recipeId/downvotes', voteController.downvote);
 };
