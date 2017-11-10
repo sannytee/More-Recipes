@@ -48,6 +48,30 @@ export default class downvotes {
   }
 
   /**
+   * Update  votes
+   * @param {object} req
+   * @param {object} res
+   * @param {object} foundRecipe
+   * @returns  {JSON} Returns success or failure message
+   */
+  static updateVote(req, res, foundRecipe) {
+    votes
+      .update({
+        upvotes: false,
+        downvotes: true,
+      }, {
+        where: {
+          userId: req.decoded.id,
+          recipeId: req.params.recipeId
+        }
+      })
+      .then(() => {
+        downvotes.update(req, res, foundRecipe);
+      })
+      .catch(err => res.status(400).send(err));
+  }
+
+  /**
    * Find the recipe to downvote
    * @param {object} req
    * @param {object} res
@@ -66,7 +90,7 @@ export default class downvotes {
       .catch(err => res.status(400).send(err));
   }
   /**
-   * Find the recipe to downvote
+   * Update recipe
    * @param {object} req
    * @param {object} res
    * @returns  {JSON} Returns success or failure message
@@ -79,7 +103,10 @@ export default class downvotes {
         },
       })
       .then((foundRecipe) => {
-        downvotes.update(req, res, Recipes, foundRecipe);
+        downvotes.updateVote(req, res, foundRecipe);
+        return res.status(200).send({
+          message: 'You have successfully downvoted this recipe'
+        });
       })
       .catch(err => res.status(400).send(err));
   }
@@ -100,6 +127,35 @@ export default class downvotes {
       .then((voted) => {
         downvotes.findRecipeToDownvote(req, res);
         return res.status(201).send(voted);
+      })
+      .catch(err => res.status(400).send(err));
+  }
+  /**
+   * Checks if user already downvote for a recipe
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns success or failure message
+   */
+  static checkDownvotes(req, res) {
+    votes
+      .find({
+        where: {
+          userId: req.decoded.id,
+          recipeId: req.params.recipeId,
+        }
+      })
+      .then((found) => {
+        if (found === null) {
+          return downvotes.createDownvotes(req, res);
+        }
+        if (found.downvotes === true) {
+          return res.status(400).send({
+            message: 'You have already downvoted this recipe'
+          });
+        }
+        if (found.upvotes === true && found.downvotes === false) {
+          return downvotes.alreadyUpvoted(req, res);
+        }
       })
       .catch(err => res.status(400).send(err));
   }
