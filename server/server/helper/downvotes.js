@@ -5,7 +5,7 @@ import { Recipes, votes } from '../models';
  */
 export default class downvotes {
   /**
-   * downvotes  a  Recipe
+   * update downvotes for a recipe
    * @param {object} req
    * @param {object} res
    * @param {object} recipe
@@ -26,7 +26,7 @@ export default class downvotes {
   }
 
   /**
-   * downvotes  a  Recipe
+   * update the votes for recipe
    * @param {object} req
    * @param {object} res
    * @param {object} recipe
@@ -48,7 +48,7 @@ export default class downvotes {
   }
 
   /**
-   * Update  votes
+   * Update  the votes table
    * @param {object} req
    * @param {object} res
    * @param {object} foundRecipe
@@ -90,7 +90,7 @@ export default class downvotes {
       .catch(err => res.status(400).send(err));
   }
   /**
-   * Update recipe
+   * Update votes for recipe already upvoted
    * @param {object} req
    * @param {object} res
    * @returns  {JSON} Returns success or failure message

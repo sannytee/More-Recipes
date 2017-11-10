@@ -4,7 +4,7 @@ import { votes, Recipes } from '../models';
  */
 export default class upvotes {
   /**
-   * upvotes  a  Recipe
+   * update upvotes for recipe
    * @param {object} req
    * @param {object} res
    * @param {object} recipe
@@ -24,7 +24,7 @@ export default class upvotes {
       });
   }
   /**
-   * upvotes  a  Recipe
+   * upvotes  upvotes for Recipe if downvoted
    * @param {object} req
    * @param {object} res
    * @param {object} recipe
@@ -46,7 +46,7 @@ export default class upvotes {
   }
 
   /**
-   * Find the recipe to upvote
+   * Finds the recipe to upvote
    * @param {object} req
    * @param {object} res
    * @returns  {JSON} Returns success or failure message
@@ -87,7 +87,7 @@ export default class upvotes {
   }
 
   /**
-   * Update  votes
+   * Update  the votes table
    * @param {object} req
    * @param {object} res
    * @param {object} foundRecipe
@@ -111,7 +111,7 @@ export default class upvotes {
   }
 
   /**
-   * Update recipe
+   * Update recipe if already downvoted
    * @param {object} req
    * @param {object} res
    * @returns  {JSON} Returns success or failure message
