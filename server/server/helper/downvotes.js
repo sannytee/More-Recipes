@@ -124,9 +124,11 @@ export default class downvotes {
         recipeId: req.params.recipeId,
         downvotes: true
       })
-      .then((voted) => {
+      .then(() => {
         downvotes.findRecipeToDownvote(req, res);
-        return res.status(201).send(voted);
+        return res.status(201).send({
+          message: 'Recipe successfully downvoted'
+        });
       })
       .catch(err => res.status(400).send(err));
   }

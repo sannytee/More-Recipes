@@ -77,9 +77,11 @@ export default class upvotes {
         recipeId: req.params.recipeId,
         upvotes: true
       })
-      .then((voted) => {
+      .then(() => {
         upvotes.findRecipeToUpvote(req, res);
-        return res.status(201).send(voted);
+        return res.status(201).send({
+          message: 'Recipe successfully upvoted'
+        });
       })
       .catch(err => res.status(400).send(err));
   }
