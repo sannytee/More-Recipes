@@ -1,46 +1,41 @@
-import { votes } from '../models';
-import recipe from '../helper/recipe';
-import voter from '../helper/downvotes';
+import { Recipes } from '../models';
+import downvoter from '../helper/downvotes';
+import upvoter from '../helper/upvotes';
 
 export default {
   upvote(req, res) {
-    votes
+    Recipes
       .find({
         where: {
-          userId: req.decoded.id,
-          recipeId: req.params.recipeId,
+          id: req.params.recipeId,
         }
       })
       .then((found) => {
-        if (found.upvotes === true) {
-          return res.status(400).send({
-            message: 'You have already upvoted this recipe'
+        if (!found) {
+          return res.status(404).send({
+            message: 'Recipe not found'
           });
         }
-        recipe.checkExistingRecipe(req, res);
+        return upvoter.checkUpvotes(req, res);
       })
       .catch((err) => {
         res.status(400).send(err);
       });
   },
   downvote(req, res) {
-    votes
+    Recipes
       .find({
         where: {
-          userId: req.decoded.id,
-          recipeId: req.params.recipeId,
+          id: req.params.recipeId,
         }
       })
       .then((found) => {
-        if (found.downvotes === true) {
-          return res.status(400).send({
-            message: 'You have already downvoted this recipe'
+        if (!found) {
+          return res.status(404).send({
+            message: 'Recipe not found'
           });
         }
-        if (found.upvotes === true && found.downvotes === false) {
-          voter.alreadyUpvoted(req, res);
-        }
-        recipe.findRecipe(req, res);
+        return downvoter.checkDownvotes(req, res);
       })
       .catch(err => res.status(400).send(err));
   }
