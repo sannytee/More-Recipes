@@ -159,8 +159,6 @@ export default class recipe {
         return res.status(200).send(recipes);
       })
       .catch(err => res.status(400).send(err));
-      })
-      .catch(err => res.status(400).send(err));
   }
   /**
    * check if recipe exists
