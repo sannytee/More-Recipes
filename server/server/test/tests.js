@@ -51,6 +51,19 @@ describe('More-Recipe Tests:', () => {
           done();
         });
     });
+    it('Throws error when the wrong password is input', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/signin')
+        .send({
+          username: 'Thywo',
+          password: 'example100'
+        })
+        .end((err, res) => {
+          expect(res.status).equal(400);
+          expect(res.body.error).equal('Incorrect Login details');
+          done();
+        });
+    });
     it('POST /api/v1/users/signin does allow user to signin with username', (done) => {
       chai.request(app)
         .post('/api/v1/users/signin')
@@ -158,6 +171,24 @@ describe('More-Recipe Tests:', () => {
         .type('form')
         .send({
           recipeName: 'Goat',
+          mealType: 'breakfast',
+          ingredients: 'water, beans,hfj',
+          description: 'Buy the meat from market',
+          method: 'fry the yam for five minutes'
+        })
+        .end((err, res) => {
+          expect(res.status).equal(201);
+          expect(res.body.message).equal('Recipe successfully added');
+          done();
+        });
+    });
+    it('POST /api/v1/recipes does create   recipe', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/')
+        .set('x-access-token', token)
+        .type('form')
+        .send({
+          recipeName: 'Goatsoup',
           mealType: 'breakfast',
           ingredients: 'water, beans,hfj',
           description: 'Buy the meat from market',
@@ -408,6 +439,201 @@ describe('More-Recipe Tests:', () => {
         .end((err, res) => {
           expect(res.status).equal(200);
           expect(res.body).to.be.an('array');
+          done();
+        });
+    });
+    it('returns error for invalid recipe Id for review', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/goat/reviews')
+        .set('x-access-token', token)
+        .send({
+          review: 'It is delicious'
+        })
+        .end((err, res) => {
+          expect(res.body.message).equal('Parameter should be a number');
+          expect(res.status).equal(400);
+          done();
+        });
+    });
+    it('returns error for invalid user Id for favoriting', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/goat/recipes')
+        .set('x-access-token', token)
+        .send({
+          recipeId: 2
+        })
+        .end((err, res) => {
+          expect(res.body.message).equal('Parameter should be a number');
+          expect(res.status).equal(400);
+          done();
+        });
+    });
+    it('returns error when  params does not match userId', (done) => {
+      chai.request(app)
+        .get('/api/v1/users/5/recipes')
+        .set('x-access-token', token)
+        .send({
+          recipeId: 2
+        })
+        .end((err, res) => {
+          expect(res.body.message).equal('Permission denied ');
+          expect(res.status).equal(403);
+          done();
+        });
+    });
+  });
+  describe('Test for upvoting and downvoting Recipes', () => {
+    it('upvotes recipe', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/1/upvotes')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          expect(res.body.message).equal('Recipe successfully upvoted');
+          expect(res.status).equal(201);
+          done();
+        });
+    });
+    it('throws error for recipe already upvoted', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/1/upvotes')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          expect(res.body.message).equal('You have already upvoted this recipe');
+          expect(res.status).equal(400);
+          done();
+        });
+    });
+    it('does not upvote recipe that does not exist', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/5/upvotes')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          expect(res.body.message).equal('Recipe not found');
+          expect(res.status).equal(404);
+          done();
+        });
+    });
+    it('downvotes recipe', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/3/downvotes')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          expect(res.body.message).equal('Recipe successfully downvoted');
+          expect(res.status).equal(201);
+          done();
+        });
+    });
+    it('downvotes recipe already upvoted', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/1/downvotes')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          expect(res.body.message).equal('You have successfully downvoted this recipe');
+          expect(res.status).equal(200);
+          done();
+        });
+    });
+    it('throws error for recipe already downvoted', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/1/downvotes')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          expect(res.body.message).equal('You have already downvoted this recipe');
+          expect(res.status).equal(400);
+          done();
+        });
+    });
+    it('upvotes recipe already downvoted', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/1/upvotes')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          expect(res.body.message).equal('You have successfully upvoted this recipe');
+          expect(res.status).equal(200);
+          done();
+        });
+    });
+    it('does not downvotes recipe that does not exist', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/5/downvotes')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          expect(res.body.message).equal('Recipe not found');
+          expect(res.status).equal(404);
+          done();
+        });
+    });
+  });
+  describe('Test for protected routes', () => {
+    it('throws error for creating recipe without token', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes')
+        .end((err, res) => {
+          expect(res.status).equal(403);
+          expect(res.body.message).equal('Token not Provided');
+          done();
+        });
+    });
+    it('throws error for updating recipe without token', (done) => {
+      chai.request(app)
+        .put('/api/v1/recipes')
+        .end((err, res) => {
+          expect(res.status).equal(403);
+          expect(res.body.message).equal('Token not Provided');
+          done();
+        });
+    });
+    it('throws error for deleting recipe  without token', (done) => {
+      chai.request(app)
+        .delete('/api/v1/recipes')
+        .end((err, res) => {
+          expect(res.status).equal(403);
+          expect(res.body.message).equal('Token not Provided');
+          done();
+        });
+    });
+    it('throws error for posting reviews for  recipe without token', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/1/reviews')
+        .end((err, res) => {
+          expect(res.status).equal(403);
+          expect(res.body.message).equal('Token not Provided');
+          done();
+        });
+    });
+    it('throws error for  favoriting recipe without token', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/1/recipes')
+        .end((err, res) => {
+          expect(res.status).equal(403);
+          expect(res.body.message).equal('Token not Provided');
+          done();
+        });
+    });
+    it('throws error for getting favoriting recipe without token', (done) => {
+      chai.request(app)
+        .get('/api/v1/users/1/recipes')
+        .end((err, res) => {
+          expect(res.status).equal(403);
+          expect(res.body.message).equal('Token not Provided');
+          done();
+        });
+    });
+    it('throws error for upvoting recipe without token', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/1/upvotes')
+        .end((err, res) => {
+          expect(res.status).equal(403);
+          expect(res.body.message).equal('Token not Provided');
+          done();
+        });
+    });
+    it('throws error for downvoting recipe without token', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/1/downvotes')
+        .end((err, res) => {
+          expect(res.status).equal(403);
+          expect(res.body.message).equal('Token not Provided');
           done();
         });
     });
