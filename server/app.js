@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
@@ -6,7 +7,7 @@ import router from './src/routes';
 // Set up the express application
 const app = express();
 
-
+dotenv.config();
 // Log requests to the console
 app.use(logger('dev'));
 
