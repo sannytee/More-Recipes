@@ -31,4 +31,10 @@ app.delete('*', (req, res) => res.status(400).send({
   message: 'Resource cannot be found'
 }));
 
+const port = parseInt(process.env.PORT, 10) || 3000;
+
+app.listen(port, () => {
+  console.log(`Server starting on port: ${port}`);
+});
+
 export default app;
