@@ -1,4 +1,3 @@
-import { favorites, Recipes } from '../models';
 import favoriteHelper from '../helper/favorite';
 
 export default {
@@ -9,7 +8,12 @@ export default {
         message: 'Parameter should be a number'
       });
     }
-    favoriteHelper.create(req, res, Recipes, favorites);
+    if (!req.body.recipeId) {
+      return res.status(400).send({
+        error: 'Recipe Id is required'
+      });
+    }
+    favoriteHelper.create(req, res);
   },
   get(req, res) {
     if (parseInt(req.params.userId, 10) !== req.decoded.id) {
@@ -17,7 +21,7 @@ export default {
         message: 'Permission denied '
       });
     }
-    favoriteHelper.fetch(req, res, favorites, Recipes);
+    favoriteHelper.fetch(req, res);
   }
 };
 
