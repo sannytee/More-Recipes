@@ -11,7 +11,7 @@ export default {
     const id = req.params.recipeId;
     if (isNaN(id)) {
       return res.status(400).send({
-        message: 'Parameter should be a nuber'
+        message: 'Parameter should be a number'
       });
     }
     if (!req.body.review) {
