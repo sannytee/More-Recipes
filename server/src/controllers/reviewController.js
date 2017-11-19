@@ -1,4 +1,3 @@
-import { reviews, Recipes } from '../models';
 import reviewHelper from '../helper/review';
 
 export default {
@@ -20,6 +19,6 @@ export default {
         message: 'Review cannot be empty'
       });
     }
-    reviewHelper.addReview(req, res, Recipes, reviews);
+    reviewHelper.addReview(req, res);
   }
 };

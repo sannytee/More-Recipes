@@ -1,3 +1,4 @@
+import { reviews, Recipes } from '../models';
 /**
  * @class review
  */
@@ -6,12 +7,10 @@ export default class review {
    * Post a review
    * @param {object} req
    * @param {object} res
-   * @param {object} model
-   * @param {object} reviews
    * @returns  {JSON} Returns success or failure message
    */
-  static addReview(req, res, model, reviews) {
-    model
+  static addReview(req, res) {
+    Recipes
       .find({
         where: {
           id: req.params.recipeId
