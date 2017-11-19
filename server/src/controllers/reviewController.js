@@ -1,4 +1,3 @@
-import { reviews, Recipes } from '../models';
 import reviewHelper from '../helper/review';
 
 export default {
@@ -12,7 +11,7 @@ export default {
     const id = req.params.recipeId;
     if (isNaN(id)) {
       return res.status(400).send({
-        message: 'Parameter should be a nuber'
+        message: 'Parameter should be a number'
       });
     }
     if (!req.body.review) {
@@ -20,6 +19,6 @@ export default {
         message: 'Review cannot be empty'
       });
     }
-    reviewHelper.addReview(req, res, Recipes, reviews);
+    reviewHelper.addReview(req, res);
   }
 };

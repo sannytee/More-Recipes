@@ -1,3 +1,4 @@
+import { favorites, Recipes } from '../models';
 /**
  * @class favorite
  */
@@ -6,15 +7,14 @@ export default class favorite {
    * favorite a recipe
    * @param {object} req
    * @param {object} res
-   * @param {object} model
-   * @param {object} favorites
    * @returns  {JSON} Returns success or failure message
    */
-  static create(req, res, model, favorites) {
-    model
+  static create(req, res) {
+    const id = parseInt(req.body.recipeId, 10);
+    Recipes
       .find({
         where: {
-          id: req.body.recipeId
+          id
         }
       })
       .then((recipes) => {
@@ -26,7 +26,7 @@ export default class favorite {
         favorites
           .find({
             where: {
-              recipeId: req.body.recipeId
+              recipeId: id
             }
           })
           .then((foundFavorite) => {
@@ -37,7 +37,7 @@ export default class favorite {
             }
             favorites
               .create({
-                recipeId: req.body.recipeId,
+                recipeId: id,
                 userId: req.decoded.id,
               })
               .then((favorited) => {
@@ -56,11 +56,9 @@ export default class favorite {
    * get  all favorite recipe
    * @param {object} req
    * @param {object} res
-   * @param {object} favorites
-   * @param {object} recipe
    * @returns  {JSON} Returns success or failure message
    */
-  static fetch(req, res, favorites, recipe) {
+  static fetch(req, res) {
     favorites
       .findAll({
         where: {
@@ -68,7 +66,7 @@ export default class favorite {
         },
         include: [
           {
-            model: recipe
+            model: Recipes
           }
         ]
       })

@@ -1,3 +1,9 @@
+import Sequelize from 'sequelize';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import { Users } from '../models';
+
+require('dotenv').config();
 /**
  * @class account
  */
@@ -6,14 +12,15 @@ export default class account {
    * Create a new User
    * @param {object} req
    * @param {object} res
-   * @param {object} model
-   * @param {string} username
-   * @param {*} password
-   * @param {string} email
    * @returns  {JSON} Returns success or failure message
    */
-  static createUser(req, res, model, username, password, email) {
-    model
+  static createUser(req, res) {
+    const { username, email } = req.body;
+    let { password } = req.body;
+    if (password) {
+      password = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+    }
+    Users
       .create({
         username,
         email,
@@ -43,14 +50,11 @@ export default class account {
    * Allows a user to sign in
    * @param {object} req
    * @param {object} res
-   * @param {object} model
-   * @param {object} bcrypt
-   * @param {object} jwt
-   * @param {object} Op
    * @returns  {JSON} Returns success or failure message
    */
-  static signInUser(req, res, model, bcrypt, jwt, Op) {
-    model
+  static signInUser(req, res) {
+    const { Op } = Sequelize;
+    Users
       .findOne({
         where: {
           [Op.or]: [
@@ -65,11 +69,10 @@ export default class account {
             error: 'User not found'
           });
         }
-
         if (bcrypt.compareSync(req.body.password, user.password)) {
           const payload = { id: user.id };
-          const token = jwt.sign(payload, 'andelabootcampproject', {
-            expiresIn: '2h' // expires in 2 hours
+          const token = jwt.sign(payload, process.env.SECRET, {
+            expiresIn: '4h' // expires in 4 hours
           });
 
           // Return the information including token as JSON Value

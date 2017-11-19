@@ -9,32 +9,7 @@ export default {
    * @returns  {JSON} Returns a JSON object
    */
   addRecipe(req, res) {
-    if (!req.body.recipeName) {
-      return res.status(400).send({
-        message: 'name of recipe required'
-      });
-    }
-    if (!req.body.mealType) {
-      return res.status(400).send({
-        message: 'mealtype required'
-      });
-    }
-    if (!req.body.description) {
-      return res.status(400).send({
-        message: 'description required'
-      });
-    }
-    if (!req.body.method) {
-      return res.status(400).send({
-        message: 'Method of cooking required'
-      });
-    }
-    if (!req.body.ingredients) {
-      return res.status(400).send({
-        message: 'Input ingredients required'
-      });
-    }
-    recipeHelper.createRecipe(req, res);
+    recipeHelper.checkBeforeCreating(req, res);
   },
   /**
    * Update a recipe
