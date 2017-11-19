@@ -1,21 +1,17 @@
-{
-  "development": {
-    "username": "postgres",
-    "password": "database",
-    "database": "more_recipes",
-    "host": "127.0.0.1",
-    "port": 5432,
-    "dialect": "postgres"
+module.exports = {
+  development: {
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: 'postgres'
   },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+  test: {
+    use_env_variable: 'DB_URL'
   },
-  "production": {
-    "use_env_variable": "DATABASE_URL",
-    "dialect": "postgres"
+  production: {
+    use_env_variable: 'DATABASE_URL',
+    dialect: 'postgres'
   }
-}
+};
