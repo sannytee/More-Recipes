@@ -269,7 +269,7 @@ describe('More-Recipe Tests:', () => {
         })
         .end((err, res) => {
           expect(res.status).equal(400);
-          expect(res.body.message).equal('name of recipe required');
+          expect(res.body.error).equal('name of recipe required');
           done();
         });
     });
@@ -287,7 +287,7 @@ describe('More-Recipe Tests:', () => {
         })
         .end((err, res) => {
           expect(res.status).equal(400);
-          expect(res.body.message).equal('mealtype required');
+          expect(res.body.error).equal('mealtype required');
           done();
         });
     });
@@ -305,7 +305,7 @@ describe('More-Recipe Tests:', () => {
         })
         .end((err, res) => {
           expect(res.status).equal(400);
-          expect(res.body.message).equal('Input ingredients required');
+          expect(res.body.error).equal('Input ingredients required');
           done();
         });
     });
@@ -323,11 +323,11 @@ describe('More-Recipe Tests:', () => {
         })
         .end((err, res) => {
           expect(res.status).equal(400);
-          expect(res.body.message).equal('description required');
+          expect(res.body.error).equal('description required');
           done();
         });
     });
-    it('returns error for empty ingredients', (done) => {
+    it('returns error for empty method', (done) => {
       chai.request(app)
         .post('/api/v1/recipes')
         .set('x-access-token', token)
@@ -341,7 +341,7 @@ describe('More-Recipe Tests:', () => {
         })
         .end((err, res) => {
           expect(res.status).equal(400);
-          expect(res.body.message).equal('Method of cooking required');
+          expect(res.body.error).equal('Method of cooking required');
           done();
         });
     });
