@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { Users } from '../models';
 
+require('dotenv').config();
 /**
  * @class account
  */
@@ -70,7 +71,7 @@ export default class account {
         }
         if (bcrypt.compareSync(req.body.password, user.password)) {
           const payload = { id: user.id };
-          const token = jwt.sign(payload, 'andelabootcampproject', {
+          const token = jwt.sign(payload, process.env.SECRET, {
             expiresIn: '4h' // expires in 4 hours
           });
 
