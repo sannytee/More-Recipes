@@ -33,15 +33,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
-app.post('*', (req, res) => res.status(400).send({
-  message: 'Resource cannot be found'
-}));
-app.put('*', (req, res) => res.status(400).send({
-  message: 'Resource cannot be found'
-}));
-app.delete('*', (req, res) => res.status(400).send({
-  message: 'Resource cannot be found'
-}));
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 
