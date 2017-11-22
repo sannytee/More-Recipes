@@ -45,6 +45,15 @@ export default {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'url-loader?limit=100000&mimetype=application/octet-stream'
       },
+      {
+        test: /\.(jpg|png|svg)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: './images/[hash].[ext]',
+          },
+        },
+      }
     ]
   },
 };
