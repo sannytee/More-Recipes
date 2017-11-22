@@ -267,6 +267,7 @@ describe('More-Recipe Tests:', () => {
     it('GET /api/v1/recipes does get a recipe', (done) => {
       chai.request(app)
         .get('/api/v1/recipes/1')
+        .set('x-access-token', token)
         .end((err, res) => {
           expect(res.status).equal(200);
           expect(res.body.id).equal(1);
@@ -563,7 +564,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('throws error for updating recipe without token', (done) => {
       chai.request(app)
-        .put('/api/v1/recipes')
+        .put('/api/v1/recipes/1')
         .end((err, res) => {
           expect(res.status).equal(403);
           expect(res.body.message).equal('You are not authorized');
@@ -572,7 +573,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('throws error for deleting recipe  without token', (done) => {
       chai.request(app)
-        .delete('/api/v1/recipes')
+        .delete('/api/v1/recipes/1')
         .end((err, res) => {
           expect(res.status).equal(403);
           expect(res.body.message).equal('You are not authorized');
