@@ -9,16 +9,16 @@ const Form = (props) => {
         <form className="m-x-auto form card">
           <h1 className="signin-text">More-Recipes</h1>
           <div className="pb-4 pt-3 form-group">
-            <input type="text" className="form-control" required placeholder="Username"/>
+            <input type="text" name="username" className="form-control" required placeholder="Username"/>
           </div>
           <div className="pb-4 form-group">
-            <input type="email" className="form-control" required placeholder="Email"/>
+            <input type="email" name="email" className="form-control" required placeholder="Email"/>
           </div>  
           <div className="pb-4 form-group">
-            <input type="password" className="form-control" required placeholder="Password"/>
+            <input type="password" name="password" className="form-control" required placeholder="Password"/>
           </div>
           <div className="pb-4 form-group">
-            <input type="password" className="form-control" required placeholder="Confirm Password"/>
+            <input type="password" name="confirmPassowrd" className="form-control" required placeholder="Confirm Password"/>
           </div>
           <button type="submit" className="btn signin-btn btn-lg" style={{color:'#f2b43c'}}>
             Create Account
