@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 /* eslint-disable no-unused-vars */
 const Header = (props) => {
@@ -13,7 +14,7 @@ const Header = (props) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <a className="nav-link" href="/signin">Login</a>
+              <Link className="nav-link" to="/signin">Login</Link>
             </li>
           </ul>
         </div>
