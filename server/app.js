@@ -26,6 +26,15 @@ app.use(webpackMiddleware(compiler, {
 }));
 app.use(require('webpack-hot-middleware')(compiler));
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+});
+
 
 router(app);
 // set up a default catch-all route
