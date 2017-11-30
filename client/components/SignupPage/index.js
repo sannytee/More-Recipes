@@ -37,6 +37,7 @@ class SignupPage extends React.Component {
     this.props.actions.signUpAction(this.state)
       .then(() => {
         toastr.success('Account successfully created ');
+        toastr.success('Proceed to login');
       })
       .catch(err => {
         const data = err.response.data;
