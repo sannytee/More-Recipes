@@ -15,8 +15,18 @@ export default class account {
    * @returns  {JSON} Returns success or failure message
    */
   static createUser(req, res) {
-    const { username, email } = req.body;
+    const { username, email, confirmPassword } = req.body;
     let { password } = req.body;
+    if (username.length < 6) {
+      return res.status(400).send({
+        error: 'Username must be greater than 5'
+      });
+    }
+    if (confirmPassword !== password) {
+      return res.status(400).send({
+        error: 'Password does not match'
+      });
+    }
     if (password) {
       password = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     }
