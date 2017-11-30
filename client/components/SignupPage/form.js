@@ -6,19 +6,80 @@ const Form = (props) => {
   return(
     <div className="container">
       <div className="pt-5" style={{textAlign:'center'}}>
-        <form className="m-x-auto form card">
+        <form className="m-x-auto form card" onSubmit={props.handleSubmit}>
           <h1 className="signin-text">More-Recipes</h1>
           <div className="pb-4 pt-3 form-group">
-            <input type="text" name="username" className="form-control" required placeholder="Username"/>
+            <input 
+              type="text"
+              name="username"
+              className="form-control"
+              required 
+              onChange={props.onChange} 
+              placeholder="Username"/>
+            {
+              props.value.usernameError && 
+              <div className="alert alert-danger">
+                {
+                  props.value.usernameError
+                }
+                {
+                  props.value.usernameError = ''
+                }
+              </div>
+            }
           </div>
           <div className="pb-4 form-group">
-            <input type="email" name="email" className="form-control" required placeholder="Email"/>
+            <input 
+              type="email" 
+              name="email" 
+              className="form-control" 
+              required 
+              onChange={props.onChange} 
+              placeholder="Email"
+            />
+            {
+              props.value.emailError && 
+              <div className="alert alert-danger">
+                {
+                  props.value.emailError
+                }
+                {
+                  props.value.emailError = ''
+                }
+              </div>
+            }
           </div>  
           <div className="pb-4 form-group">
-            <input type="password" name="password" className="form-control" required placeholder="Password"/>
+            <input 
+              type="password"
+              id="pass"
+              name="password" 
+              className="form-control" 
+              required 
+              onChange={props.onChange} 
+              placeholder="Password"
+            />
           </div>
           <div className="pb-4 form-group">
-            <input type="password" name="confirmPassowrd" className="form-control" required placeholder="Confirm Password"/>
+            <input 
+              type="password" 
+              name="confirmPassword" 
+              className="form-control" 
+              required
+              onChange={props.onChange}
+              placeholder="Confirm Password"
+            />
+            {
+              props.value.confirmPasswordError && 
+              <div className="alert alert-danger">
+                {
+                  props.value.confirmPasswordError
+                }
+                {
+                  props.value.confirmPasswordError = ''
+                }
+              </div>
+            }
           </div>
           <button type="submit" className="btn signin-btn btn-lg" style={{color:'#f2b43c'}}>
             Create Account
