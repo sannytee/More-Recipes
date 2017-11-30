@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
@@ -12,8 +12,8 @@ import img from '../../public/images/banner-img-2.jpg';
 /* eslint-disable no-unused-vars */
 /* eslint-disable require-jsdoc */
 class SignupPage extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.state = {
       username: '',
       email: '',
@@ -37,7 +37,7 @@ class SignupPage extends React.Component {
     this.props.actions.signUpAction(this.state)
       .then(() => {
         toastr.success('Account successfully created ');
-        toastr.success('Proceed to login');
+        this.context.router.push('/signin');
       })
       .catch(err => {
         const data = err.response.data;
@@ -92,6 +92,10 @@ class SignupPage extends React.Component {
     );
   }
 }
+
+SignupPage.contextTypes = {
+  router: PropTypes.object
+};
 
 function mapDispatchToProps(dispatch){
   return {
