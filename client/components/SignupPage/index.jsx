@@ -1,15 +1,17 @@
-import React, {PropTypes} from 'react';
+/* eslint-disable no-unused-vars */
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
-import signUpAction  from '../../actions/authAction';
-import Header from './header';
-import Form from './form';
+import signUpAction from '../../actions/authAction';
+import Header from './header.jsx';
+import Form from './form.jsx';
 import Footer from '../common/footer';
 import img from '../../public/images/banner-img-2.jpg';
 
 
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 /* eslint-disable require-jsdoc */
 class SignupPage extends React.Component {
   constructor(props, context) {
@@ -23,11 +25,12 @@ class SignupPage extends React.Component {
       confirmPasswordError: '',
       usernameError: '',
       emailError: '',
-    }
-    this.onChange = this.onChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    };
+    this.onChange = this.onChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  /* eslint-disable class-methods-use-this */
   componentWillMount() {
     document.body.style.backgroundImage = `url(${img}`;
   }
@@ -39,8 +42,8 @@ class SignupPage extends React.Component {
         toastr.success('Account successfully created ');
         this.context.router.push('/signin');
       })
-      .catch(err => {
-        const data = err.response.data;
+      .catch((err) => {
+        const { data } = err.response;
         switch (data.error) {
           case 'This username already exist':
             this.setState({
@@ -56,12 +59,12 @@ class SignupPage extends React.Component {
             this.setState({
               confirmPasswordError: data.error
             });
-            break
+            break;
           case 'Username must be greater than 5':
             this.setState({
               usernameError: data.error
             });
-            break
+            break;
           default:
             this.setState({
               error: data.error
@@ -71,14 +74,13 @@ class SignupPage extends React.Component {
   }
 
   onChange(event) {
-    const name = event.target.name,
-      value = event.target.value;
+    const { name } = event.target,
+      { value } = event.target;
     this.setState({
-      [event.target.name]: event.target.value
+      [name]: value
     });
   }
 
-  
   render() {
     return (
       <div>
@@ -88,7 +90,7 @@ class SignupPage extends React.Component {
           onChange={this.onChange}
           handleSubmit={this.handleSubmit}/>
         <Footer/>
-      </div>         
+      </div>
     );
   }
 }
@@ -97,12 +99,12 @@ SignupPage.contextTypes = {
   router: PropTypes.object
 };
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({
       signUpAction
     }, dispatch)
-  }
+  };
 }
 
 export default connect(null, mapDispatchToProps)(SignupPage);
