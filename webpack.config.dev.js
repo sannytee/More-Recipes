@@ -21,7 +21,7 @@ export default {
   module: {
     loaders: [
       {
-        test: /.js?$/,
+        test: /.jsx?$/,
         loaders: ['babel-loader'],
         include: path.join(__dirname, '/client'),
       },
@@ -56,4 +56,7 @@ export default {
       }
     ]
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  }
 };

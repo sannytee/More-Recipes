@@ -39,15 +39,16 @@ describe('More-Recipe Tests:', () => {
       chai.request(app)
         .post('/api/v1/users/signup')
         .send({
-          username: 'Thywo',
+          username: 'example',
           email: 'example@gmail.com',
-          password: 'example97'
+          password: 'example97',
+          confirmPassword: 'example97'
         })
         .end((err, res) => {
           expect(res.body.success).equal(true);
           expect(res.status).equal(201);
           expect(res.body.message).equal('Account created');
-          expect(res.body.username).equal('Thywo');
+          expect(res.body.username).equal('example');
           done();
         });
     });
@@ -55,7 +56,7 @@ describe('More-Recipe Tests:', () => {
       chai.request(app)
         .post('/api/v1/users/signin')
         .send({
-          username: 'Thywo',
+          username: 'example',
           password: 'example97'
         })
         .end((err, res) => {
@@ -111,7 +112,8 @@ describe('More-Recipe Tests:', () => {
         .send({
           username: 'boruto',
           email: 'ecample.com',
-          password: 'naruto'
+          password: 'naruto',
+          confirmPassword: 'naruto'
         })
         .end((err, res) => {
           expect(res.status).equal(400);
@@ -124,9 +126,10 @@ describe('More-Recipe Tests:', () => {
         .post('/api/v1/users/signup')
         .type('form')
         .send({
-          username: 'Thywo',
+          username: 'example',
           email: 'eample.@gmail.com',
-          password: 'naruto'
+          password: 'naruto',
+          confirmPassword: 'naruto'
         })
         .end((err, res) => {
           expect(res.status).equal(400);
@@ -141,7 +144,8 @@ describe('More-Recipe Tests:', () => {
         .send({
           username: 'boruto',
           email: 'example@gmail.com',
-          password: 'naruto'
+          password: 'naruto',
+          confirmPassword: 'naruto'
         })
         .end((err, res) => {
           expect(res.status).equal(400);

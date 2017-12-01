@@ -7,7 +7,7 @@
     "start": "babel-node -- ./server/app.js",
     "seq": "sequelize init",
     "start:dev": "nodemon --exec babel-node -- ./server/app.js",
-    "test": "mocha --exit --compilers js:babel-core/register server/src/test --reporter spec --timeout 10000",
+    "test": "mocha --exit --compilers js:babel-core/register server/src/test --reporter spec --timeout 25000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls"
   },
@@ -32,7 +32,7 @@
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-react": "5.0.1",
+    "eslint-plugin-react": "^7.5.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "0.8.5",
     "jsdom": "8.5.0",
@@ -41,10 +41,10 @@
     "nodemon": "^1.12.1",
     "nyc": "^11.2.1",
     "react-addons-test-utils": "15.0.2",
-    "redux-immutable-state-invariant": "1.2.3",
     "redux-mock-store": "1.0.2"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-polyfill": "6.8.0",
@@ -75,6 +75,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "4.0.4",
     "redux": "3.5.2",
+    "redux-immutable-state-invariant": "1.2.3",
     "redux-thunk": "2.0.1",
     "sass-loader": "^6.0.6",
     "sequelize": "4.22.8",
