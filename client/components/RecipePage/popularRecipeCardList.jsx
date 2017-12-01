@@ -1,11 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PopularRecipeCard from './popularRecipeCard'
 
-
-
-/* eslint-disable no-unused-vars */
 const popularRecipeCardList = (props) => {
-  return(
+  return (
     <div className="col-lg-3 col-md-12">
       <aside className="sidebar">
         <div className="side_rec_area">
@@ -17,7 +15,6 @@ const popularRecipeCardList = (props) => {
       </aside>
     </div>
   );
-  
 };
 
 export default popularRecipeCardList;

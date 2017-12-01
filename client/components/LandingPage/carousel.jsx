@@ -1,12 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import banner from '../../public/images/banner-img-4.jpg';
 import bannerTwo from '../../public/images/banner-img-2.jpg';
 import bannerOne from '../../public/images/banner-img-1.jpg';
 
-/* eslint-disable no-unused-vars */
-
-const carousel = (props) => {
-  return (
+const carousel = props => (
     <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
       <ol className="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" className=""></li>
@@ -32,17 +30,23 @@ const carousel = (props) => {
             <h1 className="cal-big">Paunch bunger be thrice the person you wanna be</h1>
           </div>
         </div>
-	  	</div>
-      <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span className="sr-only">Previous</span>
+      </div>
+      <a
+        className="carousel-control-prev"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="sr-only">Previous</span>
       </a>
-      <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-        <span className="sr-only">Next</span>
+      <a
+        className="carousel-control-next"
+        href="#carouselExampleIndicators"
+        role="button" data-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="sr-only">Next</span>
       </a>
-  	</div>
-  );
-}
+    </div>
+);
 
 export default carousel;
