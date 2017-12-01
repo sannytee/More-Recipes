@@ -3,8 +3,7 @@
 import React from 'react';
 
 
-const Form = (props) => {
-  return (
+const Form = props => (
     <div className="container">
       <div className="pt-5" style={{ textAlign: 'center' }}>
         <form className="m-x-auto form card" onSubmit={props.handleSubmit}>
@@ -87,7 +86,6 @@ const Form = (props) => {
         </form>
       </div>
     </div>
-  );
-};
+);
 
 export default Form;

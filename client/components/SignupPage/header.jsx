@@ -3,8 +3,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 
-const Header = (props) => {
-  return (
+const Header = props => (
     <header>
       <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#2b3034' }}>
         <a className="navbar-brand" href="/">More-Recipes</a>
@@ -28,7 +27,6 @@ const Header = (props) => {
         </div>
       </nav>
     </header>
-  );
-};
+);
 
 export default Header;
