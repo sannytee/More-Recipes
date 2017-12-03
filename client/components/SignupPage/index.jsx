@@ -1,14 +1,13 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
+
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
-import signUpAction from '../../actions/authAction';
-import Header from './header';
-import Form from './form';
-import Footer from '../common/footer';
+import { signUpAction } from '../../actions/authAction';
+import Header from './header.jsx';
+import Form from './form.jsx';
+import Footer from '../common/footer.jsx';
 import img from '../../public/images/banner-img-2.jpg';
 
 
