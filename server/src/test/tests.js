@@ -71,7 +71,7 @@ describe('More-Recipe Tests:', () => {
       chai.request(app)
         .post('/api/v1/users/signin')
         .send({
-          email: 'example@gmail.com',
+          username: 'example@gmail.com',
           password: 'example97'
         })
         .end((err, res) => {
