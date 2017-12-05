@@ -6,5 +6,6 @@
         "react-hmre"
       ]
     }
-  }
+  },
+  "plugins": ["transform-object-rest-spread"]
 }

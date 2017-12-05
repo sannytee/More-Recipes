@@ -68,7 +68,7 @@ export default class account {
       .findOne({
         where: {
           [Op.or]: [
-            { email: req.body.email },
+            { email: req.body.username },
             { username: req.body.username }
           ]
         }

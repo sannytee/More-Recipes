@@ -1,14 +1,13 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
+
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
-import signUpAction from '../../actions/authAction';
-import Header from './header';
-import Form from './form';
-import Footer from '../common/footer';
+import { signUpAction } from '../../actions/authAction';
+import Header from './header.jsx';
+import Form from './form.jsx';
+import Footer from '../common/footer.jsx';
 import img from '../../public/images/banner-img-2.jpg';
 
 
@@ -30,11 +29,29 @@ class SignupPage extends React.Component {
     };
     this.onChange = this.onChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onFocus = this.onFocus.bind(this);
   }
 
   /* eslint-disable class-methods-use-this */
   componentWillMount() {
     document.body.style.backgroundImage = `url(${img}`;
+  }
+
+  onFocus(event) {    
+    const { name } = event.target;
+    switch (name) {
+      case 'username':
+        this.setState({ usernameError: '' });
+        break;
+      case 'email':
+        this.setState({ emailError: '' });
+        break;
+      case 'confirmPassword':
+        this.setState({ confirmPasswordError: '', });
+        break;
+      default:
+        return this.state;
+    }
   }
 
   handleSubmit(event) {
@@ -83,12 +100,15 @@ class SignupPage extends React.Component {
     });
   }
 
+  
+
   render() {
     return (
       <div>
         <Header/>
         <Form
           value={this.state}
+          onFocus={this.onFocus}
           onChange={this.onChange}
           handleSubmit={this.handleSubmit}/>
         <Footer/>
