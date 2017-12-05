@@ -15,6 +15,7 @@ const Form = props => (
               className="form-control"
               required
               onChange={props.onChange}
+              onFocus={props.onFocus}
               placeholder="Username"/>
             {
               props.value.usernameError &&
@@ -22,7 +23,6 @@ const Form = props => (
                 {
                   props.value.usernameError
                 }
-                { props.value.usernameError = '' }
               </div>
             }
           </div>
@@ -32,16 +32,16 @@ const Form = props => (
               name="email"
               className="form-control"
               required
+              onFocus={props.onFocus}
               onChange={props.onChange}
               placeholder="Email"
             />
             {
-              props.value.emailError &&
+              props.value.emailError&&
               <div className="alert alert-danger">
                 {
                   props.value.emailError
                 }
-                { props.value.emailError = '' }
               </div>
             }
           </div>
@@ -52,6 +52,7 @@ const Form = props => (
               name="password"
               className="form-control"
               required
+              onFocus={props.onFocus}
               onChange={props.onChange}
               placeholder="Password"
             />
@@ -62,6 +63,7 @@ const Form = props => (
               name="confirmPassword"
               className="form-control"
               required
+              onFocus={props.onFocus}
               onChange={props.onChange}
               placeholder="Confirm Password"
             />
@@ -71,7 +73,6 @@ const Form = props => (
                 {
                   props.value.confirmPasswordError
                 }
-                { props.value.confirmPasswordError = '' }
               </div>
             }
           </div>

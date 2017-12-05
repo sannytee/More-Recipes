@@ -29,11 +29,29 @@ class SignupPage extends React.Component {
     };
     this.onChange = this.onChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onFocus = this.onFocus.bind(this);
   }
 
   /* eslint-disable class-methods-use-this */
   componentWillMount() {
     document.body.style.backgroundImage = `url(${img}`;
+  }
+
+  onFocus(event) {    
+    const { name } = event.target;
+    switch (name) {
+      case 'username':
+        this.setState({ usernameError: '' });
+        break;
+      case 'email':
+        this.setState({ emailError: '' });
+        break;
+      case 'confirmPassword':
+        this.setState({ confirmPasswordError: '', });
+        break;
+      default:
+        return this.state;
+    }
   }
 
   handleSubmit(event) {
@@ -82,12 +100,15 @@ class SignupPage extends React.Component {
     });
   }
 
+  
+
   render() {
     return (
       <div>
         <Header/>
         <Form
           value={this.state}
+          onFocus={this.onFocus}
           onChange={this.onChange}
           handleSubmit={this.handleSubmit}/>
         <Footer/>
