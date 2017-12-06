@@ -37,7 +37,7 @@ const Form = props => (
               placeholder="Email"
             />
             {
-              props.value.emailError&&
+              props.value.emailError &&
               <div className="alert alert-danger">
                 {
                   props.value.emailError
@@ -50,6 +50,8 @@ const Form = props => (
               type="password"
               id="pass"
               name="password"
+              pattern=".{7,12}"
+              title="7 to 12 characters"
               className="form-control"
               required
               onFocus={props.onFocus}

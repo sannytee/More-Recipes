@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 import setToken from '../util/setToken';
 import { CREATE_USER, SIGN_USER } from './types';
 
-const URL = 'http://localhost:3000/api/v1';
+const URL = '/api/v1';
 
 /**
   * @description - Calls the API to create new User
