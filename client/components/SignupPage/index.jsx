@@ -37,7 +37,7 @@ class SignupPage extends React.Component {
     document.body.style.backgroundImage = `url(${img}`;
   }
 
-  onFocus(event) {    
+  onFocus(event) {
     const { name } = event.target;
     switch (name) {
       case 'username':
@@ -99,8 +99,6 @@ class SignupPage extends React.Component {
       [name]: value
     });
   }
-
-  
 
   render() {
     return (
