@@ -1,4 +1,3 @@
-import downvoter from './downvotes';
 import { Recipes } from '../models';
 
 /**
@@ -157,29 +156,6 @@ export default class recipe {
           });
         }
         return res.status(200).send(recipes);
-      })
-      .catch(err => res.status(400).send(err));
-  }
-  /**
-   * check if recipe exists
-   * @param {object} req
-   * @param {object} res
-   * @returns  {JSON} Returns success or failure message
-   */
-  static findRecipe(req, res) {
-    Recipes
-      .find({
-        where: {
-          id: req.params.recipeId,
-        }
-      })
-      .then((found) => {
-        if (!found) {
-          return res.status(404).send({
-            message: 'Recipe not found'
-          });
-        }
-        downvoter.createDownvotes(req, res);
       })
       .catch(err => res.status(400).send(err));
   }
