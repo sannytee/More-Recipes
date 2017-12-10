@@ -4,12 +4,12 @@ import { votes, Recipes } from '../models';
  */
 export default class vote {
   /**
-   * Checks if user already upvote for a recipe
+   * Checks if user already votes for a recipe
    * @param {object} req
    * @param {object} res
    * @returns  {JSON} Returns success or failure message
    */
-  static checkUpvotes(req, res) {
+  static checkVotes(req, res) {
     const { action } = req.query;
     const msg = action.replace('s', 'd');
     votes
@@ -64,7 +64,7 @@ export default class vote {
         upvotes: true
       })
       .then(() => {
-        vote.findRecipeToUpvote(req, res);
+        vote.findRecipeToVote(req, res);
         return res.status(201).send({
           message: `Recipe successfully ${msg}`
         });
@@ -73,12 +73,12 @@ export default class vote {
   }
 
   /**
-   * Finds the recipe to upvote
+   * Finds the recipe to vote
    * @param {object} req
    * @param {object} res
    * @returns  {JSON} Returns success or failure message
    */
-  static findRecipeToUpvote(req, res) {
+  static findRecipeToVote(req, res) {
     Recipes
       .find({
         where: {
@@ -86,19 +86,19 @@ export default class vote {
         },
       })
       .then((foundRecipe) => {
-        vote.updateUpvote(req, res, foundRecipe);
+        vote.updateRecipeVotes(req, res, foundRecipe);
       })
       .catch(err => res.status(400).send(err));
   }
 
   /**
-   * update upvotes for recipe
+   * update upvotes/downvotes for recipe
    * @param {object} req
    * @param {object} res
    * @param {object} recipe
    * @returns  {JSON} Returns success or failure message
    */
-  static updateUpvote(req, res, recipe) {
+  static updateRecipeVotes(req, res, recipe) {
     const { action } = req.query;
     switch (action) {
       case 'upvotes':
@@ -131,7 +131,7 @@ export default class vote {
   }
 
   /**
-   * Update recipe if already downvoted
+   * Update recipe if already voted
    * @param {object} req
    * @param {object} res
    * @returns  {JSON} Returns success or failure message
@@ -198,7 +198,7 @@ export default class vote {
   }
 
   /**
-   * update  upvotes for Recipe if downvoted
+   * update  votes for Recipe if upvoted or downvoted
    * @param {object} req
    * @param {object} res
    * @param {object} recipe
