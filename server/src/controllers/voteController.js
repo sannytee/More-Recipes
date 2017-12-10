@@ -1,5 +1,5 @@
 import { Recipes } from '../models';
-import upvoter from '../helper/upvotes';
+import voter from '../helper/votes';
 
 export default {
   vote(req, res) {
@@ -23,7 +23,7 @@ export default {
                 message: 'Recipe not found'
               });
             }
-            return upvoter.checkUpvotes(req, res, found);
+            return voter.checkVotes(req, res, found);
           })
           .catch((err) => {
             res.status(400).send(err);
