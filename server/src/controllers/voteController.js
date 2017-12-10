@@ -1,42 +1,36 @@
 import { Recipes } from '../models';
-import downvoter from '../helper/downvotes';
 import upvoter from '../helper/upvotes';
 
 export default {
-  upvote(req, res) {
-    Recipes
-      .find({
-        where: {
-          id: req.params.recipeId,
-        }
-      })
-      .then((found) => {
-        if (!found) {
-          return res.status(404).send({
-            message: 'Recipe not found'
-          });
-        }
-        return upvoter.checkUpvotes(req, res);
-      })
-      .catch((err) => {
-        res.status(400).send(err);
+  vote(req, res) {
+    if (!req.query.action) {
+      return res.status(400).send({
+        error: 'Enter a query params'
       });
-  },
-  downvote(req, res) {
-    Recipes
-      .find({
-        where: {
-          id: req.params.recipeId,
-        }
-      })
-      .then((found) => {
-        if (!found) {
-          return res.status(404).send({
-            message: 'Recipe not found'
-          });
-        }
-        return downvoter.checkDownvotes(req, res);
-      })
-      .catch(err => res.status(400).send(err));
+    }
+    if (req.query.action !== 'upvotes' || 'downvotes') {
+      return res.status(400).send({
+        error: 'Invalid query params'
+      });
+    }
+    if (req.query.action === 'upvotes' || 'downvotes') {
+      Recipes
+        .find({
+          where: {
+            id: req.params.recipeId,
+          }
+        })
+        .then((found) => {
+          if (!found) {
+            return res.status(404).send({
+              message: 'Recipe not found'
+            });
+          }
+          return upvoter.checkUpvotes(req, res, found);
+        })
+        .catch((err) => {
+          res.status(400).send(err);
+        });
+    }
   }
 };
