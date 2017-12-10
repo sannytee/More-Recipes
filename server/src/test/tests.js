@@ -477,7 +477,7 @@ describe('More-Recipe Tests:', () => {
   describe('Test for upvoting and downvoting Recipes', () => {
     it('upvotes recipe', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/1/upvotes')
+        .post('/api/v1/recipes/1/votes?action=upvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('Recipe successfully upvoted');
@@ -487,7 +487,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('throws error for recipe already upvoted', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/1/upvotes')
+        .post('/api/v1/recipes/1/votes?action=upvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('You have already upvoted this recipe');
@@ -497,7 +497,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('does not upvote recipe that does not exist', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/5/upvotes')
+        .post('/api/v1/recipes/5/votes?action=upvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('Recipe not found');
@@ -507,7 +507,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('downvotes recipe', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/3/downvotes')
+        .post('/api/v1/recipes/3/votes?action=downvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('Recipe successfully downvoted');
@@ -517,7 +517,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('downvotes recipe already upvoted', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/1/downvotes')
+        .post('/api/v1/recipes/1/votes?action=downvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('You have successfully downvoted this recipe');
@@ -527,7 +527,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('throws error for recipe already downvoted', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/1/downvotes')
+        .post('/api/v1/recipes/1/votes?action=downvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('You have already downvoted this recipe');
@@ -537,7 +537,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('upvotes recipe already downvoted', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/1/upvotes')
+        .post('/api/v1/recipes/1/votes?action=upvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('You have successfully upvoted this recipe');
@@ -547,7 +547,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('does not downvotes recipe that does not exist', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/5/downvotes')
+        .post('/api/v1/recipes/5/votes?action=upvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('Recipe not found');
@@ -613,7 +613,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('throws error for upvoting recipe without token', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/1/upvotes')
+        .post('/api/v1/recipes/1/votes?action=upvotes')
         .end((err, res) => {
           expect(res.status).equal(403);
           expect(res.body.message).equal('You are not authorized');
@@ -622,7 +622,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('throws error for downvoting recipe without token', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/1/downvotes')
+        .post('/api/v1/recipes/1/votes?action=upvotes')
         .end((err, res) => {
           expect(res.status).equal(403);
           expect(res.body.message).equal('You are not authorized');
