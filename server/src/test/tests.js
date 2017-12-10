@@ -35,6 +35,36 @@ let token;
 
 describe('More-Recipe Tests:', () => {
   describe('Test for User', () => {
+    it('Throw error for username less than six', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/signup')
+        .send({
+          username: 'exam',
+          email: 'example@gmail.com',
+          password: 'example',
+          confirmPassword: 'example970'
+        })
+        .end((err, res) => {
+          expect(res.status).equal(400);
+          expect(res.body.error).equal('Username must be greater than 5');
+          done();
+        });
+    });
+    it('Throw error if password does not match', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/signup')
+        .send({
+          username: 'example',
+          email: 'example@gmail.com',
+          password: 'example',
+          confirmPassword: 'example970'
+        })
+        .end((err, res) => {
+          expect(res.status).equal(400);
+          expect(res.body.error).equal('Password does not match');
+          done();
+        });
+    });
     it('POST /api/v1/users/signup does create new user', (done) => {
       chai.request(app)
         .post('/api/v1/users/signup')
@@ -49,6 +79,19 @@ describe('More-Recipe Tests:', () => {
           expect(res.status).equal(201);
           expect(res.body.message).equal('Account created');
           expect(res.body.username).equal('example');
+          done();
+        });
+    });
+    it('POST /api/v1/users/signin does allow user to signin with username', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/signin')
+        .send({
+          username: 'example',
+          password: 'exampl'
+        })
+        .end((err, res) => {
+          expect(res.status).equal(400);
+          expect(res.body.error).equal('Incorrect Login details');
           done();
         });
     });
@@ -278,6 +321,16 @@ describe('More-Recipe Tests:', () => {
           done();
         });
     });
+    it('Throw error if a particular recipe does not exist', (done) => {
+      chai.request(app)
+        .get('/api/v1/recipes/10')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          expect(res.status).equal(404);
+          expect(res.body.message).equal('Recipe not found');
+          done();
+        });
+    });
     it('returns error for empty recipeName', (done) => {
       chai.request(app)
         .post('/api/v1/recipes')
@@ -421,6 +474,19 @@ describe('More-Recipe Tests:', () => {
           expect(res.body.message).equal('Recipe Favorited');
           expect(res.status).equal(201);
           expect(res.body.favorited).to.be.an('object');
+          done();
+        });
+    });
+    it('throws error for favoriting a recipe more than once', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/1/recipes')
+        .set('x-access-token', token)
+        .send({
+          recipeId: 1
+        })
+        .end((err, res) => {
+          expect(res.body.message).equal('Recipe already favorited');
+          expect(res.status).equal(400);
           done();
         });
     });
