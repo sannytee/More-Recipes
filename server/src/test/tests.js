@@ -475,6 +475,28 @@ describe('More-Recipe Tests:', () => {
     });
   });
   describe('Test for upvoting and downvoting Recipes', () => {
+    it('throws error for if params is not available', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/1/votes')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          expect(res.body.error).equal('Enter a query params');
+          expect(res.status).equal(400);
+          done();
+        });
+    });
+
+    it('throws error for wrong paramater', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/1/votes?action=vjffh')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          expect(res.body.error).equal('Invalid query params');
+          expect(res.status).equal(400);
+          done();
+        });
+    });
+
     it('upvotes recipe', (done) => {
       chai.request(app)
         .post('/api/v1/recipes/1/votes?action=upvotes')
