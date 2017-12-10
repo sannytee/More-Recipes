@@ -16,6 +16,5 @@ export default (app) => {
   app.post('/api/v1/recipes/:recipeId/reviews', authentication.verifyUser, reviewController.add);
   app.post('/api/v1/users/:userId/recipes', authentication.verifyUser, favoriteController.add);
   app.get('/api/v1/users/:userId/recipes', authentication.verifyUser, favoriteController.get);
-  app.post('/api/v1/recipes/:recipeId/upvotes', authentication.verifyUser, voteController.upvote);
-  app.post('/api/v1/recipes/:recipeId/downvotes', authentication.verifyUser, voteController.downvote);
+  app.post('/api/v1/recipes/:recipeId/votes', authentication.verifyUser, voteController.vote);
 };
