@@ -97,36 +97,85 @@ export default class recipe {
    * Get  Recipes
    * @param {object} req
    * @param {object} res
-   * @param {object} reviews
    * @returns  {JSON} Returns success or failure message
    */
-  static getRecipe(req, res, reviews) {
-    if (req.query.order || req.query.sort) {
-      return Recipes
-        .findAll({
-          order: [
-            [req.query.sort, 'DESC']
-          ],
-          include: [
-            {
-              model: reviews,
-              attributes: ['userId', 'recipeId', 'review'],
-            }
-          ]
-        })
-        .then(sortedRecipes => res.status(200).send(sortedRecipes));
-    }
-    return Recipes
-      .all()
-      .then((recipes) => {
-        if (recipes.length === 0) {
-          return res.status(200).send({
-            message: 'No recipes have been added'
+  static getRecipe(req, res) {
+    const { order, sort } = req.query;
+    if (order || sort) {
+      switch (sort) {
+        case 'upvotes':
+          if (order === 'desc') {
+            return recipe.getRecipeInDescending(req, res);
+          }
+          if (order === 'asc') {
+            return recipe.getRecipeInAscending(req, res);
+          }
+          return res.status(400).send({
+            error: 'invalid query params'
           });
-        }
-        return res.status(200).send(recipes);
+        case 'downvotes':
+          if (order === 'desc') {
+            return recipe.getRecipeInDescending(req, res);
+          }
+          if (order === 'asc') {
+            return recipe.getRecipeInAscending(req, res);
+          }
+          return res.status(400).send({
+            error: 'invalid query params'
+          });
+        default:
+          if ((sort !== 'upvotes' || 'downvotes') && (order !== 'desc' || 'asc')) {
+            return res.status(400).send({
+              error: 'invalid query params'
+            });
+          }
+      }
+    }
+    if (!order && !sort) {
+      return Recipes
+        .all()
+        .then((recipes) => {
+          if (recipes.length === 0) {
+            return res.status(200).send({
+              message: 'No recipes have been added'
+            });
+          }
+          return res.status(200).send(recipes);
+        })
+        .catch(error => res.status(400).send(error));
+    }
+  }
+  /**
+   * Get  all Recipes according to most voted in ascending order
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns all recipes in ascending order
+   */
+  static getRecipeInAscending(req, res) {
+    const { sort } = req.query;
+    Recipes
+      .findAll({
+        order: [
+          [sort, 'ASC']
+        ],
       })
-      .catch(error => res.status(400).send(error));
+      .then(sortedRecipes => res.status(200).send(sortedRecipes));
+  }
+  /**
+   * Get  all Recipes according to most voted in descending order
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns all recipes in descending order
+   */
+  static getRecipeInDescending(req, res) {
+    const { sort } = req.query;
+    Recipes
+      .findAll({
+        order: [
+          [sort, 'DESC']
+        ],
+      })
+      .then(sortedRecipes => res.status(200).send(sortedRecipes));
   }
 
   /**
