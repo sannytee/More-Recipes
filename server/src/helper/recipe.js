@@ -43,13 +43,6 @@ export default class recipe {
    * @returns  {JSON} Returns success or failure message
    */
   static editRecipe(req, res) {
-    const {
-      recipeName,
-      mealType,
-      description,
-      method,
-      ingredients
-    } = req.body;
     const id = parseInt(req.params.recipeId, 10);
     Recipes
       .find({
@@ -66,11 +59,11 @@ export default class recipe {
         }
         return recipes
           .update({
-            recipeName: recipeName || recipes.recipeName,
-            mealType: mealType || recipes.mealType,
-            description: description || recipes.description,
-            method: method || recipes.method,
-            ingredients: ingredients || recipes.ingredients,
+            recipeName: req.body.recipeName || recipes.recipeName,
+            mealType: req.body.mealType || recipes.mealType,
+            description: req.body.description || recipes.description,
+            method: req.body.method || recipes.method,
+            ingredients: req.body.ingredients || recipes.ingredients,
           })
           .then(updatedRecipes => res.status(200).send({
             data: updatedRecipes,
@@ -233,30 +226,23 @@ export default class recipe {
   static checkBeforeCreating(req, res) {
     const error = { };
     let value;
-    const {
-      recipeName,
-      mealType,
-      description,
-      method,
-      ingredients
-    } = req.body;
-    if (!recipeName) {
+    if (!req.body.recipeName) {
       error.error = 'name of recipe required';
       value = true;
     }
-    if (!mealType) {
+    if (!req.body.mealType) {
       error.error = 'mealtype required';
       value = true;
     }
-    if (!description) {
+    if (!req.body.description) {
       error.error = 'description required';
       value = true;
     }
-    if (!method) {
+    if (!req.body.method) {
       error.error = 'Method of cooking required';
       value = true;
     }
-    if (!ingredients) {
+    if (!req.body.ingredients) {
       error.error = 'Input ingredients required';
       value = true;
     }
