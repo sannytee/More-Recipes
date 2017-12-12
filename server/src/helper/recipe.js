@@ -216,40 +216,4 @@ export default class recipe {
       })
       .catch(err => res.status(400).send(err));
   }
-
-  /**
-   * Checks input for recipe
-   * @param {object} req
-   * @param {object} res
-   * @param {object} reviews
-   * @returns  {JSON} Returns success or failure message
-   */
-  static checkBeforeCreating(req, res) {
-    const error = { };
-    let value;
-    if (!req.body.recipeName) {
-      error.error = 'name of recipe required';
-      value = true;
-    }
-    if (!req.body.mealType) {
-      error.error = 'mealtype required';
-      value = true;
-    }
-    if (!req.body.description) {
-      error.error = 'description required';
-      value = true;
-    }
-    if (!req.body.method) {
-      error.error = 'Method of cooking required';
-      value = true;
-    }
-    if (!req.body.ingredients) {
-      error.error = 'Input ingredients required';
-      value = true;
-    }
-    if (value === true) {
-      return res.status(400).send(error);
-    }
-    recipe.createRecipe(req, res);
-  }
 }
