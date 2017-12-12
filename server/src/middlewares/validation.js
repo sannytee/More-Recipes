@@ -39,3 +39,13 @@ export const checkBeforeCreatingRecipe = (req, res, next) => {
   }
   next();
 };
+
+export const checkReqParams = (req, res, next) => {
+  const params = (req.params.recipeId || req.params.userId);
+  if (isNaN(params)) {
+    return res.status(400).send({
+      message: 'Parameter should be a number'
+    });
+  }
+  next();
+};
