@@ -1,4 +1,5 @@
 import { Recipes } from '../models';
+import { checkRecipe } from '../middlewares/validation';
 
 /**
  * @class recipe
@@ -52,23 +53,21 @@ export default class recipe {
         }
       })
       .then((recipes) => {
-        if (!recipes) {
-          return res.status(404).send({
-            message: 'Recipe not found'
-          });
+        checkRecipe(res, recipes);
+        if (recipes) {
+          recipes
+            .update({
+              recipeName: req.body.recipeName || recipes.recipeName,
+              mealType: req.body.mealType || recipes.mealType,
+              description: req.body.description || recipes.description,
+              method: req.body.method || recipes.method,
+              ingredients: req.body.ingredients || recipes.ingredients,
+            })
+            .then(updatedRecipes => res.status(200).send({
+              data: updatedRecipes,
+              message: 'Recipe successfully updated'
+            }));
         }
-        return recipes
-          .update({
-            recipeName: req.body.recipeName || recipes.recipeName,
-            mealType: req.body.mealType || recipes.mealType,
-            description: req.body.description || recipes.description,
-            method: req.body.method || recipes.method,
-            ingredients: req.body.ingredients || recipes.ingredients,
-          })
-          .then(updatedRecipes => res.status(200).send({
-            data: updatedRecipes,
-            message: 'Recipe successfully updated'
-          }));
       })
       .catch(err => res.status(400).send(err));
   }
@@ -87,16 +86,14 @@ export default class recipe {
         }
       })
       .then((recipes) => {
-        if (!recipes) {
-          return res.status(404).send({
-            message: 'Recipe not found'
-          });
+        checkRecipe(res, recipes);
+        if (recipes) {
+          return recipes
+            .destroy()
+            .then(() => res.status(200).send({
+              message: 'recipe successfully deleted'
+            }));
         }
-        return recipes
-          .destroy()
-          .then(() => res.status(200).send({
-            message: 'recipe successfully deleted'
-          }));
       })
       .catch(error => res.status(400).send(error));
   }
@@ -111,25 +108,11 @@ export default class recipe {
     if (order || sort) {
       switch (sort) {
         case 'upvotes':
-          if (order === 'desc') {
-            return recipe.getRecipeInDescending(req, res);
-          }
-          if (order === 'asc') {
-            return recipe.getRecipeInAscending(req, res);
-          }
-          return res.status(400).send({
-            error: 'invalid query params'
-          });
+          recipe.getRecipeInOrder(req, res, order);
+          break;
         case 'downvotes':
-          if (order === 'desc') {
-            return recipe.getRecipeInDescending(req, res);
-          }
-          if (order === 'asc') {
-            return recipe.getRecipeInAscending(req, res);
-          }
-          return res.status(400).send({
-            error: 'invalid query params'
-          });
+          recipe.getRecipeInOrder(req, res, order);
+          break;
         default:
           if ((sort !== 'upvotes' || 'downvotes') && (order !== 'desc' || 'asc')) {
             return res.status(400).send({
@@ -152,6 +135,26 @@ export default class recipe {
         .catch(error => res.status(400).send(error));
     }
   }
+
+  /**
+   * Get  all Recipes in an order (descending or ascending)
+   * @param {object} req
+   * @param {object} res
+   * @param {object} order
+   * @returns  {JSON} Returns all recipes in ascending order
+   */
+  static getRecipeInOrder(req, res, order) {
+    if (order === 'desc') {
+      return recipe.getRecipeInDescending(req, res);
+    }
+    if (order === 'asc') {
+      return recipe.getRecipeInAscending(req, res);
+    }
+    return res.status(400).send({
+      error: 'invalid query params'
+    });
+  }
+
   /**
    * Get  all Recipes according to most voted in ascending order
    * @param {object} req
@@ -206,12 +209,10 @@ export default class recipe {
         ]
       })
       .then((recipes) => {
-        if (!recipes) {
-          return res.status(404).send({
-            message: 'Recipe not found'
-          });
+        checkRecipe(res, recipes);
+        if (recipes) {
+          return res.status(200).send(recipes);
         }
-        return res.status(200).send(recipes);
       })
       .catch(err => res.status(400).send(err));
   }
