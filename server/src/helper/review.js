@@ -1,4 +1,5 @@
 import { reviews, Recipes } from '../models';
+import { checkRecipe } from '../middlewares/validation';
 /**
  * @class review
  */
@@ -17,22 +18,20 @@ export default class review {
         }
       })
       .then((recipes) => {
-        if (!recipes) {
-          return res.status(404).send({
-            message: 'Recipe not found'
-          });
+        checkRecipe(res, recipes);
+        if (recipes) {
+          reviews
+            .create({
+              userId: req.decoded.id,
+              recipeId: req.params.recipeId,
+              review: req.body.review,
+            })
+            .then(created => res.status(201).send({
+              message: 'Review posted',
+              review: created,
+            }))
+            .catch(err => res.status(400).send(err));
         }
-        reviews
-          .create({
-            userId: req.decoded.id,
-            recipeId: req.params.recipeId,
-            review: req.body.review,
-          })
-          .then(created => res.status(201).send({
-            message: 'Review posted',
-            review: created,
-          }))
-          .catch(err => res.status(400).send(err));
       })
       .catch(err => res.status(400).send(err));
   }
