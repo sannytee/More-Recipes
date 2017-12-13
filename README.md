@@ -7,8 +7,12 @@ More-Recipes provides a platform for users to share the awesome and exciting  re
 ## Features
 * Add recipe   to catalog.
 * View all recipe in catalog.
+* Get a single recipe
+* Delete a recipe
+* favorite a recipe
+* get all favorite recipe
 * Post a review for recipe.
-* Get all recipes based on most voted.
+* Get all recipes based on most voted (upvotes or downvotes).
 
 
 
@@ -22,6 +26,12 @@ To install this application,
 ## Built with
 * [NodeJS](https://nodejs.org/en/) - A Javscript runtime built runtime that uses an event-driven non-blocking I/O model that makes it lightweight and efficient.
 * [ExpressJS](http://expressjs.com/) - A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. This is used in this application for routing to endpoints.
+* [Javascript ES6:](https://en.wikipedia.org/wiki/ECMAScript) ES6 is the sixth major release of the javascript language specification. It enables features like constants, arrow functions, template literals, spread opeartor, etc.
+* [React:](https://facebook.github.io/react/tutorial/tutorial.html) Facebook open source, efficient, javascript library for building front-end projects.
+* [PostgreSQL:](https://www.postgresql.org/) PostgreSQL is a powerful, open source object-relational database system (ORDBMS) that offers modern database features such as complex queries, foreign keys, etc.
+* [Sequelize:](http://docs.sequelizejs.com/) Sequelize is a promise-based ORM for Node.js that supports different dialects such PostgreSQL, MySQL, and SQLite.
+* [Webpack:](https://webpack.github.io/docs/what-is-webpack.html) Webpack is used to bundle modules and does tasks automation.
+
 
 
 ## API
