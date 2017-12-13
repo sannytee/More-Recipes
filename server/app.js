@@ -26,10 +26,14 @@ app.use(webpackMiddleware(compiler, {
 }));
 app.use(require('webpack-hot-middleware')(compiler));
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/index.html'));
+});
+
 router(app);
 // set up a default catch-all route
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/index.html'));
+  res.status(404).send({ error: 'Resourse not found' });
 });
 
 
