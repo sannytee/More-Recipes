@@ -35,6 +35,36 @@ let token;
 
 describe('More-Recipe Tests:', () => {
   describe('Test for User', () => {
+    it('Throw error for username less than six', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/signup')
+        .send({
+          username: 'exam',
+          email: 'example@gmail.com',
+          password: 'example',
+          confirmPassword: 'example970'
+        })
+        .end((err, res) => {
+          expect(res.status).equal(400);
+          expect(res.body.error).equal('Username must be greater than 5');
+          done();
+        });
+    });
+    it('Throw error if password does not match', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/signup')
+        .send({
+          username: 'example',
+          email: 'example@gmail.com',
+          password: 'example',
+          confirmPassword: 'example970'
+        })
+        .end((err, res) => {
+          expect(res.status).equal(400);
+          expect(res.body.error).equal('Password does not match');
+          done();
+        });
+    });
     it('POST /api/v1/users/signup does create new user', (done) => {
       chai.request(app)
         .post('/api/v1/users/signup')
@@ -49,6 +79,19 @@ describe('More-Recipe Tests:', () => {
           expect(res.status).equal(201);
           expect(res.body.message).equal('Account created');
           expect(res.body.username).equal('example');
+          done();
+        });
+    });
+    it('POST /api/v1/users/signin does allow user to signin with username', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/signin')
+        .send({
+          username: 'example',
+          password: 'exampl'
+        })
+        .end((err, res) => {
+          expect(res.status).equal(400);
+          expect(res.body.error).equal('Incorrect Login details');
           done();
         });
     });
@@ -278,6 +321,16 @@ describe('More-Recipe Tests:', () => {
           done();
         });
     });
+    it('Throw error if a particular recipe does not exist', (done) => {
+      chai.request(app)
+        .get('/api/v1/recipes/10')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          expect(res.status).equal(404);
+          expect(res.body.message).equal('Recipe not found');
+          done();
+        });
+    });
     it('returns error for empty recipeName', (done) => {
       chai.request(app)
         .post('/api/v1/recipes')
@@ -424,6 +477,19 @@ describe('More-Recipe Tests:', () => {
           done();
         });
     });
+    it('throws error for favoriting a recipe more than once', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/1/recipes')
+        .set('x-access-token', token)
+        .send({
+          recipeId: 1
+        })
+        .end((err, res) => {
+          expect(res.body.message).equal('Recipe already favorited');
+          expect(res.status).equal(400);
+          done();
+        });
+    });
     it('GET /api/v1/users/:userId/recipes does get all favorite recipe for user', (done) => {
       chai.request(app)
         .get('/api/v1/users/1/recipes')
@@ -475,9 +541,31 @@ describe('More-Recipe Tests:', () => {
     });
   });
   describe('Test for upvoting and downvoting Recipes', () => {
+    it('throws error for if params is not available', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/1/votes')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          expect(res.body.error).equal('Enter a query params');
+          expect(res.status).equal(400);
+          done();
+        });
+    });
+
+    it('throws error for wrong paramater', (done) => {
+      chai.request(app)
+        .post('/api/v1/recipes/1/votes?action=vjffh')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          expect(res.body.error).equal('Invalid query params');
+          expect(res.status).equal(400);
+          done();
+        });
+    });
+
     it('upvotes recipe', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/1/upvotes')
+        .post('/api/v1/recipes/1/votes?action=upvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('Recipe successfully upvoted');
@@ -487,7 +575,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('throws error for recipe already upvoted', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/1/upvotes')
+        .post('/api/v1/recipes/1/votes?action=upvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('You have already upvoted this recipe');
@@ -497,7 +585,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('does not upvote recipe that does not exist', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/5/upvotes')
+        .post('/api/v1/recipes/5/votes?action=upvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('Recipe not found');
@@ -507,7 +595,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('downvotes recipe', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/3/downvotes')
+        .post('/api/v1/recipes/3/votes?action=downvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('Recipe successfully downvoted');
@@ -517,7 +605,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('downvotes recipe already upvoted', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/1/downvotes')
+        .post('/api/v1/recipes/1/votes?action=downvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('You have successfully downvoted this recipe');
@@ -527,7 +615,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('throws error for recipe already downvoted', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/1/downvotes')
+        .post('/api/v1/recipes/1/votes?action=downvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('You have already downvoted this recipe');
@@ -537,7 +625,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('upvotes recipe already downvoted', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/1/upvotes')
+        .post('/api/v1/recipes/1/votes?action=upvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('You have successfully upvoted this recipe');
@@ -547,7 +635,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('does not downvotes recipe that does not exist', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/5/downvotes')
+        .post('/api/v1/recipes/5/votes?action=upvotes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('Recipe not found');
@@ -613,7 +701,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('throws error for upvoting recipe without token', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/1/upvotes')
+        .post('/api/v1/recipes/1/votes?action=upvotes')
         .end((err, res) => {
           expect(res.status).equal(403);
           expect(res.body.message).equal('You are not authorized');
@@ -622,7 +710,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('throws error for downvoting recipe without token', (done) => {
       chai.request(app)
-        .post('/api/v1/recipes/1/downvotes')
+        .post('/api/v1/recipes/1/votes?action=upvotes')
         .end((err, res) => {
           expect(res.status).equal(403);
           expect(res.body.message).equal('You are not authorized');

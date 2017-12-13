@@ -8,12 +8,6 @@ export default {
    * @returns  {JSON} Returns a JSON object
    */
   add(req, res) {
-    const id = req.params.recipeId;
-    if (isNaN(id)) {
-      return res.status(400).send({
-        message: 'Parameter should be a number'
-      });
-    }
     if (!req.body.review) {
       return res.status(400).send({
         message: 'Review cannot be empty'

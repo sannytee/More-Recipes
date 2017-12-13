@@ -9,7 +9,7 @@ export default {
    * @returns  {JSON} Returns a JSON object
    */
   addRecipe(req, res) {
-    recipeHelper.checkBeforeCreating(req, res);
+    recipeHelper.createRecipe(req, res);
   },
   /**
    * Update a recipe
