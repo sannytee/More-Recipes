@@ -1,5 +1,5 @@
 import { Recipes } from '../models';
-import { checkRecipe } from '../middlewares/validation';
+import { recipeNotFound, validateUser } from '../middlewares/validation';
 
 /**
  * @class recipe
@@ -45,17 +45,20 @@ export default class recipe {
    */
   static editRecipe(req, res) {
     const id = parseInt(req.params.recipeId, 10);
+    const userId = req.decoded.id;
     Recipes
       .find({
         where: {
-          userId: req.decoded.id,
-          id,
+          id
         }
       })
       .then((recipes) => {
-        checkRecipe(res, recipes);
-        if (recipes) {
-          recipes
+        if (!recipes) {
+          return recipeNotFound(res);
+        }
+        validateUser(res, userId, recipes);
+        if (recipes.userId === userId) {
+          return recipes
             .update({
               recipeName: req.body.recipeName || recipes.recipeName,
               mealType: req.body.mealType || recipes.mealType,
@@ -78,16 +81,19 @@ export default class recipe {
    * @returns  {JSON} Returns success or failure message
    */
   static deleteRecipe(req, res) {
+    const userId = req.decoded.id;
     Recipes
       .find({
         where: {
-          userId: req.decoded.id,
           id: req.params.recipeId
         }
       })
       .then((recipes) => {
-        checkRecipe(res, recipes);
-        if (recipes) {
+        if (!recipes) {
+          return recipeNotFound(res);
+        }
+        validateUser(res, userId, recipes);
+        if (recipes.userId === userId) {
           return recipes
             .destroy()
             .then(() => res.status(200).send({
@@ -209,8 +215,9 @@ export default class recipe {
         ]
       })
       .then((recipes) => {
-        checkRecipe(res, recipes);
-        if (recipes) {
+        if (!recipes) {
+          recipeNotFound(res);
+        } else {
           return res.status(200).send(recipes);
         }
       })
