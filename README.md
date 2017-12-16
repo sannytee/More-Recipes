@@ -6,11 +6,11 @@ More-Recipes provides a platform for users to share the awesome and exciting  re
 
 ## Features
 * Add recipe   to catalog.
-* View all recipe in catalog.
+* View all recipes in catalog.
 * Get a single recipe
 * Delete a recipe
 * favorite a recipe
-* get all favorite recipe
+* get all favorite recipes
 * Post a review for recipe.
 * Get all recipes based on most voted (upvotes or downvotes).
 
