@@ -18,7 +18,7 @@ More-Recipes provides a platform for users to share the awesome and exciting  re
 
 ## Installation
 To install this application, 
-1. git clone this repository
+1. git clone this repository (develop branch)
 2. Open the command line and cd into the folder you just cloned
 3. Run ```npm install``` to install dependencies
 4. Then run ```npm start:dev``` to start the application
@@ -34,35 +34,23 @@ To install this application,
 
 
 
-## API
-The routes currently specified in the application are as follows:
+## API Documentation
+THE  Documentation for the More-Recipes Restful API:
+[More-Recipes API](https://app.swaggerhub.com/apis/Tywo/more-recipes/1.0.0#/)
 
-- **'/api/v1/users/signup'**
-    - **POST** - Allows a User to create account
 
-- **'/api/v1/users/signin'**
-    - **POST** - Allows a User to sigin
+### Contributing
+1. Fork the repository
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
 
-- **'api/v1/recipes'**
-    - **POST** - Creates a new recipe in the catalog
+## Licence 
+[APACHE License](https://github.com/SannyTee/More-Recipes/blob/develop/LICENSE)
 
-- **'api/v1/recipes/:recipeId'**
-    - **PUT** - Enables User to edit or update information about a recipe.
-- **'api/v1/recipes'**
-    - **GET** - Retrieve all recipes in catalog
-- **'api/v1/recipes?sort=upvotes&order=des'**
-    - **GET** - Get all recipes based on most voted.
-- **'api/v1/recipes/:recipeId/reviews'**
-    - **POST** - allows users to post a review for recipe  
-- **'api/v1/recipes/:recipeId'**
-    - **DETELE** - allows users to delete recipe 
-- **'api/v1/recipes/:recipeId'**
-    - **DETELE** - allows users to delete recipe    
-- **'api/v1/recipes/:recipeId'**
-    - **GET** - allows users to get a particular recipe
-- **'/api/users/:userId/recipes'**
-    - **POST** - allows users to create favorite recipes
-- **'/api/users/:userId/recipes'**
-    - **GET** - allows users to get their favorite recipes
+## Authors
+* Sanni Taiwo
+
 
 
