@@ -1,5 +1,5 @@
 import { reviews, Recipes } from '../models';
-import { checkRecipe } from '../middlewares/validation';
+import { recipeNotFound } from '../middlewares/validation';
 /**
  * @class review
  */
@@ -18,8 +18,9 @@ export default class review {
         }
       })
       .then((recipes) => {
-        checkRecipe(res, recipes);
-        if (recipes) {
+        if (!recipes) {
+          recipeNotFound(res);
+        } else {
           reviews
             .create({
               userId: req.decoded.id,
