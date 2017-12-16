@@ -32,6 +32,7 @@ favorites.destroy({
 });
 
 let token;
+let token2;
 
 describe('More-Recipe Tests:', () => {
   describe('Test for User', () => {
@@ -82,6 +83,23 @@ describe('More-Recipe Tests:', () => {
           done();
         });
     });
+    it('POST /api/v1/users/signup does create new user', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/signup')
+        .send({
+          username: 'example20',
+          email: 'example20@gmail.com',
+          password: 'example97',
+          confirmPassword: 'example97'
+        })
+        .end((err, res) => {
+          expect(res.body.success).equal(true);
+          expect(res.status).equal(201);
+          expect(res.body.message).equal('Account created');
+          expect(res.body.username).equal('example20');
+          done();
+        });
+    });
     it('POST /api/v1/users/signin does allow user to signin with username', (done) => {
       chai.request(app)
         .post('/api/v1/users/signin')
@@ -99,7 +117,7 @@ describe('More-Recipe Tests:', () => {
       chai.request(app)
         .post('/api/v1/users/signin')
         .send({
-          username: 'example',
+          username: 'example20@gmail.com',
           password: 'example97'
         })
         .end((err, res) => {
@@ -120,6 +138,7 @@ describe('More-Recipe Tests:', () => {
         .end((err, res) => {
           expect(res.body.success).equal(true);
           expect(res.status).equal(200);
+          token2 = res.body.token;
           expect(res.body.message).equal('Token Generated. Signin successful!');
           done();
         });
@@ -266,6 +285,20 @@ describe('More-Recipe Tests:', () => {
           done();
         });
     });
+    it('PUT /api/v1/recipes/recipeId throws error if users try to update recipe not added by them', (done) => {
+      chai.request(app)
+        .put('/api/v1/recipes/1')
+        .set('x-access-token', token2)
+        .type('form')
+        .send({
+          recipeName: 'Meat',
+        })
+        .end((err, res) => {
+          expect(res.status).equal(403);
+          expect(res.body.message).equal('You are not allowed to perform this action');
+          done();
+        });
+    });
     it('PUT /api/v1/recipes/recipeId returns error if recipe does not exist', (done) => {
       chai.request(app)
         .put('/api/v1/recipes/4')
@@ -277,6 +310,17 @@ describe('More-Recipe Tests:', () => {
         .end((err, res) => {
           expect(res.status).equal(404);
           expect(res.body.message).equal('Recipe not found');
+          done();
+        });
+    });
+    it('DELETE /api/v1/recipes/recipeId throws error if users try to delete recipe not added by them', (done) => {
+      chai.request(app)
+        .delete('/api/v1/recipes/1')
+        .set('x-access-token', token2)
+        .type('form')
+        .end((err, res) => {
+          expect(res.status).equal(403);
+          expect(res.body.message).equal('You are not allowed to perform this action');
           done();
         });
     });
@@ -492,7 +536,7 @@ describe('More-Recipe Tests:', () => {
     });
     it('GET /api/v1/users/:userId/recipes does get all favorite recipe for user', (done) => {
       chai.request(app)
-        .get('/api/v1/users/1/recipes')
+        .get('/api/v1/users/2/recipes')
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.status).equal(200);
