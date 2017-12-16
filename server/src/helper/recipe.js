@@ -31,7 +31,7 @@ export default class recipe {
       })
       .then(recipes => res.status(201).send({
         success: true,
-        data: recipes,
+        Recipe: recipes,
         message: 'Recipe successfully added'
       }))
       .catch(err => res.status(400).json(err));
@@ -64,7 +64,7 @@ export default class recipe {
               ingredients: req.body.ingredients || recipes.ingredients,
             })
             .then(updatedRecipes => res.status(200).send({
-              data: updatedRecipes,
+              Recipe: updatedRecipes,
               message: 'Recipe successfully updated'
             }));
         }
