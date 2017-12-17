@@ -190,7 +190,7 @@ export default class vote {
       })
       .then((foundRecipe) => {
         vote.updateVotes(req, res, foundRecipe);
-        return res.status(200).send({
+        res.status(200).send({
           message: `You have successfully ${msg} this recipe`
         });
       })
