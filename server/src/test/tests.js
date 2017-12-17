@@ -521,7 +521,7 @@ describe('More-Recipe Tests:', () => {
           done();
         });
     });
-    it('throws error for favoriting a recipe more than once', (done) => {
+    it('remove recipe from favorite if user try to add recipe still in favorite', (done) => {
       chai.request(app)
         .post('/api/v1/users/1/recipes')
         .set('x-access-token', token)
@@ -529,8 +529,8 @@ describe('More-Recipe Tests:', () => {
           recipeId: 1
         })
         .end((err, res) => {
-          expect(res.body.message).equal('Recipe already favorited');
-          expect(res.status).equal(400);
+          expect(res.body.message).equal('Recipe removed from favorites');
+          expect(res.status).equal(200);
           done();
         });
     });
@@ -540,7 +540,8 @@ describe('More-Recipe Tests:', () => {
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.status).equal(200);
-          expect(res.body).to.be.an('array');
+          console.log(res.body);
+          expect(res.body.message).equal('You have no favorite recipes');
           done();
         });
     });
