@@ -11,7 +11,6 @@ export default class vote {
    */
   static checkVotes(req, res) {
     const { action } = req.query;
-    const msg = action.replace('s', 'd');
     votes
       .find({
         where: {
@@ -25,9 +24,47 @@ export default class vote {
         }
 
         if (found[`${action}`] === true) {
-          return res.status(400).send({
-            message: `You have already ${msg} this recipe`
-          });
+          if (action === 'upvotes') {
+            Recipes
+              .find({
+                where: {
+                  id: req.params.recipeId,
+                }
+              })
+              .then((recipes) => {
+                recipes.decrement('upvotes')
+                  .then(() => {
+                    recipes.reload();
+                    found.update({
+                      upvotes: false,
+                    });
+                    res.status(200).send({
+                      message: 'You have successfully unvoted this recipe'
+                    });
+                  });
+              })
+              .catch(err => res.status.send(err));
+          } else {
+            return Recipes
+              .find({
+                where: {
+                  id: req.params.recipeId,
+                }
+              })
+              .then((recipes) => {
+                recipes.decrement('downvotes')
+                  .then(() => {
+                    recipes.reload();
+                    found.update({
+                      downvotes: false,
+                    });
+                    res.status(200).send({
+                      message: 'You have successfully unvoted this recipe'
+                    });
+                  });
+              })
+              .catch(err => res.status.send(err));
+          }
         }
 
         switch (action) {
@@ -35,10 +72,16 @@ export default class vote {
             if (found.downvotes === true && found.upvotes === false) {
               return vote.alreadyVoted(req, res);
             }
+            if (found.downvotes === false && found.upvotes === false) {
+              return vote.afterUnvote(req, res);
+            }
             break;
           case 'downvotes':
             if (found.upvotes === true && found.downvotes === false) {
               return vote.alreadyVoted(req, res);
+            }
+            if (found.downvotes === false && found.upvotes === false) {
+              return vote.afterUnvote(req, res);
             }
             break;
           default:
@@ -234,5 +277,72 @@ export default class vote {
           res.status(400).send(err);
         });
     }
+  }
+
+  /**
+   * update  votes after a user already unvote a recipe
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns success or failure message
+   */
+  static afterUnvote(req, res) {
+    const { action } = req.query;
+    const msg = action.replace('s', 'd');
+    Recipes
+      .find({
+        where: {
+          id: req.params.recipeId
+        }
+      })
+      .then((recipes) => {
+        switch (action) {
+          case 'upvotes':
+            recipes.update({
+              upvotes: recipes.upvotes + 1,
+            });
+            votes
+              .update({
+                upvotes: true,
+                downvotes: false,
+              }, {
+                where: {
+                  userId: req.decoded.id,
+                  recipeId: req.params.recipeId
+                }
+              })
+              .then(() => {
+                res.status(201).send({
+                  message: `Recipe successfully ${msg}`
+                });
+              })
+              .catch(err => res.status(400).send(err));
+            break;
+          case 'downvotes':
+            recipes.update({
+              downvotes: recipes.downvotes + 1,
+            });
+            votes
+              .update({
+                upvotes: false,
+                downvotes: true,
+              }, {
+                where: {
+                  userId: req.decoded.id,
+                  recipeId: req.params.recipeId
+                }
+              })
+              .then(() => {
+                res.status(201).send({
+                  message: `Recipe successfully ${msg}`
+                });
+              })
+              .catch(err => res.status(400).send(err));
+
+            break;
+          default:
+            return null;
+        }
+      })
+      .catch(err => res.status(400).send(err));
   }
 }
