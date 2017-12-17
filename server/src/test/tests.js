@@ -617,13 +617,13 @@ describe('More-Recipe Tests:', () => {
           done();
         });
     });
-    it('throws error for recipe already upvoted', (done) => {
+    it('unvotes recipe  for recipe already upvoted', (done) => {
       chai.request(app)
         .post('/api/v1/recipes/1/votes?action=upvotes')
         .set('x-access-token', token)
         .end((err, res) => {
-          expect(res.body.message).equal('You have already upvoted this recipe');
-          expect(res.status).equal(400);
+          expect(res.body.message).equal('You have successfully unvoted this recipe');
+          expect(res.status).equal(200);
           done();
         });
     });
@@ -652,8 +652,8 @@ describe('More-Recipe Tests:', () => {
         .post('/api/v1/recipes/1/votes?action=downvotes')
         .set('x-access-token', token)
         .end((err, res) => {
-          expect(res.body.message).equal('You have successfully downvoted this recipe');
-          expect(res.status).equal(200);
+          expect(res.body.message).equal('Recipe successfully downvoted');
+          expect(res.status).equal(201);
           done();
         });
     });
@@ -662,8 +662,8 @@ describe('More-Recipe Tests:', () => {
         .post('/api/v1/recipes/1/votes?action=downvotes')
         .set('x-access-token', token)
         .end((err, res) => {
-          expect(res.body.message).equal('You have already downvoted this recipe');
-          expect(res.status).equal(400);
+          expect(res.body.message).equal('You have successfully unvoted this recipe');
+          expect(res.status).equal(200);
           done();
         });
     });
@@ -672,8 +672,8 @@ describe('More-Recipe Tests:', () => {
         .post('/api/v1/recipes/1/votes?action=upvotes')
         .set('x-access-token', token)
         .end((err, res) => {
-          expect(res.body.message).equal('You have successfully upvoted this recipe');
-          expect(res.status).equal(200);
+          expect(res.body.message).equal('Recipe successfully upvoted');
+          expect(res.status).equal(201);
           done();
         });
     });
