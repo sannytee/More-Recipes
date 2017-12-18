@@ -1,12 +1,18 @@
-/** Checks if recipe exist
+/** returns error message for recipe not in catalog
  * @param {object} res
  * @param  {object} recipe
  */
 
-export const checkRecipe = (res, recipe) => {
-  if (recipe === null) {
-    return res.status(404).send({
-      message: 'Recipe not found'
+export const recipeNotFound = (res) => {
+  res.status(404).send({
+    message: 'Recipe not found'
+  });
+};
+
+export const validateUser = (res, userId, recipe) => {
+  if (recipe.userId !== userId) {
+    return res.status(403).send({
+      message: 'You are not allowed to perform this action'
     });
   }
 };

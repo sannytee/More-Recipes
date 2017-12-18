@@ -31,8 +31,9 @@ export default class favorite {
           })
           .then((foundFavorite) => {
             if (foundFavorite) {
-              return res.status(400).send({
-                message: 'Recipe already favorited'
+              foundFavorite.destroy();
+              return res.status(200).send({
+                message: 'Recipe removed from favorites'
               });
             }
             favorites
@@ -71,9 +72,9 @@ export default class favorite {
         ]
       })
       .then((favorited) => {
-        if (!favorited) {
-          return res.status(404).send({
-            message: 'You have no favorite recipe yet'
+        if (favorited.length === 0) {
+          return res.status(200).send({
+            message: 'You have no favorite recipes'
           });
         }
         res.status(200).send(favorited);
