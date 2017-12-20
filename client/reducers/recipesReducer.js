@@ -1,7 +1,8 @@
-import { GET_ALL_RECIPES } from '../actions/types';
+import { GET_ALL_RECIPES, GET_POPULAR_RECIPES } from '../actions/types';
 
 const initialState = {
   recipes: [],
+  popularRecipes: [],
   favoriteRecipes: [],
 };
 
@@ -16,6 +17,8 @@ function authReducer(state = initialState, action) {
   switch (action.type) {
     case GET_ALL_RECIPES:
       return { ...state, recipes: action.recipes };
+    case GET_POPULAR_RECIPES:
+      return { ...state, popularRecipes: action.popularRecipes };
     default:
       return state;
   }
