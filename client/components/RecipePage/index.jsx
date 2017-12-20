@@ -5,17 +5,18 @@ import { bindActionCreators } from 'redux';
 import Header from '../common/header';
 import RecipeCardGrid from './recipeCardGrid';
 import PopularRecipeCardList from './popularRecipeCardList';
-import getAllRecipesAction from '../../actions/recipesAction';
+import { getAllRecipesAction, getPopularRecipesAction } from '../../actions/recipesAction';
 
 /* eslint-disable require-jsdoc */
 /* eslint-disable class-methods-use-this */
 class RecipePage extends React.Component {
   componentWillMount() {
     this.props.actions.getAllRecipesAction();
+    this.props.actions.getPopularRecipesAction();
   }
 
   render() {
-    const { recipes } = this.props;
+    const { recipes, popularRecipes } = this.props;
     return (
       <div>
         <Header/>
@@ -23,7 +24,7 @@ class RecipePage extends React.Component {
           <div className="container cont_area">
             <div className="row">
               <RecipeCardGrid allRecipes={recipes}/>
-              <PopularRecipeCardList/>
+              <PopularRecipeCardList popularRecipes={popularRecipes}/>
             </div>
           </div>
         </div>
@@ -35,13 +36,15 @@ class RecipePage extends React.Component {
 function mapStateToProps(state) {
   return {
     recipes: state.recipes.recipes,
+    popularRecipes: state.recipes.popularRecipes,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({
-      getAllRecipesAction
+      getAllRecipesAction,
+      getPopularRecipesAction,
     }, dispatch)
   };
 }
