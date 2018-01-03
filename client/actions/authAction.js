@@ -3,7 +3,7 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import setToken from '../util/setToken';
-import { CREATE_USER, SIGN_USER } from './types';
+import { CREATE_USER, SIGN_USER, CHANGE_USER_AUTH } from './types';
 
 const URL = '/api/v1';
 
@@ -45,4 +45,15 @@ export function signinAction(userDetails) {
     .catch((err) => {
       throw (err);
     });
+}
+
+/**
+  * @description - Change the state of authenticated user
+  * @return {Object} dispatches the action type and token details
+  */
+export function changeAuthAction() {
+  return {
+    type: CHANGE_USER_AUTH,
+    payload: false
+  };
 }

@@ -13,11 +13,14 @@ const recipeCardGrid = props => (
     </div>
     <div className="row">
     {
-      props.allRecipes.map(recipes => (
+      props.allRecipes.map((recipe, i) => (
           <RecipeCard
-            recipeName={recipes.recipeName}
-            upvotes={recipes.upvotes}
-            downvotes={recipes.downvotes}
+            key={i}
+            i={i}
+            id={recipe.id}
+            recipeName={recipe.recipeName}
+            upvotes={recipe.upvotes}
+            downvotes={recipe.downvotes}
           />
         ))
     }

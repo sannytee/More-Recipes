@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
@@ -14,7 +14,7 @@ import img from '../../public/images/banner-img-2.jpg';
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable require-jsdoc */
-class SignupPage extends React.Component {
+class SignupPage extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {

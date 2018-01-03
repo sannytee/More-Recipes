@@ -1,4 +1,8 @@
-import { GET_ALL_RECIPES, GET_POPULAR_RECIPES } from '../actions/types';
+import { GET_ALL_RECIPES,
+  GET_POPULAR_RECIPES,
+  VOTE_RECIPE
+} from '../actions/types';
+
 
 const initialState = {
   recipes: [],
@@ -13,15 +17,30 @@ const initialState = {
   * @param  {Object} action
   * @return {Object} returns a new state
   */
-function authReducer(state = initialState, action) {
+function recipeReducer(state = initialState, action) {
+  let updatedRecipes;
+  const i = action.index;
+  let allRecipes;
   switch (action.type) {
     case GET_ALL_RECIPES:
-      return { ...state, recipes: action.recipes };
+      return { ...state, recipes: action.payload };
     case GET_POPULAR_RECIPES:
-      return { ...state, popularRecipes: action.popularRecipes };
+      return { ...state, popularRecipes: action.payload };
+    case VOTE_RECIPE:
+      allRecipes = state.recipes;
+      updatedRecipes = [
+        ...allRecipes.slice(0, i), // before the one we are updating
+        {
+          ...allRecipes[i],
+          upvotes: action.payload.recipe.upvotes,
+          downvotes: action.payload.recipe.downvotes
+        },
+        ...allRecipes.slice(i + 1), // after the one we are updating
+      ];
+      return { ...state, recipes: updatedRecipes };
     default:
       return state;
   }
 }
 
-export default authReducer;
+export default recipeReducer;

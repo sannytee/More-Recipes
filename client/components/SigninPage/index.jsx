@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
@@ -12,7 +12,7 @@ import { signinAction } from '../../actions/authAction';
 /* eslint-disable require-jsdoc */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-undef */
-class SigninPage extends React.Component {
+class SigninPage extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {

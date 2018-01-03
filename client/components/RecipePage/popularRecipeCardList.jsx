@@ -10,9 +10,10 @@ const popularRecipeCardList = props => (
           Popular Recipes
           </div>
         {
-          props.popularRecipes.map(recipes => (
+          props.popularRecipes.map((recipes, i) => (
             <PopularRecipeCard
               recipeName={recipes.recipeName}
+              key={i}
             />
           ))
         }
