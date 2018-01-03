@@ -1,3 +1,4 @@
+import { Recipes } from '../models';
 /** returns error message for recipe not in catalog
  * @param {object} res
  * @param  {object} recipe
@@ -7,6 +8,19 @@ export const recipeNotFound = (res) => {
   res.status(404).send({
     message: 'Recipe not found'
   });
+};
+
+export const findRecipe = (req, res, message) => {
+  Recipes
+    .find({
+      where: {
+        id: req.params.recipeId,
+      }
+    })
+    .then(foundRecipe => res.status(200).send({
+      message,
+      recipe: foundRecipe
+    }));
 };
 
 export const validateUser = (res, userId, recipe) => {
