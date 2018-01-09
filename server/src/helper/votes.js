@@ -1,6 +1,8 @@
 import { votes, Recipes } from '../models';
+import { findRecipe } from '../middlewares/validation';
+
 /**
- * @class upvotes
+ * @class votes
  */
 export default class vote {
   /**
@@ -10,6 +12,7 @@ export default class vote {
    * @returns  {JSON} Returns success or failure message
    */
   static checkVotes(req, res) {
+    const message = 'You have successfully unvoted this recipe';
     const { action } = req.query;
     votes
       .find({
@@ -38,9 +41,7 @@ export default class vote {
                     found.update({
                       upvotes: false,
                     });
-                    res.status(200).send({
-                      message: 'You have successfully unvoted this recipe'
-                    });
+                    findRecipe(req, res, message);
                   });
               })
               .catch(err => res.status.send(err));
@@ -58,9 +59,7 @@ export default class vote {
                     found.update({
                       downvotes: false,
                     });
-                    res.status(200).send({
-                      message: 'You have successfully unvoted this recipe'
-                    });
+                    findRecipe(req, res, message);
                   });
               })
               .catch(err => res.status.send(err));
@@ -73,7 +72,7 @@ export default class vote {
               return vote.alreadyVoted(req, res);
             }
             if (found.downvotes === false && found.upvotes === false) {
-              return vote.afterUnvote(req, res);
+              vote.afterUnvote(req, res);
             }
             break;
           case 'downvotes':
@@ -98,8 +97,6 @@ export default class vote {
    * @returns  {JSON} Returns success or failure message
    */
   static createVotes(req, res) {
-    const { action } = req.query;
-    const msg = action.replace('s', 'd');
     votes
       .create({
         userId: req.decoded.id,
@@ -108,9 +105,6 @@ export default class vote {
       })
       .then(() => {
         vote.findRecipeToVote(req, res);
-        return res.status(201).send({
-          message: `Recipe successfully ${msg}`
-        });
       })
       .catch(err => res.status(400).send(err));
   }
@@ -143,6 +137,8 @@ export default class vote {
    */
   static updateRecipeVotes(req, res, recipe) {
     const { action } = req.query;
+    const msg = action.replace('s', 'd');
+    const resMessage = `Recipe successfully ${msg}`;
     switch (action) {
       case 'upvotes':
         return Recipes
@@ -152,6 +148,9 @@ export default class vote {
             where: {
               id: recipe.id,
             }
+          })
+          .then(() => {
+            findRecipe(req, res, resMessage);
           })
           .catch((err) => {
             res.status(400).send(err);
@@ -164,6 +163,9 @@ export default class vote {
             where: {
               id: recipe.id,
             }
+          })
+          .then(() => {
+            findRecipe(req, res, resMessage);
           })
           .catch((err) => {
             res.status(400).send(err);
@@ -180,8 +182,6 @@ export default class vote {
    * @returns  {JSON} Returns success or failure message
    */
   static alreadyVoted(req, res) {
-    const { action } = req.query;
-    const msg = action.replace('s', 'd');
     Recipes
       .find({
         where: {
@@ -190,9 +190,6 @@ export default class vote {
       })
       .then((foundRecipe) => {
         vote.updateVotes(req, res, foundRecipe);
-        res.status(200).send({
-          message: `You have successfully ${msg} this recipe`
-        });
       })
       .catch(err => res.status(400).send(err));
   }
@@ -249,6 +246,8 @@ export default class vote {
    */
   static update(req, res, recipe) {
     const { action } = req.query;
+    const msg = action.replace('s', '');
+    const resMessage = `You have successfully ${msg} this recipe`;
     if (action === 'upvotes') {
       Recipes
         .update({
@@ -258,6 +257,9 @@ export default class vote {
           where: {
             id: recipe.id,
           }
+        })
+        .then(() => {
+          findRecipe(req, res, resMessage);
         })
         .catch((err) => {
           res.status(400).send(err);
@@ -272,6 +274,9 @@ export default class vote {
           where: {
             id: recipe.id,
           }
+        })
+        .then(() => {
+          findRecipe(req, res, resMessage);
         })
         .catch((err) => {
           res.status(400).send(err);
@@ -288,6 +293,7 @@ export default class vote {
   static afterUnvote(req, res) {
     const { action } = req.query;
     const msg = action.replace('s', 'd');
+    const message = `Recipe successfully ${msg}`;
     Recipes
       .find({
         where: {
@@ -311,9 +317,7 @@ export default class vote {
                 }
               })
               .then(() => {
-                res.status(201).send({
-                  message: `Recipe successfully ${msg}`
-                });
+                findRecipe(req, res, message);
               })
               .catch(err => res.status(400).send(err));
             break;
@@ -332,9 +336,7 @@ export default class vote {
                 }
               })
               .then(() => {
-                res.status(201).send({
-                  message: `Recipe successfully ${msg}`
-                });
+                findRecipe(req, res, message);
               })
               .catch(err => res.status(400).send(err));
 

@@ -614,7 +614,7 @@ describe('More-Recipe Tests:', () => {
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('Recipe successfully upvoted');
-          expect(res.status).equal(201);
+          expect(res.status).equal(200);
           done();
         });
     });
@@ -644,7 +644,7 @@ describe('More-Recipe Tests:', () => {
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('Recipe successfully downvoted');
-          expect(res.status).equal(201);
+          expect(res.status).equal(200);
           done();
         });
     });
@@ -654,7 +654,7 @@ describe('More-Recipe Tests:', () => {
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('Recipe successfully downvoted');
-          expect(res.status).equal(201);
+          expect(res.status).equal(200);
           done();
         });
     });
@@ -674,7 +674,7 @@ describe('More-Recipe Tests:', () => {
         .set('x-access-token', token)
         .end((err, res) => {
           expect(res.body.message).equal('Recipe successfully upvoted');
-          expect(res.status).equal(201);
+          expect(res.status).equal(200);
           done();
         });
     });
