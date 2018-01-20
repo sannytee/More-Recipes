@@ -1,6 +1,7 @@
 import { GET_ALL_RECIPES,
   GET_POPULAR_RECIPES,
-  VOTE_RECIPE
+  VOTE_RECIPE,
+  CREATE_RECIPE
 } from '../actions/types';
 
 
@@ -38,6 +39,8 @@ function recipeReducer(state = initialState, action) {
         ...allRecipes.slice(i + 1), // after the one we are updating
       ];
       return { ...state, recipes: updatedRecipes };
+    case CREATE_RECIPE:
+      return { ...state, recipes: [...state.recipes, action.payload.Recipe] };
     default:
       return state;
   }

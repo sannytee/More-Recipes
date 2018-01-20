@@ -4,7 +4,8 @@
   "env": {
     "node": true,
     "es6": true,
-    "mocha": true
+    "mocha": true,
+    "jquery": true
   },
   "parserOptions": {
     "ecmaFeatures": {
@@ -40,5 +41,9 @@
             "ClassDeclaration": true
         }
     }]
+  },
+  "globals": {
+    "document": false,
+    "localStorage": false
   }
 }

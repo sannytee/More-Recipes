@@ -27,14 +27,21 @@ export default class recipe {
         description,
         method,
         ingredients,
-
       })
       .then(recipes => res.status(201).send({
         success: true,
         Recipe: recipes,
         message: 'Recipe successfully added'
       }))
-      .catch(err => res.status(400).json(err));
+      .catch((err) => {
+        const errors = [];
+        if (err.name === 'SequelizeValidationError') {
+          err.errors.map((error) => {
+            errors.push(error.message);
+          });
+        }
+        res.status(400).json(errors);
+      });
   }
   /**
    * Update a  Recipe

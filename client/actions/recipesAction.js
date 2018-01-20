@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { GET_ALL_RECIPES,
   GET_POPULAR_RECIPES,
-  VOTE_RECIPE
+  VOTE_RECIPE,
+  CREATE_RECIPE
 } from './types';
 
 const URL = '/api/v1';
@@ -44,7 +45,7 @@ export function getPopularRecipesAction() {
   * @description - Calls the API to upvote or downvote recipe
   * @param  {int} recipeId - id of recipe to be upvoted or downvoted
   * @param {string} voteAction - specify the action - upvote or downvote
-    * @param  {int} index - index of recipe in array
+  * @param  {int} index - index of recipe in array
   * @return {Object} dispatch an object
   */
 export function voteRecipeAction(recipeId, voteAction, index) {
@@ -54,6 +55,24 @@ export function voteRecipeAction(recipeId, voteAction, index) {
         type: VOTE_RECIPE,
         payload: res.data,
         index,
+      });
+    })
+    .catch((err) => {
+      throw (err);
+    });
+}
+
+/**
+  * @description - Calls the API to create recipe
+  * @param {object} recipeDetails - details of recipe to be added
+  * @return {Object} dispatch an object
+  */
+export function createRecipeAction(recipeDetails) {
+  return dispatch => axios.post(`${URL}/recipes`, recipeDetails)
+    .then((res) => {
+      dispatch({
+        type: CREATE_RECIPE,
+        payload: res.data,
       });
     })
     .catch((err) => {
