@@ -76,4 +76,11 @@ export default (app) => {
     authentication.verifyUser,
     voteController.vote
   );
+
+  app.get(
+    '/api/v1/users/:userId/myrecipes',
+    checkReqParams,
+    authentication.verifyUser,
+    userController.myRecipes
+  );
 };

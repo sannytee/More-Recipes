@@ -230,4 +230,36 @@ export default class recipe {
       })
       .catch(err => res.status(400).send(err));
   }
+
+  /**
+   * Get  all recipes added by a user
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns user recipes
+   */
+  static getUserRecipe(req, res) {
+    const userId = req.decoded.id;
+    const params = parseInt(req.params.userId, 10);
+    Recipes
+      .findAll({
+        where: {
+          userId
+        },
+      })
+      .then((userRecipe) => {
+        if (!userRecipe) {
+          return res.status(404).send({
+            message: 'You have not add any recipe'
+          });
+        }
+        if (params !== userId) {
+          res.status(403).send({
+            message: 'You are not allowed to perform this action'
+          });
+        } else {
+          return res.status(200).send(userRecipe);
+        }
+      })
+      .catch(err => res.status(500).send(err));
+  }
 }
