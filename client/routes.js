@@ -8,6 +8,7 @@ import LandingPage from './components/LandingPage/index';
 import SigninPage from './components/SigninPage/index';
 import SignupPage from './components/SignupPage/index';
 import recipes from './components/RecipePage/index';
+import myRecipePage from './components/MyRecipePage/index';
 
 export default (
   <Route path='/' component={App}>
@@ -15,8 +16,8 @@ export default (
     <Route path='signin' component={SigninPage} />
     <Route path='signup' component={SignupPage}/>
     <Route path='recipes' component={recipes} />
+    <Route path='/my-recipes' component={myRecipePage} />
     <Route path='recipes/:recipeId' />
     <Route path='users/:userId/profile'/>
-    <Route path='users/:userId/recipe'/>
   </Route>
 );

@@ -79,7 +79,15 @@ export default class recipe {
             }));
         }
       })
-      .catch(err => res.status(400).send(err));
+      .catch((err) => {
+        const errors = [];
+        if (err.name === 'SequelizeValidationError') {
+          err.errors.map((error) => {
+            errors.push(error.message);
+          });
+        }
+        res.status(400).json(errors);
+      });
   }
   /**
    * Delete a  Recipe

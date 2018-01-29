@@ -1,22 +1,22 @@
 body {
- 	background-color: #f8f7f7 !important;
+  background-color: #f8f7f7 !important;
   margin: 0 0 100px !important;
 }
+
 html {
   position: relative;
   min-height: 100%;
 }
 
-.about{
+.about {
   color: #2b3034;
   font-weight: 500;
   line-height: 1.1;
   font-size: 30px;
 }
 
- 
 .footer-section {
- 	background-color: #2b3034;
+  background-color: #2b3034;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -25,20 +25,22 @@ html {
 
 .copyright {
   color: #fff;
- 	text-align: center;
+  text-align: center;
 }
 
 .content {
   z-index: 1;
   position: relative;
+  margin-top: 70px;
 }
 
-.content > .cont_area {
+.content>.cont_area {
   position: relative;
   background: #f8f7f7;
   min-height: 500px;
   z-index: 4;
 }
+
 .content .line {
   text-align: center;
   position: relative;
@@ -46,15 +48,15 @@ html {
 }
 
 .content .line h2 {
-  font-weight: 300; 
+  font-weight: 300;
   display: inline-block;
   background: #f8f7f7;
-  z-index: 2; 
-  position: relative; 
-  padding: 0 53px; 
-  font-size: 60px; 
-  text-shadow: 2px 2px 0px #fff; 
-  color: #2b3034; 
+  z-index: 2;
+  position: relative;
+  padding: 0 53px;
+  font-size: 60px;
+  text-shadow: 2px 2px 0px #fff;
+  color: #2b3034;
 }
 
 .content .line:before {
@@ -72,7 +74,7 @@ html {
   margin-top: 30px;
 }
 
-.card-space{
+.card-space {
   margin-bottom: 20px;
 }
 
@@ -93,7 +95,7 @@ html {
   color: #fff;
   font-size: 24px;
   padding: 10px 10px 10px 20px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   line-height: 28px;
 }
 
@@ -108,7 +110,7 @@ html {
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  border-bottom: 1px dashed rgba(255,255,255,0.3);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -116,6 +118,7 @@ html {
   padding: 5px 3px 12px 3px;
   z-index: 2;
 }
+
 .sidebar .side_rec_area .side_item .img {
   height: 40px;
   overflow: hidden;
@@ -127,49 +130,50 @@ html {
   -ms-flex: 0 0 100px;
   flex: 0 0 100px;
 }
+
 .sidebar .side_rec_area a {
   text-decoration: none !important;
 }
+
 .sidebar .side_rec_area .side_item .title {
-    padding: 0 10px;
-    color: #f2b43c;
-    -webkit-flex-shrink: 0;
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    overflow: hidden;
-    line-height: 19px;
-    text-align: left;
-    font-size: 16px;
-    -webkit-box-flex: 2;
-    -webkit-flex: 2;
-    -ms-flex: 2;
-    flex: 2;
-    height: 40px;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-transition: background 0.4s linear;
-    transition: background 0.4s linear;
+  padding: 0 10px;
+  color: #f2b43c;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  line-height: 19px;
+  text-align: left;
+  font-size: 16px;
+  -webkit-box-flex: 2;
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  height: 40px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: background 0.4s linear;
+  transition: background 0.4s linear;
 }
 
-
-
-.row .col-sm-3{
- 	padding-bottom: 20px;
+.row .col-sm-3 {
+  padding-bottom: 20px;
 }
 
 .section-about {
- 	margin-top: 30px;
+  margin-top: 30px;
 }
 
 .link-button {
-	color: #fff;
+  color: #fff;
 }
+
 .popular-section h4 {
   padding: 20px 0px 20px 0px;
 }
@@ -179,12 +183,12 @@ html {
   padding-bottom: 70px;
   background-color: #f2f2f2;
 }
+
 .centered {
-    text-align: center;
+  text-align: center;
 }
 
-
-.card-title{
+.card-title {
   font-size: 1.5rem
 }
 
@@ -193,11 +197,12 @@ html {
   margin-left: auto!important;
 }
 
-.cal-big{
+.cal-big {
   font: 50px;
   color: #fff;
-  display:block;
+  display: block;
 }
+
 .form {
   max-width: 380px;
   margin-top: -25px;
@@ -207,8 +212,8 @@ html {
   color: #2b3034;
 }
 
-.card{
-	padding: 30px;
+.card {
+  padding: 30px;
   background-color: #fff;
 }
 
@@ -217,67 +222,82 @@ button.signin-btn {
   width: 100%;
   margin-bottom: 1.2rem;
 }
+
 #footer-below {
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
   padding: 15px 0;
   text-align: center;
 }
-#headline{
+
+#headline {
   color: #fff;
   font-family: 'Permanent Marker', cursive;
   padding-left: 10px;
 }
-.headline{
+
+.headline {
   color: #fff;
 }
-.vote-button{
+
+.vote-button {
   color: #2b3035;
   background-color: #f2b43c;
 }
-#landing-header {
-    z-index: 1;
-    position: relative;
-    text-align: center;
-}
-#landing-header h1 {
-    color: #fff;
-    font-size: 50px;
-    font-weight: 700;
+
+.edit-btn {
+  background-color: #2b3034;
+  color: #fff;
 }
 
-.product-box{
+#landing-header {
+  z-index: 1;
+  position: relative;
+  text-align: center;
+}
+
+#landing-header h1 {
+  color: #fff;
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.product-box {
   margin-bottom: 30px;
   margin-right: 10px
 }
 
-.jumbotron.profile{
+.jumbotron.profile {
   background-color: #fff;
   margin-top: 20px;
 }
+
 .fix {
   margin-bottom: 10px;
   color: #fff;
 }
-#anchor1:hover,#anchor2:hover,#anchor3:hover{
+
+#anchor1:hover,
+#anchor2:hover,
+#anchor3:hover {
   text-decoration: none;
   color: #fff;
 }
 
-.recipe-card{
+.recipe-card {
   margin-bottom: 10px;
 }
 
-h6 a{
-  color:#fff;
+h6 a {
+  color: #fff;
 }
 
 .section-popular {
-  margin-top: 30px;
+  margin-top: 70px;
   background-color: #2b3034;
   margin-bottom: 20px;
 }
 
-.section-recipes{
+.section-recipes {
   margin-top: 30px;
   margin-bottom: 20px;
 }
@@ -304,17 +324,17 @@ h6 a{
   position: relative;
 }
 
-
 .profile-list .title {
   color: #fff;
   font-size: 14px;
-    font-weight: 700;
-    line-height: 1.1;
-    display: inline-block;
-    padding: 7px 12px;
-    text-transform: uppercase;
-    position: relative
+  font-weight: 700;
+  line-height: 1.1;
+  display: inline-block;
+  padding: 7px 12px;
+  text-transform: uppercase;
+  position: relative
 }
+
 .profile-list .cont {
   display: block;
   font-size: 15px;
@@ -332,10 +352,10 @@ h6 a{
   height: 20px;
   margin-top: 5px;
   margin-left: 10px;
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
-.move-image{
+.move-image {
   text-align: center
 }
 
@@ -344,17 +364,16 @@ h6 a{
   margin-bottom: 20px;
 }
 
-
-li{
+li {
   list-style: none;
 }
 
-#remove-link{
+#remove-link {
   text-decoration: none;
   color: #2b3034;
 }
 
-h4{
+h4 {
   font-family: 'Satisfy', cursive;
 }
 
@@ -364,7 +383,7 @@ h4{
   text-decoration-color: #FFF;
 }
 
-.button-color{
+.button-color {
   background-color: #5CB85C;
   color: #fff;
 }
