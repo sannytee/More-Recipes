@@ -1,6 +1,6 @@
-/* eslint-disable no-unused-vars *//* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars */
 /**
- *  @fileOverview Creates header for authenticated users
+ *  @fileOverview Creates the homepage for users
  *
  *  @author       Sanni Taiwo
  *
@@ -9,7 +9,6 @@
  *  @requires     NPM:redux
  *  @requires     NPM:jsonwebtoken
  */
-
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -26,7 +25,8 @@ import { getAllRecipesAction,
 import { changeAuthAction } from '../../actions/authAction';
 
 /**
- * A class to represent the recipe page
+ * @description A class to represent the recipe page
+ *
  * @extends Component
  */
 class RecipePage extends Component {
@@ -40,9 +40,11 @@ class RecipePage extends Component {
   }
 
   /**
-   * return navbar based on if user is authenticated
+   * @description return navbar based on if user is authenticated
+   *
    * @memberof RecipePage
-   * @returns {*} returns navbar
+   *
+   * @returns {void} returns navbar
   */
   checkUserState() {
     let notValid;
@@ -71,7 +73,8 @@ class RecipePage extends Component {
 
   /**
    * @memberof RecipePage
-   * @returns {*} returns the component to be mounted
+   *
+   * @returns {void} returns the component to be mounted
   */
   render() {
     const {
@@ -100,8 +103,10 @@ class RecipePage extends Component {
 }
 
 /**
- * maps state to properties of RecipePage
- * @param  {state} state
+ * @description maps state to properties of RecipePage
+ *
+ * @param  {object} state
+ *
  * @returns {object} returns the state to be bind
  */
 function mapStateToProps(state) {
@@ -114,8 +119,10 @@ function mapStateToProps(state) {
 }
 
 /**
- * maps action to properties of authHeader
+ * @description maps action to properties of authHeader
+ *
  * @param  {dispatch} dispatch
+ *
  * @returns {object} returns the action to be bind
  */
 function mapDispatchToProps(dispatch) {

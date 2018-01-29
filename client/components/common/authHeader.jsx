@@ -19,12 +19,12 @@ import { createRecipeAction } from '../../actions/recipesAction';
 
 
 /**
- * A class to represent authenticated user header
+ * @description class to represent authenticated user header
  * @extends Component
  */
 class authHeader extends Component {
   /**
-   * Creates a recipe
+   * @description Creates a recipe
    * @param {object} props
   */
   constructor(props) {
@@ -44,8 +44,8 @@ class authHeader extends Component {
   }
 
   /**
-   * checks for update in form entry
-   * @param {object} event - The x value.
+   * @description checks for update in form entry
+   * @param {object} event
    * @memberof authHeader
    * @returns {void}
   */
@@ -58,7 +58,7 @@ class authHeader extends Component {
   }
 
   /**
-   * checks for update in form entry
+   * @description checks when an element is being focused on
    * @param {object} event
    * @memberof authHeader
    * @returns {void}
@@ -68,10 +68,10 @@ class authHeader extends Component {
   }
 
   /**
-   * checks when an element is being focused on
+   * @description handles form submission
    * @param {object} event
    * @memberof authHeader
-   * @returns {void} void
+   * @returns {void}
   */
   handleSubmit(event) {
     event.preventDefault();
@@ -99,15 +99,15 @@ class authHeader extends Component {
 
 
   /**
-   * renders the component
+   * @description renders the component
    * @memberof authHeader
-   * @returns {*} returns the navbar section of authenticated users
+   * @returns {void} returns the navbar section of authenticated users
   */
   render() {
     return (
       <header>
-        <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#2b3034' }}>
-          <a className="navbar-brand" href="#">More-Recipes</a>
+        <nav className="navbar fixed-top  navbar-expand-lg navbar-dark" style={{ backgroundColor: '#2b3034' }}>
+          <a className="navbar-brand" href="/">More-Recipes</a>
           <button className="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -284,7 +284,7 @@ class authHeader extends Component {
 }
 
 /**
- * maps action to properties of authHeader
+ * @description maps action to properties of authHeader
  * @param  {object} dispatch
  * @returns {object} returns the action to be bind
  */
