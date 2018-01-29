@@ -17,9 +17,11 @@ import Header from '../common/authHeader';
 import Footer from '../common/footer';
 import MyRecipeCard from './MyRecipeCard';
 import EditRecipeModal from './EditRecipeModal';
+import DeleteRecipeModal from './deleteRecipeModal';
 import {
   getUserRecipes,
-  editRecipeAction
+  editRecipeAction,
+  deleteRecipeAction
 } from '../../actions/recipesAction';
 
 /**
@@ -44,6 +46,7 @@ class MyRecipePage extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onFocus = this.onFocus.bind(this);
+    this.handleDeletion = this.handleDeletion.bind(this);
   }
 
   /**
@@ -81,6 +84,24 @@ class MyRecipePage extends Component {
             errorMessage: message
           });
         });
+      });
+  }
+
+  /**
+   * @description handles the deletion of recipe
+   *
+   * @param {object} event
+   *
+   * @memberof MyRecipePage
+   *
+   * @returns {void}
+  */
+  handleDeletion(event) {
+    const { recipe, index } = this.state;
+    this.props.actions.deleteRecipeAction(recipe.id, index)
+      .then(() => {
+        toastr.success('Recipe successfully deleted');
+        $('#deleteModal').modal('hide');
       });
   }
 
@@ -133,6 +154,7 @@ class MyRecipePage extends Component {
     });
   }
 
+
   /**
    * @description checks if a user have recipes
    *
@@ -183,6 +205,9 @@ class MyRecipePage extends Component {
             errorMessage={this.state.errorMessage}
             onFocus={this.onFocus}
           />
+          < DeleteRecipeModal
+            handleDeletion={this.handleDeletion}
+          />
         </div>
         <Footer/>
       </div>
@@ -215,7 +240,8 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({
       getUserRecipes,
-      editRecipeAction
+      editRecipeAction,
+      deleteRecipeAction
     }, dispatch)
   };
 }

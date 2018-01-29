@@ -23,8 +23,17 @@ const DeleteRecipeModal = props => (
           This action cannot be reversed, proceed with caution.
         </div>
         <div className="modal-footer">
-          <button type="button" className="btn btn-danger">Delete</button>
-          <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button
+            type="button"
+            onClick={props.handleDeletion}
+            className="btn btn-danger">
+            Delete
+          </button>
+          <button
+          type="button"
+          className="btn btn-secondary"
+          data-dismiss="modal">
+          Close</button>
         </div>
       </div>
     </div>

@@ -5,7 +5,8 @@ import { GET_ALL_RECIPES,
   CREATE_RECIPE,
   GET_USER_RECIPES,
   EDIT_RECIPE,
-  GET_RECIPE_DATA
+  GET_RECIPE_DATA,
+  DELETE_RECIPE
 } from './types';
 
 const URL = '/api/v1';
@@ -145,6 +146,27 @@ export function getRecipeData(recipeId) {
       dispatch({
         type: GET_RECIPE_DATA,
         payload: res.data,
+      });
+    })
+    .catch((err) => {
+      throw (err);
+    });
+}
+
+/**
+ * @description - Calls the API to delete a recipe
+ *
+ * @param {number} recipeId - id of recipe to be deleted
+ * @param {number} position - index of recipe in array
+ *
+ * @return {Object} dispatch an object
+*/
+export function deleteRecipeAction(recipeId, position) {
+  return dispatch => axios.delete(`${URL}/recipes/${recipeId}`)
+    .then(() => {
+      dispatch({
+        type: DELETE_RECIPE,
+        position
       });
     })
     .catch((err) => {

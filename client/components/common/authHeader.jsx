@@ -143,7 +143,7 @@ class authHeader extends Component {
                 <Link className="nav-link" to="profile">Profile</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/users/:userId/recipes">My Recipes</Link>
+                <Link className="nav-link" to="/my-recipes">My Recipes</Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link disabled">Signout</a>

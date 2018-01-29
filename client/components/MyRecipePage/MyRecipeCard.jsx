@@ -8,7 +8,6 @@
  */
 import React, { Component } from 'react';
 import img from '../../public/images/recipe-5.jpg';
-import DeleteRecipeModal from './deleteRecipeModal';
 
 /**
  * @description A class to create card for each recipes
@@ -83,12 +82,12 @@ class MyRecipeCard extends Component {
                     data-toggle="modal"
                     data-target="#deleteModal"
                     className='btn btn-danger'
+                    onClick={this.getRecipeDetails}
                     type='button'>
                     <i className="fa fa-trash-o fa-lg" aria-hidden="true">
                       <span style={{ marginLeft: '5px', marginRight: '5px' }}></span>
                     </i>
                   </button>
-                  < DeleteRecipeModal />
                 </div>
               </div>
             </div>

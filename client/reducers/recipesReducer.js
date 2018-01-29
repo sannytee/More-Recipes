@@ -4,7 +4,8 @@ import { GET_ALL_RECIPES,
   VOTE_RECIPE,
   CREATE_RECIPE,
   GET_USER_RECIPES,
-  EDIT_RECIPE
+  EDIT_RECIPE,
+  DELETE_RECIPE
 } from '../actions/types';
 
 
@@ -44,7 +45,11 @@ function recipeReducer(state = initialState, action) {
       ];
       return { ...state, recipes: updatedRecipes };
     case CREATE_RECIPE:
-      return { ...state, recipes: [...state.recipes, action.payload.Recipe] };
+      return {
+        ...state,
+        recipes: [...state.recipes, action.payload.Recipe],
+        userRecipes: [...state.userRecipes, action.payload.Recipe]
+      };
     case GET_USER_RECIPES:
       return { ...state, userRecipes: action.payload };
     case EDIT_RECIPE:
@@ -56,6 +61,14 @@ function recipeReducer(state = initialState, action) {
         ...myRecipes.slice(index + 1)
       ];
       return { ...state, userRecipes: updatedUserRecipes };
+    case DELETE_RECIPE:
+      const { position } = action;
+      const currentRecipes = state.userRecipes;
+      const updatedRecipesArray = [
+        ...currentRecipes.slice(0, position),
+        ...currentRecipes.slice(position + 1)
+      ];
+      return { ...state, userRecipes: updatedRecipesArray };
     default:
       return state;
   }
