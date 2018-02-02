@@ -1,6 +1,6 @@
 $white-color: #fff;
 $vote-color: #2b3035;
-$vote-backgroundColor: #f2b43c;
+$vote-background-color: #f2b43c;
 
 body {
   background-color: #f8f7f7 !important;
@@ -244,8 +244,8 @@ button.signin-btn {
 }
 
 .vote-button {
+  background-color: $vote-background-color;
   color: $vote-color;
-  background-color: $vote-backgroundColor;
 }
 
 .edit-btn {
@@ -299,6 +299,7 @@ h6 a {
   background-color: #2b3034;
   margin-top: 70px;
   margin-bottom: 20px;
+  margin-top: 70px;
 }
 
 .section-recipes {

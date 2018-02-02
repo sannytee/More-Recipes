@@ -83,6 +83,7 @@ export default class recipe {
       .catch((err) => {
         const errors = [];
         if (err.name === 'SequelizeValidationError') {
+          /* eslint-disable array-callback-return */
           err.errors.map((error) => {
             errors.push(error.message);
           });

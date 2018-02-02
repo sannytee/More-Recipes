@@ -5,9 +5,10 @@ const Footer = props => (
   <footer className="footer-section" id="footer-below">
     <div className="container">
       <strong
-        className="copyright">
+        className="copyright"
+      >
         More-Recipes © 2017, All Rights Reserved, Design &amp; Developed By: SannyTee
-        </strong>
+      </strong>
     </div>
   </footer>
 );

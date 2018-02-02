@@ -10,7 +10,7 @@
  *  @requires     NPM:jsonwebtoken
  */
 
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import jwt from 'jsonwebtoken';
@@ -24,6 +24,26 @@ import { getAllRecipesAction,
 } from '../../actions/recipesAction';
 import { changeAuthAction } from '../../actions/authAction';
 
+const propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.number,
+    username: PropTypes.string
+  }),
+  actions: PropTypes.shape({
+    getAllRecipesAction: PropTypes.func,
+    getPopularRecipesAction: PropTypes.func,
+    changeAuthAction: PropTypes.func.isRequired,
+  }).isRequired,
+  isauthenticated: PropTypes.bool.isRequired,
+  recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  popularRecipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+};
+
+const defaultProps = {
+  user: null
+};
+
+
 /**
  * @description A class to represent the recipe page
  *
@@ -34,7 +54,7 @@ class RecipePage extends Component {
    * @memberof RecipePage
    * @returns {void}
   */
-  componentWillMount() {
+  componentDidMount() {
     this.props.actions.getAllRecipesAction();
     this.props.actions.getPopularRecipesAction();
   }
@@ -50,7 +70,7 @@ class RecipePage extends Component {
     let notValid;
     const token = localStorage.getItem('token');
     if (this.props.isauthenticated === false) {
-      return <Header/>;
+      return <Header />;
     }
     if (this.props.isauthenticated === true) {
       jwt.verify(token, 'andelabootcampproject', (error) => {
@@ -63,10 +83,10 @@ class RecipePage extends Component {
         }
       });
       if (notValid === true) {
-        return <Header/>;
+        return <Header />;
       }
       if (notValid === false) {
-        return <AuthHeader user={this.props.user}/>;
+        return <AuthHeader user={this.props.user} />;
       }
     }
   }
@@ -89,18 +109,21 @@ class RecipePage extends Component {
           <div className="container cont_area">
             <div className="row">
               <RecipeCardGrid
-              allRecipes={this.props.recipes}
-              upvoteAction={this.upvoteRecipe}
+                allRecipes={this.props.recipes}
+                upvoteAction={this.upvoteRecipe}
               />
-              <PopularRecipeCardList popularRecipes={popularRecipes}/>
+              <PopularRecipeCardList popularRecipes={popularRecipes} />
             </div>
           </div>
         </div>
-        <Footer/>
+        <Footer />
       </div>
     );
   }
 }
+
+RecipePage.propTypes = propTypes;
+RecipePage.defaultProps = defaultProps;
 
 /**
  * @description maps state to properties of RecipePage
