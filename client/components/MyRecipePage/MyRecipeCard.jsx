@@ -6,8 +6,16 @@
  *
  *  @requires     NPM:react
  */
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import img from '../../public/images/recipe-5.jpg';
+
+const propTypes = {
+  getRecipe: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+  recipeDetails: PropTypes.shape({
+    recipeName: PropTypes.string,
+  }).isRequired
+};
 
 /**
  * @description A class to create card for each recipes
@@ -52,12 +60,12 @@ class MyRecipeCard extends Component {
   render() {
     const { index } = this.props;
     return (
-      <div className='col-md-4 card-space'>
-        <div className='card-deck'>
-          <article className='card'>
-            <img src={img} className='card-img-top img-fluid' />
-            <div className='card-body'>
-              <h3 className='card-title'>
+      <div className="col-md-4 card-space">
+        <div className="card-deck">
+          <article className="card">
+            <img src={img} alt="recipe" className="card-img-top img-fluid" />
+            <div className="card-body">
+              <h3 className="card-title">
                 <a href="/recipes/:recipeId" id="remove-link">
                   {this.props.recipeDetails.recipeName}
                 </a>
@@ -69,24 +77,22 @@ class MyRecipeCard extends Component {
                   <button
                     data-toggle="modal"
                     data-target="#editModal"
-                    className='btn edit-btn'
+                    className="btn edit-btn"
                     onClick={this.getRecipeDetails}
-                    type='button'>
-                    <i className="fa fa-pencil-square-o fa-lg" aria-hidden="true">
-                      <span style={{ marginLeft: '5px', marginRight: '5px' }}></span>
-                    </i>
+                    type="button"
+                  >
+                    <i className="fa fa-pencil-square-o fa-lg" aria-hidden="true" />
                   </button>
                 </div>
                 <div style={{ marginLeft: '20px' }}>
                   <button
                     data-toggle="modal"
                     data-target="#deleteModal"
-                    className='btn btn-danger'
+                    className="btn btn-danger"
                     onClick={this.getRecipeDetails}
-                    type='button'>
-                    <i className="fa fa-trash-o fa-lg" aria-hidden="true">
-                      <span style={{ marginLeft: '5px', marginRight: '5px' }}></span>
-                    </i>
+                    type="button"
+                  >
+                    <i className="fa fa-trash-o fa-lg" aria-hidden="true" />
                   </button>
                 </div>
               </div>
@@ -97,5 +103,7 @@ class MyRecipeCard extends Component {
     );
   }
 }
+
+MyRecipeCard.propTypes = propTypes;
 
 export default MyRecipeCard;

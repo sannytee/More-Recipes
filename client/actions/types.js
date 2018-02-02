@@ -9,3 +9,4 @@ export const GET_USER_RECIPES = 'GET_USER_RECIPES';
 export const EDIT_RECIPE = 'EDIT_RECIPE';
 export const GET_RECIPE_DATA = 'GET_RECIPE_DATA';
 export const DELETE_RECIPE = 'DELETE_RECIPE';
+export const LOGOUT_USER = 'LOGOUT_USER';

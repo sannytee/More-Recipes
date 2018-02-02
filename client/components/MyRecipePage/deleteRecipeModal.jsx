@@ -1,16 +1,21 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { PropTypes } from 'react';
+
+const propTypes = {
+  handleDeletion: PropTypes.func.isRequired
+};
 
 const DeleteRecipeModal = props => (
   <div
     className="modal fade"
     id="deleteModal"
-    tabindex="-1"
+    tabIndex="-1"
     data-backdrop="static"
     role="dialog"
     aria-labelledby="deleteModalLabel"
     style={{ display: 'none' }}
-    aria-hidden="true">
+    aria-hidden="true"
+  >
     <div className="modal-dialog" role="document">
       <div className="modal-content">
         <div className="modal-header black">
@@ -26,18 +31,23 @@ const DeleteRecipeModal = props => (
           <button
             type="button"
             onClick={props.handleDeletion}
-            className="btn btn-danger">
+            className="btn btn-danger"
+          >
             Delete
           </button>
           <button
-          type="button"
-          className="btn btn-secondary"
-          data-dismiss="modal">
-          Close</button>
+            type="button"
+            className="btn btn-secondary"
+            data-dismiss="modal"
+          >
+          Close
+          </button>
         </div>
       </div>
     </div>
   </div>
 );
+
+DeleteRecipeModal.propTypes = propTypes;
 
 export default DeleteRecipeModal;

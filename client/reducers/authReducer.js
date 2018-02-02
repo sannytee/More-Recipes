@@ -1,4 +1,8 @@
-import { CREATE_USER, SIGN_USER, CHANGE_USER_AUTH } from '../actions/types';
+import {
+  CREATE_USER,
+  SIGN_USER,
+  CHANGE_USER_AUTH,
+} from '../actions/types';
 
 const initialState = {
   authenticated: false,

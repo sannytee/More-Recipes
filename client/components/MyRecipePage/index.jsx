@@ -9,7 +9,7 @@
  *  @requires     NPM:redux
  *  @requires     NPM:toastr
  */
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
@@ -18,11 +18,27 @@ import Footer from '../common/footer';
 import MyRecipeCard from './MyRecipeCard';
 import EditRecipeModal from './EditRecipeModal';
 import DeleteRecipeModal from './deleteRecipeModal';
+import authenticateUser from '../../middlewares/Authentication';
+import { logoutAction } from '../../actions/authAction';
 import {
   getUserRecipes,
   editRecipeAction,
-  deleteRecipeAction
+  deleteRecipeAction,
 } from '../../actions/recipesAction';
+
+const propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.number
+  }).isRequired,
+  actions: PropTypes.shape({
+    logoutAction: PropTypes.func,
+    getUserRecipes: PropTypes.func,
+    deleteRecipeAction: PropTypes.func,
+    editRecipeAction: PropTypes.func
+  }).isRequired,
+  userRecipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+};
+
 
 /**
  * @description A class to mount all components related to MyRecipePage
@@ -32,11 +48,14 @@ class MyRecipePage extends Component {
   /**
    * handles editing recipe
    * @param {object} props
+   * @param {object} context
   */
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.state = {
-      recipe: '',
+      recipe: {
+        recipeName: '',
+      },
       index: '',
       errorMessage: ''
     };
@@ -57,52 +76,12 @@ class MyRecipePage extends Component {
    * @returns {void}
   */
   componentWillMount() {
-    this.props.actions.getUserRecipes(this.props.user.id);
-  }
-
-  /**
-   * @description handles the submission of form
-   *
-   * @param {object} event
-   *
-   * @memberof MyRecipePage
-   *
-   * @returns {void}
-  */
-  handleSubmit(event) {
-    const { recipe, index } = this.state;
-    event.preventDefault();
-    this.props.actions.editRecipeAction(recipe.id, recipe, index)
-      .then(() => {
-        toastr.success('Recipe successfully updated');
-        $('#editModal').modal('hide');
-      })
-      .catch((err) => {
-        const { data } = err.response;
-        data.map((message) => {
-          this.setState({
-            errorMessage: message
-          });
-        });
-      });
-  }
-
-  /**
-   * @description handles the deletion of recipe
-   *
-   * @param {object} event
-   *
-   * @memberof MyRecipePage
-   *
-   * @returns {void}
-  */
-  handleDeletion(event) {
-    const { recipe, index } = this.state;
-    this.props.actions.deleteRecipeAction(recipe.id, index)
-      .then(() => {
-        toastr.success('Recipe successfully deleted');
-        $('#deleteModal').modal('hide');
-      });
+    if (authenticateUser() === false) {
+      this.props.actions.logoutAction();
+      this.context.router.push('/');
+    } else {
+      this.props.actions.getUserRecipes(this.props.user.id);
+    }
   }
 
   /**
@@ -132,6 +111,52 @@ class MyRecipePage extends Component {
       recipe: this.props.userRecipes[index],
       index,
     });
+  }
+
+  /**
+   * @description handles the deletion of recipe
+   *
+   * @param {object} event
+   *
+   * @memberof MyRecipePage
+   *
+   * @returns {void}
+  */
+  handleDeletion(event) {
+    const { recipe, index } = this.state;
+    this.props.actions.deleteRecipeAction(recipe.id, index)
+      .then(() => {
+        toastr.success('Recipe successfully deleted');
+        $('#deleteModal').modal('hide');
+      });
+  }
+
+  /**
+   * @description handles the submission of form
+   *
+   * @param {object} event
+   *
+   * @memberof MyRecipePage
+   *
+   * @returns {void}
+  */
+  handleSubmit(event) {
+    const { recipe, index } = this.state;
+    event.preventDefault();
+    this.props.actions.editRecipeAction(recipe.id, recipe, index)
+      .then(() => {
+        toastr.success('Recipe successfully updated');
+        $('#editModal').modal('hide');
+      })
+      .catch((err) => {
+        const { data } = err.response;
+        /* eslint-disable array-callback-return */
+        data.map((message) => {
+          this.setState({
+            errorMessage: message
+          });
+        });
+      });
   }
 
 
@@ -164,16 +189,18 @@ class MyRecipePage extends Component {
   */
   renderUserRecipes() {
     if (this.props.userRecipes.length === 0) {
-      return (<h1>
-        You have no Recipe
-      </h1>);
+      return (
+        <h1>
+          You have no Recipe
+        </h1>
+      );
     }
     return this.props.userRecipes.map((recipes, i) => (
       <MyRecipeCard
-      key={recipes.id}
-      index={i}
-      recipeDetails={recipes}
-      getRecipe={this.setRecipe}
+        key={recipes.id}
+        index={i}
+        recipeDetails={recipes}
+        getRecipe={this.setRecipe}
       />
     ));
   }
@@ -198,22 +225,28 @@ class MyRecipePage extends Component {
           <div className="row pt-4">
             { this.renderUserRecipes()}
           </div>
-          < EditRecipeModal
+          <EditRecipeModal
             details={this.state.recipe}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
             errorMessage={this.state.errorMessage}
             onFocus={this.onFocus}
           />
-          < DeleteRecipeModal
+          <DeleteRecipeModal
             handleDeletion={this.handleDeletion}
           />
         </div>
-        <Footer/>
+        <Footer />
       </div>
     );
   }
 }
+
+MyRecipePage.propTypes = propTypes;
+
+MyRecipePage.contextTypes = {
+  router: PropTypes.object
+};
 
 /**
  * @description maps state to properties of MyRecipePage
@@ -241,7 +274,8 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators({
       getUserRecipes,
       editRecipeAction,
-      deleteRecipeAction
+      deleteRecipeAction,
+      logoutAction
     }, dispatch)
   };
 }

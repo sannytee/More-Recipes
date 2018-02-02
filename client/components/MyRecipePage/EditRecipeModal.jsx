@@ -1,16 +1,30 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { PropTypes } from 'react';
+
+const propTypes = {
+  errorMessage: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  onFocus: PropTypes.func.isRequired,
+  details: PropTypes.shape({
+    recipeName: PropTypes.string,
+    description: PropTypes.string,
+    mealType: PropTypes.string,
+    ingredients: PropTypes.string,
+    method: PropTypes.string
+  }).isRequired
+};
 
 const EditRecipeModal = props => (
   <div
     className="modal fade"
     id="editModal"
-    tabindex="-1"
+    tabIndex="-1"
     data-backdrop="static"
     role="dialog"
     aria-labelledby="editModalLabel"
     style={{ display: 'none' }}
-    aria-hidden="true">
+    aria-hidden="true"
+  >
     <div className="modal-dialog" role="document">
       <div className="modal-content">
         <div className="modal-header black">
@@ -29,10 +43,11 @@ const EditRecipeModal = props => (
             </div>
           }
           <form
-          onSubmit={props.handleSubmit}
-          id="editRecipeForm">
+            onSubmit={props.handleSubmit}
+            id="editRecipeForm"
+          >
             <div className="form-group">
-              <label for="recipient-name" className="col-form-label black">Title:</label>
+              <label htmlFor="recipient-name" className="col-form-label black">Title:</label>
               <input
                 value={props.details.recipeName}
                 onChange={props.handleChange}
@@ -46,8 +61,9 @@ const EditRecipeModal = props => (
             </div>
             <div className="form-group">
               <label
-                for="message-text"
-                className="col-form-label black">
+                htmlFor="message-text"
+                className="col-form-label black"
+              >
                 Description:
               </label>
               <textarea
@@ -57,13 +73,14 @@ const EditRecipeModal = props => (
                 onFocus={props.onFocus}
                 id="message-text"
                 name="description"
-                required>
-              </textarea>
+                required
+              />
             </div>
             <div className="form-group">
               <label
-                for="type-text"
-                className="col-form-label black">
+                htmlFor="type-text"
+                className="col-form-label black"
+              >
                 Type of meal:
               </label>
               <select
@@ -73,7 +90,8 @@ const EditRecipeModal = props => (
                 name="mealType"
                 className="form-control"
                 id="type-text"
-                required>
+                required
+              >
                 <option value="breakfast">Breakfast</option>
                 <option value="brunch">Brunch</option>
                 <option value="elevenses">Elevenses</option>
@@ -85,8 +103,9 @@ const EditRecipeModal = props => (
             </div>
             <div className="form-group">
               <label
-                for="ingredients-text"
-                className="col-form-label black">
+                htmlFor="ingredients-text"
+                className="col-form-label black"
+              >
                 ingredients:
               </label>
               <textarea
@@ -97,13 +116,14 @@ const EditRecipeModal = props => (
                 name="ingredients"
                 className="form-control"
                 id="ingredients"
-                required>
-              </textarea>
+                required
+              />
             </div>
             <div className="form-group">
               <label
-                for="method-text"
-                className="col-form-label black">
+                htmlFor="method-text"
+                className="col-form-label black"
+              >
                 Method of cooking:
               </label>
               <textarea
@@ -113,14 +133,15 @@ const EditRecipeModal = props => (
                 onFocus={props.onFocus}
                 required
                 className="form-control"
-                id="method-text">
-              </textarea>
+                id="method-text"
+              />
             </div>
             <div className="modal-footer">
               <button
                 type="button"
                 className="btn btn-secondary"
-                data-dismiss="modal">
+                data-dismiss="modal"
+              >
                 Close
               </button>
               <button type="submit" className="btn vote-button">Update Recipe</button>
@@ -131,5 +152,7 @@ const EditRecipeModal = props => (
     </div>
   </div>
 );
+
+EditRecipeModal.propTypes = propTypes;
 
 export default EditRecipeModal;
