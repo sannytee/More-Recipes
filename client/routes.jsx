@@ -9,15 +9,16 @@ import SigninPage from './components/SigninPage/index';
 import SignupPage from './components/SignupPage/index';
 import recipes from './components/RecipePage/index';
 import myRecipePage from './components/MyRecipePage/index';
+import checkUserState from './middlewares/checkUserState';
 
 export default (
-  <Route path='/' component={App}>
+  <Route path="/" component={App}>
     <IndexRoute component={LandingPage} />
-    <Route path='signin' component={SigninPage} />
-    <Route path='signup' component={SignupPage}/>
-    <Route path='recipes' component={recipes} />
-    <Route path='/my-recipes' component={myRecipePage} />
-    <Route path='recipes/:recipeId' />
-    <Route path='users/:userId/profile'/>
+    <Route path="signin" component={SigninPage} />
+    <Route path="signup" component={SignupPage} />
+    <Route path="recipes" component={recipes} />
+    <Route path="/my-recipes" component={checkUserState(myRecipePage)} />
+    <Route path="recipes/:recipeId" />
+    <Route path="users/:userId/profile" />
   </Route>
 );

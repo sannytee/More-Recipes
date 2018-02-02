@@ -6,7 +6,9 @@ import {
 
 const initialState = {
   authenticated: false,
-  user: '',
+  user: {
+    username: ''
+  },
   profile: {
     username: '',
     email: '',

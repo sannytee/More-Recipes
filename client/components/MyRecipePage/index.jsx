@@ -18,8 +18,8 @@ import Footer from '../common/footer';
 import MyRecipeCard from './MyRecipeCard';
 import EditRecipeModal from './EditRecipeModal';
 import DeleteRecipeModal from './deleteRecipeModal';
-import authenticateUser from '../../middlewares/Authentication';
 import { logoutAction } from '../../actions/authAction';
+import verifyUser from '../../util/Authentication';
 import {
   getUserRecipes,
   editRecipeAction,
@@ -28,8 +28,9 @@ import {
 
 const propTypes = {
   user: PropTypes.shape({
-    id: PropTypes.number
-  }).isRequired,
+    id: PropTypes.number,
+    username: PropTypes.string
+  }),
   actions: PropTypes.shape({
     logoutAction: PropTypes.func,
     getUserRecipes: PropTypes.func,
@@ -37,6 +38,9 @@ const propTypes = {
     editRecipeAction: PropTypes.func
   }).isRequired,
   userRecipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+};
+const defaultProps = {
+  user: null
 };
 
 
@@ -69,17 +73,14 @@ class MyRecipePage extends Component {
   }
 
   /**
-   * @description performs an action right before the component mount
+   * @description performs an action right after the component mount
    *
    * @memberof MyRecipePage
    *
    * @returns {void}
   */
-  componentWillMount() {
-    if (authenticateUser() === false) {
-      this.props.actions.logoutAction();
-      this.context.router.push('/');
-    } else {
+  componentDidMount() {
+    if (verifyUser() === true) {
       this.props.actions.getUserRecipes(this.props.user.id);
     }
   }
@@ -243,6 +244,8 @@ class MyRecipePage extends Component {
 }
 
 MyRecipePage.propTypes = propTypes;
+
+MyRecipePage.defaultProps = defaultProps;
 
 MyRecipePage.contextTypes = {
   router: PropTypes.object

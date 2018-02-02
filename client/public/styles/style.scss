@@ -1,3 +1,7 @@
+$white-color: #fff;
+$vote-color: #2b3035;
+$vote-backgroundColor: #f2b43c;
+
 body {
   background-color: #f8f7f7 !important;
   margin: 0 0 100px !important;
@@ -171,7 +175,7 @@ html {
 }
 
 .link-button {
-  color: #fff;
+  color: $white-color;
 }
 
 .popular-section h4 {
@@ -213,8 +217,8 @@ html {
 }
 
 .card {
+  background-color: $white-color;
   padding: 30px;
-  background-color: #fff;
 }
 
 button.signin-btn {
@@ -240,8 +244,8 @@ button.signin-btn {
 }
 
 .vote-button {
-  color: #2b3035;
-  background-color: #f2b43c;
+  color: $vote-color;
+  background-color: $vote-backgroundColor;
 }
 
 .edit-btn {
@@ -250,13 +254,13 @@ button.signin-btn {
 }
 
 #landing-header {
-  z-index: 1;
   position: relative;
   text-align: center;
+  z-index: 1;
 }
 
 #landing-header h1 {
-  color: #fff;
+  color: $white-color;
   font-size: 50px;
   font-weight: 700;
 }
@@ -288,12 +292,12 @@ button.signin-btn {
 }
 
 h6 a {
-  color: #fff;
+  color: $white-color;
 }
 
 .section-popular {
-  margin-top: 70px;
   background-color: #2b3034;
+  margin-top: 70px;
   margin-bottom: 20px;
 }
 

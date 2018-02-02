@@ -25,7 +25,11 @@ const propTypes = {
   }).isRequired,
   user: PropTypes.shape({
     username: PropTypes.string,
-  }).isRequired
+  })
+};
+
+const defaultProps = {
+  user: null,
 };
 
 
@@ -169,7 +173,11 @@ class authHeader extends Component {
                 </button>
               </li>
               <li className="nav-item">
-                <span className="nav-link" >Logged in as {this.props.user.username}</span>
+                <span
+                  className="nav-link"
+                >
+                Logged in as {this.props.user && this.props.user.username}
+                </span>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="profile">Profile</Link>
@@ -332,6 +340,7 @@ class authHeader extends Component {
 }
 
 authHeader.propTypes = propTypes;
+authHeader.defaultProps = defaultProps;
 authHeader.contextTypes = {
   router: PropTypes.object
 };
