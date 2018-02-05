@@ -27,14 +27,22 @@ export default class recipe {
         description,
         method,
         ingredients,
-
       })
       .then(recipes => res.status(201).send({
         success: true,
         Recipe: recipes,
         message: 'Recipe successfully added'
       }))
-      .catch(err => res.status(400).json(err));
+      .catch((err) => {
+        const errors = [];
+        if (err.name === 'SequelizeValidationError') {
+          /* eslint-disable array-callback-return */
+          err.errors.map((error) => {
+            errors.push(error.message);
+          });
+        }
+        res.status(400).json(errors);
+      });
   }
   /**
    * Update a  Recipe
@@ -72,7 +80,16 @@ export default class recipe {
             }));
         }
       })
-      .catch(err => res.status(400).send(err));
+      .catch((err) => {
+        const errors = [];
+        if (err.name === 'SequelizeValidationError') {
+          /* eslint-disable array-callback-return */
+          err.errors.map((error) => {
+            errors.push(error.message);
+          });
+        }
+        res.status(400).json(errors);
+      });
   }
   /**
    * Delete a  Recipe
@@ -222,5 +239,37 @@ export default class recipe {
         }
       })
       .catch(err => res.status(400).send(err));
+  }
+
+  /**
+   * Get  all recipes added by a user
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns user recipes
+   */
+  static getUserRecipe(req, res) {
+    const userId = req.decoded.id;
+    const params = parseInt(req.params.userId, 10);
+    Recipes
+      .findAll({
+        where: {
+          userId
+        },
+      })
+      .then((userRecipe) => {
+        if (!userRecipe) {
+          return res.status(404).send({
+            message: 'You have not add any recipe'
+          });
+        }
+        if (params !== userId) {
+          res.status(403).send({
+            message: 'You are not allowed to perform this action'
+          });
+        } else {
+          return res.status(200).send(userRecipe);
+        }
+      })
+      .catch(err => res.status(500).send(err));
   }
 }

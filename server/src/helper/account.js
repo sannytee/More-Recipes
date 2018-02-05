@@ -80,7 +80,7 @@ export default class account {
           });
         }
         if (bcrypt.compareSync(req.body.password, user.password)) {
-          const payload = { id: user.id };
+          const payload = { id: user.id, username: user.username };
           const token = jwt.sign(payload, process.env.SECRET, {
             expiresIn: '4h' // expires in 4 hours
           });

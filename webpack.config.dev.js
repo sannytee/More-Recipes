@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
+import Dotenv from 'dotenv-webpack';
 
 export default {
   devtool: 'cheap-module-eval-source-map',
@@ -17,6 +18,7 @@ export default {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new Dotenv()
   ],
   module: {
     loaders: [

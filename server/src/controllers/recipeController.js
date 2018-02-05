@@ -30,7 +30,7 @@ export default {
     recipeHelper.deleteRecipe(req, res);
   },
   /**
-   * call a method to get recipe
+   * call a method to get all recipe
    * @param {object} req
    * @param {object} res
    * @returns  {JSON} Returns a JSON object

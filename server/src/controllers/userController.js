@@ -1,4 +1,5 @@
 import account from '../helper/account';
+import Recipe from '../helper/recipe';
 
 export default {
   /**
@@ -18,6 +19,15 @@ export default {
    */
   signIn(req, res) {
     account.signInUser(req, res);
+  },
+  /**
+   * Enables Users to get all thier recipes
+   * @param {Object}  req
+   * @param {Object} res
+   * @returns  {JSON} Returns user recipes
+   */
+  myRecipes(req, res) {
+    Recipe.getUserRecipe(req, res);
   }
 };
 
