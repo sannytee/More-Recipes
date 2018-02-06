@@ -23,6 +23,8 @@ import { getAllRecipesAction,
   getPopularRecipesAction,
 } from '../../actions/recipesAction';
 import { changeAuthAction } from '../../actions/authAction';
+import verifyUser from '../../util/Authentication';
+import setToken from '../../util/setToken';
 
 const propTypes = {
   user: PropTypes.shape({
@@ -73,15 +75,14 @@ class RecipePage extends Component {
       return <Header />;
     }
     if (this.props.isauthenticated === true) {
-      jwt.verify(token, 'andelabootcampproject', (error) => {
-        if (error) {
-          localStorage.removeItem('token');
-          this.props.actions.changeAuthAction();
-          notValid = true;
-        } else {
-          notValid = false;
-        }
-      });
+      if (verifyUser() === false) {
+        this.props.actions.changeAuthAction();
+        setToken(false);
+        notValid = true;
+      } else {
+        notValid = false;
+      }
+
       if (notValid === true) {
         return <Header />;
       }
@@ -110,7 +111,6 @@ class RecipePage extends Component {
             <div className="row">
               <RecipeCardGrid
                 allRecipes={this.props.recipes}
-                upvoteAction={this.upvoteRecipe}
               />
               <PopularRecipeCardList popularRecipes={popularRecipes} />
             </div>
