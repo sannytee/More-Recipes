@@ -3,7 +3,6 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import {
-  CREATE_USER,
   SIGN_USER,
   CHANGE_USER_AUTH,
   LOGOUT_USER
@@ -11,24 +10,6 @@ import {
 import setToken from '../util/setToken';
 
 const URL = '/api/v1';
-
-/**
-  * @description - Calls the API to create new User
-  * @param  {Object} userDetails
-  * @return {Object} dispatch an object
-  */
-export function signUpAction(userDetails) {
-  return dispatch => axios.post(`${URL}/users/signup`, userDetails)
-    .then((res) => {
-      dispatch({
-        type: CREATE_USER,
-        user: res.data
-      });
-    })
-    .catch((err) => {
-      throw (err);
-    });
-}
 
 /**
   * @description - Calls the API to signin registered user
