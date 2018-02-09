@@ -9,13 +9,13 @@ import {
 const URL = 'api/v1';
 
 /**
-  * @description - Calls the API to create new User
-  * @param  {Object} userDetails
-  * @return {Object} dispatch an object
-  */
+ * @description - Calls the API to create new User
+ * @param  {Object} userDetails
+ * @return {Object} dispatch an object
+*/
 export function signUpAction(userDetails) {
   return (dispatch) => {
-    dispatch(signupRequest(userDetails));
+    dispatch(signupRequest());
     axios.post(`${URL}/users/signup`, userDetails)
       .then((res) => {
         dispatch(signupSuccess(res.data.message));
@@ -29,7 +29,9 @@ export function signUpAction(userDetails) {
 
 /**
   * @description - calls the action to dispatch resetState action
+  *
   * @param  {string} error
+  *
   * @return {Object} dispatch an object
   */
 export function resetUserError(error) {

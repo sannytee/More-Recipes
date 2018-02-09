@@ -7,32 +7,37 @@ import {
 
 
 /**
-  * @description - action dispatch when request is first made
-  * @param  {Object} userDetails
-  * @return {Object} dispatch an object
-  */
-export const signupRequest = userDetails => ({
+ * @description - action dispatch when request is first made
+ *
+ * @param  {Object} userDetails
+ *
+ * @return {Object} dispatch an object
+*/
+export const signupRequest = () => ({
   type: CREATE_USER,
-  userDetails,
   authenticated: false
 });
 
 /**
-  * @description - action to dispatch  when request is successful
-  * @param  {string} response
-  * @return {Object} dispatch an object
-  */
+ * @description - action to dispatch  when request is successful
+ *
+ * @param  {string} response
+ *
+ * @return {Object} dispatch an object
+*/
 export const signupSuccess = response => ({
   type: CREATE_USER_SUCCESS,
   payload: response,
-  authenticated: true,
+  authenticated: false
 });
 
 /**
-  * @description - action to dispatch when requset failed
-  * @param  {string} error
-  * @return {Object} dispatch an object
-  */
+ * @description - action to dispatch when requset failed
+ *
+ * @param  {string} error
+ *
+ * @return {Object} dispatch an object
+ */
 export const signupFailure = error => ({
   type: CREATE_USER_FAILURE,
   payload: error,
@@ -42,7 +47,9 @@ export const signupFailure = error => ({
 
 /**
   * @description - action to reset the error
+  *
   * @param  {string} error
+  *
   * @return {Object} dispatch an object
   */
 export const resetState = error => ({

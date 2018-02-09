@@ -30,11 +30,13 @@ const defaultProps = {
 /* eslint-disable react/no-unused-state */
 /**
  * @description A class to display the signup page
+ *
  * @extends Component
  */
 class SignupPage extends Component {
   /**
    * enables action to the performed on this component
+   *
    * @param {object} props
    * @param {object} context
   */
@@ -218,8 +220,8 @@ SignupPage.defaultProps = defaultProps;
  */
 function mapStateToProps(state) {
   return {
-    response: state.createUser.response,
-    error: state.createUser.error
+    response: state.auth.response,
+    error: state.auth.error
   };
 }
 
