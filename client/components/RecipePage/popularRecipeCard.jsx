@@ -1,8 +1,10 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { PropTypes } from 'react';
 import img from '../../public/images/recipe-6.jpg';
 
-/* eslint-disable no-unused-vars */
+const propTypes = {
+  recipeName: PropTypes.string.isRequired
+};
+
 const popularRecipeCard = props => (
   <div className="side_recipes">
     <a className="side_item" href="/recipes/:recipeId">
@@ -15,15 +17,19 @@ const popularRecipeCard = props => (
             width: '100px',
             marginLeft: '0px',
             marginTop: '-13.3571px'
-          }} />
+          }}
+        />
       </div>
       <div
         className="title dot"
-        style={{ wordWrap: 'break-word' }}>
+        style={{ wordWrap: 'break-word' }}
+      >
         {props.recipeName}
-        </div>
+      </div>
     </a>
   </div>
 );
+
+popularRecipeCard.propTypes = propTypes;
 
 export default popularRecipeCard;

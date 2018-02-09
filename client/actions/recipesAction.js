@@ -1,51 +1,82 @@
 import axios from 'axios';
-import { GET_ALL_RECIPES,
-  GET_POPULAR_RECIPES,
-  VOTE_RECIPE,
-  CREATE_RECIPE,
-  GET_USER_RECIPES,
-  EDIT_RECIPE,
-  GET_RECIPE_DATA,
-  DELETE_RECIPE
-} from './types';
+import * as types from './types';
 
 const URL = '/api/v1';
 
 /**
- * @description - Calls the API to get all recipes
+ * @description - action dispatch when request is first made
  *
  * @return {Object} dispatch an object
 */
-export function getAllRecipesAction() {
-  return dispatch => axios.get(`${URL}/recipes`)
-    .then((res) => {
-      dispatch({
-        type: GET_ALL_RECIPES,
-        payload: res.data,
-      });
-    })
-    .catch((err) => {
-      throw (err);
-    });
-}
+export const getAllRecipesRequest = () => ({
+  type: types.GET_ALL_RECIPES,
+  isLoading: true
+});
 
 /**
- * @description - Calls the API to get popular recipes
+ * @description - action dispatch when request is successful
+ *
+ * @param  {Array} response
  *
  * @return {Object} dispatch an object
 */
-export function getPopularRecipesAction() {
-  return dispatch => axios.get(`${URL}/recipes?sort=upvotes&order=desc`)
-    .then((res) => {
-      dispatch({
-        type: GET_POPULAR_RECIPES,
-        payload: res.data,
-      });
-    })
-    .catch((err) => {
-      throw (err);
-    });
-}
+export const getAllRecipesSuccess = response => ({
+  type: types.GET_ALL_RECIPES_SUCCESS,
+  payload: response,
+  isLoading: false
+});
+
+/**
+ * @description - action dispatch when request failed
+ *
+ * @param  {string} error
+ *
+ * @return {Object} dispatch an object
+*/
+export const getAllRecipesFailue = error => ({
+  type: types.GET_ALL_RECIPES_FAILURE,
+  payload: error,
+  isLoading: false
+});
+
+
+/**
+ * @description - action dispatch when request is first made
+ *
+ * @return {Object} dispatch an object
+*/
+export const getPopularRecipesRequest = () => ({
+  type: types.GET_POPULAR_RECIPES,
+  isLoading: true
+});
+
+
+/**
+ * @description - action dispatch when request is successful
+ *
+ * @param  {Array} response
+ *
+ * @return {Object} dispatch an object
+*/
+export const getPopularRecipesSuccess = response => ({
+  type: types.GET_POPULAR_RECIPES_SUCCESS,
+  payload: response,
+  isLoading: false
+});
+
+/**
+ * @description - action dispatch when request failed
+ *
+ * @param  {string} error
+ *
+ * @return {Object} dispatch an object
+*/
+export const getPopularRecipesFailure = error => ({
+  type: types.GET_POPULAR_RECIPES_FAILURE,
+  payload: error,
+  isLoading: false
+});
+
 
 /**
  * @description - Calls the API to upvote or downvote recipe
@@ -60,7 +91,7 @@ export function voteRecipeAction(recipeId, voteAction, index) {
   return dispatch => axios.post(`${URL}/recipes/${recipeId}/votes?action=${voteAction}`)
     .then((res) => {
       dispatch({
-        type: VOTE_RECIPE,
+        type: types.VOTE_RECIPE,
         payload: res.data,
         index,
       });
@@ -81,7 +112,7 @@ export function createRecipeAction(recipeDetails) {
   return dispatch => axios.post(`${URL}/recipes`, recipeDetails)
     .then((res) => {
       dispatch({
-        type: CREATE_RECIPE,
+        type: types.CREATE_RECIPE,
         payload: res.data,
       });
     })
@@ -101,7 +132,7 @@ export function getUserRecipes(userId) {
   return dispatch => axios.get(`${URL}/users/${userId}/myrecipes`)
     .then((res) => {
       dispatch({
-        type: GET_USER_RECIPES,
+        type: types.GET_USER_RECIPES,
         payload: res.data
       });
     })
@@ -123,7 +154,7 @@ export function editRecipeAction(recipeId, recipeDetails, index) {
   return dispatch => axios.put(`${URL}/recipes/${recipeId}`, recipeDetails)
     .then((res) => {
       dispatch({
-        type: EDIT_RECIPE,
+        type: types.EDIT_RECIPE,
         payload: res.data,
         index
       });
@@ -144,7 +175,7 @@ export function getRecipeData(recipeId) {
   return dispatch => axios.get(`${URL}/recipes/${recipeId}`)
     .then((res) => {
       dispatch({
-        type: GET_RECIPE_DATA,
+        type: types.GET_RECIPE_DATA,
         payload: res.data,
       });
     })
@@ -165,7 +196,7 @@ export function deleteRecipeAction(recipeId, position) {
   return dispatch => axios.delete(`${URL}/recipes/${recipeId}`)
     .then(() => {
       dispatch({
-        type: DELETE_RECIPE,
+        type: types.DELETE_RECIPE,
         position
       });
     })

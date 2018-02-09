@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /**
  *  @fileOverview Creates the homepage for users
  *
@@ -13,15 +12,15 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import jwt from 'jsonwebtoken';
 import Header from '../common/header';
 import AuthHeader from '../common/authHeader';
 import Footer from '../common/footer';
 import RecipeCardGrid from './recipeCardGrid';
 import PopularRecipeCardList from './popularRecipeCardList';
-import { getAllRecipesAction,
-  getPopularRecipesAction,
-} from '../../actions/recipesAction';
+import {
+  getAllRecipesAction,
+  getPopularRecipesAction
+} from '../../actionsCreator/recipes';
 import { changeAuthAction } from '../../actions/authAction';
 import verifyUser from '../../util/Authentication';
 import setToken from '../../util/setToken';
@@ -70,7 +69,6 @@ class RecipePage extends Component {
   */
   checkUserState() {
     let notValid;
-    const token = localStorage.getItem('token');
     if (this.props.isauthenticated === false) {
       return <Header />;
     }
