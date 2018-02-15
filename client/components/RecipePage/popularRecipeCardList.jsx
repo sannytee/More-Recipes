@@ -16,6 +16,7 @@ const popularRecipeCardList = props => (
           props.popularRecipes.map(recipes => (
             <PopularRecipeCard
               recipeName={recipes.recipeName}
+              id={recipes.id}
               key={recipes.id}
             />
           ))

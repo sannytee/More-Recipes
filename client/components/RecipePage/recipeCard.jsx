@@ -2,8 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import toastr from 'toastr';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router';
 import img from '../../public/images/recipe-5.jpg';
-import { voteRecipeAction } from '../../actions/recipesAction';
+import { voteRecipeAction } from '../../actionsCreator/recipes';
 import { changeAuthAction } from '../../actions/authAction';
 
 
@@ -113,9 +114,9 @@ class recipeCard extends Component {
             />
             <div className="card-body">
               <h3 className="card-title">
-                <a href="" id="remove-link">
+                <Link id="remove-link" to={`/recipes/${id}`}>
                   {recipeName}
-                </a>
+                </Link>
               </h3>
             </div>
             <div >

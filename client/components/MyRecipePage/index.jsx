@@ -24,7 +24,7 @@ import {
   getUserRecipes,
   editRecipeAction,
   deleteRecipeAction,
-} from '../../actions/recipesAction';
+} from '../../actionsCreator/recipes';
 
 const propTypes = {
   user: PropTypes.shape({

@@ -106,8 +106,7 @@ class SigninPage extends Component {
    * @returns {void}
   */
   onChange(event) {
-    const { name } = event.target,
-      { value } = event.target;
+    const { name, value } = event.target;
     this.setState({
       [name]: value
     });

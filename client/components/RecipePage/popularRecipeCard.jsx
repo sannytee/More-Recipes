@@ -1,13 +1,16 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 import img from '../../public/images/recipe-6.jpg';
 
 const propTypes = {
-  recipeName: PropTypes.string.isRequired
+  recipeName: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired
 };
 
-const popularRecipeCard = props => (
+
+const popularRecipeCard = ({ recipeName, id }) => (
   <div className="side_recipes">
-    <a className="side_item" href="/recipes/:recipeId">
+    <Link className="side_item" to={`/recipes/${id}`}>
       <div className="img">
         <img
           src={img}
@@ -24,9 +27,9 @@ const popularRecipeCard = props => (
         className="title dot"
         style={{ wordWrap: 'break-word' }}
       >
-        {props.recipeName}
+        {recipeName}
       </div>
-    </a>
+    </Link>
   </div>
 );
 
