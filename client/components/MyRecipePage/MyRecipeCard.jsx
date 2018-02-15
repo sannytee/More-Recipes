@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /**
  *  @fileOverview Creates header for authenticated users
  *
@@ -7,6 +6,7 @@
  *  @requires     NPM:react
  */
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import img from '../../public/images/recipe-5.jpg';
 
 const propTypes = {
@@ -58,7 +58,7 @@ class MyRecipeCard extends Component {
    * @returns {void} returns the component
   */
   render() {
-    const { index } = this.props;
+    const { recipeDetails } = this.props;
     return (
       <div className="col-md-4 card-space">
         <div className="card-deck">
@@ -66,9 +66,9 @@ class MyRecipeCard extends Component {
             <img src={img} alt="recipe" className="card-img-top img-fluid" />
             <div className="card-body">
               <h3 className="card-title">
-                <a href="/recipes/:recipeId" id="remove-link">
-                  {this.props.recipeDetails.recipeName}
-                </a>
+                <Link to={`/recipes/${recipeDetails.id}`} id="remove-link">
+                  {recipeDetails.recipeName}
+                </Link>
               </h3>
             </div>
             <div >

@@ -1,6 +1,9 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { PropTypes } from 'react';
 import RecipeCard from './recipeCard';
+
+const propTypes = {
+  allRecipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+};
 
 const recipeCardGrid = props => (
   <div className="col-lg-9 col-md-12">
@@ -12,20 +15,22 @@ const recipeCardGrid = props => (
       </div>
     </div>
     <div className="row">
-    {
+      {
       props.allRecipes.map((recipe, i) => (
-          <RecipeCard
-            key={i}
-            i={i}
-            id={recipe.id}
-            recipeName={recipe.recipeName}
-            upvotes={recipe.upvotes}
-            downvotes={recipe.downvotes}
-          />
+        <RecipeCard
+          key={recipe.id}
+          i={i}
+          id={recipe.id}
+          recipeName={recipe.recipeName}
+          upvotes={recipe.upvotes}
+          downvotes={recipe.downvotes}
+        />
         ))
     }
     </div>
   </div>
 );
+
+recipeCardGrid.propTypes = propTypes;
 
 export default recipeCardGrid;

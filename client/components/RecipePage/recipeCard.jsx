@@ -1,18 +1,37 @@
-/* eslint-disable no-unused-vars */
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import toastr from 'toastr';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router';
 import img from '../../public/images/recipe-5.jpg';
-import { voteRecipeAction } from '../../actions/recipesAction';
+import { voteRecipeAction } from '../../actionsCreator/recipes';
 import { changeAuthAction } from '../../actions/authAction';
 
 
-/* eslint-disable require-jsdoc */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-undef */
+const propTypes = {
+  actions: PropTypes.shape({
+    voteRecipeAction: PropTypes.func,
+    changeAuthAction: PropTypes.func,
+  }).isRequired,
+  id: PropTypes.number.isRequired,
+  i: PropTypes.number.isRequired,
+  recipeName: PropTypes.string.isRequired,
+  upvotes: PropTypes.number.isRequired,
+  downvotes: PropTypes.number.isRequired,
+};
 
+
+/**
+ * @description A class to mount the recipe card
+ * @extends Component
+ */
 class recipeCard extends Component {
+  /**
+   * enables action to the performed on this component
+   *
+   * @param {object} props
+   * @param {object} context
+  */
   constructor(props, context) {
     super(props, context);
 
@@ -20,6 +39,15 @@ class recipeCard extends Component {
     this.downvoteRecipe = this.downvoteRecipe.bind(this);
   }
 
+  /**
+   * @description handles the upvoting of a recipe
+   *
+   * @param {object} event
+   *
+   * @memberof recipeCard
+   *
+   * @returns {void}
+  */
   upvoteRecipe(event) {
     event.preventDefault();
     this.props.actions.voteRecipeAction(this.props.id, 'upvotes', this.props.i)
@@ -36,6 +64,15 @@ class recipeCard extends Component {
       });
   }
 
+  /**
+   * @description handles the downvoting of a recipe
+   *
+   * @param {object} event
+   *
+   * @memberof recipeCard
+   *
+   * @returns {void}
+  */
   downvoteRecipe(event) {
     event.preventDefault();
     this.props.actions.voteRecipeAction(this.props.id, 'downvotes', this.props.i)
@@ -52,6 +89,13 @@ class recipeCard extends Component {
       });
   }
 
+  /**
+   * @description renders the components
+   *
+   * @memberof recipeCard
+   *
+   * @returns {void} returns the components
+  */
   render() {
     const {
       recipeName,
@@ -60,15 +104,19 @@ class recipeCard extends Component {
       downvotes,
     } = this.props;
     return (
-      <div className='col-md-4 card-space'>
-        <div className='card-deck'>
-          <article className='card'>
-            <img src={img} className='card-img-top img-fluid' />
-            <div className='card-body'>
-              <h3 className='card-title'>
-                <a href="" id="remove-link">
+      <div className="col-md-4 card-space">
+        <div className="card-deck">
+          <article className="card">
+            <img
+              src={img}
+              alt="recipe"
+              className="card-img-top img-fluid"
+            />
+            <div className="card-body">
+              <h3 className="card-title">
+                <Link id="remove-link" to={`/recipes/${id}`}>
                   {recipeName}
-                </a>
+                </Link>
               </h3>
             </div>
             <div >
@@ -77,20 +125,26 @@ class recipeCard extends Component {
                   <button
                     onClick={this.upvoteRecipe}
                     id={id}
-                    className='btn vote-button'
-                    type='button'>
-                    <i className='fa fa-thumbs-up fa-lg' aria-hidden='true'>
-                    <span style={{ marginLeft: '5px', marginRight: '5px' }}>{upvotes}</span>
+                    className="btn vote-button"
+                    type="button"
+                  >
+                    <i className="fa fa-thumbs-up fa-lg" aria-hidden="true">
+                      <span style={{ marginLeft: '5px', marginRight: '5px' }}>
+                        {upvotes}
+                      </span>
                     </i>
                   </button>
                 </div>
                 <div style={{ marginLeft: '20px' }}>
                   <button
-                    className='btn vote-button'
-                    type='button'
-                    onClick={this.downvoteRecipe}>
-                    <i className='fa fa-thumbs-o-down fa-lg' aria-hidden='true'>
-                    <span style={{ marginLeft: '5px', marginRight: '5px' }}>{downvotes}</span>
+                    className="btn vote-button"
+                    type="button"
+                    onClick={this.downvoteRecipe}
+                  >
+                    <i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true">
+                      <span style={{ marginLeft: '5px', marginRight: '5px' }}>
+                        {downvotes}
+                      </span>
                     </i>
                   </button>
                 </div>
@@ -107,6 +161,15 @@ recipeCard.contextTypes = {
   router: PropTypes.object
 };
 
+recipeCard.propTypes = propTypes;
+
+/**
+ * @description maps action to properties of SigninPage
+ *
+ * @param  {object} dispatch
+ *
+ * @returns {object} returns the action to be bind
+ */
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({

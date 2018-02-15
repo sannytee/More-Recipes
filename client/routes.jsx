@@ -9,6 +9,7 @@ import SigninPage from './components/SigninPage/index';
 import SignupPage from './components/SignupPage/index';
 import recipes from './components/RecipePage/index';
 import myRecipePage from './components/MyRecipePage/index';
+import recipeDetailsPage from './components/RecipeDetailsPage/index';
 import checkUserState from './middlewares/checkUserState';
 
 export default (
@@ -18,7 +19,7 @@ export default (
     <Route path="signup" component={SignupPage} />
     <Route path="recipes" component={recipes} />
     <Route path="/my-recipes" component={checkUserState(myRecipePage)} />
-    <Route path="recipes/:recipeId" />
+    <Route path="recipes/:recipeId" component={checkUserState(recipeDetailsPage)} />
     <Route path="users/:userId/profile" />
   </Route>
 );

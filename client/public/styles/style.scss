@@ -307,6 +307,21 @@ h6 a {
   margin-bottom: 20px;
 }
 
+.section-reviews{
+  border-radius: 5px;
+  color: #fff;
+}
+
+.centered {
+  text-align: center;
+  font-family: 'Satisfy';
+  font-weight: 200;
+}
+
+.review-list {
+  list-style: none;
+}
+
 .profile-preword h3 {
   color: #fff;
   font-size: 14px;
@@ -365,13 +380,16 @@ h6 a {
 }
 
 .recipe-details {
-  margin-top: 20px;
+  margin-top: 80px;
   margin-bottom: 20px;
 }
 
-li {
-  list-style: none;
+.card-body h4 {
+  text-align: center;
+  font-family: 'Satisfy', cursive;
+  font-size: 40px;
 }
+
 
 #remove-link {
   text-decoration: none;

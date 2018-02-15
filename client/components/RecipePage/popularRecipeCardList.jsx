@@ -1,6 +1,9 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { PropTypes } from 'react';
 import PopularRecipeCard from './popularRecipeCard';
+
+const propTypes = {
+  popularRecipes: PropTypes.arrayOf(PropTypes.shape()).isRequired
+};
 
 const popularRecipeCardList = props => (
   <div className="col-lg-3 col-md-12">
@@ -8,12 +11,13 @@ const popularRecipeCardList = props => (
       <div className="side_rec_area">
         <div className="side_title">
           Popular Recipes
-          </div>
+        </div>
         {
-          props.popularRecipes.map((recipes, i) => (
+          props.popularRecipes.map(recipes => (
             <PopularRecipeCard
               recipeName={recipes.recipeName}
-              key={i}
+              id={recipes.id}
+              key={recipes.id}
             />
           ))
         }
@@ -21,5 +25,7 @@ const popularRecipeCardList = props => (
     </aside>
   </div>
 );
+
+popularRecipeCardList.propTypes = propTypes;
 
 export default popularRecipeCardList;

@@ -24,6 +24,7 @@ export default class review {
           reviews
             .create({
               userId: req.decoded.id,
+              username: req.decoded.username,
               recipeId: req.params.recipeId,
               review: req.body.review,
             })
@@ -31,7 +32,14 @@ export default class review {
               message: 'Review posted',
               review: created,
             }))
-            .catch(err => res.status(400).send(err));
+            .catch((err) => {
+              if (err.name === 'SequelizeValidationError') {
+                return res.status(400).send({
+                  message: 'Review cannot be empty'
+                });
+              }
+              return res.status(500).send(err);
+            });
         }
       })
       .catch(err => res.status(400).send(err));

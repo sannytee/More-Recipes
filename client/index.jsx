@@ -11,7 +11,7 @@ import routes from './routes';
 import './public/styles/style.scss';
 import '../node_modules/bootstrap/scss/bootstrap.scss';
 import '../node_modules/toastr/build/toastr.min.css';
-import { SIGN_USER } from './actions/types';
+import { SIGN_USER_SUCCESS } from './actions/types';
 import setToken from './util/setToken';
 
 const store = configureStore();
@@ -19,8 +19,9 @@ const store = configureStore();
 if (localStorage.token) {
   setToken(localStorage.token);
   store.dispatch({
-    type: SIGN_USER,
-    user: jwt.decode(localStorage.token)
+    type: SIGN_USER_SUCCESS,
+    payload: jwt.decode(localStorage.token),
+    authenticated: true,
   });
 }
 

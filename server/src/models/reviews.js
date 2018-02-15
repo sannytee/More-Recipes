@@ -8,8 +8,17 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    username: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
     review: {
       type: DataTypes.TEXT,
+      validate: {
+        notEmpty: {
+          msg: 'Review cannot be empty'
+        }
+      },
       allowNull: false,
     }
   });
