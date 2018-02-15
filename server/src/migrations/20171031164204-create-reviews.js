@@ -25,6 +25,10 @@ module.exports = {
           key: 'id',
         }
       },
+      username: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
       review: {
         type: Sequelize.TEXT,
         allowNull: false

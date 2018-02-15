@@ -207,6 +207,7 @@ export default class recipe {
         order: [
           [sort, 'DESC']
         ],
+        limit: 10
       })
       .then(sortedRecipes => res.status(200).send(sortedRecipes));
   }
@@ -227,7 +228,7 @@ export default class recipe {
         include: [
           {
             model: reviews,
-            attributes: ['userId', 'recipeId', 'review'],
+            attributes: ['userId', 'recipeId', 'review', 'username'],
           }
         ]
       })
