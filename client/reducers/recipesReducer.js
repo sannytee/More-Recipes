@@ -7,8 +7,13 @@ const initialState = {
   popularRecipes: [],
   favoriteRecipes: [],
   userRecipes: [],
-  error: '',
-  isLoading: ''
+  currentRecipe: {},
+  error: null,
+  reviewError: null,
+  voteError: null,
+  isLoading: false,
+  favMessage: null,
+  favError: null,
 };
 
 
@@ -72,6 +77,40 @@ function recipeReducer(state = initialState, action) {
         ...currentRecipes.slice(position + 1)
       ];
       return { ...state, userRecipes: updatedRecipesArray };
+    case types.GET_RECIPE_DATA:
+      return { ...state, isLoading: action.isLoading };
+    case types.GET_RECIPE_DATA_SUCCESS:
+      return { ...state, currentRecipe: action.payload, isLoading: action.isLoading };
+    case types.GET_RECIPE_DATA_FAILURE:
+      return { ...state, error: action.payload, isLoading: action.isLoading };
+    case types.CREATE_REVIEW_SUCCESS:
+      const recipe = state.currentRecipe;
+      const { reviews } = recipe;
+      const updatedReviews = [
+        ...reviews.slice(0, reviews.length),
+        action.payload
+      ];
+      const updatedRecipe = {
+        ...recipe, reviews: updatedReviews
+      };
+      return { ...state, currentRecipe: updatedRecipe };
+    case types.CREATE_REVIEW_FAILURE:
+      return { ...state, reviewError: action.payload };
+    case types.RESET_REVIEW_ERROR:
+      return { ...state, reviewError: action.payload };
+    case types.VOTE_A_RECIPE_SUCCESS:
+      const newRecipe = {
+        ...state.currentRecipe,
+        upvotes: action.payload.recipe.upvotes,
+        downvotes: action.payload.recipe.downvotes
+      };
+      return { ...state, currentRecipe: newRecipe };
+    case types.VOTE_A_RECIPE_FAILURE:
+      return { ...state, voteError: action.payload };
+    case types.FAVORITE_RECIPE_SUCCESS:
+      return { ...state, favMessage: action.payload };
+    case types.FAVORITE_RECIPE_FAILURE:
+      return { ...state, favError: action.payload };
     default:
       return state;
   }
