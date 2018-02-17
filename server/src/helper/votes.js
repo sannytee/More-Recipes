@@ -109,7 +109,11 @@ export default class vote {
         .then(() => {
           vote.findRecipeToVote(req, res);
         })
+<<<<<<< HEAD
         .catch(err => res.status(400).send(err));
+=======
+        .catch(err => res.status(500).send(err));
+>>>>>>> bug(voting recipe)
     } else {
       votes
         .create({
@@ -120,7 +124,11 @@ export default class vote {
         .then(() => {
           vote.findRecipeToVote(req, res);
         })
+<<<<<<< HEAD
         .catch(err => res.status(400).send(err));
+=======
+        .catch(err => res.status(500).send(err));
+>>>>>>> bug(voting recipe)
     }
   }
 
