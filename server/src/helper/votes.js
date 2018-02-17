@@ -90,6 +90,7 @@ export default class vote {
       .catch(err => res.status(400).send(err));
   }
 
+
   /**
    * Create votes for user
    * @param {object} req
@@ -97,16 +98,30 @@ export default class vote {
    * @returns  {JSON} Returns success or failure message
    */
   static createVotes(req, res) {
-    votes
-      .create({
-        userId: req.decoded.id,
-        recipeId: req.params.recipeId,
-        upvotes: true
-      })
-      .then(() => {
-        vote.findRecipeToVote(req, res);
-      })
-      .catch(err => res.status(400).send(err));
+    const { action } = req.query;
+    if (action === 'upvotes') {
+      votes
+        .create({
+          userId: req.decoded.id,
+          recipeId: req.params.recipeId,
+          upvotes: true
+        })
+        .then(() => {
+          vote.findRecipeToVote(req, res);
+        })
+        .catch(err => res.status(500).send(err));
+    } else {
+      votes
+        .create({
+          userId: req.decoded.id,
+          recipeId: req.params.recipeId,
+          downvotes: true
+        })
+        .then(() => {
+          vote.findRecipeToVote(req, res);
+        })
+        .catch(err => res.status(500).send(err));
+    }
   }
 
   /**
