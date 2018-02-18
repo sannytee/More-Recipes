@@ -17,16 +17,19 @@ export default class recipe {
       mealType,
       description,
       method,
-      ingredients
+      ingredients,
+      image,
     } = req.body;
     Recipes
       .create({
         userId: req.decoded.id,
+        addedBy: req.decoded.username,
         recipeName,
         mealType,
         description,
         method,
         ingredients,
+        image
       })
       .then(recipes => res.status(201).send({
         success: true,
@@ -73,6 +76,7 @@ export default class recipe {
               description: req.body.description || recipes.description,
               method: req.body.method || recipes.method,
               ingredients: req.body.ingredients || recipes.ingredients,
+              image: req.body.image || recipes.image
             })
             .then(updatedRecipes => res.status(200).send({
               Recipe: updatedRecipes,

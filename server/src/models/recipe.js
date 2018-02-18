@@ -9,6 +9,16 @@ export default (sequelize, DataTypes) => {
         }
       }
     },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Upload an image'
+        }
+      }
+
+    },
     mealType: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -61,6 +71,10 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    addedBy: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   });
   Recipes.associate = (models) => {
     Recipes.hasMany(models.reviews, {
