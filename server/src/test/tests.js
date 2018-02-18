@@ -227,7 +227,8 @@ describe('More-Recipe Tests:', () => {
           mealType: 'breakfast',
           ingredients: 'water, beans,hfj',
           description: 'Buy the meat from market',
-          method: 'fry the yam for five minutes'
+          method: 'fry the yam for five minutes',
+          image: 'hjjfjfkdkdldld'
         })
         .end((err, res) => {
           expect(res.status).equal(201);
@@ -245,7 +246,8 @@ describe('More-Recipe Tests:', () => {
           mealType: 'breakfast',
           ingredients: 'water, beans,hfj',
           description: 'Buy the meat from market',
-          method: 'fry the yam for five minutes'
+          method: 'fry the yam for five minutes',
+          image: 'hjjfjfkdkdldld'
         })
         .end((err, res) => {
           expect(res.status).equal(201);
@@ -263,7 +265,8 @@ describe('More-Recipe Tests:', () => {
           mealType: 'breakfast',
           ingredients: 'water, beans,hfj',
           description: 'Buy the meat from market',
-          method: 'fry the yam for five minutes'
+          method: 'fry the yam for five minutes',
+          image: 'hjjfjfkdkdldld'
         })
         .end((err, res) => {
           expect(res.status).equal(201);
