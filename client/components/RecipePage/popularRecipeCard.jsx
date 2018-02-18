@@ -1,14 +1,15 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import img from '../../public/images/recipe-6.jpg';
+
 
 const propTypes = {
   recipeName: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
+  img: PropTypes.string.isRequired,
 };
 
 
-const popularRecipeCard = ({ recipeName, id }) => (
+const popularRecipeCard = ({ recipeName, id, img }) => (
   <div className="side_recipes">
     <Link className="side_item" to={`/recipes/${id}`}>
       <div className="img">

@@ -7,7 +7,6 @@
  */
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import img from '../../public/images/recipe-5.jpg';
 
 const propTypes = {
   getRecipe: PropTypes.func.isRequired,
@@ -63,7 +62,7 @@ class MyRecipeCard extends Component {
       <div className="col-md-4 card-space">
         <div className="card-deck">
           <article className="card">
-            <img src={img} alt="recipe" className="card-img-top img-fluid" />
+            <img src={recipeDetails.image} alt="recipe" className="card-img-top img-fluid" />
             <div className="card-body">
               <h3 className="card-title">
                 <Link to={`/recipes/${recipeDetails.id}`} id="remove-link">

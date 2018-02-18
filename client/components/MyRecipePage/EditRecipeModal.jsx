@@ -1,10 +1,19 @@
 import React, { PropTypes } from 'react';
+import ImageUploader from 'react-firebase-image-uploader';
+import firebase from 'firebase';
+import { Pulse } from 'react-preloading-component';
+
 
 const propTypes = {
   errorMessage: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   onFocus: PropTypes.func.isRequired,
+  onProgress: PropTypes.func.isRequired,
+  startUpload: PropTypes.func.isRequired,
+  upload: PropTypes.func.isRequired,
+  isUploading: PropTypes.bool.isRequired,
+  progress: PropTypes.number.isRequired,
   details: PropTypes.shape({
     recipeName: PropTypes.string,
     description: PropTypes.string,
@@ -74,6 +83,32 @@ const EditRecipeModal = props => (
                 id="message-text"
                 name="description"
                 required
+              />
+            </div>
+            <div className="form-group">
+              <label
+                htmlFor="image"
+                className="col-form-label black"
+              >
+                Image:
+              </label>
+              {
+                props.isUploading &&
+                props.progress < 100 &&
+                <div>
+                  <Pulse />
+                </div>
+              }
+              <ImageUploader
+                name="image"
+                storageRef={
+                  firebase
+                    .storage()
+                    .ref('images')
+                }
+                onProgress={props.onProgress}
+                onUploadSuccess={props.upload}
+                onUploadStart={props.startUpload}
               />
             </div>
             <div className="form-group">

@@ -8,8 +8,8 @@ const propTypes = {
     method: PropTypes.string,
     upvotes: PropTypes.number,
     downvotes: PropTypes.number,
+    image: PropTypes.string,
   }).isRequired,
-  img: PropTypes.string.isRequired,
   upvote: PropTypes.func.isRequired,
   downvote: PropTypes.func.isRequired,
   favorite: PropTypes.func.isRequired,
@@ -19,7 +19,7 @@ const propTypes = {
 
 const RecipeInfo = props => (
   <div>
-    <img className="card-img-top" src={props.img} alt="Card pic cap" style={{ maxHeight: '350px' }} />
+    <img className="card-img-top" src={props.recipeDetails.image} alt="Card pic cap" style={{ maxHeight: '350px' }} />
     <div className="card-body">
       <h4 className="card-title">{props.recipeDetails.recipeName}</h4>
       <p className="card-text">

@@ -18,6 +18,7 @@ const popularRecipeCardList = props => (
               recipeName={recipes.recipeName}
               id={recipes.id}
               key={recipes.id}
+              img={recipes.image}
             />
           ))
         }

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /**
  *  @fileOverview Creates header for authenticated users
  *
@@ -15,8 +14,12 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
-import { createRecipeAction } from '../../actions/recipesAction';
+import ImageUploader from 'react-firebase-image-uploader';
+import firebase from 'firebase';
+import { Pulse } from 'react-preloading-component';
+import { createRecipeAction } from '../../actionsCreator/recipes';
 import { logoutAction } from '../../actions/authAction';
+
 
 const propTypes = {
   actions: PropTypes.shape({
@@ -45,7 +48,6 @@ class authHeader extends Component {
   */
   constructor(props, context) {
     super(props, context);
-    /* eslint-disable react/no-unused-state */
     this.state = {
       recipeName: '',
       mealType: '',
@@ -53,21 +55,27 @@ class authHeader extends Component {
       method: '',
       ingredients: '',
       errorMessage: '',
+      image: '',
+      progress: 0,
+      isUploading: false,
+      notReady: true
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.logoutUser = this.logoutUser.bind(this);
+    this.handleUploadSuccess = this.handleUploadSuccess.bind(this);
+    this.handleProgress = this.handleProgress.bind(this);
+    this.handleUploadStart = this.handleUploadStart.bind(this);
   }
 
 
   /**
    * @description checks when an element is being focused on
-   * @param {object} event
    * @memberof authHeader
    * @returns {void}
   */
-  onFocus(event) {
+  onFocus() {
     this.setState({ errorMessage: '' });
   }
 
@@ -128,6 +136,54 @@ class authHeader extends Component {
     this.context.router.push('/');
   }
 
+  /**
+   * @description get url of image uploaded
+   *
+   * @param {String} filename
+   *
+   * @memberof authHeader
+   *
+   * @returns {void}
+  */
+  handleUploadSuccess(filename) {
+    firebase
+      .storage()
+      .ref('images')
+      .child(filename)
+      .getDownloadURL()
+      .then((url) => {
+        this.setState({
+          image: url,
+          progress: 100,
+          isUploading: false,
+          notReady: false
+        });
+      });
+  }
+
+  /**
+   * @description tracks the progress of uploading image
+   *
+   * @param {number} progress
+   *
+   * @memberof authHeader
+   *
+   * @returns {void}
+  */
+  handleProgress(progress) {
+    this.setState({ progress });
+  }
+
+  /**
+   * @description start the upload operation
+   *
+   * @memberof authHeader
+   *
+   * @returns {void}
+  */
+  handleUploadStart() {
+    this.setState({ isUploading: true, progress: 0, });
+  }
 
   /**
    * @description renders the component
@@ -138,7 +194,7 @@ class authHeader extends Component {
     return (
       <header>
         <nav className="navbar fixed-top  navbar-expand-lg navbar-dark" style={{ backgroundColor: '#2b3034' }}>
-          <a className="navbar-brand" href="/recipes">More-Recipes</a>
+          <Link className="navbar-brand" to="/recipes">More-Recipes</Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -152,14 +208,6 @@ class authHeader extends Component {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <form className="form-inline my-2 my-lg-0 ml-auto ">
-              <input
-                className="form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-            </form>
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <button
@@ -262,6 +310,32 @@ class authHeader extends Component {
                     </div>
                     <div className="form-group">
                       <label
+                        htmlFor="image"
+                        className="col-form-label black"
+                      >
+                        Image:
+                      </label>
+                      {
+                        this.state.isUploading &&
+                        this.state.progress < 100 &&
+                        <div>
+                          <Pulse />
+                        </div>
+                      }
+                      <ImageUploader
+                        name="image"
+                        storageRef={
+                          firebase
+                            .storage()
+                            .ref('images')
+                        }
+                        onProgress={this.handleProgress}
+                        onUploadSuccess={this.handleUploadSuccess}
+                        onUploadStart={this.handleUploadStart}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label
                         htmlFor="type-text"
                         className="col-form-label black"
                       >
@@ -326,7 +400,13 @@ class authHeader extends Component {
                       >
                         Close
                       </button>
-                      <button type="submit" className="btn vote-button">Add recipe</button>
+                      <button
+                        type="submit"
+                        className="btn vote-button"
+                        disabled={this.state.notReady}
+                      >
+                        Add recipe
+                      </button>
                     </div>
                   </form>
                 </div>

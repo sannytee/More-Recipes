@@ -13,6 +13,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
+import firebase from 'firebase';
 import Header from '../common/authHeader';
 import Footer from '../common/footer';
 import MyRecipeCard from './MyRecipeCard';
@@ -61,7 +62,9 @@ class MyRecipePage extends Component {
         recipeName: '',
       },
       index: '',
-      errorMessage: ''
+      errorMessage: '',
+      progress: 0,
+      isUploading: false,
     };
 
     this.renderUserRecipes = this.renderUserRecipes.bind(this);
@@ -70,6 +73,9 @@ class MyRecipePage extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.handleDeletion = this.handleDeletion.bind(this);
+    this.handleUploadSuccess = this.handleUploadSuccess.bind(this);
+    this.handleProgress = this.handleProgress.bind(this);
+    this.handleUploadStart = this.handleUploadStart.bind(this);
   }
 
   /**
@@ -180,6 +186,57 @@ class MyRecipePage extends Component {
     });
   }
 
+  /**
+   * @description get url of image uploaded
+   *
+   * @param {String} filename
+   *
+   * @memberof authHeader
+   *
+   * @returns {void}
+  */
+  handleUploadSuccess(filename) {
+    firebase
+      .storage()
+      .ref('images')
+      .child(filename)
+      .getDownloadURL()
+      .then((url) => {
+        this.setState({
+          recipe: {
+            ...this.state.recipe,
+            image: url
+          },
+          progress: 100,
+          isUploading: false,
+        });
+      });
+  }
+
+  /**
+   * @description start the upload operation
+   *
+   * @memberof authHeader
+   *
+   * @returns {void}
+  */
+  handleUploadStart() {
+    this.setState({ isUploading: true, progress: 0, });
+  }
+
+  /**
+   * @description tracks the progress of uploading image
+   *
+   * @param {number} progress
+   *
+   * @memberof authHeader
+   *
+   * @returns {void}
+  */
+  handleProgress(progress) {
+    this.setState({ progress });
+  }
+
 
   /**
    * @description checks if a user have recipes
@@ -232,6 +289,12 @@ class MyRecipePage extends Component {
             handleSubmit={this.handleSubmit}
             errorMessage={this.state.errorMessage}
             onFocus={this.onFocus}
+            upload={this.handleUploadSuccess}
+            startUpload={this.handleUploadStart}
+            onProgress={this.onProgress}
+            progress={this.state.progress}
+            isUploading={this.state.isUploading}
+
           />
           <DeleteRecipeModal
             handleDeletion={this.handleDeletion}
