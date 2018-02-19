@@ -6,6 +6,7 @@ import { render } from 'react-dom';
 import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import jwt from 'jsonwebtoken';
+import firebase from 'firebase';
 import configureStore from './store/configureStore';
 import routes from './routes';
 import './public/styles/style.scss';
@@ -13,7 +14,9 @@ import '../node_modules/bootstrap/scss/bootstrap.scss';
 import '../node_modules/toastr/build/toastr.min.css';
 import { SIGN_USER_SUCCESS } from './actions/types';
 import setToken from './util/setToken';
+import config from './util/firebaseConfig';
 
+firebase.initializeApp(config);
 const store = configureStore();
 
 if (localStorage.token) {

@@ -21,6 +21,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      image: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       mealType: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -44,6 +48,10 @@ module.exports = {
       downvotes: {
         type: Sequelize.INTEGER,
         defaultValue: 0
+      },
+      addedBy: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

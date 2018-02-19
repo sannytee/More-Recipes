@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import toastr from 'toastr';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
-import img from '../../public/images/recipe-5.jpg';
 import { voteRecipeAction } from '../../actionsCreator/recipes';
 import { changeAuthAction } from '../../actions/authAction';
 
@@ -18,6 +17,8 @@ const propTypes = {
   recipeName: PropTypes.string.isRequired,
   upvotes: PropTypes.number.isRequired,
   downvotes: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
 };
 
 
@@ -102,13 +103,16 @@ class recipeCard extends Component {
       id,
       upvotes,
       downvotes,
+      image,
+      user,
     } = this.props;
     return (
       <div className="col-md-4 card-space">
         <div className="card-deck">
           <article className="card">
             <img
-              src={img}
+              style={{ maxHeight: '180px' }}
+              src={image}
               alt="recipe"
               className="card-img-top img-fluid"
             />
@@ -128,7 +132,7 @@ class recipeCard extends Component {
                     className="btn vote-button"
                     type="button"
                   >
-                    <i className="fa fa-thumbs-up fa-lg" aria-hidden="true">
+                    <i className="fa fa-thumbs-up" aria-hidden="true">
                       <span style={{ marginLeft: '5px', marginRight: '5px' }}>
                         {upvotes}
                       </span>
@@ -141,7 +145,7 @@ class recipeCard extends Component {
                     type="button"
                     onClick={this.downvoteRecipe}
                   >
-                    <i className="fa fa-thumbs-o-down fa-lg" aria-hidden="true">
+                    <i className="fa fa-thumbs-o-down" aria-hidden="true">
                       <span style={{ marginLeft: '5px', marginRight: '5px' }}>
                         {downvotes}
                       </span>
@@ -149,6 +153,9 @@ class recipeCard extends Component {
                   </button>
                 </div>
               </div>
+            </div>
+            <div className="card-footer text-muted" style={{ marginTop: '15px', fontSize: '12px' }}>
+              recipe by: {user}
             </div>
           </article>
         </div>
