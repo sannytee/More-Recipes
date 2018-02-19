@@ -5,16 +5,16 @@ import { Link } from 'react-router';
 const propTypes = {
   recipeName: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
-  img: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
 };
 
 
-const popularRecipeCard = ({ recipeName, id, img }) => (
+const popularRecipeCard = ({ recipeName, id, image }) => (
   <div className="side_recipes">
     <Link className="side_item" to={`/recipes/${id}`}>
       <div className="img">
         <img
-          src={img}
+          src={image}
           alt=""
           style={{
             height: 'auto',

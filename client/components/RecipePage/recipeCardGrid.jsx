@@ -23,7 +23,7 @@ const recipeCardGrid = props => (
           id={recipe.id}
           recipeName={recipe.recipeName}
           upvotes={recipe.upvotes}
-          img={recipe.image}
+          image={recipe.image}
           downvotes={recipe.downvotes}
           user={recipe.addedBy}
         />

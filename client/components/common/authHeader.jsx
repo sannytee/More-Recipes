@@ -208,6 +208,14 @@ class authHeader extends Component {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <form className="form-inline my-2 my-lg-0 ml-auto ">
+              <input
+                className="form-control mr-sm-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+            </form>
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <button

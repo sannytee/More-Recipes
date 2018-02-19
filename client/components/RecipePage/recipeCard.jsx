@@ -17,7 +17,7 @@ const propTypes = {
   recipeName: PropTypes.string.isRequired,
   upvotes: PropTypes.number.isRequired,
   downvotes: PropTypes.number.isRequired,
-  img: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   user: PropTypes.string.isRequired,
 };
 
@@ -103,7 +103,7 @@ class recipeCard extends Component {
       id,
       upvotes,
       downvotes,
-      img,
+      image,
       user,
     } = this.props;
     return (
@@ -112,7 +112,7 @@ class recipeCard extends Component {
           <article className="card">
             <img
               style={{ maxHeight: '180px' }}
-              src={img}
+              src={image}
               alt="recipe"
               className="card-img-top img-fluid"
             />
