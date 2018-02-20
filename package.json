@@ -5,8 +5,12 @@
   "main": "app.js",
   "scripts": {
     "start": "babel-node -- ./server/app.js",
+    "heroku-postbuild": "NODE_ENV=production && npm run build", 
+    "build": "webpack --progress --config ./webpack.config.prod.js",
     "seq": "sequelize init",
     "start:dev": "nodemon --exec babel-node -- ./server/app.js",
+    "heroku-postbuild": "NODE_ENV=production && npm run build",
+    "build": "webpack --progress --config ./webpack.config.prod.js",
     "test": "mocha --exit --compilers js:babel-core/register server/src/test --reporter spec --timeout 25000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls"
@@ -57,6 +61,7 @@
     "bootstrap": "^4.0.0-beta",
     "chai": "^4.1.2",
     "chai-http": "^3.0.0",
+    "clean-webpack-plugin": "^0.1.18",
     "css-loader": "^0.28.7",
     "dotenv": "^4.0.0",
     "dotenv-webpack": "^1.5.4",
@@ -64,6 +69,7 @@
     "express": "^4.16.2",
     "file-loader": "0.8.5",
     "firebase": "^4.10.0",
+    "html-webpack-plugin": "^2.30.1",
     "image-webpack-loader": "^3.4.2",
     "jquery": "2.2.3",
     "jsonwebtoken": "^8.1.0",

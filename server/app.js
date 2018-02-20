@@ -8,6 +8,8 @@ import webpackMiddleware from 'webpack-dev-middleware';
 import webpackConfig from '../webpack.config.dev';
 import router from './src/routes';
 
+const webpackHotMiddleware = require('webpack-hot-middleware');
+
 // Set up the express application
 const app = express();
 const compiler = webpack(webpackConfig);
@@ -15,18 +17,24 @@ const compiler = webpack(webpackConfig);
 dotenv.config();
 // Log requests to the console
 app.use(logger('dev'));
+app.use(express.static(path.join(__dirname, 'client/public/images')));
 
 // Parse incoming request data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(webpackMiddleware(compiler, {
-  noInfo: true,
-  publicPath: webpackConfig.output.publicPath
-}));
-app.use(require('webpack-hot-middleware')(compiler));
+if (process.env.NODE_ENV !== 'production') {
+  app.use(webpackMiddleware(compiler, {
+    noInfo: true,
+    publicPath: webpackConfig.output.publicPath
+  }));
+  app.use(webpackHotMiddleware(compiler));
+}
 
 router(app);
+app.get('/bundle.js', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/bundle.js'));
+});
 // set up a default catch-all route
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));

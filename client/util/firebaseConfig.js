@@ -7,4 +7,5 @@ const firebaseConfig = {
   messagingSenderId: process.env.FIREBASE_MESSENGERID
 };
 
+
 export default firebaseConfig;

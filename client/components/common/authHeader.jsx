@@ -20,7 +20,6 @@ import { Pulse } from 'react-preloading-component';
 import { createRecipeAction } from '../../actionsCreator/recipes';
 import { logoutAction } from '../../actions/authAction';
 
-
 const propTypes = {
   actions: PropTypes.shape({
     createRecipeAction: PropTypes.func,
@@ -111,7 +110,7 @@ class authHeader extends Component {
         const { data } = err.response;
         if (data.error) {
           this.setState({
-            errorMessage: 'Pleae select a meal type'
+            errorMessage: 'Please select a meal type'
           });
         } else {
           /* eslint-disable array-callback-return */

@@ -18,7 +18,7 @@ export default {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new Dotenv()
+    new Dotenv(),
   ],
   module: {
     loaders: [
