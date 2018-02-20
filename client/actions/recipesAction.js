@@ -21,6 +21,7 @@ export const getAllRecipesRequest = () => ({
 export const getAllRecipesSuccess = response => ({
   type: types.GET_ALL_RECIPES_SUCCESS,
   payload: response,
+  pagination: response.pages,
   isLoading: false
 });
 

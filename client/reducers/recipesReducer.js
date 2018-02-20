@@ -14,6 +14,7 @@ const initialState = {
   isLoading: false,
   favMessage: null,
   favError: null,
+  pages: 0
 };
 
 
@@ -30,7 +31,12 @@ function recipeReducer(state = initialState, action) {
     case types.GET_ALL_RECIPES:
       return { ...state, isLoading: action.isLoading };
     case types.GET_ALL_RECIPES_SUCCESS:
-      return { ...state, recipes: action.payload, isLoading: action.isLoading };
+      return {
+        ...state,
+        recipes: action.payload.allRecipes,
+        isLoading: action.isLoading,
+        pages: action.payload.pages
+      };
     case types.GET_ALL_RECIPES_FAILURE:
       return { ...state, error: action.error, isLoading: action.isLoading };
     case types.GET_POPULAR_RECIPES:

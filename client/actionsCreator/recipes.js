@@ -7,14 +7,16 @@ const URL = 'api/v1';
 /**
  * @description - Calls the API to get all recipes
  *
+ * @param {number} page
+ *
  * @return {Object} dispatch an object
 */
-export function getAllRecipesAction() {
+export function getAllRecipesAction(page) {
   return (dispatch) => {
     dispatch(actions.getAllRecipesRequest());
-    axios.get(`${URL}/recipes`)
+    axios.get(`${URL}/recipes?page=${page}`)
       .then((res) => {
-        dispatch(actions.getAllRecipesSuccess(res.data));
+        dispatch(actions.getAllRecipesSuccess(res.data, res.data.pages));
       })
       .catch((err) => {
         const { error } = err.response;
@@ -31,7 +33,7 @@ export function getAllRecipesAction() {
 export function getPopularRecipesAction() {
   return (dispatch) => {
     dispatch(actions.getPopularRecipesRequest());
-    axios.get(`${URL}/recipes?sort=upvotes&order=desc`)
+    axios.get(`${URL}/recipes/?sort=upvotes&order=desc`)
       .then((res) => {
         dispatch(actions.getPopularRecipesSuccess(res.data));
       })

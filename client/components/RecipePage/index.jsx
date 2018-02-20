@@ -12,6 +12,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import ReactPaginate from 'react-paginate';
 import Header from '../common/header';
 import AuthHeader from '../common/authHeader';
 import Footer from '../common/footer';
@@ -38,6 +39,7 @@ const propTypes = {
   isauthenticated: PropTypes.bool.isRequired,
   recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   popularRecipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  page: PropTypes.number.isRequired,
 };
 
 const defaultProps = {
@@ -52,14 +54,33 @@ const defaultProps = {
  */
 class RecipePage extends Component {
   /**
+   * handles pagination
+   * @param {object} props
+  */
+  constructor(props) {
+    super(props);
+    this.handlePaginationChange = this.handlePaginationChange.bind(this);
+  }
+  /**
    * @memberof RecipePage
    * @returns {void}
   */
   componentDidMount() {
-    this.props.actions.getAllRecipesAction();
+    this.props.actions.getAllRecipesAction(0);
     this.props.actions.getPopularRecipesAction();
   }
 
+  /**
+   * @memberof RecipePage
+   *
+   * @param {number} allRecipes
+   *
+   * @returns {void}
+  */
+  handlePaginationChange(allRecipes) {
+    const currentView = allRecipes.selected;
+    this.props.actions.getAllRecipesAction(currentView);
+  }
   /**
    * @description return navbar based on if user is authenticated
    *
@@ -112,6 +133,26 @@ class RecipePage extends Component {
               />
               <PopularRecipeCardList popularRecipes={popularRecipes} />
             </div>
+            <div style={{ textAlign: 'center' }}>
+              <ReactPaginate
+                previousLabel="Previous"
+                nextLabel="Next"
+                breakLabel={<a href="">...</a>}
+                breakClassName="page-link"
+                onPageChange={this.handlePaginationChange}
+                pageCount={this.props.page}
+                containerClassName="pagination pagination-lg custom-pagination"
+                pageLinkClassName="page-link"
+                nextLinkClassName="page-link"
+                previousLinkClassName="page-link"
+                disabledClassName="disabled"
+                pageClassName="page-item"
+                previousClassName="page-item"
+                nextClassName="page-item"
+                activeClassName="active"
+                subContainerClassName="pages pagination"
+              />
+            </div>
           </div>
         </div>
         <Footer />
@@ -136,6 +177,7 @@ function mapStateToProps(state) {
     user: state.auth.user,
     recipes: state.recipes.recipes,
     popularRecipes: state.recipes.popularRecipes,
+    page: state.recipes.pages,
   };
 }
 
