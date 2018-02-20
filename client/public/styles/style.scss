@@ -220,7 +220,14 @@ html {
   background-color: $white-color;
   padding: 30px;
 }
+.card-title{
+  font-size: 23px;
+  font-family: cursive;
+}
 
+.recipe-card {
+  height: 400px !important;
+}
 button.signin-btn {
   background-color: #2b3034;
   width: 100%;
