@@ -21,6 +21,7 @@ export const getAllRecipesRequest = () => ({
 export const getAllRecipesSuccess = response => ({
   type: types.GET_ALL_RECIPES_SUCCESS,
   payload: response,
+  pagination: response.pages,
   isLoading: false
 });
 
@@ -208,5 +209,40 @@ export const favoriteRecipeFailure = error => ({
 export const favoriteRecipeSuccess = response => ({
   type: types.FAVORITE_RECIPE_SUCCESS,
   payload: response
+});
+
+/**
+ * @description - action dispatch when request is first made
+ *
+ * @return {Object} dispatch an object
+*/
+export const getUserRecipeRequest = () => ({
+  type: types.GET_USER_RECIPES,
+  isLoading: true,
+});
+
+/**
+ * @description - action dispatch when request is successful
+ *
+ * @param  {Object} response
+ *
+ * @return {Object} dispatch an object
+*/
+export const getUserRecipeSuccess = response => ({
+  type: types.GET_USER_RECIPES_SUCCESS,
+  payload: response
+});
+
+/**
+ * @description - action dispatch when request failed
+ *
+ * @param  {Object} error
+ *
+ * @return {Object} dispatch an object
+*/
+export const getUserRecipeFailure = error => ({
+  type: types.GET_USER_RECIPES_FAILURE,
+  payload: error,
+  isloading: false
 });
 

@@ -109,9 +109,9 @@ class recipeCard extends Component {
     return (
       <div className="col-md-4 card-space">
         <div className="card-deck">
-          <article className="card">
+          <article className="card recipe-card">
             <img
-              style={{ maxHeight: '180px' }}
+              style={{ height: '150px' }}
               src={image}
               alt="recipe"
               className="card-img-top img-fluid"
