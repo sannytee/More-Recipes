@@ -7,7 +7,7 @@ const Footer = props => (
       <strong
         className="copyright"
       >
-        More-Recipes © 2017, All Rights Reserved, Design &amp; Developed By: SannyTee
+        More-Recipes © 2018, All Rights Reserved, Design &amp; Developed By: SannyTee
       </strong>
     </div>
   </footer>

@@ -9,6 +9,7 @@ const initialState = {
   userRecipes: [],
   currentRecipe: {},
   error: null,
+  userRecipeError: null,
   reviewError: null,
   voteError: null,
   isLoading: false,
@@ -65,7 +66,16 @@ function recipeReducer(state = initialState, action) {
         userRecipes: [...state.userRecipes, action.payload.Recipe]
       };
     case types.GET_USER_RECIPES:
-      return { ...state, userRecipes: action.payload };
+      return { ...state, isLoading: action.isLoading };
+    case types.GET_USER_RECIPES_SUCCESS:
+      return {
+        ...state,
+        isLoading: action.isLoading,
+        userRecipes: action.payload.userRecipes,
+        pages: action.payload.pages
+      };
+    case types.GET_USER_RECIPES_FAILURE:
+      return { ...state, isLoading: action.isLoading, userRecipeError: action.payload };
     case types.EDIT_RECIPE:
       const { index } = action;
       const myRecipes = state.userRecipes;

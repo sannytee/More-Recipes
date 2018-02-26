@@ -1,3 +1,4 @@
+/* eslint-disable */
 $white-color: #fff;
 $vote-color: #2b3035;
 $vote-background-color: #f2b43c;
@@ -5,6 +6,10 @@ $vote-background-color: #f2b43c;
 body {
   background-color: #f8f7f7 !important;
   margin: 0 0 100px !important;
+  font-family: 'Nunito', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+}
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Tinos', 'Times New Roman', Times, serif !important;
 }
 
 html {
@@ -82,6 +87,16 @@ html {
   margin-bottom: 20px;
 }
 
+.sticky-paginate {
+  position: absolute;
+    bottom: 0;
+    width: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+}
+
 .sidebar .side_rec_area {
   z-index: 2;
   position: relative;
@@ -140,6 +155,7 @@ html {
 }
 
 .sidebar .side_rec_area .side_item .title {
+  text-transform: capitalize;
   padding: 0 10px;
   color: #f2b43c;
   -webkit-flex-shrink: 0;
@@ -177,6 +193,18 @@ html {
 .link-button {
   color: $white-color;
 }
+.custom-active {
+  background-color: #2b3034;
+  color: #f2b43c;
+}
+
+.paginate-section {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
 
 .popular-section h4 {
   padding: 20px 0px 20px 0px;
@@ -222,7 +250,11 @@ html {
 }
 .card-title{
   font-size: 23px;
-  font-family: cursive;
+  text-transform: capitalize;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .recipe-card {
@@ -231,6 +263,14 @@ html {
 
 .page-item .active {
   background-color: #2b3034
+}
+
+.my-recipe-img {
+  height: 180px;
+}
+
+.recipe-card-img {
+  height: 100% !important;
 }
 
 button.signin-btn {
@@ -243,11 +283,11 @@ button.signin-btn {
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.2);
   padding: 15px 0;
   text-align: center;
+  margin-bottom: -30px;
 }
 
 #headline {
   color: #fff;
-  font-family: 'Permanent Marker', cursive;
   padding-left: 10px;
 }
 
@@ -326,7 +366,6 @@ h6 a {
 
 .centered {
   text-align: center;
-  font-family: 'Satisfy';
   font-weight: 200;
 }
 
@@ -398,7 +437,6 @@ h6 a {
 
 .card-body h4 {
   text-align: center;
-  font-family: 'Satisfy', cursive;
   font-size: 40px;
 }
 
@@ -408,9 +446,6 @@ h6 a {
   color: #2b3034;
 }
 
-h4 {
-  font-family: 'Satisfy', cursive;
-}
 
 #signup-btn {
   color: #f2b43c;

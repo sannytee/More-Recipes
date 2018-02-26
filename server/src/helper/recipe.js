@@ -274,8 +274,12 @@ export default class recipe {
   static getUserRecipe(req, res) {
     const userId = req.decoded.id;
     const params = parseInt(req.params.userId, 10);
+    let offset;
+    const limit = 6;
+    let singlePage;
+    let pages;
     Recipes
-      .findAll({
+      .findAndCountAll({
         where: {
           userId
         },
@@ -290,9 +294,26 @@ export default class recipe {
           res.status(403).send({
             message: 'You are not allowed to perform this action'
           });
-        } else {
-          return res.status(200).send(userRecipe);
         }
+        const remainder = userRecipe.count % limit === 0 ?
+          0 : 1;
+        pages = Math.floor(userRecipe.count / limit) + remainder;
+        singlePage = parseInt(req.query.page, 10);
+        offset = singlePage * limit;
+
+        return Recipes
+          .findAll({
+            where: {
+              userId
+            },
+            limit,
+            offset,
+            pages,
+          })
+          .then(userRecipes => res.status(200).send({
+            userRecipes,
+            pages
+          }));
       })
       .catch(err => res.status(500).send(err));
   }

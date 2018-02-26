@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Spinner } from 'react-preloading-component';
 import lodash from 'lodash';
-import toastr from 'toastr';
 import Header from '../common/authHeader';
 import {
   getRecipeData,
@@ -45,13 +44,11 @@ const propTypes = {
   }).isRequired,
   error: PropTypes.string,
   reviewError: PropTypes.string,
-  favMessage: PropTypes.string,
 };
 
 const defaultProps = {
   error: null,
   reviewError: null,
-  favMessage: null,
 };
 
 
@@ -95,20 +92,6 @@ class RecipeDetailsPage extends Component {
     }
   }
 
-  /**
-   * @description performs an action right after the component mount
-   *
-   * @param {Object} nextProps
-   *
-   * @memberof RecipeDetailsPage
-   *
-   * @returns {void}
-  */
-  componentWillReceiveProps(nextProps) {
-    if (this.props.favMessage !== nextProps.favMessage) {
-      return toastr.success(nextProps.favMessage);
-    }
-  }
 
   /**
    * @description removes review error when focused
