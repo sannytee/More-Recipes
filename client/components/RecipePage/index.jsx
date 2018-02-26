@@ -12,7 +12,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import ReactPaginate from 'react-paginate';
+import { Spinner } from 'react-preloading-component';
+import Paginate from '../pagination/index';
 import Header from '../common/header';
 import AuthHeader from '../common/authHeader';
 import Footer from '../common/footer';
@@ -36,6 +37,7 @@ const propTypes = {
     getPopularRecipesAction: PropTypes.func,
     changeAuthAction: PropTypes.func.isRequired,
   }).isRequired,
+  isLoading: PropTypes.string.isRequired,
   isauthenticated: PropTypes.bool.isRequired,
   recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   popularRecipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
@@ -60,6 +62,7 @@ class RecipePage extends Component {
   constructor(props) {
     super(props);
     this.handlePaginationChange = this.handlePaginationChange.bind(this);
+    this.renderRecipes = this.renderRecipes.bind(this);
   }
   /**
    * @memberof RecipePage
@@ -112,14 +115,41 @@ class RecipePage extends Component {
   }
 
   /**
+   * @description return recipes
+   *
+   * @memberof RecipePage
+   *
+   * @returns {void}
+  */
+  renderRecipes() {
+    const {
+      isLoading,
+      popularRecipes
+    } = this.props;
+    if (isLoading) {
+      return (
+        <div style={{ paddingTop: '150px' }}>
+          <Spinner />
+        </div>
+      );
+    }
+    return (
+      <div className="row">
+        <RecipeCardGrid
+          allRecipes={this.props.recipes}
+        />
+        <PopularRecipeCardList popularRecipes={popularRecipes} />
+      </div>
+
+    );
+  }
+
+  /**
    * @memberof RecipePage
    *
    * @returns {void} returns the component to be mounted
   */
   render() {
-    const {
-      popularRecipes,
-    } = this.props;
     return (
       <div>
         {
@@ -127,33 +157,14 @@ class RecipePage extends Component {
         }
         <div className="content">
           <div className="container cont_area">
-            <div className="row">
-              <RecipeCardGrid
-                allRecipes={this.props.recipes}
-              />
-              <PopularRecipeCardList popularRecipes={popularRecipes} />
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <ReactPaginate
-                previousLabel="Previous"
-                nextLabel="Next"
-                breakLabel={<a href="">...</a>}
-                breakClassName="page-link"
-                onPageChange={this.handlePaginationChange}
-                pageCount={this.props.page}
-                containerClassName="pagination pagination-lg custom-pagination"
-                pageLinkClassName="page-link"
-                nextLinkClassName="page-link"
-                previousLinkClassName="page-link"
-                disabledClassName="disabled"
-                pageClassName="page-item"
-                previousClassName="page-item"
-                nextClassName="page-item"
-                activeClassName="active"
-                subContainerClassName="pages pagination"
-              />
-            </div>
+            { this.renderRecipes()}
           </div>
+        </div>
+        <div className="sticky-paginate">
+          <Paginate
+            handlePaginationChange={this.handlePaginationChange}
+            page={this.props.page}
+          />
         </div>
         <Footer />
       </div>
@@ -178,6 +189,7 @@ function mapStateToProps(state) {
     recipes: state.recipes.recipes,
     popularRecipes: state.recipes.popularRecipes,
     page: state.recipes.pages,
+    isLoading: state.recipes.isLoading
   };
 }
 

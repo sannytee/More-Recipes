@@ -224,7 +224,7 @@ class authHeader extends Component {
                   data-toggle="modal"
                   data-target="#exampleModal"
                 >
-                  <i className="fa fa-plus-square-o" aria-hidden="true" />
+                  Add Recipe
                 </button>
               </li>
               <li className="nav-item">

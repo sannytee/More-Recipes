@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /**
  *  @fileOverview renders the user recipes page
  *
@@ -14,6 +13,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
 import firebase from 'firebase';
+import { Spinner } from 'react-preloading-component';
 import Header from '../common/authHeader';
 import Footer from '../common/footer';
 import MyRecipeCard from './MyRecipeCard';
@@ -21,6 +21,7 @@ import EditRecipeModal from './EditRecipeModal';
 import DeleteRecipeModal from './deleteRecipeModal';
 import { logoutAction } from '../../actions/authAction';
 import verifyUser from '../../util/Authentication';
+import Paginate from '../pagination/index';
 import {
   getUserRecipes,
   editRecipeAction,
@@ -39,6 +40,8 @@ const propTypes = {
     editRecipeAction: PropTypes.func
   }).isRequired,
   userRecipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  pages: PropTypes.number.isRequired
 };
 const defaultProps = {
   user: null
@@ -76,6 +79,7 @@ class MyRecipePage extends Component {
     this.handleUploadSuccess = this.handleUploadSuccess.bind(this);
     this.handleProgress = this.handleProgress.bind(this);
     this.handleUploadStart = this.handleUploadStart.bind(this);
+    this.handlePaginationChange = this.handlePaginationChange.bind(this);
   }
 
   /**
@@ -87,20 +91,18 @@ class MyRecipePage extends Component {
   */
   componentDidMount() {
     if (verifyUser() === true) {
-      this.props.actions.getUserRecipes(this.props.user.id);
+      this.props.actions.getUserRecipes(this.props.user.id, 0);
     }
   }
 
   /**
    * @description removes errorMessage when focused
    *
-   * @param {object} event
-   *
    * @memberof MyRecipePage
    *
    * @returns {void}
   */
-  onFocus(event) {
+  onFocus() {
     this.setState({ errorMessage: '' });
   }
 
@@ -123,13 +125,11 @@ class MyRecipePage extends Component {
   /**
    * @description handles the deletion of recipe
    *
-   * @param {object} event
-   *
    * @memberof MyRecipePage
    *
    * @returns {void}
   */
-  handleDeletion(event) {
+  handleDeletion() {
     const { recipe, index } = this.state;
     this.props.actions.deleteRecipeAction(recipe.id, index)
       .then(() => {
@@ -184,6 +184,18 @@ class MyRecipePage extends Component {
         [name]: value
       }
     });
+  }
+
+  /**
+   * @memberof MyRecipePage
+   *
+   * @param {number} allUserRecipes
+   *
+   * @returns {void}
+  */
+  handlePaginationChange(allUserRecipes) {
+    const currentView = allUserRecipes.selected;
+    this.props.actions.getUserRecipes(this.props.user.id, currentView);
   }
 
   /**
@@ -246,21 +258,68 @@ class MyRecipePage extends Component {
    * @returns {void} returns a components
   */
   renderUserRecipes() {
-    if (this.props.userRecipes.length === 0) {
+    const {
+      userRecipes,
+      isLoading
+    } = this.props;
+    if (isLoading) {
+      return (
+        <div style={{
+          marginTop: '150px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+        >
+          <Spinner />
+        </div>
+      );
+    }
+    if (userRecipes.length === 0) {
       return (
         <h1>
           You have no Recipe
         </h1>
       );
     }
-    return this.props.userRecipes.map((recipes, i) => (
-      <MyRecipeCard
-        key={recipes.id}
-        index={i}
-        recipeDetails={recipes}
-        getRecipe={this.setRecipe}
-      />
-    ));
+
+    return (
+      <div className="container">
+        <div className="row section-popular">
+          <div className="col-sm-12">
+            <h2 className="pt-3 headline centered">My Recipes</h2>
+          </div>
+        </div>
+        <div>
+          <div className="row pt-4">
+            {
+              userRecipes.map((recipes, i) => (
+                <MyRecipeCard
+                  key={recipes.id}
+                  index={i}
+                  recipeDetails={recipes}
+                  getRecipe={this.setRecipe}
+                />
+              ))
+            }
+          </div>
+        </div>
+        <EditRecipeModal
+          details={this.state.recipe}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          errorMessage={this.state.errorMessage}
+          onFocus={this.onFocus}
+          upload={this.handleUploadSuccess}
+          startUpload={this.handleUploadStart}
+          onProgress={this.onProgress}
+          progress={this.state.progress}
+          isUploading={this.state.isUploading}
+        />
+        <DeleteRecipeModal
+          handleDeletion={this.handleDeletion}
+        />
+      </div>
+    );
   }
 
   /**
@@ -274,30 +333,11 @@ class MyRecipePage extends Component {
     return (
       <div>
         <Header user={this.props.user} />
-        <div className="container">
-          <div className="row section-popular">
-            <div className="col-sm-12">
-              <h2 className="pt-3 headline centered">My Recipes</h2>
-            </div>
-          </div>
-          <div className="row pt-4">
-            { this.renderUserRecipes()}
-          </div>
-          <EditRecipeModal
-            details={this.state.recipe}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            errorMessage={this.state.errorMessage}
-            onFocus={this.onFocus}
-            upload={this.handleUploadSuccess}
-            startUpload={this.handleUploadStart}
-            onProgress={this.onProgress}
-            progress={this.state.progress}
-            isUploading={this.state.isUploading}
-
-          />
-          <DeleteRecipeModal
-            handleDeletion={this.handleDeletion}
+        { this.renderUserRecipes()}
+        <div className="sticky-paginate">
+          <Paginate
+            page={this.props.pages}
+            handlePaginationChange={this.handlePaginationChange}
           />
         </div>
         <Footer />
@@ -324,7 +364,9 @@ MyRecipePage.contextTypes = {
 function mapStateToProps(state) {
   return {
     user: state.auth.user,
-    userRecipes: state.recipes.userRecipes
+    userRecipes: state.recipes.userRecipes,
+    pages: state.recipes.pages,
+    isLoading: state.recipes.isLoading,
   };
 }
 
