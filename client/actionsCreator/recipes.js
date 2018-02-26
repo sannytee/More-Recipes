@@ -1,4 +1,5 @@
 import axios from 'axios';
+import toastr from 'toastr';
 import * as actions from '../actions/recipesAction';
 import * as types from '../actions/types';
 
@@ -7,14 +8,16 @@ const URL = 'api/v1';
 /**
  * @description - Calls the API to get all recipes
  *
+ * @param {number} page
+ *
  * @return {Object} dispatch an object
 */
-export function getAllRecipesAction() {
+export function getAllRecipesAction(page) {
   return (dispatch) => {
     dispatch(actions.getAllRecipesRequest());
-    axios.get(`${URL}/recipes`)
+    axios.get(`${URL}/recipes?page=${page}`)
       .then((res) => {
-        dispatch(actions.getAllRecipesSuccess(res.data));
+        dispatch(actions.getAllRecipesSuccess(res.data, res.data.pages));
       })
       .catch((err) => {
         const { error } = err.response;
@@ -31,7 +34,7 @@ export function getAllRecipesAction() {
 export function getPopularRecipesAction() {
   return (dispatch) => {
     dispatch(actions.getPopularRecipesRequest());
-    axios.get(`${URL}/recipes?sort=upvotes&order=desc`)
+    axios.get(`${URL}/recipes/?sort=upvotes&order=desc`)
       .then((res) => {
         dispatch(actions.getPopularRecipesSuccess(res.data));
       })
@@ -136,12 +139,36 @@ export function favoriteRecipe(userId, recipeId) {
     axios.post(`/${URL}/users/${userId}/recipes`, recipeId)
       .then((res) => {
         dispatch(actions.favoriteRecipeSuccess(res.data.message));
+        toastr.success(res.data.message);
       })
       .catch((err) => {
         dispatch(actions.favoriteRecipeFailure(err.response.data.error));
       });
   };
 }
+
+/**
+ * @description - Calls the API to fetch user Recipes
+ *
+ * @param {number} userId - id of user
+ *
+ * @param {number} page
+ *
+ * @return {Object} dispatch an object
+*/
+export function getUserRecipes(userId, page) {
+  return (dispatch) => {
+    dispatch(actions.getUserRecipeRequest());
+    axios.get(`${URL}/users/${userId}/myrecipes?page=${page}`)
+      .then((res) => {
+        dispatch(actions.getUserRecipeSuccess(res.data));
+      })
+      .catch((err) => {
+        dispatch(actions.getUserRecipeFailure(err.data));
+      });
+  };
+}
+
 
 /**
  * @description - Calls the API to upvote or downvote recipe
@@ -179,26 +206,6 @@ export function createRecipeAction(recipeDetails) {
       dispatch({
         type: types.CREATE_RECIPE,
         payload: res.data,
-      });
-    })
-    .catch((err) => {
-      throw (err);
-    });
-}
-
-/**
- * @description - Calls the API to fetch user Recipes
- *
- * @param {number} userId - id of user
- *
- * @return {Object} dispatch an object
-*/
-export function getUserRecipes(userId) {
-  return dispatch => axios.get(`${URL}/users/${userId}/myrecipes`)
-    .then((res) => {
-      dispatch({
-        type: types.GET_USER_RECIPES,
-        payload: res.data
       });
     })
     .catch((err) => {

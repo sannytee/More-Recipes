@@ -9,11 +9,13 @@ const initialState = {
   userRecipes: [],
   currentRecipe: {},
   error: null,
+  userRecipeError: null,
   reviewError: null,
   voteError: null,
   isLoading: false,
   favMessage: null,
   favError: null,
+  pages: 0
 };
 
 
@@ -30,7 +32,12 @@ function recipeReducer(state = initialState, action) {
     case types.GET_ALL_RECIPES:
       return { ...state, isLoading: action.isLoading };
     case types.GET_ALL_RECIPES_SUCCESS:
-      return { ...state, recipes: action.payload, isLoading: action.isLoading };
+      return {
+        ...state,
+        recipes: action.payload.allRecipes,
+        isLoading: action.isLoading,
+        pages: action.payload.pages
+      };
     case types.GET_ALL_RECIPES_FAILURE:
       return { ...state, error: action.error, isLoading: action.isLoading };
     case types.GET_POPULAR_RECIPES:
@@ -59,7 +66,16 @@ function recipeReducer(state = initialState, action) {
         userRecipes: [...state.userRecipes, action.payload.Recipe]
       };
     case types.GET_USER_RECIPES:
-      return { ...state, userRecipes: action.payload };
+      return { ...state, isLoading: action.isLoading };
+    case types.GET_USER_RECIPES_SUCCESS:
+      return {
+        ...state,
+        isLoading: action.isLoading,
+        userRecipes: action.payload.userRecipes,
+        pages: action.payload.pages
+      };
+    case types.GET_USER_RECIPES_FAILURE:
+      return { ...state, isLoading: action.isLoading, userRecipeError: action.payload };
     case types.EDIT_RECIPE:
       const { index } = action;
       const myRecipes = state.userRecipes;
