@@ -351,10 +351,11 @@ describe('More-Recipe Tests:', () => {
     });
     it('GET /api/v1/recipes does get all recipe', (done) => {
       chai.request(app)
-        .get('/api/v1/recipes')
+        .get('/api/v1/recipes?page=0')
         .end((err, res) => {
           expect(res.status).equal(200);
-          expect(res.body).to.be.an('array');
+          expect(res.body.allRecipes).to.be.an('array');
+
           done();
         });
     });

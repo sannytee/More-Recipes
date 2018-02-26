@@ -131,6 +131,10 @@ export default class recipe {
    * @returns  {JSON} Returns success or failure message
    */
   static getRecipe(req, res) {
+    let offset;
+    const limit = 6;
+    let singlePage;
+    let pages;
     const { order, sort } = req.query;
     if (order || sort) {
       switch (sort) {
@@ -149,15 +153,30 @@ export default class recipe {
       }
     }
     if (!order && !sort) {
-      return Recipes
-        .all()
+      Recipes
+        .findAndCountAll()
         .then((recipes) => {
           if (recipes.length === 0) {
             return res.status(200).send({
               message: 'No recipes have been added'
             });
           }
-          return res.status(200).send(recipes);
+          const remainder = recipes.count % limit === 0 ?
+            0 : 1;
+          pages = Math.floor(recipes.count / limit) + remainder;
+          singlePage = parseInt(req.query.page, 10);
+          offset = singlePage * limit;
+
+          return Recipes
+            .findAll({
+              limit,
+              offset,
+              pages,
+            })
+            .then(allRecipes => res.status(200).send({
+              allRecipes,
+              pages
+            }));
         })
         .catch(error => res.status(400).send(error));
     }
@@ -255,8 +274,12 @@ export default class recipe {
   static getUserRecipe(req, res) {
     const userId = req.decoded.id;
     const params = parseInt(req.params.userId, 10);
+    let offset;
+    const limit = 6;
+    let singlePage;
+    let pages;
     Recipes
-      .findAll({
+      .findAndCountAll({
         where: {
           userId
         },
@@ -271,9 +294,26 @@ export default class recipe {
           res.status(403).send({
             message: 'You are not allowed to perform this action'
           });
-        } else {
-          return res.status(200).send(userRecipe);
         }
+        const remainder = userRecipe.count % limit === 0 ?
+          0 : 1;
+        pages = Math.floor(userRecipe.count / limit) + remainder;
+        singlePage = parseInt(req.query.page, 10);
+        offset = singlePage * limit;
+
+        return Recipes
+          .findAll({
+            where: {
+              userId
+            },
+            limit,
+            offset,
+            pages,
+          })
+          .then(userRecipes => res.status(200).send({
+            userRecipes,
+            pages
+          }));
       })
       .catch(err => res.status(500).send(err));
   }

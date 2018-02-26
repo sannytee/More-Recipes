@@ -61,8 +61,14 @@ class MyRecipeCard extends Component {
     return (
       <div className="col-md-4 card-space">
         <div className="card-deck">
-          <article className="card">
-            <img src={recipeDetails.image} alt="recipe" className="card-img-top img-fluid" />
+          <article className="card recipe-card">
+            <div className="my-recipe-img">
+              <img
+                src={recipeDetails.image}
+                alt="recipe"
+                className="card-img-top img-fluid recipe-card-img"
+              />
+            </div>
             <div className="card-body">
               <h3 className="card-title">
                 <Link to={`/recipes/${recipeDetails.id}`} id="remove-link">
