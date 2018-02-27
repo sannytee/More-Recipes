@@ -13,6 +13,7 @@ const propTypes = {
   upvote: PropTypes.func.isRequired,
   downvote: PropTypes.func.isRequired,
   favorite: PropTypes.func.isRequired,
+  favorited: PropTypes.bool.isRequired,
 };
 
 /* eslint-disable react/no-array-index-key  */
@@ -82,7 +83,12 @@ const RecipeInfo = props => (
         </div>
         <div style={{ marginLeft: '8px', marginRight: '5px' }}>
           <button className="btn vote-button" type="button" onClick={props.favorite} >
-            <i className="fa fa-heart" />
+            <i
+              className="fa fa-heart"
+              style={
+                props.favorited ? { color: 'white' } : { color: 'black' }
+              }
+            />
           </button>
         </div>
       </div>

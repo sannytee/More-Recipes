@@ -276,50 +276,20 @@ class MyRecipePage extends Component {
     }
     if (userRecipes.length === 0) {
       return (
-        <h1>
-          You have no Recipe
+        <h1 style={{ margin: '150px auto 0', width: '100%', textAlign: 'center' }}>
+          You do not have any recipe
         </h1>
       );
     }
 
-    return (
-      <div className="container">
-        <div className="row section-popular">
-          <div className="col-sm-12">
-            <h2 className="pt-3 headline centered">My Recipes</h2>
-          </div>
-        </div>
-        <div>
-          <div className="row pt-4">
-            {
-              userRecipes.map((recipes, i) => (
-                <MyRecipeCard
-                  key={recipes.id}
-                  index={i}
-                  recipeDetails={recipes}
-                  getRecipe={this.setRecipe}
-                />
-              ))
-            }
-          </div>
-        </div>
-        <EditRecipeModal
-          details={this.state.recipe}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          errorMessage={this.state.errorMessage}
-          onFocus={this.onFocus}
-          upload={this.handleUploadSuccess}
-          startUpload={this.handleUploadStart}
-          onProgress={this.onProgress}
-          progress={this.state.progress}
-          isUploading={this.state.isUploading}
-        />
-        <DeleteRecipeModal
-          handleDeletion={this.handleDeletion}
-        />
-      </div>
-    );
+    return this.props.userRecipes.map((recipes, i) => (
+      <MyRecipeCard
+        key={recipes.id}
+        index={i}
+        recipeDetails={recipes}
+        getRecipe={this.setRecipe}
+      />
+    ));
   }
 
   /**
@@ -330,16 +300,49 @@ class MyRecipePage extends Component {
    * @returns {void} returns the components
   */
   render() {
+    const {
+      pages,
+      userRecipes
+    } = this.props;
     return (
       <div>
         <Header user={this.props.user} />
-        { this.renderUserRecipes()}
-        <div className="sticky-paginate">
-          <Paginate
-            page={this.props.pages}
-            handlePaginationChange={this.handlePaginationChange}
+        <div className="container">
+          <div className="row section-popular">
+            <div className="col-sm-12">
+              <h2 className="pt-3 headline centered">My Recipes</h2>
+            </div>
+          </div>
+          <div className="row pt-4">
+            { this.renderUserRecipes()}
+          </div>
+          <EditRecipeModal
+            details={this.state.recipe}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+            errorMessage={this.state.errorMessage}
+            onFocus={this.onFocus}
+            upload={this.handleUploadSuccess}
+            startUpload={this.handleUploadStart}
+            onProgress={this.onProgress}
+            progress={this.state.progress}
+            isUploading={this.state.isUploading}
+
+          />
+          <DeleteRecipeModal
+            handleDeletion={this.handleDeletion}
           />
         </div>
+        {
+          pages === 1 || userRecipes.length === 0 ? <div />
+          :
+          <div className="sticky-paginate">
+            <Paginate
+              page={this.props.pages}
+              handlePaginationChange={this.handlePaginationChange}
+            />
+          </div>
+        }
         <Footer />
       </div>
     );

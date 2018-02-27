@@ -41,6 +41,12 @@ html {
   z-index: 1;
   position: relative;
   margin-top: 70px;
+  padding-bottom: 20px;
+}
+
+.fav-btn {
+  text-align: center;
+  border-radius: 80px;
 }
 
 .content>.cont_area {
