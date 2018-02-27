@@ -22,6 +22,14 @@ export default {
       });
     }
     favoriteHelper.fetch(req, res);
+  },
+  getIds(req, res) {
+    if (parseInt(req.params.userId, 10) !== req.decoded.id) {
+      return res.status(403).send({
+        message: 'Permission denied '
+      });
+    }
+    favoriteHelper.fetchRecipesId(req, res);
   }
 };
 

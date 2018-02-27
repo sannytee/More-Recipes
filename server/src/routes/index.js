@@ -70,6 +70,12 @@ export default (app) => {
     favoriteController.get
   );
 
+  app.get(
+    '/api/v1/users/:userId/recipes/ids',
+    checkReqParams, authentication.verifyUser,
+    favoriteController.getIds
+  );
+
   app.post(
     '/api/v1/recipes/:recipeId/votes',
     checkReqParams,
