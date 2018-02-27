@@ -6,6 +6,7 @@ const initialState = {
   recipes: [],
   popularRecipes: [],
   favoriteRecipes: [],
+  favoriteRecipesIds: [],
   userRecipes: [],
   currentRecipe: {},
   error: null,
@@ -124,8 +125,42 @@ function recipeReducer(state = initialState, action) {
     case types.VOTE_A_RECIPE_FAILURE:
       return { ...state, voteError: action.payload };
     case types.FAVORITE_RECIPE_SUCCESS:
-      return { ...state, favMessage: action.payload };
+      if (action.payload === 'Recipe removed from favorites') {
+        const indexPosition = state.favoriteRecipesIds.indexOf(action.recipeId);
+        const updatedRecipesIdsArray = [
+          ...state.favoriteRecipesIds.slice(0, indexPosition),
+          ...state.favoriteRecipesIds.slice(indexPosition + 1)
+        ];
+        return { ...state, favMessage: action.payload, favoriteRecipesIds: updatedRecipesIdsArray };
+      }
+      return {
+        ...state,
+        favMessage: action.payload,
+        favoriteRecipesIds: [
+          ...state.favoriteRecipesIds,
+          action.recipeId
+        ]
+      };
     case types.FAVORITE_RECIPE_FAILURE:
+      return { ...state, favError: action.payload };
+    case types.GET_USER_FAVORITE_RECIPE:
+      return { ...state, isLoading: action.isLoading };
+    case types.GET_USER_FAVORITE_RECIPE_SUCCESS:
+      return { ...state, isLoading: action.isLoading, favoriteRecipes: action.payload };
+    case types.GET_USER_FAVORITE_RECIPE_FAILURE:
+      return { ...state, isLoading: action.isLoading, favError: action.payload };
+    case types.FAVORITE_A_RECIPE_SUCCESS:
+      const arrayIndex = action.index;
+      const updatedFavoriteRecipes = [
+        ...state.favoriteRecipes.slice(0, arrayIndex),
+        ...state.favoriteRecipes.slice(arrayIndex + 1)
+      ];
+      return { ...state, favoriteRecipes: updatedFavoriteRecipes };
+    case types.FAVORITE_A_RECIPE_FAILURE:
+      return { ...state, favError: action.payload };
+    case types.GET_USER_FAVORITE_RECIPE_IDS:
+      return { ...state, favoriteRecipesIds: action.payload };
+    case types.GET_USER_FAVORITE_RECIPE_IDS_FAILURE:
       return { ...state, favError: action.payload };
     default:
       return state;

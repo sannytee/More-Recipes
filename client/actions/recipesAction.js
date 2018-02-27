@@ -203,12 +203,14 @@ export const favoriteRecipeFailure = error => ({
  * @description - action dispatch when request is successful
  *
  * @param  {Object} response
+ * @param {number} recipeId
  *
  * @return {Object} dispatch an object
 */
-export const favoriteRecipeSuccess = response => ({
+export const favoriteRecipeSuccess = (response, recipeId) => ({
   type: types.FAVORITE_RECIPE_SUCCESS,
-  payload: response
+  payload: response,
+  recipeId
 });
 
 /**
@@ -244,5 +246,90 @@ export const getUserRecipeFailure = error => ({
   type: types.GET_USER_RECIPES_FAILURE,
   payload: error,
   isloading: false
+});
+
+/**
+ * @description - action dispatch when request is first made
+ *
+ * @return {Object} dispatch an object
+*/
+export const getUserFavRecipeRequest = () => ({
+  type: types.GET_USER_FAVORITE_RECIPE,
+  isLoading: true,
+});
+
+/**
+ * @description - action dispatch when request is successful
+ *
+ * @param  {Object} response
+ *
+ * @return {Object} dispatch an object
+*/
+export const getUserFavRecipeSuccess = response => ({
+  type: types.GET_USER_FAVORITE_RECIPE_SUCCESS,
+  payload: response
+});
+
+/**
+ * @description - action dispatch when request failed
+ *
+ * @param  {Object} error
+ *
+ * @return {Object} dispatch an object
+*/
+export const getUserFavRecipeFailure = error => ({
+  type: types.GET_USER_FAVORITE_RECIPE_FAILURE,
+  payload: error,
+  isloading: false
+});
+
+/**
+ * @description - action dispatch when request is successful
+ *
+ * @param  {Object} response
+ * @param {number} index
+ *
+ * @return {Object} dispatch an object
+*/
+export const favoriteARecipeSuccess = (response, index) => ({
+  type: types.FAVORITE_A_RECIPE_SUCCESS,
+  payload: response,
+  index,
+});
+
+/**
+ * @description - action dispatch when request failed
+ *
+ * @param  {Object} error
+ *
+ * @return {Object} dispatch an object
+*/
+export const favoriteARecipeFailure = error => ({
+  type: types.FAVORITE_A_RECIPE_FAILURE,
+  payload: error,
+});
+
+/**
+ * @description - action dispatch when request is successful
+ *
+ * @param  {Object} response
+ *
+ * @return {Object} dispatch an object
+*/
+export const getFavoriteRecipeIds = response => ({
+  type: types.GET_USER_FAVORITE_RECIPE_IDS,
+  payload: response,
+});
+
+/**
+ * @description - action dispatch when request failed
+ *
+ * @param  {Object} error
+ *
+ * @return {Object} dispatch an object
+*/
+export const getFavoriteRecipeIdsFailure = error => ({
+  type: types.GET_USER_FAVORITE_RECIPE_IDS_FAILURE,
+  payload: error,
 });
 
