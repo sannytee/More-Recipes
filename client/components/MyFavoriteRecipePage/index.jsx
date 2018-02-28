@@ -8,8 +8,6 @@ import FavRecipeCard from './FavoriteRecipeCard';
 import { getUserFavRecipes } from '../../actionsCreator/recipes';
 import verifyUser from '../../util/Authentication';
 
-/* eslint-disable require-jsdoc */
-
 
 const propTypes = {
   actions: PropTypes.shape({
@@ -30,20 +28,39 @@ const defaultProps = {
   isLoading: null
 };
 
-
+/**
+ * @description A class to mount all components related to MyFavoriteRecipePage
+ * @extends Component
+ */
 class FavoriteRecipePage extends Component {
+  /**
+   * handles rendering favorite recipe
+   * @param {object} props
+  */
   constructor(props) {
     super(props);
 
     this.renderFavoriteRecipes = this.renderFavoriteRecipes.bind(this);
   }
 
+  /**
+   * @description performs an action right after the component mount
+   *
+   * @memberof MyFavoriteRecipePage
+   *
+   * @returns {void}
+  */
   componentDidMount() {
     if (verifyUser() === true) {
       this.props.actions.getUserFavRecipes(this.props.user.id);
     }
   }
 
+  /**
+   * @memberof MyFavoriteRecipePage
+   *
+   * @returns {void}
+  */
   renderFavoriteRecipes() {
     const {
       isLoading,
@@ -80,6 +97,13 @@ class FavoriteRecipePage extends Component {
     ));
   }
 
+  /**
+   * @description renders the components
+   *
+   * @memberof MyFavoriteRecipePage
+   *
+   * @returns {JSX} returns the components
+  */
   render() {
     return (
       <div>
@@ -102,15 +126,23 @@ class FavoriteRecipePage extends Component {
   }
 }
 
+/**
+ * @description maps state to properties of MyFavoriteRecipePage
+ *
+ * @param  {object} state
+ *
+ * @returns {object} returns the state to be mapped to props
+ */
 function mapStateToProps(state) {
   return {
     user: state.auth.user,
-    favoriteRecipes: state.recipes.favoriteRecipes
+    favoriteRecipes: state.recipes.favoriteRecipes,
+    isLoading: state.recipes.isLoading
   };
 }
 
 /**
- * @description maps action to properties of MyRecipePage
+ * @description maps action to properties of MyFavoriteRecipePage
  *
  * @param  {object} dispatch
  *

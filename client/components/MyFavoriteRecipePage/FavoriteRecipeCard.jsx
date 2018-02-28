@@ -5,8 +5,6 @@ import { bindActionCreators } from 'redux';
 import { favoriteARecipe } from '../../actionsCreator/recipes';
 
 
-/* eslint-disable require-jsdoc */
-
 const propTypes = {
   actions: PropTypes.shape({
     favoriteARecipe: PropTypes.func
@@ -20,13 +18,28 @@ const propTypes = {
   index: PropTypes.number.isRequired,
 };
 
+/**
+ * @description A class to mount the favorite recipe card
+ * @extends Component
+ */
 class FavoriteRecipeCard extends Component {
+  /**
+   * handles removing favorite recipe
+   * @param {object} props
+  */
   constructor(props) {
     super(props);
 
     this.favoriteRecipe = this.favoriteRecipe.bind(this);
   }
 
+  /**
+   * @description remove recipe  from favorites
+   *
+   * @memberof FavoriteRecipeCard
+   *
+   * @returns {void}
+  */
   favoriteRecipe() {
     const {
       userId,
@@ -39,6 +52,13 @@ class FavoriteRecipeCard extends Component {
     this.props.actions.favoriteARecipe(userId, data, index);
   }
 
+  /**
+   * @description renders the favorite recipe card
+   *
+   * @memberof FavoriteRecipeCard
+   *
+   * @returns {void} returns the components
+  */
   render() {
     const {
       recipe
@@ -81,6 +101,13 @@ class FavoriteRecipeCard extends Component {
   }
 }
 
+/**
+ * @description maps action to properties of FavoriteRecipeCard
+ *
+ * @param  {object} dispatch
+ *
+ * @returns {object} returns the action to be bind
+ */
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({

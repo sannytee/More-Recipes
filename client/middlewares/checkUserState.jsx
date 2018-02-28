@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import toastr from 'toastr';
 import { logoutAction } from '../actions/authAction';
 import verifyUser from '../util/Authentication';
 
@@ -31,6 +32,7 @@ export default function checkUserState(ComposedComponent) {
     componentWillMount() {
       if (verifyUser() === false) {
         this.props.actions.logoutAction();
+        toastr.error('Login to continue');
         return this.context.router.push('/');
       }
     }

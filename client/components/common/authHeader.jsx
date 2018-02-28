@@ -1,3 +1,4 @@
+/* eslint-disable  react/no-unused-state  */
 /**
  *  @fileOverview Creates header for authenticated users
  *
