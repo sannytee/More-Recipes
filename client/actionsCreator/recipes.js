@@ -138,7 +138,7 @@ export function favoriteRecipe(userId, recipeId) {
   return (dispatch) => {
     axios.post(`/${URL}/users/${userId}/recipes`, recipeId)
       .then((res) => {
-        dispatch(actions.favoriteRecipeSuccess(res.data.message));
+        dispatch(actions.favoriteRecipeSuccess(res.data.message, recipeId.recipeId));
         toastr.success(res.data.message);
       })
       .catch((err) => {
@@ -165,6 +165,69 @@ export function getUserRecipes(userId, page) {
       })
       .catch((err) => {
         dispatch(actions.getUserRecipeFailure(err.data));
+      });
+  };
+}
+
+/**
+ * @description - Calls the API to fetch user favorite Recipes
+ *
+ * @param {number} userId - id of user
+ *
+ * @param {number} page
+ *
+ * @return {Object} dispatch an object
+*/
+export function getUserFavRecipes(userId) {
+  return (dispatch) => {
+    dispatch(actions.getUserFavRecipeRequest());
+    axios.get(`${URL}/users/${userId}/recipes`)
+      .then((res) => {
+        dispatch(actions.getUserFavRecipeSuccess(res.data));
+      })
+      .catch((err) => {
+        dispatch(actions.getUserFavRecipeFailure(err.data));
+      });
+  };
+}
+
+/**
+ * @description - Calls the API to favorite a recipe
+ *
+ * @param {number} userId - id of user
+ * @param  {number} recipeId - id of recipe to be favorited
+ * @param {number} index - position of recipe in array
+ *
+ * @return {Object} dispatch an object
+*/
+export function favoriteARecipe(userId, recipeId, index) {
+  return (dispatch) => {
+    axios.post(`/${URL}/users/${userId}/recipes`, recipeId)
+      .then((res) => {
+        dispatch(actions.favoriteARecipeSuccess(res.data.message, index));
+        toastr.success(res.data.message);
+      })
+      .catch((err) => {
+        dispatch(actions.favoriteARecipeFailure(err.response.data.error));
+      });
+  };
+}
+
+/**
+ * @description - Calls the API to get ids of user favorite recipes
+ *
+ * @param {number} userId - id of user
+ *
+ * @return {Object} dispatch an object
+*/
+export function getFavoriteIds(userId) {
+  return (dispatch) => {
+    axios.get(`/${URL}/users/${userId}/recipes/ids`)
+      .then((res) => {
+        dispatch(actions.getFavoriteRecipeIds(res.data.recipeIds));
+      })
+      .catch((err) => {
+        dispatch(actions.getFavoriteRecipeIdsFailure(err.response.data.error));
       });
   };
 }

@@ -1,3 +1,4 @@
+/* eslint-disable  react/no-unused-state  */
 /**
  *  @fileOverview Creates header for authenticated users
  *
@@ -105,6 +106,14 @@ class authHeader extends Component {
         toastr.success('Recipe successfully added to catalog');
         document.getElementById('recipeForm').reset();
         $('#exampleModal').modal('hide');
+        this.setState({
+          recipeName: '',
+          mealType: '',
+          description: '',
+          method: '',
+          ingredients: '',
+          image: '',
+        });
       })
       .catch((err) => {
         const { data } = err.response;
@@ -237,8 +246,32 @@ class authHeader extends Component {
               <li className="nav-item">
                 <Link className="nav-link" to="profile">Profile</Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/my-recipes">My Recipes</Link>
+              <li className="nav-item dropdown show">
+                <Link
+                  className="nav-link dropdown-toggle"
+                  to="#"
+                  id="navlink"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="true"
+                >
+                  Recipes
+                </Link>
+                <div className="dropdown-menu" aria-labelledby="navlink">
+                  <Link
+                    className="dropdown-item"
+                    to="/my-recipes"
+                  >
+                    My Recipes
+                  </Link>
+                  <Link
+                    className="dropdown-item nav-text"
+                    to="/my-favorite"
+                  >
+                    Favorite recipes
+                  </Link>
+                </div>
               </li>
               <li className="nav-item">
                 <a

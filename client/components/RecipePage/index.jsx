@@ -37,7 +37,7 @@ const propTypes = {
     getPopularRecipesAction: PropTypes.func,
     changeAuthAction: PropTypes.func.isRequired,
   }).isRequired,
-  isLoading: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   isauthenticated: PropTypes.bool.isRequired,
   recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   popularRecipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,

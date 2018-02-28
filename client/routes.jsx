@@ -10,6 +10,7 @@ import SignupPage from './components/SignupPage/index';
 import recipes from './components/RecipePage/index';
 import myRecipePage from './components/MyRecipePage/index';
 import recipeDetailsPage from './components/RecipeDetailsPage/index';
+import FavoriteRecipePage from './components/MyFavoriteRecipePage/index';
 import checkUserState from './middlewares/checkUserState';
 
 export default (
@@ -20,6 +21,7 @@ export default (
     <Route path="recipes" component={recipes} />
     <Route path="/my-recipes" component={checkUserState(myRecipePage)} />
     <Route path="recipes/:recipeId" component={checkUserState(recipeDetailsPage)} />
+    <Route path="/my-favorite" component={checkUserState(FavoriteRecipePage)} />
     <Route path="users/:userId/profile" />
   </Route>
 );

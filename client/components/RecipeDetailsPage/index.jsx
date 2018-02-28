@@ -10,6 +10,7 @@ import {
   resetReviewError,
   voteARecipe,
   favoriteRecipe,
+  getFavoriteIds
 } from '../../actionsCreator/recipes';
 import Footer from '../common/footer';
 import img from '../../public/images/recipe-10.jpg';
@@ -44,6 +45,7 @@ const propTypes = {
   }).isRequired,
   error: PropTypes.string,
   reviewError: PropTypes.string,
+  favoriteIds: PropTypes.arrayOf(PropTypes.number).isRequired
 };
 
 const defaultProps = {
@@ -51,8 +53,6 @@ const defaultProps = {
   reviewError: null,
 };
 
-
-/* eslint-disable react/no-unused-state */
 
 /**
  * @description A class to mount all components related to details of recipe
@@ -87,8 +87,14 @@ class RecipeDetailsPage extends Component {
    * @returns {void}
   */
   componentDidMount() {
+    const {
+      actions,
+      params,
+      user
+    } = this.props;
     if (verifyUser() === true) {
-      this.props.actions.getRecipeData(this.props.params.recipeId);
+      actions.getRecipeData(params.recipeId);
+      actions.getFavoriteIds(user.id);
     }
   }
 
@@ -219,6 +225,7 @@ class RecipeDetailsPage extends Component {
                 upvote={this.upvoteARecipe}
                 downvote={this.downvoteARecipe}
                 favorite={this.favoriteRecipe}
+                favorited={this.props.favoriteIds.includes(recipeDetails.id)}
               />
               <Reviews
                 reviews={recipeDetails.reviews}
@@ -274,6 +281,7 @@ function mapStateToProps(state) {
     error: state.recipes.error,
     reviewError: state.recipes.reviewError,
     favMessage: state.recipes.favMessage,
+    favoriteIds: state.recipes.favoriteRecipesIds
   };
 }
 
@@ -292,7 +300,8 @@ function mapDispatchToProps(dispatch) {
       postReview,
       resetReviewError,
       voteARecipe,
-      favoriteRecipe
+      favoriteRecipe,
+      getFavoriteIds
     }, dispatch)
   };
 }

@@ -81,4 +81,26 @@ export default class favorite {
       })
       .catch(err => res.status(400).send(err));
   }
+  /**
+   * get  all favorite recipe ids
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns success or failure message
+   */
+  static fetchRecipesId(req, res) {
+    const recipeIds = [];
+    favorites
+      .findAll({
+        where: {
+          userId: req.decoded.id,
+        }
+      })
+      .then((favoriteRecipeIds) => {
+        favoriteRecipeIds.map(favoriteRecipeId => recipeIds.push(favoriteRecipeId.recipeId));
+        return res.status(200).send({
+          recipeIds
+        });
+      })
+      .catch(err => res.status(500).send(err));
+  }
 }
