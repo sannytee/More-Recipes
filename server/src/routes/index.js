@@ -89,4 +89,11 @@ export default (app) => {
     authentication.verifyUser,
     userController.myRecipes
   );
+
+  app.get(
+    '/api/v1/users/:userId/profile',
+    checkReqParams,
+    authentication.verifyUser,
+    userController.getInfo
+  );
 };

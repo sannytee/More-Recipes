@@ -295,9 +295,10 @@ export default class recipe {
             message: 'You are not allowed to perform this action'
           });
         }
-        const remainder = userRecipe.count % limit === 0 ?
+        const totalRecipes = userRecipe.count;
+        const remainder = totalRecipes % limit === 0 ?
           0 : 1;
-        pages = Math.floor(userRecipe.count / limit) + remainder;
+        pages = Math.floor(totalRecipes / limit) + remainder;
         singlePage = parseInt(req.query.page, 10);
         offset = singlePage * limit;
 
@@ -312,7 +313,8 @@ export default class recipe {
           })
           .then(userRecipes => res.status(200).send({
             userRecipes,
-            pages
+            pages,
+            totalRecipes
           }));
       })
       .catch(err => res.status(500).send(err));

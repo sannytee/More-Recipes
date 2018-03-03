@@ -72,14 +72,19 @@ export default class favorite {
         ]
       })
       .then((favorited) => {
-        if (favorited.length === 0) {
+        const favoriteCount = favorited.length;
+        if (favoriteCount === 0) {
           return res.status(200).send({
-            message: 'You have no favorite recipes'
+            message: 'You have no favorite recipes',
+            count: favoriteCount
           });
         }
-        res.status(200).send(favorited);
+        res.status(200).send({
+          favorited,
+          count: favoriteCount
+        });
       })
-      .catch(err => res.status(400).send(err));
+      .catch(err => res.status(500).send(err));
   }
   /**
    * get  all favorite recipe ids
