@@ -86,7 +86,7 @@ class FavoriteRecipePage extends Component {
         </h1>
       );
     }
-    return favoriteRecipes.map((favorites, i) => (
+    return favoriteRecipes.favorited.map((favorites, i) => (
       <FavRecipeCard
         key={favorites.id}
         recipe={favorites.Recipe}

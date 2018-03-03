@@ -6,6 +6,9 @@ import {
   SIGN_USER,
   SIGN_USER_FAILURE,
   SIGN_USER_SUCCESS,
+  GET_USER_DATA,
+  GET_USER_DATA_SUCCESS,
+  GET_USER_DATA_FAILURE,
   RESET_USER_ERROR
 } from '../actions/types';
 
@@ -15,6 +18,8 @@ const initialState = {
     username: ''
   },
   error: null,
+  profile: {},
+  isLoading: false
 };
 
 
@@ -68,6 +73,20 @@ function authReducer(state = initialState, action) {
       };
     case CHANGE_USER_AUTH:
       return { ...state, authenticated: false };
+    case GET_USER_DATA:
+      return { ...state, isLoading: action.isLoading };
+    case GET_USER_DATA_SUCCESS:
+      return {
+        ...state,
+        isLoading: action.isLoading,
+        profile: action.payload
+      };
+    case GET_USER_DATA_FAILURE:
+      return {
+        ...state,
+        isLoading: action.isLoading,
+        error: action.payload
+      };
     default:
       return state;
   }
