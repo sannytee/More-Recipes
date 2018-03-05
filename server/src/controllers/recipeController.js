@@ -47,5 +47,8 @@ export default {
   getOne(req, res) {
     recipeHelper.getARecipe(req, res, reviews);
   },
+  search(req, res) {
+    recipeHelper.findRecipe(req, res);
+  }
 
 };

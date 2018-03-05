@@ -264,7 +264,7 @@ export function voteRecipeAction(recipeId, voteAction, index) {
  * @return {Object} dispatch an object
 */
 export function createRecipeAction(recipeDetails) {
-  return dispatch => axios.post(`${URL}/recipes`, recipeDetails)
+  return dispatch => axios.post(`/${URL}/recipes`, recipeDetails)
     .then((res) => {
       dispatch({
         type: types.CREATE_RECIPE,

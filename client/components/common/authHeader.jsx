@@ -18,6 +18,9 @@ import toastr from 'toastr';
 import ImageUploader from 'react-firebase-image-uploader';
 import firebase from 'firebase';
 import { Pulse } from 'react-preloading-component';
+import Select from 'react-select';
+import fetch from 'isomorphic-fetch';
+import 'react-select/dist/react-select.css';
 import { createRecipeAction } from '../../actionsCreator/recipes';
 import { logoutAction } from '../../actions/authAction';
 
@@ -58,7 +61,11 @@ class authHeader extends Component {
       image: '',
       progress: 0,
       isUploading: false,
-      notReady: true
+      notReady: true,
+      backspaceRemoves: true,
+      multi: true,
+      creatable: false,
+      value: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -67,6 +74,10 @@ class authHeader extends Component {
     this.handleUploadSuccess = this.handleUploadSuccess.bind(this);
     this.handleProgress = this.handleProgress.bind(this);
     this.handleUploadStart = this.handleUploadStart.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.getUsers = this.getUsers.bind(this);
+    this.gotoUser = this.gotoUser.bind(this);
+    this.toggleBackspaceRemoves = this.toggleBackspaceRemoves.bind(this);
   }
 
 
@@ -193,12 +204,95 @@ class authHeader extends Component {
     this.setState({ isUploading: true, progress: 0, });
   }
 
+  onChange(value) {
+    this.setState({
+      value,
+    });
+    console.log(this.state.value);
+  }
+
+  /* eslint-disable class-methods-use-this  */
+  getUsers(input) {
+    if (!input) {
+      return Promise.resolve({ options: [] });
+    }
+
+    return fetch(`/api/v1/search?recipe=${input}`)
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        console.log(json.recipes);
+        const test = [
+          {
+            addedBy: "example20",
+            createdAt: "2018-03-05T10:35:22.361Z",
+            description:"awesomestuff",
+            downvotes: 0,
+            id:12,
+            image:"https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F9ebefe78-e406-4835-b350-03cd13c29a9f.jpg?alt=media&token=4b37eb6e-5b9e-4cda-97cf-591d3092733a",
+            ingredients:"awesome, stuff,garri",
+            mealType:"lunch",
+            method:"research",
+            recipeName:"awesome stuff",
+            updatedAt:"2018-03-05T10:35:22.361Z",
+            upvotes:0,
+            userId:1
+          },
+          {
+            addedBy: "example20",
+            createdAt: "2018-03-05T10:35:22.361Z",
+            description:"awesomestuff",
+            downvotes: 0,
+            id:12,
+            image:"https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F9ebefe78-e406-4835-b350-03cd13c29a9f.jpg?alt=media&token=4b37eb6e-5b9e-4cda-97cf-591d3092733a",
+            ingredients:"awesome, stuff,garri",
+            mealType:"lunch",
+            method:"research",
+            recipeName:"awesome stuff",
+            updatedAt:"2018-03-05T10:35:22.361Z",
+            upvotes:0,
+            userId:1
+          },
+
+          {
+            addedBy: "example20",
+            createdAt: "2018-03-05T10:35:22.361Z",
+            description:"awesomestuff",
+            downvotes: 0,
+            id:12,
+            image:"https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F9ebefe78-e406-4835-b350-03cd13c29a9f.jpg?alt=media&token=4b37eb6e-5b9e-4cda-97cf-591d3092733a",
+            ingredients:"awesome, stuff,garri",
+            mealType:"lunch",
+            method:"research",
+            recipeName:"awesome stuff",
+            updatedAt:"2018-03-05T10:35:22.361Z",
+            upvotes:0,
+            userId:1
+          },
+
+
+        ];
+        return { options: json.recipes };
+      });
+  }
+
+  gotoUser(value) {
+    this.context.router.push(`/recipes/${value.id}`);
+  }
+
+  toggleBackspaceRemoves() {
+    this.setState({
+      backspaceRemoves: !this.state.backspaceRemoves
+    });
+  }
+
   /**
    * @description renders the component
    * @memberof authHeader
    * @returns {void} returns the navbar section of authenticated users
   */
   render() {
+    const AsyncComponent = Select.Async;
     return (
       <header>
         <nav className="navbar fixed-top  navbar-expand-lg navbar-dark" style={{ backgroundColor: '#2b3034' }}>
@@ -216,14 +310,23 @@ class authHeader extends Component {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <form className="form-inline my-2 my-lg-0 ml-auto ">
-              <input
-                className="form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-            </form>
+            <div className="form-inline my-2 my-lg-0 ml-auto ">
+              <div className="section" style={{ width: '300px' }}>
+                <AsyncComponent
+                  multi={this.state.multi}
+                  value={this.state.value}
+                  onChange={this.onChange}
+                  onValueClick={this.gotoUser}
+                  valueKey="id"
+                  labelKey={ "recipeName" ||"ingredients" }
+                  loadOptions={this.getUsers}
+                  backspaceRemoves={this.state.backspaceRemoves}
+                  noResultsText="No recipe found"
+                  placeholder="Search for recipe"
+                  searchPromptText="Type to search for recipe"
+                />
+              </div>
+            </div>
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <button
@@ -240,7 +343,7 @@ class authHeader extends Component {
                 <span
                   className="nav-link"
                 >
-                Logged in as {this.props.user && this.props.user.username}
+                  Logged in as {this.props.user && this.props.user.username}
                 </span>
               </li>
               <li className="nav-item">
