@@ -19,9 +19,8 @@ import ImageUploader from 'react-firebase-image-uploader';
 import firebase from 'firebase';
 import { Pulse } from 'react-preloading-component';
 import Select from 'react-select';
-import fetch from 'isomorphic-fetch';
 import 'react-select/dist/react-select.css';
-import { createRecipeAction } from '../../actionsCreator/recipes';
+import { createRecipeAction, searchRecipes } from '../../actionsCreator/recipes';
 import { logoutAction } from '../../actions/authAction';
 
 const propTypes = {
@@ -44,6 +43,22 @@ const defaultProps = {
  * @extends Component
  */
 class authHeader extends Component {
+  /**
+   * @description loads the recipes searched for
+   *
+   * @param {string} input
+   *
+   * @memberof authHeader
+   *
+   * @returns {void}
+  */
+  static getRecipes(input) {
+    if (!input) {
+      return Promise.resolve({ options: [] });
+    }
+    return searchRecipes(input);
+  }
+
   /**
    * @description Creates a recipe
    * @param {object} props
@@ -74,26 +89,45 @@ class authHeader extends Component {
     this.handleUploadSuccess = this.handleUploadSuccess.bind(this);
     this.handleProgress = this.handleProgress.bind(this);
     this.handleUploadStart = this.handleUploadStart.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.getUsers = this.getUsers.bind(this);
-    this.gotoUser = this.gotoUser.bind(this);
+    this.onSearchChange = this.onSearchChange.bind(this);
+    this.gotoRecipe = this.gotoRecipe.bind(this);
     this.toggleBackspaceRemoves = this.toggleBackspaceRemoves.bind(this);
   }
 
-
   /**
    * @description checks when an element is being focused on
+   *
    * @memberof authHeader
+   *
    * @returns {void}
   */
   onFocus() {
     this.setState({ errorMessage: '' });
   }
 
+
+  /**
+   * @description checks for update in search field
+   *
+   * @param {string} value
+   *
+   * @memberof authHeader
+   *
+   * @returns {void}
+  */
+  onSearchChange(value) {
+    this.setState({
+      value,
+    });
+  }
+
   /**
    * @description checks for update in form entry
+   *
    * @param {object} event
+   *
    * @memberof authHeader
+   *
    * @returns {void}
   */
   handleChange(event) {
@@ -204,82 +238,26 @@ class authHeader extends Component {
     this.setState({ isUploading: true, progress: 0, });
   }
 
-  onChange(value) {
-    this.setState({
-      value,
-    });
-    console.log(this.state.value);
-  }
-
-  /* eslint-disable class-methods-use-this  */
-  getUsers(input) {
-    if (!input) {
-      return Promise.resolve({ options: [] });
-    }
-
-    return fetch(`/api/v1/search?recipe=${input}`)
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-        console.log(json.recipes);
-        const test = [
-          {
-            addedBy: "example20",
-            createdAt: "2018-03-05T10:35:22.361Z",
-            description:"awesomestuff",
-            downvotes: 0,
-            id:12,
-            image:"https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F9ebefe78-e406-4835-b350-03cd13c29a9f.jpg?alt=media&token=4b37eb6e-5b9e-4cda-97cf-591d3092733a",
-            ingredients:"awesome, stuff,garri",
-            mealType:"lunch",
-            method:"research",
-            recipeName:"awesome stuff",
-            updatedAt:"2018-03-05T10:35:22.361Z",
-            upvotes:0,
-            userId:1
-          },
-          {
-            addedBy: "example20",
-            createdAt: "2018-03-05T10:35:22.361Z",
-            description:"awesomestuff",
-            downvotes: 0,
-            id:12,
-            image:"https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F9ebefe78-e406-4835-b350-03cd13c29a9f.jpg?alt=media&token=4b37eb6e-5b9e-4cda-97cf-591d3092733a",
-            ingredients:"awesome, stuff,garri",
-            mealType:"lunch",
-            method:"research",
-            recipeName:"awesome stuff",
-            updatedAt:"2018-03-05T10:35:22.361Z",
-            upvotes:0,
-            userId:1
-          },
-
-          {
-            addedBy: "example20",
-            createdAt: "2018-03-05T10:35:22.361Z",
-            description:"awesomestuff",
-            downvotes: 0,
-            id:12,
-            image:"https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F9ebefe78-e406-4835-b350-03cd13c29a9f.jpg?alt=media&token=4b37eb6e-5b9e-4cda-97cf-591d3092733a",
-            ingredients:"awesome, stuff,garri",
-            mealType:"lunch",
-            method:"research",
-            recipeName:"awesome stuff",
-            updatedAt:"2018-03-05T10:35:22.361Z",
-            upvotes:0,
-            userId:1
-          },
-
-
-        ];
-        return { options: json.recipes };
-      });
-  }
-
-  gotoUser(value) {
+  /**
+   * @description redirect to selected recipe
+   *
+   * @param {object} value
+   *
+   * @memberof authHeader
+   *
+   * @returns {void}
+  */
+  gotoRecipe(value) {
     this.context.router.push(`/recipes/${value.id}`);
   }
 
+  /**
+   * @description removes searched recipe on backspace  entered
+   *
+   * @memberof authHeader
+   *
+   * @returns {void}
+  */
   toggleBackspaceRemoves() {
     this.setState({
       backspaceRemoves: !this.state.backspaceRemoves
@@ -288,7 +266,9 @@ class authHeader extends Component {
 
   /**
    * @description renders the component
+   *
    * @memberof authHeader
+   *
    * @returns {void} returns the navbar section of authenticated users
   */
   render() {
@@ -313,13 +293,15 @@ class authHeader extends Component {
             <div className="form-inline my-2 my-lg-0 ml-auto ">
               <div className="section" style={{ width: '300px' }}>
                 <AsyncComponent
-                  multi={this.state.multi}
+                  multi={false}
                   value={this.state.value}
-                  onChange={this.onChange}
-                  onValueClick={this.gotoUser}
+                  onChange={this.onSearchChange}
+                  onValueClick={this.gotoRecipe}
                   valueKey="id"
-                  labelKey={ "recipeName" ||"ingredients" }
-                  loadOptions={this.getUsers}
+                  labelKey="recipeName"
+                  matchProp="sorted"
+                  filterOptions={false}
+                  loadOptions={authHeader.getRecipes}
                   backspaceRemoves={this.state.backspaceRemoves}
                   noResultsText="No recipe found"
                   placeholder="Search for recipe"
@@ -570,7 +552,9 @@ authHeader.contextTypes = {
 
 /**
  * @description maps action to properties of authHeader
+ *
  * @param  {object} dispatch
+ *
  * @returns {object} returns the action to be bind
  */
 function mapDispatchToProps(dispatch) {
