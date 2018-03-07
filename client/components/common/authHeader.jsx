@@ -1,4 +1,3 @@
-/* eslint-disable  react/no-unused-state  */
 /**
  *  @fileOverview Creates header for authenticated users
  *
@@ -15,11 +14,12 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
-import ImageUploader from 'react-firebase-image-uploader';
 import firebase from 'firebase';
-import { Pulse } from 'react-preloading-component';
-import { createRecipeAction } from '../../actionsCreator/recipes';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
+import { createRecipeAction, searchRecipes } from '../../actionsCreator/recipes';
 import { logoutAction } from '../../actions/authAction';
+import AddRecipeForm from './addRecipeForm';
 
 const propTypes = {
   actions: PropTypes.shape({
@@ -42,6 +42,21 @@ const defaultProps = {
  */
 class authHeader extends Component {
   /**
+   * @description loads the recipes searched for
+   *
+   * @param {string} input
+   *
+   * @memberof authHeader
+   *
+   * @returns {void}
+  */
+  static getRecipes(input) {
+    if (!input) {
+      return Promise.resolve({ options: [] });
+    }
+    return searchRecipes(input);
+  }
+  /**
    * @description Creates a recipe
    * @param {object} props
    * @param {object} context
@@ -50,7 +65,7 @@ class authHeader extends Component {
     super(props, context);
     this.state = {
       recipeName: '',
-      mealType: '',
+      mealType: 'breakfast',
       description: '',
       method: '',
       ingredients: '',
@@ -58,8 +73,13 @@ class authHeader extends Component {
       image: '',
       progress: 0,
       isUploading: false,
-      notReady: true
+      notReady: true,
+      backspaceRemoves: true,
+      multi: false,
+      value: '',
     };
+
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onFocus = this.onFocus.bind(this);
@@ -67,12 +87,17 @@ class authHeader extends Component {
     this.handleUploadSuccess = this.handleUploadSuccess.bind(this);
     this.handleProgress = this.handleProgress.bind(this);
     this.handleUploadStart = this.handleUploadStart.bind(this);
+    this.onSearchChange = this.onSearchChange.bind(this);
+    this.gotoRecipe = this.gotoRecipe.bind(this);
+    this.toggleBackspaceRemoves = this.toggleBackspaceRemoves.bind(this);
   }
 
 
   /**
    * @description checks when an element is being focused on
+   *
    * @memberof authHeader
+   *
    * @returns {void}
   */
   onFocus() {
@@ -80,9 +105,27 @@ class authHeader extends Component {
   }
 
   /**
-   * @description checks for update in form entry
-   * @param {object} event
+   * @description checks for update in search field
+   *
+   * @param {string} value
+   *
    * @memberof authHeader
+   *
+   * @returns {void}
+  */
+  onSearchChange(value) {
+    this.setState({
+      value,
+    });
+  }
+
+  /**
+   * @description checks for update in form entry
+   *
+   * @param {object} event
+   *
+   * @memberof authHeader
+   *
    * @returns {void}
   */
   handleChange(event) {
@@ -95,8 +138,11 @@ class authHeader extends Component {
 
   /**
    * @description handles form submission
+   *
    * @param {object} event
+   *
    * @memberof authHeader
+   *
    * @returns {void}
   */
   handleSubmit(event) {
@@ -108,11 +154,12 @@ class authHeader extends Component {
         $('#exampleModal').modal('hide');
         this.setState({
           recipeName: '',
-          mealType: '',
           description: '',
           method: '',
           ingredients: '',
           image: '',
+          errorMessage: '',
+          notReady: true,
         });
       })
       .catch((err) => {
@@ -194,11 +241,46 @@ class authHeader extends Component {
   }
 
   /**
-   * @description renders the component
+   * @description redirect to selected recipe
+   *
+   * @param {object} value
+   *
    * @memberof authHeader
+   *
+   * @returns {void}
+  */
+  gotoRecipe(value) {
+    this.context.router.push(`/recipes/${value.id}`);
+  }
+
+  /**
+   * @description removes searched recipe on backspace  entered
+   *
+   * @memberof authHeader
+   *
+   * @returns {void}
+  */
+  toggleBackspaceRemoves() {
+    this.setState({
+      backspaceRemoves: !this.state.backspaceRemoves
+    });
+  }
+
+  /**
+   * @description renders the component
+   *
+   * @memberof authHeader
+   *
    * @returns {void} returns the navbar section of authenticated users
   */
   render() {
+    const {
+      errorMessage,
+      isUploading,
+      progress,
+      notReady
+    } = this.state;
+    const AsyncComponent = Select.Async;
     return (
       <header>
         <nav className="navbar fixed-top  navbar-expand-lg navbar-dark" style={{ backgroundColor: '#2b3034' }}>
@@ -216,14 +298,24 @@ class authHeader extends Component {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <form className="form-inline my-2 my-lg-0 ml-auto ">
-              <input
-                className="form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-            </form>
+            <div className="form-inline my-2 my-lg-0 ml-auto ">
+              <div className="section" style={{ width: '300px' }}>
+                <AsyncComponent
+                  multi={this.state.multi}
+                  value={this.state.value}
+                  onChange={this.onSearchChange}
+                  onValueClick={this.gotoRecipe}
+                  valueKey="id"
+                  labelKey="recipeName"
+                  filterOptions={false}
+                  loadOptions={authHeader.getRecipes}
+                  backspaceRemoves={this.state.backspaceRemoves}
+                  noResultsText="No recipe found"
+                  placeholder="Search for recipe"
+                  searchPromptText="Type to search for recipe"
+                />
+              </div>
+            </div>
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <button
@@ -285,175 +377,19 @@ class authHeader extends Component {
             </ul>
           </div>
         </nav>
-        <div>
-          <div
-            className="modal fade"
-            id="exampleModal"
-            tabIndex="-1"
-            data-backdrop="static"
-            role="dialog"
-            aria-labelledby="exampleModalLabel"
-            style={{ display: 'none' }}
-            aria-hidden="true"
-          >
-            <div className="modal-dialog" role="document">
-              <div className="modal-content">
-                <div className="modal-header black">
-                  <h5 className="modal-title black" id="exampleModalLabel">Add new recipe</h5>
-                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
-                <div className="modal-body">
-                  {
-                    this.state.errorMessage &&
-                    <div className="alert alert-danger">
-                      {
-                        this.state.errorMessage
-                      }
-                    </div>
-                  }
-
-                  <form onSubmit={this.handleSubmit} id="recipeForm">
-                    <div className="form-group">
-                      <label
-                        htmlFor="recipient-name"
-                        className="col-form-label black"
-                      >
-                        Title:
-                      </label>
-                      <input
-                        type="text"
-                        name="recipeName"
-                        className="form-control"
-                        id="recipient-name"
-                        required
-                        onChange={this.handleChange}
-                        onFocus={this.onFocus}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="message-text"
-                        className="col-form-label black"
-                      >
-                        Description:
-                      </label>
-                      <textarea
-                        className="form-control"
-                        id="message-text"
-                        name="description"
-                        required
-                        onChange={this.handleChange}
-                        onFocus={this.onFocus}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="image"
-                        className="col-form-label black"
-                      >
-                        Image:
-                      </label>
-                      {
-                        this.state.isUploading &&
-                        this.state.progress < 100 &&
-                        <div>
-                          <Pulse />
-                        </div>
-                      }
-                      <ImageUploader
-                        name="image"
-                        storageRef={
-                          firebase
-                            .storage()
-                            .ref('images')
-                        }
-                        onProgress={this.handleProgress}
-                        onUploadSuccess={this.handleUploadSuccess}
-                        onUploadStart={this.handleUploadStart}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="type-text"
-                        className="col-form-label black"
-                      >
-                        Type of meal:
-                      </label>
-                      <select
-                        value={this.state.mealType}
-                        name="mealType"
-                        className="form-control"
-                        id="type-text"
-                        required
-                        onChange={this.handleChange}
-                        onFocus={this.onFocus}
-                      >
-                        <option value="breakfast">Breakfast</option>
-                        <option value="brunch">Brunch</option>
-                        <option value="elevenses">Elevenses</option>
-                        <option value="lunch">Lunch</option>
-                        <option value="tea">Tea</option>
-                        <option value="supper">Supper</option>
-                        <option value="dinner">Dinner</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="ingredients-text"
-                        className="col-form-label black"
-                      >
-                        ingredients:
-                      </label>
-                      <textarea
-                        placeholder="separate each ingredient with a comma"
-                        name="ingredients"
-                        className="form-control"
-                        id="ingredients"
-                        required
-                        onChange={this.handleChange}
-                        onFocus={this.onFocus}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label
-                        htmlFor="method-text"
-                        className="col-form-label black"
-                      >
-                        Method of cooking:
-                      </label>
-                      <textarea
-                        name="method"
-                        required
-                        onChange={this.handleChange}
-                        onFocus={this.onFocus}
-                        className="form-control"
-                        id="method-text"
-                      />
-                    </div>
-                    <div className="modal-footer">
-                      <button
-                        type="button"
-                        className="btn btn-secondary"
-                        data-dismiss="modal"
-                      >
-                        Close
-                      </button>
-                      <button
-                        type="submit"
-                        className="btn vote-button"
-                        disabled={this.state.notReady}
-                      >
-                        Add recipe
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <AddRecipeForm
+          errorMessage={errorMessage}
+          isUploading={isUploading}
+          mealType={this.state.mealType}
+          progress={progress}
+          handleProgress={this.handleProgress}
+          handleUploadStart={this.handleUploadStart}
+          handleUploadSuccess={this.handleUploadSuccess}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          onFocus={this.onFocus}
+          notReady={notReady}
+        />
       </header>
     );
   }
@@ -467,7 +403,9 @@ authHeader.contextTypes = {
 
 /**
  * @description maps action to properties of authHeader
+ *
  * @param  {object} dispatch
+ *
  * @returns {object} returns the action to be bind
  */
 function mapDispatchToProps(dispatch) {
