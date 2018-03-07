@@ -28,6 +28,15 @@ export default {
    */
   myRecipes(req, res) {
     Recipe.getUserRecipe(req, res);
+  },
+  /**
+   * Enables Users to get their details
+   * @param {Object}  req
+   * @param {Object} res
+   * @returns  {JSON} Returns user recipes
+   */
+  getInfo(req, res) {
+    account.fetchUser(req, res);
   }
 };
 

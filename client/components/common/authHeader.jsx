@@ -244,7 +244,7 @@ class authHeader extends Component {
                 </span>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="profile">Profile</Link>
+                <Link className="nav-link" to="/my-profile">Profile</Link>
               </li>
               <li className="nav-item dropdown show">
                 <Link

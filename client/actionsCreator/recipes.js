@@ -159,7 +159,7 @@ export function favoriteRecipe(userId, recipeId) {
 export function getUserRecipes(userId, page) {
   return (dispatch) => {
     dispatch(actions.getUserRecipeRequest());
-    axios.get(`${URL}/users/${userId}/myrecipes?page=${page}`)
+    axios.get(`/${URL}/users/${userId}/myrecipes?page=${page}`)
       .then((res) => {
         dispatch(actions.getUserRecipeSuccess(res.data));
       })
@@ -181,7 +181,7 @@ export function getUserRecipes(userId, page) {
 export function getUserFavRecipes(userId) {
   return (dispatch) => {
     dispatch(actions.getUserFavRecipeRequest());
-    axios.get(`${URL}/users/${userId}/recipes`)
+    axios.get(`/${URL}/users/${userId}/recipes`)
       .then((res) => {
         dispatch(actions.getUserFavRecipeSuccess(res.data));
       })
@@ -319,4 +319,24 @@ export function deleteRecipeAction(recipeId, position) {
     .catch((err) => {
       throw (err);
     });
+}
+
+/**
+ * @description - Calls the API to delete a recipe
+ *
+ * @param {number} userId - id of recipe to be deleted
+ *
+ * @return {Object} dispatch an object
+*/
+export function getUserProfile(userId) {
+  return (dispatch) => {
+    dispatch(actions.getUSerInfo());
+    axios.get(`/${URL}/users/${userId}/profile`)
+      .then((res) => {
+        dispatch(actions.getUSerInfoSuccess(res.data));
+      })
+      .catch((err) => {
+        dispatch(actions.getUSerInfoFailure(err.data));
+      });
+  };
 }

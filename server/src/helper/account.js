@@ -102,4 +102,34 @@ export default class account {
         error: err
       }));
   }
+
+  /**
+   * Fetch user details
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns success or failure message
+   */
+  static fetchUser(req, res) {
+    Users
+      .findOne({
+        where: {
+          id: req.params.userId
+        },
+        attributes: ['id', 'username', 'email', 'createdAt'],
+      })
+      .then((user) => {
+        if (!user) {
+          return res.status(400).send({
+            error: 'User not found'
+          });
+        }
+        if (user.id !== req.decoded.id) {
+          return res.status(403).send({
+            message: 'You are not allowed to perform this action'
+          });
+        }
+        res.status(200).send(user);
+      })
+      .catch(error => res.status(500).send(error));
+  }
 }

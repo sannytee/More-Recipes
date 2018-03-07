@@ -232,7 +232,7 @@ export const getUserRecipeRequest = () => ({
 */
 export const getUserRecipeSuccess = response => ({
   type: types.GET_USER_RECIPES_SUCCESS,
-  payload: response
+  payload: response,
 });
 
 /**
@@ -265,10 +265,13 @@ export const getUserFavRecipeRequest = () => ({
  *
  * @return {Object} dispatch an object
 */
-export const getUserFavRecipeSuccess = response => ({
-  type: types.GET_USER_FAVORITE_RECIPE_SUCCESS,
-  payload: response
-});
+export const getUserFavRecipeSuccess = response => (
+  {
+    type: types.GET_USER_FAVORITE_RECIPE_SUCCESS,
+    payload: response,
+    count: response.count,
+  }
+);
 
 /**
  * @description - action dispatch when request failed
@@ -331,5 +334,41 @@ export const getFavoriteRecipeIds = response => ({
 export const getFavoriteRecipeIdsFailure = error => ({
   type: types.GET_USER_FAVORITE_RECIPE_IDS_FAILURE,
   payload: error,
+});
+
+/**
+ * @description - action dispatch when request is first made
+ *
+ * @return {Object} dispatch an object
+*/
+export const getUSerInfo = () => ({
+  type: types.GET_USER_DATA,
+  isLoading: true,
+});
+
+/**
+ * @description - action dispatch when request is successful
+ *
+ * @param {object} response
+ *
+ * @return {Object} dispatch an object
+*/
+export const getUSerInfoSuccess = response => ({
+  type: types.GET_USER_DATA_SUCCESS,
+  payload: response,
+  isLoading: false,
+});
+
+/**
+ * @description - action dispatch when request failed
+ *
+ * @param {object} error
+ *
+ * @return {Object} dispatch an object
+*/
+export const getUSerInfoFailure = error => ({
+  type: types.GET_USER_DATA_FAILURE,
+  payload: error,
+  isLoading: false,
 });
 

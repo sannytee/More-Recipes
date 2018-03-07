@@ -4,6 +4,8 @@ import * as types from '../actions/types';
 
 const initialState = {
   recipes: [],
+  favoriteRecipeCount: null,
+  userRecipesCount: null,
   popularRecipes: [],
   favoriteRecipes: [],
   favoriteRecipesIds: [],
@@ -73,7 +75,8 @@ function recipeReducer(state = initialState, action) {
         ...state,
         isLoading: action.isLoading,
         userRecipes: action.payload.userRecipes,
-        pages: action.payload.pages
+        pages: action.payload.pages,
+        userRecipesCount: action.payload.totalRecipes
       };
     case types.GET_USER_RECIPES_FAILURE:
       return { ...state, isLoading: action.isLoading, userRecipeError: action.payload };
@@ -146,14 +149,19 @@ function recipeReducer(state = initialState, action) {
     case types.GET_USER_FAVORITE_RECIPE:
       return { ...state, isLoading: action.isLoading };
     case types.GET_USER_FAVORITE_RECIPE_SUCCESS:
-      return { ...state, isLoading: action.isLoading, favoriteRecipes: action.payload };
+      return {
+        ...state,
+        isLoading: action.isLoading,
+        favoriteRecipes: action.payload,
+        favoriteRecipeCount: action.count
+      };
     case types.GET_USER_FAVORITE_RECIPE_FAILURE:
       return { ...state, isLoading: action.isLoading, favError: action.payload };
     case types.FAVORITE_A_RECIPE_SUCCESS:
       const arrayIndex = action.index;
       const updatedFavoriteRecipes = [
-        ...state.favoriteRecipes.slice(0, arrayIndex),
-        ...state.favoriteRecipes.slice(arrayIndex + 1)
+        ...state.favoriteRecipes.favorited.slice(0, arrayIndex),
+        ...state.favoriteRecipes.favorited.slice(arrayIndex + 1)
       ];
       return { ...state, favoriteRecipes: updatedFavoriteRecipes };
     case types.FAVORITE_A_RECIPE_FAILURE:
