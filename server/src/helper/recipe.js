@@ -1,3 +1,4 @@
+import Sequelize from 'sequelize';
 import { Recipes } from '../models';
 import { recipeNotFound, validateUser } from '../middlewares/validation';
 
@@ -316,6 +317,44 @@ export default class recipe {
             pages,
             totalRecipes
           }));
+      })
+      .catch(err => res.status(500).send(err));
+  }
+
+  /**
+   * finds recipe
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns user recipes
+   */
+  static findRecipe(req, res) {
+    const { Op } = Sequelize;
+    Recipes
+      .findAll({
+        where: {
+          [Op.or]: [
+            {
+              recipeName: {
+                [Op.iLike]: `%${req.query.recipe}%`
+              }
+            },
+            {
+              ingredients: {
+                [Op.iLike]: `%${req.query.recipe}%`
+              }
+            }
+          ]
+        }
+      })
+      .then((recipes) => {
+        if (recipes.length === 0) {
+          return res.status(404).send({
+            message: 'recipe not found'
+          });
+        }
+        res.status(200).send({
+          recipes
+        });
       })
       .catch(err => res.status(500).send(err));
   }

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import toastr from 'toastr';
+import fetch from 'isomorphic-fetch';
 import * as actions from '../actions/recipesAction';
 import * as types from '../actions/types';
 
@@ -264,7 +265,7 @@ export function voteRecipeAction(recipeId, voteAction, index) {
  * @return {Object} dispatch an object
 */
 export function createRecipeAction(recipeDetails) {
-  return dispatch => axios.post(`${URL}/recipes`, recipeDetails)
+  return dispatch => axios.post(`/${URL}/recipes`, recipeDetails)
     .then((res) => {
       dispatch({
         type: types.CREATE_RECIPE,
@@ -339,4 +340,18 @@ export function getUserProfile(userId) {
         dispatch(actions.getUSerInfoFailure(err.data));
       });
   };
+}
+
+/**
+ * @description - Calls the API to search for recipes
+ *
+ * @param {string} recipe - name or ingredient to search for
+ *
+ * @return {Object} dispatch an object
+*/
+export function searchRecipes(recipe) {
+  return fetch(`/api/v1/search?recipe=${recipe}`)
+    .then(response => response.json())
+    .then(json => ({ options: json.recipes }))
+    .catch(err => err);
 }

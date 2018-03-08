@@ -96,4 +96,9 @@ export default (app) => {
     authentication.verifyUser,
     userController.getInfo
   );
+
+  app.get(
+    '/api/v1/search',
+    recipeController.search,
+  );
 };
