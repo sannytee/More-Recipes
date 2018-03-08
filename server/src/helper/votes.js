@@ -12,7 +12,7 @@ export default class vote {
    * @returns  {JSON} Returns success or failure message
    */
   static checkVotes(req, res) {
-    const message = 'You have successfully unvoted this recipe';
+    const message = 'Recipe unvoted';
     const { action } = req.query;
     votes
       .find({
@@ -261,8 +261,8 @@ export default class vote {
    */
   static update(req, res, recipe) {
     const { action } = req.query;
-    const msg = action.replace('s', '');
-    const resMessage = `You have successfully ${msg} this recipe`;
+    const msg = action.replace('s', 'd');
+    const resMessage = `Recipe successfully ${msg}`;
     if (action === 'upvotes') {
       Recipes
         .update({

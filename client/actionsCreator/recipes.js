@@ -246,6 +246,7 @@ export function getFavoriteIds(userId) {
 export function voteRecipeAction(recipeId, voteAction, index) {
   return dispatch => axios.post(`${URL}/recipes/${recipeId}/votes?action=${voteAction}`)
     .then((res) => {
+      toastr.success(res.data.message);
       dispatch({
         type: types.VOTE_RECIPE,
         payload: res.data,
