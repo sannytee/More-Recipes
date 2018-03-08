@@ -63,6 +63,9 @@ function recipeReducer(state = initialState, action) {
       ];
       return { ...state, recipes: updatedRecipes };
     case types.CREATE_RECIPE:
+      if (state.recipes.length === 6 || state.userRecipes.length === 6) {
+        return state;
+      }
       return {
         ...state,
         recipes: [...state.recipes, action.payload.Recipe],
