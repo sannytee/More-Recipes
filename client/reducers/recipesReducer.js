@@ -1,4 +1,5 @@
 /* eslint-disable no-case-declarations */
+import alert from 'sweetalert2';
 import * as types from '../actions/types';
 
 
@@ -7,7 +8,9 @@ const initialState = {
   favoriteRecipeCount: null,
   userRecipesCount: null,
   popularRecipes: [],
-  favoriteRecipes: [],
+  favoriteRecipes: {
+    favorited: []
+  },
   favoriteRecipesIds: [],
   userRecipes: [],
   currentRecipe: {},
@@ -162,10 +165,17 @@ function recipeReducer(state = initialState, action) {
       return { ...state, isLoading: action.isLoading, favError: action.payload };
     case types.FAVORITE_A_RECIPE_SUCCESS:
       const arrayIndex = action.index;
-      const updatedFavoriteRecipes = [
-        ...state.favoriteRecipes.favorited.slice(0, arrayIndex),
-        ...state.favoriteRecipes.favorited.slice(arrayIndex + 1)
-      ];
+      const updatedFavoriteRecipes = {
+        favorited: [
+          ...state.favoriteRecipes.favorited.slice(0, arrayIndex),
+          ...state.favoriteRecipes.favorited.slice(arrayIndex + 1)
+        ]
+      };
+      alert(
+        'Deleted!',
+        'Your recipe has been deleted.',
+        'success'
+      );
       return { ...state, favoriteRecipes: updatedFavoriteRecipes };
     case types.FAVORITE_A_RECIPE_FAILURE:
       return { ...state, favError: action.payload };

@@ -206,7 +206,6 @@ export function favoriteARecipe(userId, recipeId, index) {
     axios.post(`/${URL}/users/${userId}/recipes`, recipeId)
       .then((res) => {
         dispatch(actions.favoriteARecipeSuccess(res.data.message, index));
-        toastr.success(res.data.message);
       })
       .catch((err) => {
         dispatch(actions.favoriteARecipeFailure(err.response.data.error));

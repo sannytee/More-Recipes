@@ -79,7 +79,7 @@ class FavoriteRecipePage extends Component {
         </div>
       );
     }
-    if (favoriteRecipes.message || favoriteRecipes.length === 0) {
+    if (favoriteRecipes.message || favoriteRecipes.favorited.length === 0) {
       return (
         <h1 style={{ margin: '150px auto 0', width: '100%', textAlign: 'center' }}>
           You have no favorite recipes
