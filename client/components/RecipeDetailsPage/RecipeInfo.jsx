@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Tooltip from 'react-tooltip';
 
 const propTypes = {
   recipeDetails: PropTypes.shape({
@@ -64,25 +65,61 @@ const RecipeInfo = props => (
       <hr />
       <div style={{ display: 'inline-flex' }}>
         <div>
-          <button className="btn vote-button" type="button" onClick={props.upvote}>
+          <button
+            className="btn vote-button"
+            type="button"
+            onClick={props.upvote}
+            data-tip
+            data-for="upvote"
+          >
             <i className="fa fa-thumbs-up fa-lg" aria-hidden="true">
               <span style={{ marginLeft: '5px', marginRight: '5px' }}>
                 {props.recipeDetails.upvotes}
               </span>
             </i>
           </button>
+          <Tooltip
+            id="upvote"
+            type="dark"
+            place="top"
+          >
+            <span>
+              upvote recipe
+            </span>
+          </Tooltip>
         </div>
         <div style={{ marginLeft: '8px', marginRight: '5px' }}>
-          <button className="btn vote-button" type="button" onClick={props.downvote} >
+          <button
+            data-tip
+            data-for="downvote"
+            className="btn vote-button"
+            type="button"
+            onClick={props.downvote}
+          >
             <i className="fa fa-thumbs-down fa-lg" aria-hidden="true">
               <span style={{ marginLeft: '5px', marginRight: '5px' }}>
                 {props.recipeDetails.downvotes}
               </span>
             </i>
           </button>
+          <Tooltip
+            id="downvote"
+            type="dark"
+            place="bottom"
+          >
+            <span>
+              downvote recipe
+            </span>
+          </Tooltip>
         </div>
         <div style={{ marginLeft: '8px', marginRight: '5px' }}>
-          <button className="btn vote-button" type="button" onClick={props.favorite} >
+          <button
+            className="btn vote-button"
+            type="button"
+            onClick={props.favorite}
+            data-tip
+            data-for="favorite"
+          >
             <i
               className="fa fa-heart"
               style={
@@ -90,6 +127,15 @@ const RecipeInfo = props => (
               }
             />
           </button>
+          <Tooltip
+            id="favorite"
+            type="dark"
+            place="right"
+          >
+            <span>
+              favorite recipe
+            </span>
+          </Tooltip>
         </div>
       </div>
       <hr />

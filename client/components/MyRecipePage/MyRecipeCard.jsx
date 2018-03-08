@@ -7,6 +7,7 @@
  */
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import ReactToolTip from 'react-tooltip';
 
 const propTypes = {
   getRecipe: PropTypes.func.isRequired,
@@ -80,6 +81,8 @@ class MyRecipeCard extends Component {
               <div style={{ display: 'inline-flex', marginTop: '10px' }}>
                 <div>
                   <button
+                    data-tip
+                    data-for="edit"
                     data-toggle="modal"
                     data-target="#editModal"
                     className="btn edit-btn"
@@ -88,9 +91,18 @@ class MyRecipeCard extends Component {
                   >
                     <i className="fa fa-pencil-square-o fa-lg" aria-hidden="true" />
                   </button>
+                  <ReactToolTip
+                    id="edit"
+                    type="dark"
+                    place="left"
+                  >
+                    <span>Edit Recipe</span>
+                  </ReactToolTip>
                 </div>
                 <div style={{ marginLeft: '20px' }}>
                   <button
+                    data-tip
+                    data-for="delete"
                     data-toggle="modal"
                     data-target="#deleteModal"
                     className="btn btn-danger"
@@ -99,6 +111,13 @@ class MyRecipeCard extends Component {
                   >
                     <i className="fa fa-trash-o fa-lg" aria-hidden="true" />
                   </button>
+                  <ReactToolTip
+                    id="delete"
+                    type="dark"
+                    place="right"
+                  >
+                    <span>Delete Recipe</span>
+                  </ReactToolTip>
                 </div>
               </div>
             </div>

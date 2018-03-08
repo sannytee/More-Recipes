@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import toastr from 'toastr';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
+import Tooltip from 'react-tooltip';
 import { voteRecipeAction } from '../../actionsCreator/recipes';
 import { changeAuthAction } from '../../actions/authAction';
 
@@ -127,6 +128,8 @@ class recipeCard extends Component {
               <div style={{ display: 'inline-flex', marginTop: '10px' }}>
                 <div>
                   <button
+                    data-tip
+                    data-for="upvote"
                     onClick={this.upvoteRecipe}
                     id={id}
                     className="btn vote-button"
@@ -138,9 +141,18 @@ class recipeCard extends Component {
                       </span>
                     </i>
                   </button>
+                  <Tooltip
+                    id="upvote"
+                    type="dark"
+                    place="top"
+                  >
+                    <span> upvote recipe</span>
+                  </Tooltip >
                 </div>
                 <div style={{ marginLeft: '20px' }}>
                   <button
+                    data-tip
+                    data-for="downvote"
                     className="btn vote-button"
                     type="button"
                     onClick={this.downvoteRecipe}
@@ -152,6 +164,13 @@ class recipeCard extends Component {
                     </i>
                   </button>
                 </div>
+                <Tooltip
+                  id="downvote"
+                  type="dark"
+                  place="right"
+                >
+                  <span> downvote recipe</span>
+                </Tooltip >
               </div>
             </div>
             <div className="card-footer text-muted" style={{ marginTop: '15px', fontSize: '12px' }}>
