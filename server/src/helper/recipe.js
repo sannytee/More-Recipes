@@ -173,6 +173,7 @@ export default class recipe {
               limit,
               offset,
               pages,
+              order: Sequelize.col('createdAt')
             })
             .then(allRecipes => res.status(200).send({
               allRecipes,
