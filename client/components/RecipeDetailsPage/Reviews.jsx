@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import moment from 'moment';
 
 /* eslint-disable react/no-array-index-key  */
 
@@ -28,7 +29,13 @@ const Review = props => (
             <div>
               <div >
                 <div className="header">
-                  <strong className="primary-font">{review.username}</strong>
+                  <strong className="primary-font username">{review.username}</strong>
+                  <strong
+                    className="primary-font pull-right"
+                    style={{ paddingRight: '10px' }}
+                  >
+                    {moment(new Date(review.createdAt)).fromNow()}
+                  </strong>
                 </div>
                 <p>
                   { review.review }

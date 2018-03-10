@@ -253,7 +253,7 @@ export default class recipe {
         include: [
           {
             model: reviews,
-            attributes: ['userId', 'recipeId', 'review', 'username'],
+            attributes: ['userId', 'recipeId', 'review', 'username', 'createdAt'],
           }
         ]
       })
