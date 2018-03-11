@@ -133,8 +133,7 @@ export const createReviewRequest = () => ({
 */
 export const createReviewSuccess = response => ({
   type: types.CREATE_REVIEW_SUCCESS,
-  payload: response,
-  isLoading: false
+  payload: response
 });
 
 /**
@@ -232,6 +231,7 @@ export const getUserRecipeRequest = () => ({
 */
 export const getUserRecipeSuccess = response => ({
   type: types.GET_USER_RECIPES_SUCCESS,
+  isLoading: false,
   payload: response,
 });
 

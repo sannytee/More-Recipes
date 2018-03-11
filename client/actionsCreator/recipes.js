@@ -1,6 +1,7 @@
 import axios from 'axios';
 import toastr from 'toastr';
 import fetch from 'isomorphic-fetch';
+import alert from 'sweetalert2';
 import * as actions from '../actions/recipesAction';
 import * as types from '../actions/types';
 
@@ -206,6 +207,11 @@ export function favoriteARecipe(userId, recipeId, index) {
     axios.post(`/${URL}/users/${userId}/recipes`, recipeId)
       .then((res) => {
         dispatch(actions.favoriteARecipeSuccess(res.data.message, index));
+        alert(
+          'Deleted!',
+          'Your recipe has been deleted.',
+          'success'
+        );
       })
       .catch((err) => {
         dispatch(actions.favoriteARecipeFailure(err.response.data.error));

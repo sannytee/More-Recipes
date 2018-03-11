@@ -627,7 +627,7 @@ describe('More-Recipe Tests:', () => {
         .post('/api/v1/recipes/1/votes?action=upvotes')
         .set('x-access-token', token)
         .end((err, res) => {
-          expect(res.body.message).equal('You have successfully unvoted this recipe');
+          expect(res.body.message).equal('Recipe unvoted');
           expect(res.status).equal(200);
           done();
         });
@@ -667,7 +667,7 @@ describe('More-Recipe Tests:', () => {
         .post('/api/v1/recipes/1/votes?action=downvotes')
         .set('x-access-token', token)
         .end((err, res) => {
-          expect(res.body.message).equal('You have successfully unvoted this recipe');
+          expect(res.body.message).equal('Recipe unvoted');
           expect(res.status).equal(200);
           done();
         });

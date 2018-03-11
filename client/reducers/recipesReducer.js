@@ -1,5 +1,4 @@
 /* eslint-disable no-case-declarations */
-import alert from 'sweetalert2';
 import * as types from '../actions/types';
 
 
@@ -18,7 +17,7 @@ const initialState = {
   userRecipeError: null,
   reviewError: null,
   voteError: null,
-  isLoading: false,
+  isLoading: null,
   favMessage: null,
   favError: null,
   pages: 0
@@ -45,13 +44,13 @@ function recipeReducer(state = initialState, action) {
         pages: action.payload.pages
       };
     case types.GET_ALL_RECIPES_FAILURE:
-      return { ...state, error: action.error, isLoading: action.isLoading };
+      return { ...state, error: action.payload, isLoading: action.isLoading };
     case types.GET_POPULAR_RECIPES:
       return { ...state, isLoading: action.isLoading };
     case types.GET_POPULAR_RECIPES_SUCCESS:
       return { ...state, popularRecipes: action.payload, isLoading: action.isLoading };
     case types.GET_POPULAR_RECIPES_FAILURE:
-      return { ...state, error: action.error, isLoading: action.isLoading };
+      return { ...state, error: action.payload, isLoading: action.isLoading };
     case types.VOTE_RECIPE:
       const i = action.index;
       const allRecipes = state.recipes;
@@ -171,11 +170,6 @@ function recipeReducer(state = initialState, action) {
           ...state.favoriteRecipes.favorited.slice(arrayIndex + 1)
         ]
       };
-      alert(
-        'Deleted!',
-        'Your recipe has been deleted.',
-        'success'
-      );
       return { ...state, favoriteRecipes: updatedFavoriteRecipes };
     case types.FAVORITE_A_RECIPE_FAILURE:
       return { ...state, favError: action.payload };

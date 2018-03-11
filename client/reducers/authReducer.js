@@ -19,6 +19,7 @@ const initialState = {
   user: {
     username: ''
   },
+  response: '',
   error: null,
   profile: {},
   isLoading: false
