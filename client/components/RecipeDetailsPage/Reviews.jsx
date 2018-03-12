@@ -50,7 +50,7 @@ const Review = props => (
   }
     <form id="review-form" onSubmit={props.handleSubmit}>
       <div className="form-group">
-        <label htmlFor="comment">Post a comment</label>
+        <label htmlFor="comment">Post a review</label>
         <textarea
           name="review"
           className="form-control"

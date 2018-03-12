@@ -10,6 +10,7 @@ const propTypes = {
     upvotes: PropTypes.number,
     downvotes: PropTypes.number,
     image: PropTypes.string,
+    mealType: PropTypes.string
   }).isRequired,
   upvote: PropTypes.func.isRequired,
   downvote: PropTypes.func.isRequired,
@@ -27,6 +28,13 @@ const RecipeInfo = props => (
       <p className="card-text">
         {props.recipeDetails.description}
       </p>
+      <hr />
+      <div>
+        <h6>Type of Meal</h6>
+        <ul>
+          <li> {props.recipeDetails.mealType} </li>
+        </ul>
+      </div>
       <hr />
       <div>
         <h6>Ingredients</h6>
@@ -50,7 +58,7 @@ const RecipeInfo = props => (
       <hr />
       <div>
         <h6>
-          Direction
+          Method of Cooking
         </h6>
         <ol>
           {

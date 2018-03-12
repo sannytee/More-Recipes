@@ -16,9 +16,9 @@ const Paginate = props => (
       onPageChange={props.handlePaginationChange}
       pageCount={props.page}
       containerClassName="pagination custom-pagination"
-      pageLinkClassName="page-link"
-      nextLinkClassName="page-link"
-      previousLinkClassName="page-link"
+      pageLinkClassName="page-link custom-link"
+      nextLinkClassName="page-link custom-link"
+      previousLinkClassName="page-link custom-link"
       disabledClassName="disabled"
       pageClassName="page-item"
       previousClassName="page-item"

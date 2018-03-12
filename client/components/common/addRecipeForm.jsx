@@ -140,7 +140,7 @@ const AddRecipeForm = props => (
                 htmlFor="ingredients-text"
                 className="col-form-label black"
               >
-                ingredients:
+                Ingredients:
               </label>
               <textarea
                 placeholder="separate each ingredient with a comma"
