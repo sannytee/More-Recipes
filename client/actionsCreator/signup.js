@@ -16,7 +16,7 @@ const URL = 'api/v1';
 export function signUpAction(userDetails) {
   return (dispatch) => {
     dispatch(signupRequest());
-    axios.post(`${URL}/users/signup`, userDetails)
+    return axios.post(`${URL}/users/signup`, userDetails)
       .then((res) => {
         dispatch(signupSuccess(res.data.message));
       })
