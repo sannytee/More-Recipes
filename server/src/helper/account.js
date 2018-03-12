@@ -115,7 +115,7 @@ export default class account {
         where: {
           id: req.params.userId
         },
-        attributes: ['id', 'username', 'email', 'createdAt'],
+        attributes: ['id', 'username', 'email', 'image', 'createdAt'],
       })
       .then((user) => {
         if (!user) {
@@ -131,5 +131,33 @@ export default class account {
         res.status(200).send(user);
       })
       .catch(error => res.status(500).send(error));
+  }
+
+  /**
+   * update user image
+   * @param {object} req
+   * @param {object} res
+   * @returns  {JSON} Returns success or failure message
+   */
+  static updateImage(req, res) {
+    Users
+      .find({
+        where: {
+          username: req.decoded.username,
+          id: req.params.userId
+        },
+        attributes: ['id', 'username', 'email', 'createdAt', 'image'],
+      })
+      .then((user) => {
+        user
+          .update({
+            image: req.body.image
+          })
+          .then(updatedUser => res.status(200).send({
+            user: updatedUser,
+            message: 'Profile successfully updated'
+          }));
+      })
+      .catch(err => res.status(500).send(err));
   }
 }

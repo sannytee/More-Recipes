@@ -355,3 +355,26 @@ export function searchRecipes(recipe) {
     .then(json => ({ options: json.recipes }))
     .catch(err => err);
 }
+
+
+/**
+ * @description - Calls the API to delete a recipe
+ *
+ * @param {number} userId - id of recipe to be deleted
+ *
+ * @param {object} info - information to be updated
+ *
+ * @return {Object} dispatch an object
+*/
+export function updateUserProfile(userId, info) {
+  return (dispatch) => {
+    axios.put(`/${URL}/users/${userId}/update`, info)
+      .then((res) => {
+        dispatch(actions.updateProfileSuccess(res.data));
+        toastr.success('Profile successfully updated');
+      })
+      .catch((err) => {
+        dispatch(actions.updateProfileError(err.data));
+      });
+  };
+}

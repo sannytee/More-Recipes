@@ -372,3 +372,28 @@ export const getUSerInfoFailure = error => ({
   isLoading: false,
 });
 
+/**
+ * @description - action dispatch when request is successful
+ *
+ * @param {object} response
+ *
+ * @return {Object} dispatch an object
+*/
+export const updateProfileSuccess = response => ({
+  type: types.UPDATE_PROFILE_SUCCESS,
+  payload: response,
+});
+
+/**
+ * @description - action dispatch when request failed
+ *
+ * @param {object} error
+ *
+ * @return {Object} dispatch an object
+*/
+export const updateProfileError = error => ({
+  type: types.UPDATE_PROFILE_SUCCESS,
+  payload: error,
+  isLoading: false,
+});
+

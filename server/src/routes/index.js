@@ -101,4 +101,11 @@ export default (app) => {
     '/api/v1/search',
     recipeController.search,
   );
+
+  app.put(
+    '/api/v1/users/:userId/update',
+    checkReqParams,
+    authentication.verifyUser,
+    userController.updateImage
+  );
 };

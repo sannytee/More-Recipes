@@ -9,7 +9,9 @@ import {
   GET_USER_DATA,
   GET_USER_DATA_SUCCESS,
   GET_USER_DATA_FAILURE,
-  RESET_USER_ERROR
+  RESET_USER_ERROR,
+  UPDATE_PROFILE_FAILURE,
+  UPDATE_PROFILE_SUCCESS,
 } from '../actions/types';
 
 const initialState = {
@@ -85,6 +87,19 @@ function authReducer(state = initialState, action) {
       return {
         ...state,
         isLoading: action.isLoading,
+        error: action.payload
+      };
+    case UPDATE_PROFILE_SUCCESS:
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          image: action.payload.user.image
+        }
+      };
+    case UPDATE_PROFILE_FAILURE:
+      return {
+        ...state,
         error: action.payload
       };
     default:

@@ -3,15 +3,20 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Spinner } from 'react-preloading-component';
 import lodash from 'lodash';
+import ImageUploader from 'react-firebase-file-uploader';
+import Tooltip from 'react-tooltip';
+import firebase from 'firebase';
 import Header from '../common/authHeader';
 import Footer from '../common/footer';
-import img from '../../public/images/user.png';
+import img from '../../public/images/iconic.png';
 import verifyUser from '../../util/Authentication';
 import {
   getUserRecipes,
   getUserFavRecipes,
   getUserProfile,
+  updateUserProfile,
 } from '../../actionsCreator/recipes';
+import UserDetails from './userDetails';
 
 
 const propTypes = {
@@ -22,13 +27,15 @@ const propTypes = {
   actions: PropTypes.shape({
     getUserFavRecipes: PropTypes.func,
     getUserRecipes: PropTypes.func,
-    getUserProfile: PropTypes.func
+    getUserProfile: PropTypes.func,
+    updateUserProfile: PropTypes.func
   }).isRequired,
   isLoading: PropTypes.bool.isRequired,
   myRecipesCount: PropTypes.number,
   favRecipesCount: PropTypes.number,
   profile: PropTypes.shape({
     email: PropTypes.string,
+    image: PropTypes.string,
     createdAt: PropTypes.string,
   }).isRequired
 };
@@ -43,6 +50,23 @@ const defaultProps = {
  * @extends Component
  */
 class ProfilePage extends Component {
+  /**
+   * @description Creates a recipe
+   * @param {object} props
+   * @param {object} context
+  */
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      image: '',
+      progress: 0,
+      isUploading: false,
+    };
+
+    this.handleUploadSuccess = this.handleUploadSuccess.bind(this);
+    this.handleProgress = this.handleProgress.bind(this);
+    this.handleUploadStart = this.handleUploadStart.bind(this);
+  }
   /**
    * @description performs an action right after the component mount
    *
@@ -61,6 +85,59 @@ class ProfilePage extends Component {
     }
   }
 
+  /**
+   * @description tracks the progress of uploading image
+   *
+   * @param {number} progress
+   *
+   * @memberof ProfilePage
+   *
+   * @returns {void}
+  */
+  handleProgress(progress) {
+    this.setState({ progress });
+  }
+
+  /**
+   * @description start the upload operation
+   *
+   * @memberof ProfilePage
+   *
+   * @returns {void}
+  */
+  handleUploadStart() {
+    this.setState({ isUploading: true, progress: 0, });
+  }
+
+  /**
+   * @description get url of image uploaded
+   *
+   * @param {String} filename
+   *
+   * @memberof ProfilePage
+   *
+   * @returns {void}
+  */
+  handleUploadSuccess(filename) {
+    firebase
+      .storage()
+      .ref('images')
+      .child(filename)
+      .getDownloadURL()
+      .then((url) => {
+        this.setState({
+          image: url,
+          progress: 100,
+          isUploading: false,
+        });
+      })
+      .then(() => {
+        const data = {
+          image: this.state.image
+        };
+        this.props.actions.updateUserProfile(this.props.user.id, data);
+      });
+  }
 
   /**
    * @description renders the components
@@ -75,7 +152,7 @@ class ProfilePage extends Component {
       isLoading,
       profile,
       myRecipesCount,
-      favRecipesCount
+      favRecipesCount,
     } = this.props;
     return (
       <div>
@@ -99,37 +176,59 @@ class ProfilePage extends Component {
                     <div id="profile-card" className="card w-100" style={{ width: '20rem' }}>
                       <div className="row pb-3 centered" style={{ marginTop: '10px' }}>
                         <div className="col-sm-12" >
-                          <img clasName="img-fluid rounded-circle" src={img} alt="profile" />
-                          <h3 className="card-title">{user.username}</h3>
-                        </div>
-                      </div>
-                      <hr />
-                      <div className="row">
-                        <div className="col-sm-12">
-                          <div className="row">
-                            <div className="col-sm-12">
-                              <h5>
-                                Email: <span>{profile.email}</span>
-                              </h5>
+                          <img
+                            clasName="img-fluid rounded-circle"
+                            style={{ height: '150px' }}
+                            src={profile.image || img}
+                            className="user-image"
+                            alt="profile"
+                          />
+                          {
+                            this.state.isUploading &&
+                            this.state.progress < 100 &&
+                            <div>
+                              <Spinner />
                             </div>
-                            <div className="col-sm-12">
-                              <h5>
-                                Recipe Added: <span>{myRecipesCount}</span>
-                              </h5>
-                            </div>
-                            <div className="col-sm-12">
-                              <h5>
-                                Favorite Recipes: <span>{favRecipesCount}</span>
-                              </h5>
-                            </div>
-                            <div className="col-sm-12">
-                              <h5>
-                                Date Created: <span>{profile.createdAt.split('T')[0]}</span>
-                              </h5>
-                            </div>
+                          }
+                          <div style={{ marginTop: '5px' }}>
+                            <label
+                              data-tip
+                              data-for="upload"
+                              className="custom-link"
+                            >
+                              <i className="fa fa-camera fa-2x vote-button" aria-hidden="true" />
+                              <ImageUploader
+                                hidden
+                                accept="image/*"
+                                name="image"
+                                storageRef={
+                                  firebase
+                                    .storage()
+                                    .ref('images')
+                                }
+                                onProgress={this.handleProgress}
+                                onUploadSuccess={this.handleUploadSuccess}
+                                onUploadStart={this.handleUploadStart}
+                              />
+                            </label>
+                            <Tooltip
+                              id="upload"
+                              place="top"
+                              type="dark"
+                            >
+                              <span>Upload image</span>
+                            </Tooltip >
                           </div>
                         </div>
                       </div>
+                      <hr />
+                      <UserDetails
+                        username={user.username}
+                        email={profile.email}
+                        myRecipesCount={myRecipesCount}
+                        favoriteRecipeCount={favRecipesCount}
+                        createdAt={profile.createdAt.split('T')[0]}
+                      />
                       <hr />
                     </div>
                   </div>
@@ -172,7 +271,8 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators({
       getUserRecipes,
       getUserFavRecipes,
-      getUserProfile
+      getUserProfile,
+      updateUserProfile
     }, dispatch)
   };
 }

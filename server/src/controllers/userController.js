@@ -37,6 +37,21 @@ export default {
    */
   getInfo(req, res) {
     account.fetchUser(req, res);
+  },
+  /**
+   * Enables Users to update their image
+   * @param {Object}  req
+   * @param {Object} res
+   * @returns  {JSON} Returns user recipes
+   */
+  updateImage(req, res) {
+    const userId = parseInt(req.params.userId, 10);
+    if (userId !== req.decoded.id) {
+      return res.status(403).send({
+        message: 'Permission denied'
+      });
+    }
+    account.updateImage(req, res);
   }
 };
 

@@ -38,6 +38,10 @@ export default (sequelize, DataTypes) => {
           msg: 'Password is required'
         }
       }
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: true,
     }
   });
   Users.associate = (models) => {
