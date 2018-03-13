@@ -23,6 +23,12 @@ To install this application,
 3. Run ```npm install``` to install dependencies
 4. Then run ```npm start:dev``` to start the application
 
+
+## Testing
+> - `npm test` - run the unit test for backend
+> - `client-test` - run the unit test for frontend and display code coverage result
+
+
 ## Built with
 * [NodeJS](https://nodejs.org/en/) - A Javscript runtime built runtime that uses an event-driven non-blocking I/O model that makes it lightweight and efficient.
 * [ExpressJS](http://expressjs.com/) - A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. This is used in this application for routing to endpoints.
@@ -38,6 +44,11 @@ To install this application,
 THE  Documentation for the More-Recipes Restful API:
 [More-Recipes API](https://app.swaggerhub.com/apis/Tywo/more-recipes/1.0.0#/)
 
+
+## Limitation
+1. Users cannot deactivate their accounts
+2. Users can only create account once with their username and email
+3. Users can not delete their reviews
 
 ### Contributing
 1. Fork the repository
