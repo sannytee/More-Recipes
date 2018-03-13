@@ -41,7 +41,6 @@ export default class account {
           success: true,
           message: 'Account created',
           username: user.username,
-          id: user.id
         });
       })
       .catch((err) => {

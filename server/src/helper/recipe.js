@@ -168,6 +168,16 @@ export default class recipe {
           singlePage = parseInt(req.query.page, 10);
           offset = singlePage * limit;
 
+          if (!req.query.page) {
+            return Recipes
+              .findAll({
+                order: Sequelize.col('createdAt')
+              })
+              .then(allRecipes => res.status(200).send({
+                allRecipes
+              }));
+          }
+
           return Recipes
             .findAll({
               limit,
@@ -293,16 +303,30 @@ export default class recipe {
           });
         }
         if (params !== userId) {
-          res.status(403).send({
+          return res.status(403).send({
             message: 'You are not allowed to perform this action'
           });
         }
+
         const totalRecipes = userRecipe.count;
         const remainder = totalRecipes % limit === 0 ?
           0 : 1;
         pages = Math.floor(totalRecipes / limit) + remainder;
         singlePage = parseInt(req.query.page, 10);
         offset = singlePage * limit;
+
+        if (!req.query.page) {
+          return Recipes
+            .findAll({
+              where: {
+                userId
+              },
+            })
+            .then(userRecipes => res.status(200).send({
+              userRecipes,
+              totalRecipes
+            }));
+        }
 
         return Recipes
           .findAll({
