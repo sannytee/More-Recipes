@@ -46,6 +46,8 @@
   },
   "globals": {
     "document": false,
-    "localStorage": false
+    "localStorage": false,
+    "window": false,
+    "jest": false
   }
 }

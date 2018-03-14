@@ -17,12 +17,12 @@ const URL = 'api/v1';
 export function getAllRecipesAction(page) {
   return (dispatch) => {
     dispatch(actions.getAllRecipesRequest());
-    axios.get(`${URL}/recipes?page=${page}`)
+    return axios.get(`${URL}/recipes?page=${page}`)
       .then((res) => {
         dispatch(actions.getAllRecipesSuccess(res.data, res.data.pages));
       })
       .catch((err) => {
-        const { error } = err.response;
+        const { error } = err.response.data;
         dispatch(actions.getAllRecipesFailue(error));
       });
   };
@@ -36,12 +36,12 @@ export function getAllRecipesAction(page) {
 export function getPopularRecipesAction() {
   return (dispatch) => {
     dispatch(actions.getPopularRecipesRequest());
-    axios.get(`${URL}/recipes/?sort=upvotes&order=desc`)
+    return axios.get(`${URL}/recipes/?sort=upvotes&order=desc`)
       .then((res) => {
         dispatch(actions.getPopularRecipesSuccess(res.data));
       })
       .catch((err) => {
-        const { error } = err.response;
+        const { error } = err.response.data;
         dispatch(actions.getPopularRecipesFailure(error));
       });
   };
@@ -57,7 +57,7 @@ export function getPopularRecipesAction() {
 export function getRecipeData(recipeId) {
   return (dispatch) => {
     dispatch(actions.getRecipeDataRequest());
-    axios.get(`/${URL}/recipes/${recipeId}`)
+    return axios.get(`/${URL}/recipes/${recipeId}`)
       .then((res) => {
         dispatch(actions.getRecipeDataSuccess(res.data));
       })
@@ -80,7 +80,7 @@ export function getRecipeData(recipeId) {
 export function postReview(recipeId, review) {
   return (dispatch) => {
     dispatch(actions.createReviewRequest());
-    axios.post(`/${URL}/recipes/${recipeId}/reviews`, review)
+    return axios.post(`/${URL}/recipes/${recipeId}/reviews`, review)
       .then((res) => {
         document.getElementById('review-form').reset();
         dispatch(actions.createReviewSuccess(res.data.review));
@@ -102,16 +102,14 @@ export function postReview(recipeId, review) {
  * @return {Object} dispatch an object
 */
 export function voteARecipe(recipeId, voteAction) {
-  return (dispatch) => {
-    axios.post(`/${URL}/recipes/${recipeId}/votes?action=${voteAction}`)
-      .then((res) => {
-        dispatch(actions.voteARecipeSuccess(res.data));
-      })
-      .catch((err) => {
-        const { response } = err;
-        dispatch(actions.voteARecipeFailure(response));
-      });
-  };
+  return dispatch => axios.post(`/${URL}/recipes/${recipeId}/votes?action=${voteAction}`)
+    .then((res) => {
+      dispatch(actions.voteARecipeSuccess(res.data));
+    })
+    .catch((err) => {
+      const { response } = err;
+      dispatch(actions.voteARecipeFailure(response.data));
+    });
 }
 
 /**
@@ -137,17 +135,16 @@ export function resetReviewError(error) {
  * @return {Object} dispatch an object
 */
 export function favoriteRecipe(userId, recipeId) {
-  return (dispatch) => {
-    axios.post(`/${URL}/users/${userId}/recipes`, recipeId)
-      .then((res) => {
-        dispatch(actions.favoriteRecipeSuccess(res.data.message, recipeId.recipeId));
-        toastr.success(res.data.message);
-      })
-      .catch((err) => {
-        dispatch(actions.favoriteRecipeFailure(err.response.data.error));
-      });
-  };
+  return dispatch => axios.post(`/${URL}/users/${userId}/recipes`, recipeId)
+    .then((res) => {
+      dispatch(actions.favoriteRecipeSuccess(res.data.message, recipeId.recipeId));
+      toastr.success(res.data.message);
+    })
+    .catch((err) => {
+      dispatch(actions.favoriteRecipeFailure(err.response.data.error));
+    });
 }
+
 
 /**
  * @description - Calls the API to fetch user Recipes
@@ -161,12 +158,12 @@ export function favoriteRecipe(userId, recipeId) {
 export function getUserRecipes(userId, page) {
   return (dispatch) => {
     dispatch(actions.getUserRecipeRequest());
-    axios.get(`/${URL}/users/${userId}/myrecipes?page=${page}`)
+    return axios.get(`/${URL}/users/${userId}/myrecipes?page=${page}`)
       .then((res) => {
         dispatch(actions.getUserRecipeSuccess(res.data));
       })
       .catch((err) => {
-        dispatch(actions.getUserRecipeFailure(err.data));
+        dispatch(actions.getUserRecipeFailure(err.response.data));
       });
   };
 }
@@ -183,12 +180,12 @@ export function getUserRecipes(userId, page) {
 export function getUserFavRecipes(userId) {
   return (dispatch) => {
     dispatch(actions.getUserFavRecipeRequest());
-    axios.get(`/${URL}/users/${userId}/recipes`)
+    return axios.get(`/${URL}/users/${userId}/recipes`)
       .then((res) => {
         dispatch(actions.getUserFavRecipeSuccess(res.data));
       })
       .catch((err) => {
-        dispatch(actions.getUserFavRecipeFailure(err.data));
+        dispatch(actions.getUserFavRecipeFailure(err.response.data));
       });
   };
 }
@@ -203,20 +200,18 @@ export function getUserFavRecipes(userId) {
  * @return {Object} dispatch an object
 */
 export function favoriteARecipe(userId, recipeId, index) {
-  return (dispatch) => {
-    axios.post(`/${URL}/users/${userId}/recipes`, recipeId)
-      .then((res) => {
-        dispatch(actions.favoriteARecipeSuccess(res.data.message, index));
-        alert(
-          'Deleted!',
-          'Your recipe has been deleted.',
-          'success'
-        );
-      })
-      .catch((err) => {
-        dispatch(actions.favoriteARecipeFailure(err.response.data.error));
-      });
-  };
+  return dispatch => axios.post(`/${URL}/users/${userId}/recipes`, recipeId)
+    .then((res) => {
+      dispatch(actions.favoriteARecipeSuccess(res.data.message, index));
+      alert(
+        'Deleted!',
+        'Your recipe has been deleted.',
+        'success'
+      );
+    })
+    .catch((err) => {
+      dispatch(actions.favoriteARecipeFailure(err.response.data.error));
+    });
 }
 
 /**
@@ -227,15 +222,13 @@ export function favoriteARecipe(userId, recipeId, index) {
  * @return {Object} dispatch an object
 */
 export function getFavoriteIds(userId) {
-  return (dispatch) => {
-    axios.get(`/${URL}/users/${userId}/recipes/ids`)
-      .then((res) => {
-        dispatch(actions.getFavoriteRecipeIds(res.data.recipeIds));
-      })
-      .catch((err) => {
-        dispatch(actions.getFavoriteRecipeIdsFailure(err.response.data.error));
-      });
-  };
+  return dispatch => axios.get(`/${URL}/users/${userId}/recipes/ids`)
+    .then((res) => {
+      dispatch(actions.getFavoriteRecipeIds(res.data.recipeIds));
+    })
+    .catch((err) => {
+      dispatch(actions.getFavoriteRecipeIdsFailure(err.response.data.error));
+    });
 }
 
 
@@ -338,12 +331,12 @@ export function deleteRecipeAction(recipeId, position) {
 export function getUserProfile(userId) {
   return (dispatch) => {
     dispatch(actions.getUSerInfo());
-    axios.get(`/${URL}/users/${userId}/profile`)
+    return axios.get(`/${URL}/users/${userId}/profile`)
       .then((res) => {
         dispatch(actions.getUSerInfoSuccess(res.data));
       })
       .catch((err) => {
-        dispatch(actions.getUSerInfoFailure(err.data));
+        dispatch(actions.getUSerInfoFailure(err.response.data));
       });
   };
 }

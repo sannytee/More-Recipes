@@ -17,7 +17,7 @@ const URL = 'api/v1';
 export default function signinAction(userDetails) {
   return (dispatch) => {
     dispatch(signinRequest());
-    axios.post(`${URL}/users/signin`, userDetails)
+    return axios.post(`${URL}/users/signin`, userDetails)
       .then((res) => {
         const { token } = res.data;
         localStorage.setItem('token', token);
