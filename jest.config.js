@@ -6,7 +6,6 @@ module.exports = {
   testMatch: [
     '**/?(*.)(test).js?(x)'
   ],
-  // collectCoverage: true,
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/client/__tests__/__mocks__/fileMock.js',
     '\\.(css|less)$': '<rootDir>/client/__tests__/__mocks__/styleMock.js'
@@ -14,10 +13,16 @@ module.exports = {
   testPathIgnorePatterns: [
     '<rootDir>./server/__test__/*.js'
   ],
-  // collectCoverageFrom: [
-  //   '**/client/**.{js,jsx}',
-  //   '!**/node_modules/**'
-  // ],
+  collectCoverageFrom: [
+    '**/client/**.{js,jsx}',
+    '!**/node_modules/**'
+  ],
+  snapshotSerializers: [
+    'enzyme-to-json/serializer'
+  ],
+  setupFiles: [
+    '<rootDir>./client/__tests__/config.js',
+  ],
   globals: {
     toastr: {
       info: (() => {}),
