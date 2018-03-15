@@ -1,22 +1,32 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
 import React from 'react';
 import Header from './header';
 import Carousel from './carousel';
 import AboutSection from './aboutSection';
 import Footer from '../common/footer';
 
-/* eslint-disable require-jsdoc */
-/* eslint-disable class-methods-use-this */
+
+/* eslint-disable react/prefer-stateless-function */
+
+/**
+ * @description A class to mount all components related to LandingPage
+ *
+ * @extends Component
+ */
 class LandingPage extends React.Component {
+  /**
+   * @description renders the components
+   *
+   * @memberof LandingPage
+   *
+   * @returns {JSX} returns the components
+  */
   render() {
     return (
       <div>
-        <Header/>
-        <Carousel/>
-        <AboutSection/>
-        <Footer/>
+        <Header />
+        <Carousel />
+        <AboutSection />
+        <Footer />
       </div>
     );
   }
