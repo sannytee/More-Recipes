@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LandingPage Component should render correctly 1`] = `
+<LandingPage>
+  <div>
+    <Header>
+      <div>
+        <nav
+          className="navbar navbar-expand-lg navbar-dark"
+          style={
+            Object {
+              "backgroundColor": "#2b3034",
+            }
+          }
+        >
+          <a
+            className="navbar-brand"
+            href="#"
+          >
+            More-Recipes
+          </a>
+          <button
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            className="navbar-toggler"
+            data-target="#navbarSupportedContent"
+            data-toggle="collapse"
+            type="button"
+          >
+            <span
+              className="navbar-toggler-icon"
+            />
+          </button>
+          <div
+            className="collapse navbar-collapse"
+            id="navbarSupportedContent"
+          >
+            <ul
+              className="navbar-nav ml-auto"
+            >
+              <li
+                className="nav-item"
+              >
+                <a
+                  className="nav-link"
+                  href="/signin"
+                >
+                  Login
+                </a>
+              </li>
+              <li
+                className="nav-item"
+              >
+                <a
+                  className="nav-link"
+                  href="/signup"
+                >
+                  Sign up
+                </a>
+              </li>
+              <li
+                className="nav-item"
+              >
+                <a
+                  className="nav-link disabled"
+                  href="#About"
+                >
+                  About us
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </Header>
+    <carousel>
+      <div
+        className="carousel slide"
+        data-ride="carousel"
+        id="carouselExampleIndicators"
+      >
+        <ol
+          className="carousel-indicators"
+        >
+          <li
+            className=""
+            data-slide-to="0"
+            data-target="#carouselExampleIndicators"
+          />
+          <li
+            className="active"
+            data-slide-to="1"
+            data-target="#carouselExampleIndicators"
+          />
+          <li
+            className=""
+            data-slide-to="2"
+            data-target="#carouselExampleIndicators"
+          />
+        </ol>
+        <div
+          className="carousel-inner"
+        >
+          <div
+            className="carousel-item"
+          >
+            <img
+              alt="First slide"
+              className="d-block w-100"
+              src="test"
+            />
+            <div
+              className="carousel-caption d-none d-md-block"
+            >
+              <h1
+                className="cal-big"
+              >
+                Paunch bunger be thrice the person you wanna be
+              </h1>
+            </div>
+          </div>
+          <div
+            className="carousel-item active"
+          >
+            <img
+              alt="Second slide"
+              className="d-block w-100"
+              src="test"
+            />
+            <div
+              className="carousel-caption d-none d-md-block"
+            >
+              <h1
+                className="cal-big"
+              >
+                Cheese Pizza spicy blue cheese char! 
+              </h1>
+            </div>
+          </div>
+          <div
+            className="carousel-item"
+          >
+            <img
+              alt="Third slide"
+              className="d-block w-100"
+              src="test"
+            />
+            <div
+              className="carousel-caption d-none d-md-block"
+            >
+              <h1
+                className="cal-big"
+              >
+                Paunch bunger be thrice the person you wanna be
+              </h1>
+            </div>
+          </div>
+        </div>
+        <a
+          className="carousel-control-prev"
+          data-slide="prev"
+          href="#carouselExampleIndicators"
+          role="button"
+        >
+          <span
+            aria-hidden="true"
+            className="carousel-control-prev-icon"
+          />
+          <span
+            className="sr-only"
+          >
+            Previous
+          </span>
+        </a>
+        <a
+          className="carousel-control-next"
+          data-slide="next"
+          href="#carouselExampleIndicators"
+          role="button"
+        >
+          <span
+            aria-hidden="true"
+            className="carousel-control-next-icon"
+          />
+          <span
+            className="sr-only"
+          >
+            Next
+          </span>
+        </a>
+      </div>
+    </carousel>
+    <aboutSection>
+      <div
+        className="container"
+      >
+        <section
+          className="section-about"
+          id="About"
+        >
+          <div>
+            <p>
+              <span
+                className="about"
+              >
+                More-Recipes
+              </span>
+               provides a platform for users to share the awesome and exciting recipe ideas they have invented or learnt. Suppose a user comes up with a food recipe, he/she can post it on More-Recipes and get feedback in form of reviews and votes from other users who explore that recipe. Users can also keep a list of their favorite recipes on the application.
+            </p>
+          </div>
+          <div
+            className="row"
+          >
+            <div
+              className="col-md-6 col-sm-3"
+            >
+              <img
+                alt="recipe"
+                className="img-fluid"
+                src="test"
+              />
+            </div>
+            <div
+              className="col-md-6 col-sm-3"
+            >
+              <img
+                alt="recipe"
+                className="img-fluid"
+                src="test"
+              />
+            </div>
+          </div>
+        </section>
+      </div>
+    </aboutSection>
+    <Footer>
+      <footer
+        className="footer-section"
+        id="footer-below"
+      >
+        <div
+          className="container"
+        >
+          <strong
+            className="copyright"
+          >
+            More-Recipes © 2018, All Rights Reserved, Design & Developed By: SannyTee
+          </strong>
+        </div>
+      </footer>
+    </Footer>
+  </div>
+</LandingPage>
+`;

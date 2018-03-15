@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel Component should render correctly 1`] = `
+<div
+  className="carousel slide"
+  data-ride="carousel"
+  id="carouselExampleIndicators"
+>
+  <ol
+    className="carousel-indicators"
+  >
+    <li
+      className=""
+      data-slide-to="0"
+      data-target="#carouselExampleIndicators"
+    />
+    <li
+      className="active"
+      data-slide-to="1"
+      data-target="#carouselExampleIndicators"
+    />
+    <li
+      className=""
+      data-slide-to="2"
+      data-target="#carouselExampleIndicators"
+    />
+  </ol>
+  <div
+    className="carousel-inner"
+  >
+    <div
+      className="carousel-item"
+    >
+      <img
+        alt="First slide"
+        className="d-block w-100"
+        src="test"
+      />
+      <div
+        className="carousel-caption d-none d-md-block"
+      >
+        <h1
+          className="cal-big"
+        >
+          Paunch bunger be thrice the person you wanna be
+        </h1>
+      </div>
+    </div>
+    <div
+      className="carousel-item active"
+    >
+      <img
+        alt="Second slide"
+        className="d-block w-100"
+        src="test"
+      />
+      <div
+        className="carousel-caption d-none d-md-block"
+      >
+        <h1
+          className="cal-big"
+        >
+          Cheese Pizza spicy blue cheese char! 
+        </h1>
+      </div>
+    </div>
+    <div
+      className="carousel-item"
+    >
+      <img
+        alt="Third slide"
+        className="d-block w-100"
+        src="test"
+      />
+      <div
+        className="carousel-caption d-none d-md-block"
+      >
+        <h1
+          className="cal-big"
+        >
+          Paunch bunger be thrice the person you wanna be
+        </h1>
+      </div>
+    </div>
+  </div>
+  <a
+    className="carousel-control-prev"
+    data-slide="prev"
+    href="#carouselExampleIndicators"
+    role="button"
+  >
+    <span
+      aria-hidden="true"
+      className="carousel-control-prev-icon"
+    />
+    <span
+      className="sr-only"
+    >
+      Previous
+    </span>
+  </a>
+  <a
+    className="carousel-control-next"
+    data-slide="next"
+    href="#carouselExampleIndicators"
+    role="button"
+  >
+    <span
+      aria-hidden="true"
+      className="carousel-control-next-icon"
+    />
+    <span
+      className="sr-only"
+    >
+      Next
+    </span>
+  </a>
+</div>
+`;
