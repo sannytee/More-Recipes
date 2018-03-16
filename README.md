@@ -4,24 +4,16 @@
 # More-Recipes
 More-Recipes provides a platform for users to share the awesome and exciting  recipe ideas they have invented or learnt.  Suppose a user comes up with a food recipe,  he/she can post it on More-Recipes and  get feedback in form of reviews and votes from other users who explore that recipe. Users can also keep a list of their favorite recipes on the application.
 
-## Features
-* Add recipe   to catalog.
-* View all recipes in catalog.
-* Get a single recipe
-* Delete a recipe
-* favorite a recipe
-* get all favorite recipes
-* Post a review for recipe.
-* Get all recipes based on most voted (upvotes or downvotes).
-
-
 
 ## Installation
 To install this application, 
-1. git clone this repository (develop branch)
-2. Open the command line and cd into the folder you just cloned
-3. Run ```npm install``` to install dependencies
-4. Then run ```npm start:dev``` to start the application
+1.  Git clone this repository `https://github.com/SannyTee/More-Recipes.git`
+2.  Change your directory `cd More-Recipes`
+3.  Install all dependencies `npm install`
+4.  Create .env file which will be used to load environment variables see sample in `.env.example` file in the project
+6.  Migrate `sequelize db:migrate`
+7.  Start the app `npm start` for development 
+8.  Navigate to `localhost:3000` in your browser
 
 
 ## Testing
@@ -44,18 +36,21 @@ To install this application,
 THE  Documentation for the More-Recipes Restful API:
 [More-Recipes API](https://app.swaggerhub.com/apis/Tywo/more-recipes/1.0.0#/)
 
+## Coding Style
+- Airbnb: Airbnb is a coding style guide that guides developers to write clean codes
 
 ## Limitation
 1. Users cannot deactivate their accounts
 2. Users can only create account once with their username and email
 3. Users can not delete their reviews
 
-### Contributing
-1. Fork the repository
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+## How to Contribute
+- Fork this repository.
+- Clone it.
+- Create your feature branch on your local machine with ```git checkout -b your-feature-branch```
+- Push your changes to your remote branch with ```git push origin your-feature-branch```
+- Open a pull request to the master branch, and describe how your feature works
+- Refer to this wiki for proper <a href="https://github.com/SannyTee/More-Recipes/wiki">GIT CONVENTION</a>
 
 ## Licence 
 [APACHE License](https://github.com/SannyTee/More-Recipes/blob/develop/LICENSE)

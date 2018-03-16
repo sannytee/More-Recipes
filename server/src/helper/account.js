@@ -88,7 +88,6 @@ export default class account {
           res.status(200).send({
             success: true,
             message: 'Token Generated. Signin successful!',
-            userId: user.id,
             token,
           });
         } else {
@@ -127,7 +126,9 @@ export default class account {
             message: 'You are not allowed to perform this action'
           });
         }
-        res.status(200).send(user);
+        res.status(200).send({
+          profile: user
+        });
       })
       .catch(error => res.status(500).send(error));
   }

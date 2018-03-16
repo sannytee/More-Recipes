@@ -333,7 +333,7 @@ export function getUserProfile(userId) {
     dispatch(actions.getUSerInfo());
     return axios.get(`/${URL}/users/${userId}/profile`)
       .then((res) => {
-        dispatch(actions.getUSerInfoSuccess(res.data));
+        dispatch(actions.getUSerInfoSuccess(res.data.profile));
       })
       .catch((err) => {
         dispatch(actions.getUSerInfoFailure(err.response.data));

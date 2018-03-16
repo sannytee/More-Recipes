@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 import App from './components/app';
 import LandingPage from './components/LandingPage/index';
 import SigninPage from './components/SigninPage/index';
-import SignupPage from './components/SignupPage/index';
+import SignupComponent from './components/SignupPage/index';
 import recipes from './components/RecipePage/index';
 import myRecipePage from './components/MyRecipePage/index';
 import recipeDetailsPage from './components/RecipeDetailsPage/index';
@@ -15,7 +15,7 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={LandingPage} />
     <Route path="signin" component={SigninPage} />
-    <Route path="signup" component={SignupPage} />
+    <Route path="signup" component={SignupComponent} />
     <Route path="recipes" component={recipes} />
     <Route path="/my-recipes" component={checkUserState(myRecipePage)} />
     <Route path="recipes/:recipeId" component={checkUserState(recipeDetailsPage)} />
