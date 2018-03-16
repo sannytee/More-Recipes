@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component should render correctly 1`] = `
+<Header>
+  <header>
+    <nav
+      className="navbar navbar-expand-lg navbar-dark"
+      style={
+        Object {
+          "backgroundColor": "#2b3034",
+        }
+      }
+    >
+      <a
+        className="navbar-brand"
+        href="/"
+      >
+        More-Recipes
+      </a>
+      <button
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        className="navbar-toggler"
+        data-target="#navbarSupportedContent"
+        data-toggle="collapse"
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        className="collapse navbar-collapse"
+        id="navbarSupportedContent"
+      >
+        <ul
+          className="navbar-nav ml-auto"
+        >
+          <li
+            className="nav-item"
+          >
+            <Link
+              className="nav-link"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/signin"
+            >
+              <a
+                className="nav-link"
+                onClick={[Function]}
+                style={Object {}}
+              >
+                Login
+              </a>
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+</Header>
+`;
