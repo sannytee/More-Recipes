@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
@@ -12,28 +13,18 @@ import Footer from '../common/footer.jsx';
 import img from '../../public/images/banner-img-2.jpg';
 
 
-const propTypes = {
-  response: PropTypes.string,
-  error: PropTypes.string,
-  actions: PropTypes.shape({
-    resetUserError: PropTypes.func,
-    signUpAction: PropTypes.func
-  }).isRequired
-};
-
 const defaultProps = {
   response: null,
   error: null
 };
 
 
-/* eslint-disable react/no-unused-state */
 /**
  * @description A class to display the signup page
  *
  * @extends Component
  */
-class SignupPage extends Component {
+export class SignupPage extends Component {
   /**
    * enables action to the performed on this component
    *
@@ -207,7 +198,14 @@ SignupPage.contextTypes = {
   router: PropTypes.object
 };
 
-SignupPage.propTypes = propTypes;
+SignupPage.propTypes = {
+  response: PropTypes.string,
+  error: PropTypes.string,
+  actions: PropTypes.shape({
+    resetUserError: PropTypes.func,
+    signUpAction: PropTypes.func
+  }).isRequired
+};
 
 SignupPage.defaultProps = defaultProps;
 
