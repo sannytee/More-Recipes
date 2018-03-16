@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { PropTypes } from 'react';
 import img from '../../public/images/burger-image.jpg';
 

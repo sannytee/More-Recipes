@@ -348,11 +348,13 @@ const mockRecipesData = {
     message: 'recipe successfully deleted'
   },
   userData: {
-    id: 1,
-    username: 'sannytee',
-    email: 'tester@test.com',
-    image: null,
-    createdAt: '2018-02-19T15:54:05.322Z'
+    profile: {
+      id: 1,
+      username: 'sannytee',
+      email: 'tester@test.com',
+      image: null,
+      createdAt: '2018-02-19T15:54:05.322Z'
+    }
   }
 };
 

@@ -661,7 +661,7 @@ describe('Recipe Actions', () => {
       },
       {
         type: types.GET_USER_DATA_SUCCESS,
-        payload: mockData.userData,
+        payload: mockData.userData.profile,
         isLoading: false
       }
     ];

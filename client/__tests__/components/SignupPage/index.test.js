@@ -98,7 +98,7 @@ describe('SignupPage component', () => {
     expect(wrapper.state('error')).toBe('server error');
   });
 
-  it('should sign user when form is submitted', () => {
+  it('should register user when form is submitted', () => {
     const action = wrapper.instance();
     const signup = jest.spyOn(wrapper.instance(), 'handleSubmit');
     action.handleSubmit({ preventDefault: () => {} });

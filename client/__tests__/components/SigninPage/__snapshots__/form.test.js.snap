@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Signin Form Component should render correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="pt-5"
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    <form
+      className="m-x-auto form card"
+      onSubmit={[Function]}
+    >
+      <h1
+        className="signin-text"
+      >
+         More-Recipes
+      </h1>
+      <div>
+        <img
+          alt="logo"
+          className="img-fluid rounded-circle img-size"
+          name="image"
+          src="test"
+        />
+      </div>
+      <div
+        className="pb-4 pt-3 form-group"
+      >
+        <input
+          className="form-control"
+          name="username"
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Username or Email"
+          required={true}
+          type="text"
+        />
+      </div>
+      <div
+        className="pb-4 form-group"
+      >
+        <input
+          className="form-control"
+          name="password"
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Password"
+          required={true}
+          type="password"
+        />
+      </div>
+      <button
+        className="btn signin-btn btn-lg"
+        style={
+          Object {
+            "color": "#f2b43c",
+          }
+        }
+        type="submit"
+      >
+        Log in
+      </button>
+      <p>
+         Don’t have an account?
+        <a
+          href="/signup"
+        >
+          Create an account.
+        </a>
+      </p>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Signin Form Component should render error if error exist 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="pt-5"
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    <form
+      className="m-x-auto form card"
+      onSubmit={[Function]}
+    >
+      <h1
+        className="signin-text"
+      >
+         More-Recipes
+      </h1>
+      <div>
+        <img
+          alt="logo"
+          className="img-fluid rounded-circle img-size"
+          name="image"
+          src="test"
+        />
+      </div>
+      <div
+        className="alert alert-danger"
+      >
+        User not found
+      </div>
+      <div
+        className="pb-4 pt-3 form-group"
+      >
+        <input
+          className="form-control"
+          name="username"
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Username or Email"
+          required={true}
+          type="text"
+        />
+      </div>
+      <div
+        className="pb-4 form-group"
+      >
+        <input
+          className="form-control"
+          name="password"
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Password"
+          required={true}
+          type="password"
+        />
+      </div>
+      <button
+        className="btn signin-btn btn-lg"
+        style={
+          Object {
+            "color": "#f2b43c",
+          }
+        }
+        type="submit"
+      >
+        Log in
+      </button>
+      <p>
+         Don’t have an account?
+        <a
+          href="/signup"
+        >
+          Create an account.
+        </a>
+      </p>
+    </form>
+  </div>
+</div>
+`;

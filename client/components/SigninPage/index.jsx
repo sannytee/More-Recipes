@@ -29,7 +29,7 @@ const defaultProps = {
  *
  * @extends Component
  */
-class SigninPage extends Component {
+export class SigninPage extends Component {
   /**
    * enables action to the performed on this component
    *

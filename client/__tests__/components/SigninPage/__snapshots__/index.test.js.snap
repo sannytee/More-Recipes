@@ -1,0 +1,182 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Signin component should  render correctly 1`] = `
+<SigninPage
+  actions={
+    Object {
+      "resetUserError": [Function],
+      "signinAction": [Function],
+    }
+  }
+  authenticated=""
+  error=""
+>
+  <div>
+    <Header>
+      <header>
+        <nav
+          className="navbar navbar-expand-lg navbar-dark"
+          style={
+            Object {
+              "backgroundColor": "#2b3034",
+            }
+          }
+        >
+          <a
+            className="navbar-brand"
+            href="/"
+          >
+            More-Recipes
+          </a>
+          <button
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            className="navbar-toggler"
+            data-target="#navbarSupportedContent"
+            data-toggle="collapse"
+            type="button"
+          >
+            <span
+              className="navbar-toggler-icon"
+            />
+          </button>
+          <div
+            className="collapse navbar-collapse"
+            id="navbarSupportedContent"
+          >
+            <ul
+              className="navbar-nav ml-auto"
+            >
+              <li
+                className="nav-item"
+              >
+                <Link
+                  className="nav-link"
+                  onlyActiveOnIndex={false}
+                  style={Object {}}
+                  to="/signup"
+                >
+                  <a
+                    className="nav-link"
+                    onClick={[Function]}
+                    style={Object {}}
+                  >
+                    Signup
+                  </a>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+    </Header>
+    <Form
+      error={
+        Object {
+          "email": "",
+          "error": "",
+          "password": "",
+          "username": "",
+        }
+      }
+      onChange={[Function]}
+      onFocus={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className="container"
+      >
+        <div
+          className="pt-5"
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
+        >
+          <form
+            className="m-x-auto form card"
+            onSubmit={[Function]}
+          >
+            <h1
+              className="signin-text"
+            >
+               More-Recipes
+            </h1>
+            <div>
+              <img
+                alt="logo"
+                className="img-fluid rounded-circle img-size"
+                name="image"
+                src="test"
+              />
+            </div>
+            <div
+              className="pb-4 pt-3 form-group"
+            >
+              <input
+                className="form-control"
+                name="username"
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Username or Email"
+                required={true}
+                type="text"
+              />
+            </div>
+            <div
+              className="pb-4 form-group"
+            >
+              <input
+                className="form-control"
+                name="password"
+                onChange={[Function]}
+                onFocus={[Function]}
+                placeholder="Password"
+                required={true}
+                type="password"
+              />
+            </div>
+            <button
+              className="btn signin-btn btn-lg"
+              style={
+                Object {
+                  "color": "#f2b43c",
+                }
+              }
+              type="submit"
+            >
+              Log in
+            </button>
+            <p>
+               Don’t have an account?
+              <a
+                href="/signup"
+              >
+                Create an account.
+              </a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </Form>
+    <Footer>
+      <footer
+        className="footer-section"
+        id="footer-below"
+      >
+        <div
+          className="container"
+        >
+          <strong
+            className="copyright"
+          >
+            More-Recipes © 2018, All Rights Reserved, Design & Developed By: SannyTee
+          </strong>
+        </div>
+      </footer>
+    </Footer>
+  </div>
+</SigninPage>
+`;
