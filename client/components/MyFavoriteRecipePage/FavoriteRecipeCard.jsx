@@ -24,7 +24,7 @@ const propTypes = {
  * @description A class to mount the favorite recipe card
  * @extends Component
  */
-class FavoriteRecipeCard extends Component {
+export class FavoriteRecipeCard extends Component {
   /**
    * handles removing favorite recipe
    * @param {object} props

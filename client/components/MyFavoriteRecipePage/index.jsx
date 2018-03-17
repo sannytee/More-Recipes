@@ -32,7 +32,7 @@ const defaultProps = {
  * @description A class to mount all components related to MyFavoriteRecipePage
  * @extends Component
  */
-class FavoriteRecipePage extends Component {
+export class FavoriteRecipePage extends Component {
   /**
    * handles rendering favorite recipe
    * @param {object} props

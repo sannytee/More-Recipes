@@ -1,1 +1,5 @@
-module.exports = jest.fn(() => { });
+module.exports = jest.fn(() => Promise.resolve({
+  result: {
+    value: true,
+  }
+}));

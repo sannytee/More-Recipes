@@ -1,0 +1,188 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyFavoriteRecipePage Component should render correctly 1`] = `
+<div>
+  <Connect(authHeader)
+    user={
+      Object {
+        "createdAt": "2018-02-19T15:54:05.322Z",
+        "email": "tester@test.com",
+        "id": 1,
+        "image": null,
+        "username": "sannytee",
+      }
+    }
+  />
+  <div
+    className="container"
+  >
+    <div
+      className="row section-popular"
+    >
+      <div
+        className="col-sm-12"
+      >
+        <h2
+          className="pt-3 headline centered"
+        >
+          My Favorite Recipes
+        </h2>
+      </div>
+    </div>
+    <div
+      className="row pt-4"
+    >
+      <Connect(FavoriteRecipeCard)
+        index={0}
+        key="50"
+        recipe={
+          Object {
+            "addedBy": "sannytee",
+            "createdAt": "2018-02-20T10:11:25.020Z",
+            "description": "amazing",
+            "downvotes": 1,
+            "id": 27,
+            "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+            "ingredients": "awesome",
+            "mealType": "breakfast",
+            "method": "great",
+            "recipeName": "new recipe",
+            "updatedAt": "2018-03-14T19:26:34.054Z",
+            "upvotes": 0,
+            "userId": 1,
+          }
+        }
+        userId={1}
+      />
+      <Connect(FavoriteRecipeCard)
+        index={1}
+        key="53"
+        recipe={
+          Object {
+            "addedBy": "sannytee",
+            "createdAt": "2018-02-27T09:51:21.439Z",
+            "description": "An awesome Africa recipe made from yam",
+            "downvotes": 0,
+            "id": 52,
+            "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F37726346-c5d3-4069-b8d9-3834fc3b0cec.jpg?alt=media&token=af75ca04-f982-4815-bed4-1f011be7f0d1",
+            "ingredients": "Yam, vegetable, pepper, palm oil, stock fish",
+            "mealType": "elevenses",
+            "method": "Boil the water first
+wash the vegetables
+grind the pepper.
+and so on.",
+            "recipeName": "Asaro",
+            "updatedAt": "2018-03-06T11:07:45.393Z",
+            "upvotes": 0,
+            "userId": 1,
+          }
+        }
+        userId={1}
+      />
+    </div>
+  </div>
+  <Footer />
+</div>
+`;
+
+exports[`MyFavoriteRecipePage Component should render loader if \`isLoading\` is true 1`] = `
+<div>
+  <Connect(authHeader)
+    user={
+      Object {
+        "createdAt": "2018-02-19T15:54:05.322Z",
+        "email": "tester@test.com",
+        "id": 1,
+        "image": null,
+        "username": "sannytee",
+      }
+    }
+  />
+  <div
+    className="container"
+  >
+    <div
+      className="row section-popular"
+    >
+      <div
+        className="col-sm-12"
+      >
+        <h2
+          className="pt-3 headline centered"
+        >
+          My Favorite Recipes
+        </h2>
+      </div>
+    </div>
+    <div
+      className="row pt-4"
+    >
+      <div
+        style={
+          Object {
+            "marginLeft": "auto",
+            "marginRight": "auto",
+            "marginTop": "150px",
+          }
+        }
+      >
+        <n
+          color="#FF4601"
+          secondaryColor="#e6e6e6"
+          size={40}
+        />
+      </div>
+    </div>
+  </div>
+  <Footer />
+</div>
+`;
+
+exports[`MyFavoriteRecipePage Component should render message if user have no recipe 1`] = `
+<div>
+  <Connect(authHeader)
+    user={
+      Object {
+        "createdAt": "2018-02-19T15:54:05.322Z",
+        "email": "tester@test.com",
+        "id": 1,
+        "image": null,
+        "username": "sannytee",
+      }
+    }
+  />
+  <div
+    className="container"
+  >
+    <div
+      className="row section-popular"
+    >
+      <div
+        className="col-sm-12"
+      >
+        <h2
+          className="pt-3 headline centered"
+        >
+          My Favorite Recipes
+        </h2>
+      </div>
+    </div>
+    <div
+      className="row pt-4"
+    >
+      <h1
+        style={
+          Object {
+            "margin": "150px auto 0",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        You have no favorite recipes
+      </h1>
+    </div>
+  </div>
+  <Footer />
+</div>
+`;
