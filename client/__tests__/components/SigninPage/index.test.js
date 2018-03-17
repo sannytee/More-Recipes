@@ -64,7 +64,7 @@ describe('Signin component', () => {
     expect(wrapper.state('error')).toBe('invalid details');
   });
 
-  it('should signin user when form is submitterd', () => {
+  it('should signin user when form is submitted', () => {
     const action = wrapper.instance();
     const signin = jest.spyOn(wrapper.instance(), 'handleSubmit');
     action.handleSubmit({ preventDefault: () => {} });

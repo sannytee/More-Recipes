@@ -27,7 +27,7 @@ const propTypes = {
  * @description A class to mount the recipe card
  * @extends Component
  */
-class recipeCard extends Component {
+export class RecipeCard extends Component {
   /**
    * enables action to the performed on this component
    *
@@ -183,11 +183,11 @@ class recipeCard extends Component {
   }
 }
 
-recipeCard.contextTypes = {
+RecipeCard.contextTypes = {
   router: PropTypes.object
 };
 
-recipeCard.propTypes = propTypes;
+RecipeCard.propTypes = propTypes;
 
 /**
  * @description maps action to properties of SigninPage
@@ -205,4 +205,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(recipeCard);
+export default connect(null, mapDispatchToProps)(RecipeCard);

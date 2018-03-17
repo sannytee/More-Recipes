@@ -54,7 +54,7 @@ const defaultProps = {
  *
  * @extends Component
  */
-class RecipePage extends Component {
+export class RecipePage extends Component {
   /**
    * handles pagination
    * @param {object} props

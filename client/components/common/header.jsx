@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Link } from 'react-router';
 
 
-const Header = props => (
+const Header = () => (
   <header>
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark" style={{ backgroundColor: '#2b3034' }}>
       <a className="navbar-brand" href="/">More-Recipes</a>
