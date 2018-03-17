@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipeInfo should render correctly 1`] = `
+<div>
+  <img
+    alt="Card pic cap"
+    className="card-img-top"
+    src="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212"
+    style={
+      Object {
+        "maxHeight": "350px",
+      }
+    }
+  />
+  <div
+    className="card-body"
+  >
+    <h4
+      className="card-title"
+    >
+      new recipe
+    </h4>
+    <p
+      className="card-text"
+    >
+      amazing
+    </p>
+    <hr />
+    <div>
+      <h6>
+        Type of Meal
+      </h6>
+      <ul>
+        <li>
+           
+          breakfast
+           
+        </li>
+      </ul>
+    </div>
+    <hr />
+    <div>
+      <h6>
+        Ingredients
+      </h6>
+      <ul>
+        <div
+          className="row"
+        >
+          <li
+            className="col-md-6"
+            key="0"
+            style={
+              Object {
+                "fontSize": "18px",
+                "paddingTop": "5px",
+              }
+            }
+          >
+            awesome
+          </li>
+        </div>
+      </ul>
+    </div>
+    <hr />
+    <div>
+      <h6>
+        Method of Cooking
+      </h6>
+      <ol>
+        <li
+          key="0"
+        >
+          great
+        </li>
+      </ol>
+    </div>
+    <hr />
+    <div
+      style={
+        Object {
+          "display": "inline-flex",
+        }
+      }
+    >
+      <div>
+        <button
+          className="btn vote-button"
+          data-for="upvote"
+          data-tip={true}
+          onClick={[Function]}
+          type="button"
+        >
+          <i
+            aria-hidden="true"
+            className="fa fa-thumbs-up fa-lg"
+          >
+            <span
+              style={
+                Object {
+                  "marginLeft": "5px",
+                  "marginRight": "5px",
+                }
+              }
+            >
+              0
+            </span>
+          </i>
+        </button>
+        <ReactTooltip
+          id="upvote"
+          insecure={true}
+          place="top"
+          resizeHide={true}
+          type="dark"
+          wrapper="div"
+        >
+          <span>
+            upvote recipe
+          </span>
+        </ReactTooltip>
+      </div>
+      <div
+        style={
+          Object {
+            "marginLeft": "8px",
+            "marginRight": "5px",
+          }
+        }
+      >
+        <button
+          className="btn vote-button"
+          data-for="downvote"
+          data-tip={true}
+          onClick={[Function]}
+          type="button"
+        >
+          <i
+            aria-hidden="true"
+            className="fa fa-thumbs-down fa-lg"
+          >
+            <span
+              style={
+                Object {
+                  "marginLeft": "5px",
+                  "marginRight": "5px",
+                }
+              }
+            >
+              1
+            </span>
+          </i>
+        </button>
+        <ReactTooltip
+          id="downvote"
+          insecure={true}
+          place="bottom"
+          resizeHide={true}
+          type="dark"
+          wrapper="div"
+        >
+          <span>
+            downvote recipe
+          </span>
+        </ReactTooltip>
+      </div>
+      <div
+        style={
+          Object {
+            "marginLeft": "8px",
+            "marginRight": "5px",
+          }
+        }
+      >
+        <button
+          className="btn vote-button"
+          data-for="favorite"
+          data-tip={true}
+          onClick={[Function]}
+          type="button"
+        >
+          <i
+            className="fa fa-heart"
+            style={
+              Object {
+                "color": "white",
+              }
+            }
+          />
+        </button>
+        <ReactTooltip
+          id="favorite"
+          insecure={true}
+          place="right"
+          resizeHide={true}
+          type="dark"
+          wrapper="div"
+        >
+          <span>
+            favorite recipe
+          </span>
+        </ReactTooltip>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
+`;

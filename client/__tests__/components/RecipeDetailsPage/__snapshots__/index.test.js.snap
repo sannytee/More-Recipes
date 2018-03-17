@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipeDetailsPage Component should render correctly 1`] = `
+<div>
+  <Connect(authHeader)
+    user={
+      Object {
+        "createdAt": "2018-02-19T15:54:05.322Z",
+        "email": "tester@test.com",
+        "id": 1,
+        "image": null,
+        "username": "sannytee",
+      }
+    }
+  />
+  <div
+    className="container recipe-details"
+  >
+    <section
+      className="row"
+    >
+      <div
+        className="col-sm-2"
+      />
+      <div
+        className="col-sm-8"
+      >
+        <div
+          className="card w-100"
+          style={
+            Object {
+              "width": "20rem",
+            }
+          }
+        >
+          <RecipeInfo
+            downvote={[Function]}
+            favorite={[Function]}
+            favorited={true}
+            img="test"
+            recipeDetails={
+              Object {
+                "addedBy": "sannytee",
+                "createdAt": "2018-02-20T10:11:25.020Z",
+                "description": "amazing",
+                "downvotes": 1,
+                "id": 27,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+                "ingredients": "awesome",
+                "mealType": "breakfast",
+                "method": "great",
+                "recipeName": "new recipe",
+                "reviews": Array [
+                  Object {
+                    "createdAt": "2018-03-11T06:20:58.315Z",
+                    "recipeId": 27,
+                    "review": "hi there
+",
+                    "userId": 5,
+                    "username": "sannikay",
+                  },
+                ],
+                "updatedAt": "2018-03-06T11:08:34.739Z",
+                "upvotes": 0,
+                "userId": 1,
+              }
+            }
+            upvote={[Function]}
+          />
+          <Review
+            handleChange={[Function]}
+            handleSubmit={[Function]}
+            onFocus={[Function]}
+            reviewError=""
+            reviews={
+              Array [
+                Object {
+                  "createdAt": "2018-03-11T06:20:58.315Z",
+                  "recipeId": 27,
+                  "review": "hi there
+",
+                  "userId": 5,
+                  "username": "sannikay",
+                },
+              ]
+            }
+          />
+        </div>
+      </div>
+    </section>
+  </div>
+  <Footer />
+</div>
+`;
+
+exports[`RecipeDetailsPage Component should render error when error exists 1`] = `
+<div>
+  <Connect(authHeader)
+    user={
+      Object {
+        "createdAt": "2018-02-19T15:54:05.322Z",
+        "email": "tester@test.com",
+        "id": 1,
+        "image": null,
+        "username": "sannytee",
+      }
+    }
+  />
+  <h1
+    style={
+      Object {
+        "paddingTop": "150px",
+      }
+    }
+  >
+    404 Not found
+  </h1>
+  <Footer />
+</div>
+`;
+
+exports[`RecipeDetailsPage Component should render loader when \`isLoading\` is true 1`] = `
+<div>
+  <Connect(authHeader)
+    user={
+      Object {
+        "createdAt": "2018-02-19T15:54:05.322Z",
+        "email": "tester@test.com",
+        "id": 1,
+        "image": null,
+        "username": "sannytee",
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "paddingTop": "350px",
+      }
+    }
+  >
+    <n
+      color="#FF4601"
+      secondaryColor="#e6e6e6"
+      size={40}
+    />
+  </div>
+  <Footer />
+</div>
+`;

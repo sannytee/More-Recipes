@@ -58,7 +58,7 @@ const defaultProps = {
  * @description A class to mount all components related to details of recipe
  * @extends Component
  */
-class RecipeDetailsPage extends Component {
+export class RecipeDetailsPage extends Component {
   /**
    * handles displaying details of  a recipe
    * @param {object} props

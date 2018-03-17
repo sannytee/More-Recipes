@@ -28,6 +28,7 @@
     "react/jsx-filename-extension": 0,
     "comma-dangle": 0,
     "import/extensions": 0,
+    "import/no-named-as-default": 0,
     "import/no-unresolved": 0,
     "curly": ["error", "multi-line"],
     "no-shadow": ["error", { "allow": ["req", "res", "err"] }],

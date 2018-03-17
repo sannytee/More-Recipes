@@ -1,0 +1,242 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Review Component should render correctly 1`] = `
+<section
+  className="border-recipes"
+>
+  <h4
+    className="section-reviews centered"
+    style={
+      Object {
+        "backgroundColor": "#2b3034",
+      }
+    }
+  >
+    Reviews
+  </h4>
+  <ul
+    style={
+      Object {
+        "maxHeight": "300px",
+        "overflowY": "scroll",
+      }
+    }
+  >
+    <li
+      className="review-list"
+      key="0"
+    >
+      <div>
+        <div>
+          <div
+            className="header"
+          >
+            <strong
+              className="primary-font username"
+            >
+              sannikay
+            </strong>
+            <strong
+              className="primary-font pull-right"
+              style={
+                Object {
+                  "paddingRight": "10px",
+                }
+              }
+            >
+              7 days ago
+            </strong>
+          </div>
+          <p>
+            hi there
+
+          </p>
+          <hr />
+        </div>
+      </div>
+    </li>
+  </ul>
+  <form
+    id="review-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="comment"
+      >
+        Post a review
+      </label>
+      <textarea
+        className="form-control"
+        id="comment"
+        name="review"
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={true}
+        rows="5"
+      />
+    </div>
+    <button
+      className="btn vote-button pull-right"
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</section>
+`;
+
+exports[`Review Component should render error if error exists 1`] = `
+<section
+  className="border-recipes"
+>
+  <h4
+    className="section-reviews centered"
+    style={
+      Object {
+        "backgroundColor": "#2b3034",
+      }
+    }
+  >
+    Reviews
+  </h4>
+  <ul
+    style={
+      Object {
+        "maxHeight": "300px",
+        "overflowY": "scroll",
+      }
+    }
+  >
+    <li
+      className="review-list"
+      key="0"
+    >
+      <div>
+        <div>
+          <div
+            className="header"
+          >
+            <strong
+              className="primary-font username"
+            >
+              sannikay
+            </strong>
+            <strong
+              className="primary-font pull-right"
+              style={
+                Object {
+                  "paddingRight": "10px",
+                }
+              }
+            >
+              7 days ago
+            </strong>
+          </div>
+          <p>
+            hi there
+
+          </p>
+          <hr />
+        </div>
+      </div>
+    </li>
+  </ul>
+  <form
+    id="review-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="comment"
+      >
+        Post a review
+      </label>
+      <textarea
+        className="form-control"
+        id="comment"
+        name="review"
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={true}
+        rows="5"
+      />
+      <div
+        className="alert alert-danger"
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        Review cannot be Empty
+      </div>
+    </div>
+    <button
+      className="btn vote-button pull-right"
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</section>
+`;
+
+exports[`Review Component should render message if recipe have not been reviewed 1`] = `
+<section
+  className="border-recipes"
+>
+  <h4
+    className="section-reviews centered"
+    style={
+      Object {
+        "backgroundColor": "#2b3034",
+      }
+    }
+  >
+    Reviews
+  </h4>
+  <h6
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    This recipe have not been reviewed
+  </h6>
+  <form
+    id="review-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="comment"
+      >
+        Post a review
+      </label>
+      <textarea
+        className="form-control"
+        id="comment"
+        name="review"
+        onChange={[Function]}
+        onFocus={[Function]}
+        required={true}
+        rows="5"
+      />
+    </div>
+    <button
+      className="btn vote-button pull-right"
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</section>
+`;
