@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PopularRecipeCardList Component should render correctly 1`] = `
+<div
+  className="col-lg-3 col-md-12"
+>
+  <aside
+    className="sidebar"
+  >
+    <div
+      className="side_rec_area"
+    >
+      <div
+        className="side_title"
+      >
+        Popular Recipes
+      </div>
+      <popularRecipeCard
+        id={48}
+        image="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F99d42668-42c7-435a-9ea3-0d8ab7a0e62a.jpeg?alt=media&token=cc1d3c0a-716d-42ff-8222-693757baa5cb"
+        key="48"
+        recipeName="Eba and vegetable"
+      />
+      <popularRecipeCard
+        id={26}
+        image="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212"
+        key="26"
+        recipeName="rice and chicken"
+      />
+      <popularRecipeCard
+        id={53}
+        image="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F401e40a2-a363-4910-9c94-2f5d2c5875b1.jpg?alt=media&token=acf1977d-c406-4a88-9577-9fa1e34c8f70"
+        key="53"
+        recipeName="Shredded chiken"
+      />
+      <popularRecipeCard
+        id={56}
+        image="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F6f3fd226-4237-47fd-a716-f64b3c3dea2f.jpg?alt=media&token=f754b717-f91b-4bc7-9aeb-7fd19f98b123"
+        key="56"
+        recipeName="Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed."
+      />
+      <popularRecipeCard
+        id={59}
+        image="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F0672f71e-5018-4a19-8970-ecc6c835d827.jpg?alt=media&token=a9730299-fad9-45ba-a07f-3ef5742f9092"
+        key="59"
+        recipeName="indomie"
+      />
+      <popularRecipeCard
+        id={51}
+        image="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2Ffb54ab3c-fd39-4955-a9a9-3d4282a6fc10.png?alt=media&token=3058df06-c8eb-461d-ad5b-197996221ad3"
+        key="51"
+        recipeName="cupcakes"
+      />
+    </div>
+  </aside>
+</div>
+`;

@@ -1,0 +1,387 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipePage component should render correctly for logged in user 1`] = `
+<div>
+  <Header />
+  <div
+    className="content"
+  >
+    <div
+      className="container cont_area"
+    >
+      <div
+        className="row"
+      >
+        <recipeCardGrid
+          allRecipes={
+            Array [
+              Object {
+                "addedBy": "sannytee",
+                "createdAt": "2018-02-20T10:10:45.197Z",
+                "description": "amazing recipe",
+                "downvotes": 1,
+                "id": 26,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+                "ingredients": "rice,chicken,rice,chicken",
+                "mealType": "lunch",
+                "method": "research on that",
+                "recipeName": "rice and chicken",
+                "updatedAt": "2018-03-12T09:32:31.056Z",
+                "upvotes": 2,
+                "userId": 1,
+              },
+              Object {
+                "addedBy": "sannytee",
+                "createdAt": "2018-02-20T10:11:25.020Z",
+                "description": "amazing",
+                "downvotes": 1,
+                "id": 27,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+                "ingredients": "awesome",
+                "mealType": "breakfast",
+                "method": "great",
+                "recipeName": "new recipe",
+                "updatedAt": "2018-03-06T11:08:34.739Z",
+                "upvotes": 0,
+                "userId": 1,
+              },
+              Object {
+                "addedBy": "sannytee",
+                "createdAt": "2018-02-20T10:19:50.363Z",
+                "description": "test",
+                "downvotes": 0,
+                "id": 33,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F463fb7f5-37ad-4a76-8dce-2ad3feb73e00.jpeg?alt=media&token=6b3afedd-09f3-4582-829a-6a665454db8d",
+                "ingredients": "great",
+                "mealType": "tea",
+                "method": "great",
+                "recipeName": "recipe",
+                "updatedAt": "2018-03-06T10:57:55.712Z",
+                "upvotes": 1,
+                "userId": 1,
+              },
+              Object {
+                "addedBy": "admin367",
+                "createdAt": "2018-02-20T10:57:03.524Z",
+                "description": "awesome ",
+                "downvotes": 0,
+                "id": 48,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F99d42668-42c7-435a-9ea3-0d8ab7a0e62a.jpeg?alt=media&token=cc1d3c0a-716d-42ff-8222-693757baa5cb",
+                "ingredients": "garri, vegetable,seasoning, blah,blah,blah",
+                "mealType": "lunch",
+                "method": "wash the vegatable
+boil the water",
+                "recipeName": "Eba and vegetable",
+                "updatedAt": "2018-02-27T10:05:58.619Z",
+                "upvotes": 2,
+                "userId": 3,
+              },
+            ]
+          }
+        />
+        <popularRecipeCardList
+          popularRecipes={
+            Array [
+              Object {
+                "addedBy": "admin367",
+                "createdAt": "2018-02-20T10:57:03.524Z",
+                "description": "awesome ",
+                "downvotes": 0,
+                "id": 48,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F99d42668-42c7-435a-9ea3-0d8ab7a0e62a.jpeg?alt=media&token=cc1d3c0a-716d-42ff-8222-693757baa5cb",
+                "ingredients": "garri, vegetable,seasoning, blah,blah,blah",
+                "mealType": "lunch",
+                "method": "wash the vegatable
+boil the water",
+                "recipeName": "Eba and vegetable",
+                "updatedAt": "2018-02-27T10:05:58.619Z",
+                "upvotes": 2,
+                "userId": 3,
+              },
+              Object {
+                "addedBy": "sannytee",
+                "createdAt": "2018-02-20T10:10:45.197Z",
+                "description": "amazing recipe",
+                "downvotes": 1,
+                "id": 26,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+                "ingredients": "rice,chicken,rice,chicken",
+                "mealType": "lunch",
+                "method": "research on that",
+                "recipeName": "rice and chicken",
+                "updatedAt": "2018-03-12T09:32:31.056Z",
+                "upvotes": 2,
+                "userId": 1,
+              },
+              Object {
+                "addedBy": "sannytee",
+                "createdAt": "2018-02-27T09:54:05.790Z",
+                "description": "An amazing recipe made from chicken",
+                "downvotes": 0,
+                "id": 53,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F401e40a2-a363-4910-9c94-2f5d2c5875b1.jpg?alt=media&token=acf1977d-c406-4a88-9577-9fa1e34c8f70",
+                "ingredients": "chicken, vegetables, fruits",
+                "mealType": "elevenses",
+                "method": "slice the chicken to small pieces
+wash the vegetables
+slice the fruits into small pieces",
+                "recipeName": "Shredded chiken",
+                "updatedAt": "2018-03-06T10:56:57.198Z",
+                "upvotes": 1,
+                "userId": 1,
+              },
+              Object {
+                "addedBy": "username",
+                "createdAt": "2018-03-06T11:19:10.386Z",
+                "description": "Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed. Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed. Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed. Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed.",
+                "downvotes": 0,
+                "id": 56,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F6f3fd226-4237-47fd-a716-f64b3c3dea2f.jpg?alt=media&token=f754b717-f91b-4bc7-9aeb-7fd19f98b123",
+                "ingredients": "Some, elements, that, are, clickable, mysteriously, don't, trigger, a pointer cursor in browsers. This fixes that, and provides, a, default class, \\"pointer\\" for applying, it to other clickable ,things as needed",
+                "mealType": "brunch",
+                "method": "Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed. Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed. Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed. Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed.",
+                "recipeName": "Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed.",
+                "updatedAt": "2018-03-13T02:54:06.452Z",
+                "upvotes": 1,
+                "userId": 2,
+              },
+              Object {
+                "addedBy": "sannytee",
+                "createdAt": "2018-03-10T23:12:44.072Z",
+                "description": "amazing",
+                "downvotes": 0,
+                "id": 59,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F0672f71e-5018-4a19-8970-ecc6c835d827.jpg?alt=media&token=a9730299-fad9-45ba-a07f-3ef5742f9092",
+                "ingredients": "indomie",
+                "mealType": "breakfast",
+                "method": "google it",
+                "recipeName": "indomie",
+                "updatedAt": "2018-03-11T08:24:52.021Z",
+                "upvotes": 1,
+                "userId": 1,
+              },
+              Object {
+                "addedBy": "admin367",
+                "createdAt": "2018-02-20T18:17:37.078Z",
+                "description": "cupcakes",
+                "downvotes": 0,
+                "id": 51,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2Ffb54ab3c-fd39-4955-a9a9-3d4282a6fc10.png?alt=media&token=3058df06-c8eb-461d-ad5b-197996221ad3",
+                "ingredients": "cake,cake,cake,cake",
+                "mealType": "tea",
+                "method": "research on that",
+                "recipeName": "cupcakes",
+                "updatedAt": "2018-03-06T10:57:21.354Z",
+                "upvotes": 1,
+                "userId": 3,
+              },
+            ]
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="sticky-paginate"
+  >
+    <Paginate
+      handlePaginationChange={[Function]}
+      page={2}
+    />
+  </div>
+  <Footer />
+</div>
+`;
+
+exports[`RecipePage component should render correctly for user not logged in 1`] = `
+<div>
+  <Header />
+  <div
+    className="content"
+  >
+    <div
+      className="container cont_area"
+    >
+      <div
+        className="row"
+      >
+        <recipeCardGrid
+          allRecipes={
+            Array [
+              Object {
+                "addedBy": "sannytee",
+                "createdAt": "2018-02-20T10:10:45.197Z",
+                "description": "amazing recipe",
+                "downvotes": 1,
+                "id": 26,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+                "ingredients": "rice,chicken,rice,chicken",
+                "mealType": "lunch",
+                "method": "research on that",
+                "recipeName": "rice and chicken",
+                "updatedAt": "2018-03-12T09:32:31.056Z",
+                "upvotes": 2,
+                "userId": 1,
+              },
+              Object {
+                "addedBy": "sannytee",
+                "createdAt": "2018-02-20T10:11:25.020Z",
+                "description": "amazing",
+                "downvotes": 1,
+                "id": 27,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+                "ingredients": "awesome",
+                "mealType": "breakfast",
+                "method": "great",
+                "recipeName": "new recipe",
+                "updatedAt": "2018-03-06T11:08:34.739Z",
+                "upvotes": 0,
+                "userId": 1,
+              },
+              Object {
+                "addedBy": "sannytee",
+                "createdAt": "2018-02-20T10:19:50.363Z",
+                "description": "test",
+                "downvotes": 0,
+                "id": 33,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F463fb7f5-37ad-4a76-8dce-2ad3feb73e00.jpeg?alt=media&token=6b3afedd-09f3-4582-829a-6a665454db8d",
+                "ingredients": "great",
+                "mealType": "tea",
+                "method": "great",
+                "recipeName": "recipe",
+                "updatedAt": "2018-03-06T10:57:55.712Z",
+                "upvotes": 1,
+                "userId": 1,
+              },
+              Object {
+                "addedBy": "admin367",
+                "createdAt": "2018-02-20T10:57:03.524Z",
+                "description": "awesome ",
+                "downvotes": 0,
+                "id": 48,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F99d42668-42c7-435a-9ea3-0d8ab7a0e62a.jpeg?alt=media&token=cc1d3c0a-716d-42ff-8222-693757baa5cb",
+                "ingredients": "garri, vegetable,seasoning, blah,blah,blah",
+                "mealType": "lunch",
+                "method": "wash the vegatable
+boil the water",
+                "recipeName": "Eba and vegetable",
+                "updatedAt": "2018-02-27T10:05:58.619Z",
+                "upvotes": 2,
+                "userId": 3,
+              },
+            ]
+          }
+        />
+        <popularRecipeCardList
+          popularRecipes={
+            Array [
+              Object {
+                "addedBy": "admin367",
+                "createdAt": "2018-02-20T10:57:03.524Z",
+                "description": "awesome ",
+                "downvotes": 0,
+                "id": 48,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F99d42668-42c7-435a-9ea3-0d8ab7a0e62a.jpeg?alt=media&token=cc1d3c0a-716d-42ff-8222-693757baa5cb",
+                "ingredients": "garri, vegetable,seasoning, blah,blah,blah",
+                "mealType": "lunch",
+                "method": "wash the vegatable
+boil the water",
+                "recipeName": "Eba and vegetable",
+                "updatedAt": "2018-02-27T10:05:58.619Z",
+                "upvotes": 2,
+                "userId": 3,
+              },
+              Object {
+                "addedBy": "sannytee",
+                "createdAt": "2018-02-20T10:10:45.197Z",
+                "description": "amazing recipe",
+                "downvotes": 1,
+                "id": 26,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+                "ingredients": "rice,chicken,rice,chicken",
+                "mealType": "lunch",
+                "method": "research on that",
+                "recipeName": "rice and chicken",
+                "updatedAt": "2018-03-12T09:32:31.056Z",
+                "upvotes": 2,
+                "userId": 1,
+              },
+              Object {
+                "addedBy": "sannytee",
+                "createdAt": "2018-02-27T09:54:05.790Z",
+                "description": "An amazing recipe made from chicken",
+                "downvotes": 0,
+                "id": 53,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F401e40a2-a363-4910-9c94-2f5d2c5875b1.jpg?alt=media&token=acf1977d-c406-4a88-9577-9fa1e34c8f70",
+                "ingredients": "chicken, vegetables, fruits",
+                "mealType": "elevenses",
+                "method": "slice the chicken to small pieces
+wash the vegetables
+slice the fruits into small pieces",
+                "recipeName": "Shredded chiken",
+                "updatedAt": "2018-03-06T10:56:57.198Z",
+                "upvotes": 1,
+                "userId": 1,
+              },
+              Object {
+                "addedBy": "username",
+                "createdAt": "2018-03-06T11:19:10.386Z",
+                "description": "Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed. Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed. Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed. Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed.",
+                "downvotes": 0,
+                "id": 56,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F6f3fd226-4237-47fd-a716-f64b3c3dea2f.jpg?alt=media&token=f754b717-f91b-4bc7-9aeb-7fd19f98b123",
+                "ingredients": "Some, elements, that, are, clickable, mysteriously, don't, trigger, a pointer cursor in browsers. This fixes that, and provides, a, default class, \\"pointer\\" for applying, it to other clickable ,things as needed",
+                "mealType": "brunch",
+                "method": "Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed. Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed. Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed. Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed.",
+                "recipeName": "Some elements that are clickable mysteriously don't trigger a pointer cursor in browsers. This fixes that, and provides a default class \\"pointer\\" for applying it to other clickable things as needed.",
+                "updatedAt": "2018-03-13T02:54:06.452Z",
+                "upvotes": 1,
+                "userId": 2,
+              },
+              Object {
+                "addedBy": "sannytee",
+                "createdAt": "2018-03-10T23:12:44.072Z",
+                "description": "amazing",
+                "downvotes": 0,
+                "id": 59,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F0672f71e-5018-4a19-8970-ecc6c835d827.jpg?alt=media&token=a9730299-fad9-45ba-a07f-3ef5742f9092",
+                "ingredients": "indomie",
+                "mealType": "breakfast",
+                "method": "google it",
+                "recipeName": "indomie",
+                "updatedAt": "2018-03-11T08:24:52.021Z",
+                "upvotes": 1,
+                "userId": 1,
+              },
+              Object {
+                "addedBy": "admin367",
+                "createdAt": "2018-02-20T18:17:37.078Z",
+                "description": "cupcakes",
+                "downvotes": 0,
+                "id": 51,
+                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2Ffb54ab3c-fd39-4955-a9a9-3d4282a6fc10.png?alt=media&token=3058df06-c8eb-461d-ad5b-197996221ad3",
+                "ingredients": "cake,cake,cake,cake",
+                "mealType": "tea",
+                "method": "research on that",
+                "recipeName": "cupcakes",
+                "updatedAt": "2018-03-06T10:57:21.354Z",
+                "upvotes": 1,
+                "userId": 3,
+              },
+            ]
+          }
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="sticky-paginate"
+  >
+    <Paginate
+      handlePaginationChange={[Function]}
+      page={2}
+    />
+  </div>
+  <Footer />
+</div>
+`;

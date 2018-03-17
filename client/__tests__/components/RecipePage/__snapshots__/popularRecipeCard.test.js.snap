@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popular Recipe card component should render correctly 1`] = `
+<div
+  className="side_recipes"
+>
+  <Link
+    className="side_item"
+    onlyActiveOnIndex={false}
+    style={Object {}}
+    to="/recipes/5"
+  >
+    <div
+      className="img"
+    >
+      <img
+        alt=""
+        src="image"
+        style={
+          Object {
+            "height": "auto",
+            "marginLeft": "0px",
+            "marginTop": "-13.3571px",
+            "width": "100px",
+          }
+        }
+      />
+    </div>
+    <div
+      className="title dot"
+      style={
+        Object {
+          "wordWrap": "break-word",
+        }
+      }
+    >
+      fried rice
+    </div>
+  </Link>
+</div>
+`;

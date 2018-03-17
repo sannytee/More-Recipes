@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recipe card component should render correctly 1`] = `
+<RecipeCard
+  actions={
+    Object {
+      "changeAuthAction": [Function],
+      "voteRecipeAction": [Function],
+    }
+  }
+  downvotes={0}
+  i={1}
+  id={1}
+  image="image"
+  recipeName="Rice"
+  upvotes={3}
+  user="tywo"
+>
+  <div
+    className="col-md-4 card-space"
+  >
+    <div
+      className="card-deck"
+    >
+      <article
+        className="card recipe-card"
+      >
+        <img
+          alt="recipe"
+          className="card-img-top img-fluid"
+          src="image"
+          style={
+            Object {
+              "height": "150px",
+            }
+          }
+        />
+        <div
+          className="card-body"
+        >
+          <h3
+            className="card-title"
+          >
+            <Link
+              id="remove-link"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/recipes/1"
+            >
+              <a
+                id="remove-link"
+                onClick={[Function]}
+                style={Object {}}
+              >
+                Rice
+              </a>
+            </Link>
+          </h3>
+        </div>
+        <div>
+          <div
+            style={
+              Object {
+                "display": "inline-flex",
+                "marginTop": "10px",
+              }
+            }
+          >
+            <div>
+              <button
+                className="btn vote-button"
+                data-for="upvote"
+                data-tip={true}
+                id={1}
+                onClick={[Function]}
+                type="button"
+              >
+                <i
+                  aria-hidden="true"
+                  className="fa fa-thumbs-up"
+                >
+                  <span
+                    style={
+                      Object {
+                        "marginLeft": "5px",
+                        "marginRight": "5px",
+                      }
+                    }
+                  >
+                    3
+                  </span>
+                </i>
+              </button>
+              <ReactTooltip
+                id="upvote"
+                insecure={true}
+                place="top"
+                resizeHide={true}
+                type="dark"
+                wrapper="div"
+              >
+                <div
+                  className="__react_component_tooltip place-top type-dark "
+                  data-id="tooltip"
+                />
+              </ReactTooltip>
+            </div>
+            <div
+              style={
+                Object {
+                  "marginLeft": "20px",
+                }
+              }
+            >
+              <button
+                className="btn vote-button"
+                data-for="downvote"
+                data-tip={true}
+                onClick={[Function]}
+                type="button"
+              >
+                <i
+                  aria-hidden="true"
+                  className="fa fa-thumbs-o-down"
+                >
+                  <span
+                    style={
+                      Object {
+                        "marginLeft": "5px",
+                        "marginRight": "5px",
+                      }
+                    }
+                  >
+                    0
+                  </span>
+                </i>
+              </button>
+            </div>
+            <ReactTooltip
+              id="downvote"
+              insecure={true}
+              place="right"
+              resizeHide={true}
+              type="dark"
+              wrapper="div"
+            >
+              <div
+                className="__react_component_tooltip place-top type-dark "
+                data-id="tooltip"
+              />
+            </ReactTooltip>
+          </div>
+        </div>
+        <div
+          className="card-footer text-muted"
+          style={
+            Object {
+              "fontSize": "12px",
+              "marginTop": "15px",
+            }
+          }
+        >
+          recipe by: 
+          tywo
+        </div>
+      </article>
+    </div>
+  </div>
+</RecipeCard>
+`;

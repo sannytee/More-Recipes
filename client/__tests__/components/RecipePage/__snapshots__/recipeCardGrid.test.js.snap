@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipeCardGrid Component should render correctly 1`] = `
+<div
+  className="col-lg-9 col-md-12"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-md-12"
+    >
+      <div
+        className="line small"
+      >
+        <h2>
+          Recipes
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <Connect(RecipeCard)
+      downvotes={1}
+      i={0}
+      id={26}
+      image="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212"
+      key="26"
+      recipeName="rice and chicken"
+      upvotes={2}
+      user="sannytee"
+    />
+    <Connect(RecipeCard)
+      downvotes={1}
+      i={1}
+      id={27}
+      image="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212"
+      key="27"
+      recipeName="new recipe"
+      upvotes={0}
+      user="sannytee"
+    />
+    <Connect(RecipeCard)
+      downvotes={0}
+      i={2}
+      id={33}
+      image="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F463fb7f5-37ad-4a76-8dce-2ad3feb73e00.jpeg?alt=media&token=6b3afedd-09f3-4582-829a-6a665454db8d"
+      key="33"
+      recipeName="recipe"
+      upvotes={1}
+      user="sannytee"
+    />
+    <Connect(RecipeCard)
+      downvotes={0}
+      i={3}
+      id={48}
+      image="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F99d42668-42c7-435a-9ea3-0d8ab7a0e62a.jpeg?alt=media&token=cc1d3c0a-716d-42ff-8222-693757baa5cb"
+      key="48"
+      recipeName="Eba and vegetable"
+      upvotes={2}
+      user="admin367"
+    />
+  </div>
+</div>
+`;
