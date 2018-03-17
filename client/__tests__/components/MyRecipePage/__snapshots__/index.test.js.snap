@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyRecipePage Component should render correctly 1`] = `
+<div>
+  <Connect(authHeader)
+    user={
+      Object {
+        "createdAt": "2018-02-19T15:54:05.322Z",
+        "email": "tester@test.com",
+        "id": 1,
+        "image": null,
+        "username": "sannytee",
+      }
+    }
+  />
+  <div
+    className="container"
+  >
+    <div
+      className="row section-popular"
+    >
+      <div
+        className="col-sm-12"
+      >
+        <h2
+          className="pt-3 headline centered"
+        >
+          My Recipes
+        </h2>
+      </div>
+    </div>
+    <div
+      className="row pt-4"
+    />
+    <EditRecipeModal
+      details={
+        Object {
+          "recipeName": "",
+        }
+      }
+      errorMessage=""
+      handleChange={[Function]}
+      handleSubmit={[Function]}
+      isUploading={false}
+      onFocus={[Function]}
+      progress={0}
+      startUpload={[Function]}
+      upload={[Function]}
+    />
+    <DeleteRecipeModal
+      handleDeletion={[Function]}
+    />
+  </div>
+  <div
+    className="sticky-paginate"
+  >
+    <Paginate
+      handlePaginationChange={[Function]}
+      page={2}
+    />
+  </div>
+  <Footer />
+</div>
+`;
+
+exports[`MyRecipePage Component should render message if user have no recipe 1`] = `
+<div>
+  <Connect(authHeader)
+    user={
+      Object {
+        "createdAt": "2018-02-19T15:54:05.322Z",
+        "email": "tester@test.com",
+        "id": 1,
+        "image": null,
+        "username": "sannytee",
+      }
+    }
+  />
+  <div
+    className="container"
+  >
+    <div
+      className="row section-popular"
+    >
+      <div
+        className="col-sm-12"
+      >
+        <h2
+          className="pt-3 headline centered"
+        >
+          My Recipes
+        </h2>
+      </div>
+    </div>
+    <div
+      className="row pt-4"
+    >
+      <h1
+        style={
+          Object {
+            "margin": "150px auto 0",
+            "textAlign": "center",
+            "width": "100%",
+          }
+        }
+      >
+        You do not have any recipe
+      </h1>
+    </div>
+    <EditRecipeModal
+      details={
+        Object {
+          "recipeName": "",
+        }
+      }
+      errorMessage=""
+      handleChange={[Function]}
+      handleSubmit={[Function]}
+      isUploading={false}
+      onFocus={[Function]}
+      progress={0}
+      startUpload={[Function]}
+      upload={[Function]}
+    />
+    <DeleteRecipeModal
+      handleDeletion={[Function]}
+    />
+  </div>
+  <div />
+  <Footer />
+</div>
+`;

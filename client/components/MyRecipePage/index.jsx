@@ -16,7 +16,7 @@ import firebase from 'firebase';
 import { Spinner } from 'react-preloading-component';
 import Header from '../common/authHeader';
 import Footer from '../common/footer';
-import MyRecipeCard from './MyRecipeCard';
+import { MyRecipeCard } from './MyRecipeCard';
 import EditRecipeModal from './EditRecipeModal';
 import DeleteRecipeModal from './deleteRecipeModal';
 import { logoutAction } from '../../actions/authAction';
@@ -52,7 +52,7 @@ const defaultProps = {
  * @description A class to mount all components related to MyRecipePage
  * @extends Component
  */
-class MyRecipePage extends Component {
+export class MyRecipePage extends Component {
   /**
    * handles editing recipe
    * @param {object} props

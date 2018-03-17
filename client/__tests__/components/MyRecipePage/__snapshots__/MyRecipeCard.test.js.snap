@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyRecipeCard Component should render correctly 1`] = `
+<div
+  className="col-md-4 card-space"
+>
+  <div
+    className="card-deck"
+  >
+    <article
+      className="card recipe-card"
+    >
+      <div
+        className="my-recipe-img"
+      >
+        <img
+          alt="recipe"
+          className="card-img-top img-fluid recipe-card-img"
+          src="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212"
+        />
+      </div>
+      <div
+        className="card-body"
+      >
+        <h3
+          className="card-title"
+        >
+          <Link
+            id="remove-link"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/recipes/27"
+          >
+            new recipe
+          </Link>
+        </h3>
+      </div>
+      <div>
+        <div
+          style={
+            Object {
+              "display": "inline-flex",
+              "marginTop": "10px",
+            }
+          }
+        >
+          <div>
+            <button
+              className="btn edit-btn"
+              data-for="edit"
+              data-target="#editModal"
+              data-tip={true}
+              data-toggle="modal"
+              onClick={[Function]}
+              type="button"
+            >
+              <i
+                aria-hidden="true"
+                className="fa fa-pencil-square-o fa-lg"
+              />
+            </button>
+            <ReactTooltip
+              id="edit"
+              insecure={true}
+              place="left"
+              resizeHide={true}
+              type="dark"
+              wrapper="div"
+            >
+              <span>
+                Edit Recipe
+              </span>
+            </ReactTooltip>
+          </div>
+          <div
+            style={
+              Object {
+                "marginLeft": "20px",
+              }
+            }
+          >
+            <button
+              className="btn btn-danger"
+              data-for="delete"
+              data-target="#deleteModal"
+              data-tip={true}
+              data-toggle="modal"
+              onClick={[Function]}
+              type="button"
+            >
+              <i
+                aria-hidden="true"
+                className="fa fa-trash-o fa-lg"
+              />
+            </button>
+            <ReactTooltip
+              id="delete"
+              insecure={true}
+              place="right"
+              resizeHide={true}
+              type="dark"
+              wrapper="div"
+            >
+              <span>
+                Delete Recipe
+              </span>
+            </ReactTooltip>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+`;

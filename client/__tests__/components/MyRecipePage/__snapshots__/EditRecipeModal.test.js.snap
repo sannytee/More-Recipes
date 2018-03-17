@@ -1,0 +1,756 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditRecipeModal Component should render correctly 1`] = `
+<div
+  aria-hidden="true"
+  aria-labelledby="editModalLabel"
+  className="modal fade"
+  data-backdrop="static"
+  id="editModal"
+  role="dialog"
+  style={
+    Object {
+      "display": "none",
+    }
+  }
+  tabIndex="-1"
+>
+  <div
+    className="modal-dialog"
+    role="document"
+  >
+    <div
+      className="modal-content"
+    >
+      <div
+        className="modal-header black"
+      >
+        <h5
+          className="modal-title black"
+          id="editModalLabel"
+        >
+          Edit Recipe
+        </h5>
+        <button
+          aria-label="Close"
+          className="close"
+          data-dismiss="modal"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ×
+          </span>
+        </button>
+      </div>
+      <div
+        className="modal-body"
+      >
+        <form
+          id="editRecipeForm"
+          onSubmit={[Function]}
+        >
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="recipient-name"
+            >
+              Title:
+            </label>
+            <input
+              className="form-control"
+              id="recipient-name"
+              name="recipeName"
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              type="text"
+              value="new recipe"
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="message-text"
+            >
+              Description:
+            </label>
+            <textarea
+              className="form-control"
+              id="message-text"
+              name="description"
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              value="amazing"
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="image"
+            >
+              Image:
+            </label>
+            <[object Object]
+              name="image"
+              onProgress={[Function]}
+              onUploadStart={[Function]}
+              onUploadSuccess={[Function]}
+              storageRef={
+                Object {
+                  "ref": [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        "images",
+                      ],
+                    ],
+                  },
+                  "storage": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                    ],
+                  },
+                }
+              }
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="type-text"
+            >
+              Type of meal:
+            </label>
+            <select
+              className="form-control"
+              id="type-text"
+              name="mealType"
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              value="breakfast"
+            >
+              <option
+                value="breakfast"
+              >
+                Breakfast
+              </option>
+              <option
+                value="brunch"
+              >
+                Brunch
+              </option>
+              <option
+                value="elevenses"
+              >
+                Elevenses
+              </option>
+              <option
+                value="lunch"
+              >
+                Lunch
+              </option>
+              <option
+                value="tea"
+              >
+                Tea
+              </option>
+              <option
+                value="supper"
+              >
+                Supper
+              </option>
+              <option
+                value="dinner"
+              >
+                Dinner
+              </option>
+            </select>
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="ingredients-text"
+            >
+              ingredients:
+            </label>
+            <textarea
+              className="form-control"
+              id="ingredients"
+              name="ingredients"
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="separate each ingredient with a comma"
+              required={true}
+              value="awesome"
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="method-text"
+            >
+              Method of cooking:
+            </label>
+            <textarea
+              className="form-control"
+              id="method-text"
+              name="method"
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              value="great"
+            />
+          </div>
+          <div
+            className="modal-footer"
+          >
+            <button
+              className="btn btn-secondary"
+              data-dismiss="modal"
+              type="button"
+            >
+              Close
+            </button>
+            <button
+              className="btn vote-button"
+              type="submit"
+            >
+              Update Recipe
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`EditRecipeModal Component should render error if error exists 1`] = `
+<div
+  aria-hidden="true"
+  aria-labelledby="editModalLabel"
+  className="modal fade"
+  data-backdrop="static"
+  id="editModal"
+  role="dialog"
+  style={
+    Object {
+      "display": "none",
+    }
+  }
+  tabIndex="-1"
+>
+  <div
+    className="modal-dialog"
+    role="document"
+  >
+    <div
+      className="modal-content"
+    >
+      <div
+        className="modal-header black"
+      >
+        <h5
+          className="modal-title black"
+          id="editModalLabel"
+        >
+          Edit Recipe
+        </h5>
+        <button
+          aria-label="Close"
+          className="close"
+          data-dismiss="modal"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ×
+          </span>
+        </button>
+      </div>
+      <div
+        className="modal-body"
+      >
+        <div
+          className="alert alert-danger"
+        >
+          Field cannot be empty
+        </div>
+        <form
+          id="editRecipeForm"
+          onSubmit={[Function]}
+        >
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="recipient-name"
+            >
+              Title:
+            </label>
+            <input
+              className="form-control"
+              id="recipient-name"
+              name="recipeName"
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              type="text"
+              value="new recipe"
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="message-text"
+            >
+              Description:
+            </label>
+            <textarea
+              className="form-control"
+              id="message-text"
+              name="description"
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              value="amazing"
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="image"
+            >
+              Image:
+            </label>
+            <[object Object]
+              name="image"
+              onProgress={[Function]}
+              onUploadStart={[Function]}
+              onUploadSuccess={[Function]}
+              storageRef={
+                Object {
+                  "ref": [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        "images",
+                      ],
+                      Array [
+                        "images",
+                      ],
+                      Array [
+                        "images",
+                      ],
+                    ],
+                  },
+                  "storage": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                      Array [],
+                      Array [],
+                    ],
+                  },
+                }
+              }
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="type-text"
+            >
+              Type of meal:
+            </label>
+            <select
+              className="form-control"
+              id="type-text"
+              name="mealType"
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              value="breakfast"
+            >
+              <option
+                value="breakfast"
+              >
+                Breakfast
+              </option>
+              <option
+                value="brunch"
+              >
+                Brunch
+              </option>
+              <option
+                value="elevenses"
+              >
+                Elevenses
+              </option>
+              <option
+                value="lunch"
+              >
+                Lunch
+              </option>
+              <option
+                value="tea"
+              >
+                Tea
+              </option>
+              <option
+                value="supper"
+              >
+                Supper
+              </option>
+              <option
+                value="dinner"
+              >
+                Dinner
+              </option>
+            </select>
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="ingredients-text"
+            >
+              ingredients:
+            </label>
+            <textarea
+              className="form-control"
+              id="ingredients"
+              name="ingredients"
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="separate each ingredient with a comma"
+              required={true}
+              value="awesome"
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="method-text"
+            >
+              Method of cooking:
+            </label>
+            <textarea
+              className="form-control"
+              id="method-text"
+              name="method"
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              value="great"
+            />
+          </div>
+          <div
+            className="modal-footer"
+          >
+            <button
+              className="btn btn-secondary"
+              data-dismiss="modal"
+              type="button"
+            >
+              Close
+            </button>
+            <button
+              className="btn vote-button"
+              type="submit"
+            >
+              Update Recipe
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`EditRecipeModal Component should render loader image is still uploading 1`] = `
+<div
+  aria-hidden="true"
+  aria-labelledby="editModalLabel"
+  className="modal fade"
+  data-backdrop="static"
+  id="editModal"
+  role="dialog"
+  style={
+    Object {
+      "display": "none",
+    }
+  }
+  tabIndex="-1"
+>
+  <div
+    className="modal-dialog"
+    role="document"
+  >
+    <div
+      className="modal-content"
+    >
+      <div
+        className="modal-header black"
+      >
+        <h5
+          className="modal-title black"
+          id="editModalLabel"
+        >
+          Edit Recipe
+        </h5>
+        <button
+          aria-label="Close"
+          className="close"
+          data-dismiss="modal"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ×
+          </span>
+        </button>
+      </div>
+      <div
+        className="modal-body"
+      >
+        <form
+          id="editRecipeForm"
+          onSubmit={[Function]}
+        >
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="recipient-name"
+            >
+              Title:
+            </label>
+            <input
+              className="form-control"
+              id="recipient-name"
+              name="recipeName"
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              type="text"
+              value="new recipe"
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="message-text"
+            >
+              Description:
+            </label>
+            <textarea
+              className="form-control"
+              id="message-text"
+              name="description"
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              value="amazing"
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="image"
+            >
+              Image:
+            </label>
+            <div>
+              <n
+                color="#FF4601"
+                size={10}
+              />
+            </div>
+            <[object Object]
+              name="image"
+              onProgress={[Function]}
+              onUploadStart={[Function]}
+              onUploadSuccess={[Function]}
+              storageRef={
+                Object {
+                  "ref": [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        "images",
+                      ],
+                      Array [
+                        "images",
+                      ],
+                      Array [
+                        "images",
+                      ],
+                      Array [
+                        "images",
+                      ],
+                      Array [
+                        "images",
+                      ],
+                    ],
+                  },
+                  "storage": [MockFunction] {
+                    "calls": Array [
+                      Array [],
+                      Array [],
+                      Array [],
+                      Array [],
+                      Array [],
+                    ],
+                  },
+                }
+              }
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="type-text"
+            >
+              Type of meal:
+            </label>
+            <select
+              className="form-control"
+              id="type-text"
+              name="mealType"
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              value="breakfast"
+            >
+              <option
+                value="breakfast"
+              >
+                Breakfast
+              </option>
+              <option
+                value="brunch"
+              >
+                Brunch
+              </option>
+              <option
+                value="elevenses"
+              >
+                Elevenses
+              </option>
+              <option
+                value="lunch"
+              >
+                Lunch
+              </option>
+              <option
+                value="tea"
+              >
+                Tea
+              </option>
+              <option
+                value="supper"
+              >
+                Supper
+              </option>
+              <option
+                value="dinner"
+              >
+                Dinner
+              </option>
+            </select>
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="ingredients-text"
+            >
+              ingredients:
+            </label>
+            <textarea
+              className="form-control"
+              id="ingredients"
+              name="ingredients"
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="separate each ingredient with a comma"
+              required={true}
+              value="awesome"
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label
+              className="col-form-label black"
+              htmlFor="method-text"
+            >
+              Method of cooking:
+            </label>
+            <textarea
+              className="form-control"
+              id="method-text"
+              name="method"
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={true}
+              value="great"
+            />
+          </div>
+          <div
+            className="modal-footer"
+          >
+            <button
+              className="btn btn-secondary"
+              data-dismiss="modal"
+              type="button"
+            >
+              Close
+            </button>
+            <button
+              className="btn vote-button"
+              type="submit"
+            >
+              Update Recipe
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
