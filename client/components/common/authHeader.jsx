@@ -40,7 +40,7 @@ const defaultProps = {
  * @description class to represent authenticated user header
  * @extends Component
  */
-class authHeader extends Component {
+export class AuthHeader extends Component {
   /**
    * @description loads the recipes searched for
    *
@@ -308,7 +308,7 @@ class authHeader extends Component {
                   valueKey="id"
                   labelKey="recipeName"
                   filterOptions={false}
-                  loadOptions={authHeader.getRecipes}
+                  loadOptions={AuthHeader.getRecipes}
                   backspaceRemoves={this.state.backspaceRemoves}
                   noResultsText="No recipe found"
                   placeholder="Search for recipe"
@@ -395,9 +395,9 @@ class authHeader extends Component {
   }
 }
 
-authHeader.propTypes = propTypes;
-authHeader.defaultProps = defaultProps;
-authHeader.contextTypes = {
+AuthHeader.propTypes = propTypes;
+AuthHeader.defaultProps = defaultProps;
+AuthHeader.contextTypes = {
   router: PropTypes.object
 };
 
@@ -417,4 +417,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(authHeader);
+export default connect(null, mapDispatchToProps)(AuthHeader);

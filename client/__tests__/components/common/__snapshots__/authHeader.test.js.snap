@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthHeader Component should render correctly 1`] = `
+<header>
+  <nav
+    className="navbar fixed-top  navbar-expand-lg navbar-dark"
+    style={
+      Object {
+        "backgroundColor": "#2b3034",
+      }
+    }
+  >
+    <Link
+      className="navbar-brand"
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="/recipes"
+    >
+      More-Recipes
+    </Link>
+    <button
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      className="navbar-toggler"
+      data-target="#navbarSupportedContent"
+      data-toggle="collapse"
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      className="collapse navbar-collapse"
+      id="navbarSupportedContent"
+    >
+      <div
+        className="form-inline my-2 my-lg-0 ml-auto "
+      >
+        <div
+          className="section"
+          style={
+            Object {
+              "width": "300px",
+            }
+          }
+        >
+          <Async
+            autoload={true}
+            backspaceRemoves={true}
+            cache={Object {}}
+            filterOptions={false}
+            ignoreAccents={true}
+            ignoreCase={true}
+            labelKey="recipeName"
+            loadOptions={[Function]}
+            loadingPlaceholder="Loading..."
+            multi={false}
+            noResultsText="No recipe found"
+            onChange={[Function]}
+            onValueClick={[Function]}
+            options={Array []}
+            placeholder="Search for recipe"
+            searchPromptText="Type to search for recipe"
+            value=""
+            valueKey="id"
+          />
+        </div>
+      </div>
+      <ul
+        className="navbar-nav ml-auto"
+      >
+        <li
+          className="nav-item"
+        >
+          <button
+            className="btn vote-button rfloat"
+            data-target="#exampleModal"
+            data-toggle="modal"
+            style={
+              Object {
+                "float": "right",
+              }
+            }
+            type="button"
+          >
+            Add Recipe
+          </button>
+        </li>
+        <li
+          className="nav-item"
+        >
+          <span
+            className="nav-link"
+          >
+            Logged in as 
+            sannytee
+          </span>
+        </li>
+        <li
+          className="nav-item"
+        >
+          <Link
+            className="nav-link"
+            onlyActiveOnIndex={false}
+            style={Object {}}
+            to="/my-profile"
+          >
+            Profile
+          </Link>
+        </li>
+        <li
+          className="nav-item dropdown show"
+        >
+          <Link
+            aria-expanded="true"
+            aria-haspopup="true"
+            className="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            id="navlink"
+            onlyActiveOnIndex={false}
+            role="button"
+            style={Object {}}
+            to="#"
+          >
+            Recipes
+          </Link>
+          <div
+            aria-labelledby="navlink"
+            className="dropdown-menu"
+          >
+            <Link
+              className="dropdown-item"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/my-recipes"
+            >
+              My Recipes
+            </Link>
+            <Link
+              className="dropdown-item nav-text"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/my-favorite"
+            >
+              Favorite recipes
+            </Link>
+          </div>
+        </li>
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            onClick={[Function]}
+            role="none"
+          >
+            Signout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <AddRecipeForm
+    errorMessage=""
+    handleChange={[Function]}
+    handleProgress={[Function]}
+    handleSubmit={[Function]}
+    handleUploadStart={[Function]}
+    handleUploadSuccess={[Function]}
+    isUploading={false}
+    mealType="breakfast"
+    notReady={true}
+    onFocus={[Function]}
+    progress={0}
+  />
+</header>
+`;
