@@ -2,7 +2,7 @@
 
 exports[`MyFavoriteRecipePage Component should render correctly 1`] = `
 <div>
-  <Connect(authHeader)
+  <Connect(AuthHeader)
     user={
       Object {
         "createdAt": "2018-02-19T15:54:05.322Z",
@@ -87,7 +87,7 @@ and so on.",
 
 exports[`MyFavoriteRecipePage Component should render loader if \`isLoading\` is true 1`] = `
 <div>
-  <Connect(authHeader)
+  <Connect(AuthHeader)
     user={
       Object {
         "createdAt": "2018-02-19T15:54:05.322Z",
@@ -140,7 +140,7 @@ exports[`MyFavoriteRecipePage Component should render loader if \`isLoading\` is
 
 exports[`MyFavoriteRecipePage Component should render message if user have no recipe 1`] = `
 <div>
-  <Connect(authHeader)
+  <Connect(AuthHeader)
     user={
       Object {
         "createdAt": "2018-02-19T15:54:05.322Z",

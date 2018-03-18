@@ -15,7 +15,9 @@ module.exports = {
   ],
   collectCoverageFrom: [
     '**/client/**.{js,jsx}',
-    '!**/node_modules/**'
+    '!**/node_modules/**',
+    '!**/client/store/**',
+    '!**/client/util/firebaseConfig.js'
   ],
   snapshotSerializers: [
     'enzyme-to-json/serializer'

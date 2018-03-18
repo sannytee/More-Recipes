@@ -2,7 +2,7 @@
 
 exports[`ProfilePage Component should render correctly 1`] = `
 <div>
-  <Connect(authHeader)
+  <Connect(AuthHeader)
     user={
       Object {
         "createdAt": "2018-02-19T15:54:05.322Z",
@@ -131,7 +131,7 @@ exports[`ProfilePage Component should render correctly 1`] = `
 
 exports[`ProfilePage Component should render loader when \`isLoading\` is true 1`] = `
 <div>
-  <Connect(authHeader)
+  <Connect(AuthHeader)
     user={
       Object {
         "createdAt": "2018-02-19T15:54:05.322Z",

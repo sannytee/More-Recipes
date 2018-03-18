@@ -94,6 +94,7 @@
     "prop-types": "^15.6.1",
     "react": "15.6.2",
     "react-dom": "15.6.2",
+    "react-firebase-file-uploader": "^2.4.1",
     "react-firebase-image-uploader": "^1.1.0",
     "react-paginate": "^5.1.0",
     "react-preloading-component": "0.0.5",

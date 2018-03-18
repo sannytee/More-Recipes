@@ -2,6 +2,7 @@ import React from 'react';
 import {
   shallow
 } from 'enzyme';
+import { Spinner } from 'react-preloading-component';
 import {
   MyRecipePage
 } from '../../../components/MyRecipePage/index';
@@ -80,5 +81,31 @@ describe('MyRecipePage Component', () => {
     action.onFocus();
     expect(spy).toBeCalled();
     expect(wrapper.state('errorMessage')).toBe('');
+  });
+
+  it('should set state of isUploading and progress when image upload starts', () => {
+    const wrapper = setup();
+    const action = wrapper.instance();
+    const startUpload = jest.spyOn(action, 'handleUploadStart');
+    action.handleUploadStart();
+    expect(startUpload).toBeCalled();
+    expect(wrapper.state('isUploading')).toBe(true);
+    expect(wrapper.state('progress')).toBe(0);
+  });
+
+  it('should track state of progress when image is uploading', () => {
+    const wrapper = setup();
+    const action = wrapper.instance();
+    const trackProgress = jest.spyOn(action, 'handleProgress');
+    action.handleProgress(20);
+    expect(trackProgress).toBeCalled();
+    expect(wrapper.state('progress')).toBe(20);
+  });
+
+  it('should render loader when `isLoading` is true', () => {
+    const wrapper = setup();
+    wrapper.setProps({ isLoading: true });
+    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.find(Spinner).length).toBe(1);
   });
 });

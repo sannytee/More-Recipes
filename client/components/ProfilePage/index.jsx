@@ -49,7 +49,7 @@ const defaultProps = {
  * @description A class to mount the profile page
  * @extends Component
  */
-class ProfilePage extends Component {
+export class ProfilePage extends Component {
   /**
    * @description Creates a recipe
    * @param {object} props

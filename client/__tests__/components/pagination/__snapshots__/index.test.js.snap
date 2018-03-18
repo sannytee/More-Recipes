@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination Component should render correctly 1`] = `
+<div
+  className="container"
+>
+  <PaginationBoxView
+    activeClassName="active"
+    breakClassName="page-link"
+    breakLabel={
+      <a
+        href=""
+      >
+        ...
+      </a>
+    }
+    containerClassName="pagination custom-pagination"
+    disableInitialCallback={false}
+    disabledClassName="disabled"
+    marginPagesDisplayed={3}
+    nextClassName="page-item"
+    nextLabel="Next"
+    nextLinkClassName="page-link custom-link"
+    onPageChange={[Function]}
+    pageClassName="page-item"
+    pageCount={2}
+    pageLinkClassName="page-link custom-link"
+    pageRangeDisplayed={2}
+    previousClassName="page-item"
+    previousLabel="Previous"
+    previousLinkClassName="page-link custom-link"
+    subContainerClassName="pages pagination"
+  />
+</div>
+`;

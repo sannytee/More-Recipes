@@ -22,7 +22,7 @@ const propTypes = {
  *
  * @extends Component
  */
-class MyRecipeCard extends Component {
+export class MyRecipeCard extends Component {
   /**
    * @description binds the method to get current recipe
    *

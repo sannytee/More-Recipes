@@ -2,7 +2,7 @@
 
 exports[`MyRecipePage Component should render correctly 1`] = `
 <div>
-  <Connect(authHeader)
+  <Connect(AuthHeader)
     user={
       Object {
         "createdAt": "2018-02-19T15:54:05.322Z",
@@ -31,7 +31,153 @@ exports[`MyRecipePage Component should render correctly 1`] = `
     </div>
     <div
       className="row pt-4"
+    >
+      <MyRecipeCard
+        getRecipe={[Function]}
+        index={0}
+        key="59"
+        recipeDetails={
+          Object {
+            "addedBy": "sannytee",
+            "createdAt": "2018-03-10T23:12:44.072Z",
+            "description": "amazing",
+            "downvotes": 0,
+            "id": 59,
+            "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F0672f71e-5018-4a19-8970-ecc6c835d827.jpg?alt=media&token=a9730299-fad9-45ba-a07f-3ef5742f9092",
+            "ingredients": "indomie",
+            "mealType": "breakfast",
+            "method": "google it",
+            "recipeName": "indomie",
+            "updatedAt": "2018-03-11T08:24:52.021Z",
+            "upvotes": 1,
+            "userId": 1,
+          }
+        }
+      />
+      <MyRecipeCard
+        getRecipe={[Function]}
+        index={1}
+        key="26"
+        recipeDetails={
+          Object {
+            "addedBy": "sannytee",
+            "createdAt": "2018-02-20T10:10:45.197Z",
+            "description": "amazing recipe",
+            "downvotes": 0,
+            "id": 26,
+            "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+            "ingredients": "rice,chicken,rice,chicken",
+            "mealType": "lunch",
+            "method": "research on that",
+            "recipeName": "rice and chicken",
+            "updatedAt": "2018-03-14T09:51:21.150Z",
+            "upvotes": 2,
+            "userId": 1,
+          }
+        }
+      />
+      <MyRecipeCard
+        getRecipe={[Function]}
+        index={2}
+        key="27"
+        recipeDetails={
+          Object {
+            "addedBy": "sannytee",
+            "createdAt": "2018-02-20T10:11:25.020Z",
+            "description": "amazing",
+            "downvotes": 0,
+            "id": 27,
+            "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+            "ingredients": "awesome",
+            "mealType": "breakfast",
+            "method": "great",
+            "recipeName": "new recipe",
+            "updatedAt": "2018-03-14T09:54:11.869Z",
+            "upvotes": 1,
+            "userId": 1,
+          }
+        }
+      />
+    </div>
+    <EditRecipeModal
+      details={
+        Object {
+          "recipeName": "",
+        }
+      }
+      errorMessage=""
+      handleChange={[Function]}
+      handleSubmit={[Function]}
+      isUploading={false}
+      onFocus={[Function]}
+      progress={0}
+      startUpload={[Function]}
+      upload={[Function]}
     />
+    <DeleteRecipeModal
+      handleDeletion={[Function]}
+    />
+  </div>
+  <div
+    className="sticky-paginate"
+  >
+    <Paginate
+      handlePaginationChange={[Function]}
+      page={2}
+    />
+  </div>
+  <Footer />
+</div>
+`;
+
+exports[`MyRecipePage Component should render loader when \`isLoading\` is true 1`] = `
+<div>
+  <Connect(AuthHeader)
+    user={
+      Object {
+        "createdAt": "2018-02-19T15:54:05.322Z",
+        "email": "tester@test.com",
+        "id": 1,
+        "image": null,
+        "username": "sannytee",
+      }
+    }
+  />
+  <div
+    className="container"
+  >
+    <div
+      className="row section-popular"
+    >
+      <div
+        className="col-sm-12"
+      >
+        <h2
+          className="pt-3 headline centered"
+        >
+          My Recipes
+        </h2>
+      </div>
+    </div>
+    <div
+      className="row pt-4"
+    >
+      <div
+        style={
+          Object {
+            "marginLeft": "auto",
+            "marginRight": "auto",
+            "marginTop": "150px",
+          }
+        }
+      >
+        <n
+          color="#FF4601"
+          secondaryColor="#e6e6e6"
+          size={40}
+        />
+      </div>
+    </div>
     <EditRecipeModal
       details={
         Object {
@@ -65,7 +211,7 @@ exports[`MyRecipePage Component should render correctly 1`] = `
 
 exports[`MyRecipePage Component should render message if user have no recipe 1`] = `
 <div>
-  <Connect(authHeader)
+  <Connect(AuthHeader)
     user={
       Object {
         "createdAt": "2018-02-19T15:54:05.322Z",
