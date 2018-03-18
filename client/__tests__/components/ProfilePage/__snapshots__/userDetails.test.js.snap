@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserDetails Component should render correctly 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-sm-12"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col-sm-12"
+      >
+        <h5>
+          username: 
+          <span>
+            sannitywo
+          </span>
+        </h5>
+      </div>
+      <div
+        className="col-sm-12"
+      >
+        <h5>
+          Email: 
+          <span>
+            sanni@test.com
+          </span>
+        </h5>
+      </div>
+      <div
+        className="col-sm-12"
+      >
+        <h5>
+          Recipe Added: 
+          <span>
+            3
+          </span>
+        </h5>
+      </div>
+      <div
+        className="col-sm-12"
+      >
+        <h5>
+          Favorite Recipes: 
+          <span>
+            4
+          </span>
+        </h5>
+      </div>
+      <div
+        className="col-sm-12"
+      >
+        <h5>
+          Date Created: 
+          <span>
+            2018-02-20T10:11:25.020Z
+          </span>
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
+`;

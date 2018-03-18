@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfilePage Component should render correctly 1`] = `
+<div>
+  <Connect(authHeader)
+    user={
+      Object {
+        "createdAt": "2018-02-19T15:54:05.322Z",
+        "email": "tester@test.com",
+        "id": 1,
+        "image": null,
+        "username": "sannytee",
+      }
+    }
+  />
+  <div
+    className="container recipe-details"
+  >
+    <section
+      className="row"
+    >
+      <div
+        className="col-sm-2"
+      />
+      <div
+        className="col-sm-8"
+      >
+        <div
+          className="card w-100"
+          id="profile-card"
+          style={
+            Object {
+              "width": "20rem",
+            }
+          }
+        >
+          <div
+            className="row pb-3 centered"
+            style={
+              Object {
+                "marginTop": "10px",
+              }
+            }
+          >
+            <div
+              className="col-sm-12"
+            >
+              <img
+                alt="profile"
+                clasName="img-fluid rounded-circle"
+                className="user-image"
+                src="test"
+                style={
+                  Object {
+                    "height": "150px",
+                  }
+                }
+              />
+              <div
+                style={
+                  Object {
+                    "marginTop": "5px",
+                  }
+                }
+              >
+                <label
+                  className="custom-link"
+                  data-for="upload"
+                  data-tip={true}
+                >
+                  <i
+                    aria-hidden="true"
+                    className="fa fa-camera fa-2x vote-button"
+                  />
+                  <FirebaseFileUploader
+                    accept="image/*"
+                    hidden={true}
+                    name="image"
+                    onProgress={[Function]}
+                    onUploadStart={[Function]}
+                    onUploadSuccess={[Function]}
+                    storageRef={
+                      Object {
+                        "ref": [MockFunction] {
+                          "calls": Array [
+                            Array [
+                              "images",
+                            ],
+                          ],
+                        },
+                        "storage": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                      }
+                    }
+                  />
+                </label>
+                <ReactTooltip
+                  id="upload"
+                  insecure={true}
+                  place="top"
+                  resizeHide={true}
+                  type="dark"
+                  wrapper="div"
+                >
+                  <span>
+                    Upload image
+                  </span>
+                </ReactTooltip>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <userDetails
+            createdAt="2018-02-19"
+            email="tester@test.com"
+            favoriteRecipeCount={4}
+            myRecipesCount={3}
+            username="sannytee"
+          />
+          <hr />
+        </div>
+      </div>
+    </section>
+  </div>
+  <Footer />
+</div>
+`;
+
+exports[`ProfilePage Component should render loader when \`isLoading\` is true 1`] = `
+<div>
+  <Connect(authHeader)
+    user={
+      Object {
+        "createdAt": "2018-02-19T15:54:05.322Z",
+        "email": "tester@test.com",
+        "id": 1,
+        "image": null,
+        "username": "sannytee",
+      }
+    }
+  />
+  <div
+    style={
+      Object {
+        "marginLeft": "auto",
+        "marginRight": "auto",
+        "marginTop": "150px",
+      }
+    }
+  >
+    <n
+      color="#FF4601"
+      secondaryColor="#e6e6e6"
+      size={40}
+    />
+  </div>
+  <Footer />
+</div>
+`;
