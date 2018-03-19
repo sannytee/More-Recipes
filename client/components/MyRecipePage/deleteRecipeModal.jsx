@@ -29,6 +29,7 @@ const DeleteRecipeModal = props => (
         </div>
         <div className="modal-footer">
           <button
+            id="deleteButton"
             type="button"
             onClick={props.handleDeletion}
             className="btn btn-danger"

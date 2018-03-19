@@ -13,7 +13,6 @@ const propTypes = {
   handleProgress: PropTypes.func.isRequired,
   handleUploadStart: PropTypes.func.isRequired,
   handleUploadSuccess: PropTypes.func.isRequired,
-  notReady: PropTypes.bool.isRequired,
   mealType: PropTypes.string.isRequired,
 };
 
@@ -179,7 +178,6 @@ const AddRecipeForm = props => (
               <button
                 type="submit"
                 className="btn vote-button"
-                disabled={props.notReady}
               >
                 Add recipe
               </button>

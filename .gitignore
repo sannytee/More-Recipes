@@ -3,3 +3,4 @@ node_modules/
 .nyc_output
 .DS_Store
 coverage/
+e2e_test_report/

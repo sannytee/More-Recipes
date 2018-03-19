@@ -63,6 +63,7 @@ export class AuthHeader extends Component {
   */
   constructor(props, context) {
     super(props, context);
+    const defaultImage = 'https://www.unident.no/media/com_hwdmediashare/assets/images/default-image-4.png';
     this.state = {
       recipeName: '',
       mealType: 'breakfast',
@@ -70,7 +71,7 @@ export class AuthHeader extends Component {
       method: '',
       ingredients: '',
       errorMessage: '',
-      image: '',
+      image: defaultImage,
       progress: 0,
       isUploading: false,
       notReady: true,

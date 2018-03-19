@@ -179,7 +179,13 @@ const EditRecipeModal = props => (
               >
                 Close
               </button>
-              <button type="submit" className="btn vote-button">Update Recipe</button>
+              <button
+                id="editButton"
+                type="submit"
+                className="btn vote-button"
+              >
+                Update Recipe
+              </button>
             </div>
           </form>
         </div>
