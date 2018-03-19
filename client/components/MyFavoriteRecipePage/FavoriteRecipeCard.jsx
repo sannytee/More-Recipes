@@ -111,6 +111,7 @@ export class FavoriteRecipeCard extends Component {
             <div >
               <div className="fav-btn">
                 <button
+                  id="favoriteButton"
                   data-tip
                   data-for="favorite"
                   className="btn btn-danger"

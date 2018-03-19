@@ -122,6 +122,7 @@ const RecipeInfo = props => (
         </div>
         <div style={{ marginLeft: '8px', marginRight: '5px' }}>
           <button
+            id="favoriteButton"
             className="btn vote-button"
             type="button"
             onClick={props.favorite}

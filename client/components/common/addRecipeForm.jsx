@@ -98,6 +98,7 @@ const AddRecipeForm = props => (
                 </div>
               }
               <ImageUploader
+                id="uploadImage"
                 name="image"
                 storageRef={
                   firebase

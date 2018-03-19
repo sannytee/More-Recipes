@@ -75,7 +75,7 @@ export class SigninPage extends Component {
   componentWillReceiveProps(nextProps) {
     const { authenticated, error } = nextProps;
     if (authenticated === true) {
-      toastr.success('Login successfull');
+      toastr.success('Login successful');
       this.context.router.push('/recipes');
     } else {
       this.setState({

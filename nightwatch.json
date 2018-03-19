@@ -6,12 +6,13 @@
   "globals_path" : "",
 
   "selenium" : {
-    "start_process" : false,
-    "server_path" : "/bin/selenium-server-standalone-3.9.0.jar",
+    "start_process" : true,
+    "server_path" : "./node_modules/selenium-standalone/.selenium/selenium-server/3.8.1-server.jar",
     "log_path" : "",
     "port" : 4444,
     "cli_args" : {
-      "webdriver.gecko.driver" : "./bin/geckodriver"
+      "webdriver.chrome.driver" : "./node_modules/selenium-standalone/.selenium/chromedriver/2.36-x64-chromedriver",
+      "webdriver.gecko.driver" : "./node_modules/selenium-standalone/.selenium/geckodriver/0.19.1-x64-geckodriver"
     }
   },
 

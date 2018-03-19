@@ -67,7 +67,7 @@ const Review = props => (
           </div>
         }
       </div>
-      <button type="submit" className="btn vote-button pull-right">Submit</button>
+      <button type="submit" id="reviewButton" className="btn vote-button pull-right">Submit</button>
     </form>
   </section>
 );

@@ -35,6 +35,7 @@ const Form = props => (
         }
         <div className="pb-4 pt-3 form-group">
           <input
+            id="username"
             type="text"
             name="username"
             onFocus={props.onFocus}
@@ -46,6 +47,7 @@ const Form = props => (
         </div>
         <div className="pb-4 form-group">
           <input
+            id="password"
             type="password"
             name="password"
             onFocus={props.onFocus}

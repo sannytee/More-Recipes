@@ -368,6 +368,7 @@ export class AuthHeader extends Component {
               </li>
               <li className="nav-item">
                 <a
+                  id="logout"
                   className="nav-link"
                   onClick={this.logoutUser}
                   role="none"

@@ -64,7 +64,7 @@ const EditRecipeModal = props => (
                 type="text"
                 name="recipeName"
                 className="form-control"
-                id="recipient-name"
+                id="recipeName"
                 required
               />
             </div>
