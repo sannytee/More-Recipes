@@ -98,6 +98,7 @@ exports[`AddRecipeForm Component should render correctly 1`] = `
               Image:
             </label>
             <[object Object]
+              id="uploadImage"
               name="image"
               onProgress={[Function]}
               onUploadStart={[Function]}
@@ -224,7 +225,6 @@ exports[`AddRecipeForm Component should render correctly 1`] = `
             </button>
             <button
               className="btn vote-button"
-              disabled={true}
               type="submit"
             >
               Add recipe
@@ -340,6 +340,7 @@ exports[`AddRecipeForm Component should render error if error exists 1`] = `
               Image:
             </label>
             <[object Object]
+              id="uploadImage"
               name="image"
               onProgress={[Function]}
               onUploadStart={[Function]}
@@ -474,7 +475,6 @@ exports[`AddRecipeForm Component should render error if error exists 1`] = `
             </button>
             <button
               className="btn vote-button"
-              disabled={true}
               type="submit"
             >
               Add recipe

@@ -43,6 +43,7 @@ exports[`FavroiteRecipeCard should render correctly 1`] = `
             className="btn btn-danger"
             data-for="favorite"
             data-tip={true}
+            id="favoriteButton"
             onClick={[Function]}
             type="button"
           >

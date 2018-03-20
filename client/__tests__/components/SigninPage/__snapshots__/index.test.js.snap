@@ -117,6 +117,7 @@ exports[`Signin component should  render correctly 1`] = `
             >
               <input
                 className="form-control"
+                id="username"
                 name="username"
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -130,6 +131,7 @@ exports[`Signin component should  render correctly 1`] = `
             >
               <input
                 className="form-control"
+                id="password"
                 name="password"
                 onChange={[Function]}
                 onFocus={[Function]}

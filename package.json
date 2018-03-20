@@ -11,10 +11,11 @@
     "start:dev": "nodemon --exec babel-node -- ./server/app.js",
     "start:test": "NODE_ENV=test sequelize db:migrate",
     "seed:test": "NODE_ENV=test sequelize db:seed:all",
+    "e2e-test": "nightwatch",
     "test": "npm run seed:test && NODE_ENV=test mocha --exit --compilers js:babel-core/register server/src/test/** --reporter spec --timeout 25000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls",
-    "client-test": "jest"
+    "client-test": "jest --coverage"
   },
   "repository": {
     "type": "git",

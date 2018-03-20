@@ -34,6 +34,7 @@ exports[`Signin Form Component should render correctly 1`] = `
       >
         <input
           className="form-control"
+          id="username"
           name="username"
           onChange={[Function]}
           onFocus={[Function]}
@@ -47,6 +48,7 @@ exports[`Signin Form Component should render correctly 1`] = `
       >
         <input
           className="form-control"
+          id="password"
           name="password"
           onChange={[Function]}
           onFocus={[Function]}
@@ -118,6 +120,7 @@ exports[`Signin Form Component should render error if error exist 1`] = `
       >
         <input
           className="form-control"
+          id="username"
           name="username"
           onChange={[Function]}
           onFocus={[Function]}
@@ -131,6 +134,7 @@ exports[`Signin Form Component should render error if error exist 1`] = `
       >
         <input
           className="form-control"
+          id="password"
           name="password"
           onChange={[Function]}
           onFocus={[Function]}

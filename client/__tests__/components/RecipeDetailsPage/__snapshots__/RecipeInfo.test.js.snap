@@ -176,6 +176,7 @@ exports[`RecipeInfo should render correctly 1`] = `
           className="btn vote-button"
           data-for="favorite"
           data-tip={true}
+          id="favoriteButton"
           onClick={[Function]}
           type="button"
         >

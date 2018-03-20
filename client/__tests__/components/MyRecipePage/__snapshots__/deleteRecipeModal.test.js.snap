@@ -54,6 +54,7 @@ exports[`DeleteRecipeModal Component should render correctly 1`] = `
       >
         <button
           className="btn btn-danger"
+          id="deleteButton"
           type="button"
         >
           Delete

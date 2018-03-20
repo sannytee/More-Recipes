@@ -153,6 +153,7 @@ exports[`AuthHeader Component should render correctly 1`] = `
         >
           <a
             className="nav-link"
+            id="logout"
             onClick={[Function]}
             role="none"
           >

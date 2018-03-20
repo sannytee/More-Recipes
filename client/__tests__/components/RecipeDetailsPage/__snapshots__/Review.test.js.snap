@@ -44,7 +44,7 @@ exports[`Review Component should render correctly 1`] = `
                 }
               }
             >
-              7 days ago
+              9 days ago
             </strong>
           </div>
           <p>
@@ -80,6 +80,7 @@ exports[`Review Component should render correctly 1`] = `
     </div>
     <button
       className="btn vote-button pull-right"
+      id="reviewButton"
       type="submit"
     >
       Submit
@@ -132,7 +133,7 @@ exports[`Review Component should render error if error exists 1`] = `
                 }
               }
             >
-              7 days ago
+              9 days ago
             </strong>
           </div>
           <p>
@@ -178,6 +179,7 @@ exports[`Review Component should render error if error exists 1`] = `
     </div>
     <button
       className="btn vote-button pull-right"
+      id="reviewButton"
       type="submit"
     >
       Submit
@@ -233,6 +235,7 @@ exports[`Review Component should render message if recipe have not been reviewed
     </div>
     <button
       className="btn vote-button pull-right"
+      id="reviewButton"
       type="submit"
     >
       Submit

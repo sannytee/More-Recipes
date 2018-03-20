@@ -17,7 +17,9 @@ module.exports = {
     '**/client/**.{js,jsx}',
     '!**/node_modules/**',
     '!**/client/store/**',
-    '!**/client/util/firebaseConfig.js'
+    '!**/client/util/firebaseConfig.js',
+    '!**/client/index.jsx',
+    '!**/client/routes.jsx'
   ],
   snapshotSerializers: [
     'enzyme-to-json/serializer'

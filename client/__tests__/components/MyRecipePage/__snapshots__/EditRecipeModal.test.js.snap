@@ -62,7 +62,7 @@ exports[`EditRecipeModal Component should render correctly 1`] = `
             </label>
             <input
               className="form-control"
-              id="recipient-name"
+              id="recipeName"
               name="recipeName"
               onChange={[Function]}
               onFocus={[Function]}
@@ -228,6 +228,7 @@ exports[`EditRecipeModal Component should render correctly 1`] = `
             </button>
             <button
               className="btn vote-button"
+              id="editButton"
               type="submit"
             >
               Update Recipe
@@ -307,7 +308,7 @@ exports[`EditRecipeModal Component should render error if error exists 1`] = `
             </label>
             <input
               className="form-control"
-              id="recipient-name"
+              id="recipeName"
               name="recipeName"
               onChange={[Function]}
               onFocus={[Function]}
@@ -481,6 +482,7 @@ exports[`EditRecipeModal Component should render error if error exists 1`] = `
             </button>
             <button
               className="btn vote-button"
+              id="editButton"
               type="submit"
             >
               Update Recipe
@@ -555,7 +557,7 @@ exports[`EditRecipeModal Component should render loader image is still uploading
             </label>
             <input
               className="form-control"
-              id="recipient-name"
+              id="recipeName"
               name="recipeName"
               onChange={[Function]}
               onFocus={[Function]}
@@ -743,6 +745,7 @@ exports[`EditRecipeModal Component should render loader image is still uploading
             </button>
             <button
               className="btn vote-button"
+              id="editButton"
               type="submit"
             >
               Update Recipe

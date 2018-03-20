@@ -147,10 +147,11 @@ module.exports = {
   },
   'Users can  view and review a recipe': (client) => {
     client
-      .url('http://localhost:3000/recipes/1')
+      .url('http://localhost:3000/recipes')
+      .pause(2000)
+      .click('#remove-link')
       .waitForElementVisible('.recipe-details', 10000)
       .assert.elementPresent('.recipe-details')
-      .assert.urlContains('http://localhost:3000/recipes/1')
       .pause(2000)
       .setValue('textarea[name=review]', 'amazing')
       .pause(2000)
@@ -159,10 +160,11 @@ module.exports = {
   },
   'Users can favorite a recipe': (client) => {
     client
-      .url('http://localhost:3000/recipes/1')
+      .url('http://localhost:3000/recipes')
+      .pause(2000)
+      .click('#remove-link')
       .waitForElementVisible('.recipe-details', 10000)
       .assert.elementPresent('.recipe-details')
-      .assert.urlContains('http://localhost:3000/recipes/1')
       .pause(2000)
       .click('#favoriteButton')
       .waitForElementVisible('.toast', 7000)
