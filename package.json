@@ -9,7 +9,9 @@
     "build": "webpack --progress --config ./webpack.config.prod.js",
     "seq": "sequelize init",
     "start:dev": "nodemon --exec babel-node -- ./server/app.js",
-    "test": "mocha --exit --compilers js:babel-core/register server/src/test --reporter spec --timeout 25000",
+    "start:test": "NODE_ENV=test sequelize db:migrate",
+    "seed:test": "NODE_ENV=test sequelize db:seed:all",
+    "test": "npm run seed:test && NODE_ENV=test mocha --exit --compilers js:babel-core/register server/src/test/** --reporter spec --timeout 25000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc npm test&& nyc report --reporter=text-lcov | coveralls",
     "client-test": "jest"
