@@ -93,7 +93,7 @@ describe('Favorite API route', () => {
       });
   });
 
-  it('returns a messageif user have no favorite recipe', (done) => {
+  it('returns a message if user have no favorite recipe', (done) => {
     chai.request(app)
       .get('/api/v1/users/1/recipes')
       .set('x-access-token', token)

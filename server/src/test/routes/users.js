@@ -17,6 +17,14 @@ describe('User API Route', () => {
     });
     done();
   });
+  after((done) => {
+    Users.destroy({
+      cascade: true,
+      truncate: true,
+      restartIdentity: true
+    });
+    done();
+  });
   it('throw error for username less than six characters', (done) => {
     chai.request(app)
       .post('/api/v1/users/signup')
