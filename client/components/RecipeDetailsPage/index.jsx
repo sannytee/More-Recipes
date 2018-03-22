@@ -16,7 +16,7 @@ import Footer from '../common/Footer';
 import img from '../../public/images/recipe-10.jpg';
 import RecipeInfo from './RecipeInfo';
 import Reviews from './Reviews';
-import verifyUser from '../../util/Authentication';
+import verifyUser from '../../util/verifyUser';
 
 const propTypes = {
   actions: PropTypes.shape({

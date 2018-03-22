@@ -290,14 +290,14 @@ export const getUserFavRecipeFailure = error => ({
  * @description - action dispatch when request is successful
  *
  * @param  {Object} response
- * @param {number} index
+ * @param {number} id
  *
  * @return {Object} dispatch an object
 */
-export const favoriteARecipeSuccess = (response, index) => ({
+export const favoriteARecipeSuccess = (response, id) => ({
   type: types.FAVORITE_A_RECIPE_SUCCESS,
   payload: response,
-  index,
+  id,
 });
 
 /**

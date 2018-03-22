@@ -6,7 +6,7 @@ import Header from '../common/AuthHeader';
 import Footer from '../common/Footer';
 import FavRecipeCard from './FavoriteRecipeCard';
 import { getUserFavRecipes } from '../../actionsCreator/recipes';
-import verifyUser from '../../util/Authentication';
+import verifyUser from '../../util/verifyUser';
 
 
 const propTypes = {

@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import Tooltip from 'react-tooltip';
 import { voteRecipeAction } from '../../actionsCreator/recipes';
-import { changeAuthAction } from '../../actions/authAction';
+import { changeAuthAction } from '../../actions/signoutAction';
 
 
 const propTypes = {

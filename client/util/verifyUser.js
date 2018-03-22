@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-const authenticateUser = () => {
+const verifyUser = () => {
   const token = localStorage.getItem('token');
   const decodeToken = jwt.decode(token);
   if (decodeToken === null) {
@@ -16,5 +16,5 @@ const authenticateUser = () => {
   return true;
 };
 
-export default authenticateUser;
+export default verifyUser;
 

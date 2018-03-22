@@ -194,15 +194,14 @@ export function getUserFavRecipes(userId) {
  * @description - Calls the API to favorite a recipe
  *
  * @param {number} userId - id of user
- * @param  {number} recipeId - id of recipe to be favorited
- * @param {number} index - position of recipe in array
+ * @param  {object} recipe -  an object containing id of recipe
  *
  * @return {Object} dispatch an object
 */
-export function favoriteARecipe(userId, recipeId, index) {
-  return dispatch => axios.post(`/${URL}/users/${userId}/recipes`, recipeId)
+export function favoriteARecipe(userId, recipe) {
+  return dispatch => axios.post(`/${URL}/users/${userId}/recipes`, recipe)
     .then((res) => {
-      dispatch(actions.favoriteARecipeSuccess(res.data.message, index));
+      dispatch(actions.favoriteARecipeSuccess(res.data.message, recipe.recipeId));
       alert(
         'Deleted!',
         'Your recipe has been deleted.',
@@ -237,18 +236,17 @@ export function getFavoriteIds(userId) {
  *
  * @param  {int} recipeId - id of recipe to be upvoted or downvoted
  * @param {string} voteAction - specify the action - upvote or downvote
- * @param  {int} index - index of recipe in array
  *
  * @return {Object} dispatch an object
 */
-export function voteRecipeAction(recipeId, voteAction, index) {
+export function voteRecipeAction(recipeId, voteAction) {
   return dispatch => axios.post(`${URL}/recipes/${recipeId}/votes?action=${voteAction}`)
     .then((res) => {
       toastr.success(res.data.message);
       dispatch({
         type: types.VOTE_RECIPE,
         payload: res.data,
-        index,
+        identifier: recipeId
       });
     })
     .catch((err) => {
@@ -281,17 +279,15 @@ export function createRecipeAction(recipeDetails) {
  *
  * @param {number} recipeId - id of recipe to be updated
  * @param {object} recipeDetails - details of new recipe
- * @param {number} index - index of recipe in array
  *
  * @return {Object} dispatch an object
 */
-export function editRecipeAction(recipeId, recipeDetails, index) {
+export function editRecipeAction(recipeId, recipeDetails) {
   return dispatch => axios.put(`${URL}/recipes/${recipeId}`, recipeDetails)
     .then((res) => {
       dispatch({
         type: types.EDIT_RECIPE,
         payload: res.data,
-        index
       });
     })
     .catch((err) => {
@@ -304,16 +300,15 @@ export function editRecipeAction(recipeId, recipeDetails, index) {
  * @description - Calls the API to delete a recipe
  *
  * @param {number} recipeId - id of recipe to be deleted
- * @param {number} position - index of recipe in array
  *
  * @return {Object} dispatch an object
 */
-export function deleteRecipeAction(recipeId, position) {
+export function deleteRecipeAction(recipeId) {
   return dispatch => axios.delete(`${URL}/recipes/${recipeId}`)
     .then(() => {
       dispatch({
         type: types.DELETE_RECIPE,
-        position
+        recipeId,
       });
     })
     .catch((err) => {

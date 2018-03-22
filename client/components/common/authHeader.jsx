@@ -18,8 +18,8 @@ import firebase from 'firebase';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import { createRecipeAction, searchRecipes } from '../../actionsCreator/recipes';
-import { logoutAction } from '../../actions/authAction';
-import AddRecipeForm from './addRecipeForm';
+import { logoutAction } from '../../actions/signoutAction';
+import AddRecipeForm from './AddRecipeForm';
 
 const propTypes = {
   actions: PropTypes.shape({

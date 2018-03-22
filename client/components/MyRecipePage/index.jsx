@@ -19,8 +19,8 @@ import Footer from '../common/Footer';
 import { MyRecipeCard } from './MyRecipeCard';
 import EditRecipeModal from './EditRecipeModal';
 import DeleteRecipeModal from './DeleteRecipeModal';
-import { logoutAction } from '../../actions/authAction';
-import verifyUser from '../../util/Authentication';
+import { logoutAction } from '../../actions/signoutAction';
+import verifyUser from '../../util/verifyUser';
 import Pagination from '../Pagination';
 import {
   getUserRecipes,

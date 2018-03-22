@@ -23,8 +23,8 @@ import {
   getAllRecipesAction,
   getPopularRecipesAction
 } from '../../actionsCreator/recipes';
-import { changeAuthAction } from '../../actions/authAction';
-import verifyUser from '../../util/Authentication';
+import { changeAuthAction } from '../../actions/signoutAction';
+import verifyUser from '../../util/verifyUser';
 import setToken from '../../util/setToken';
 
 const propTypes = {

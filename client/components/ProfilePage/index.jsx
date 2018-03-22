@@ -9,7 +9,7 @@ import firebase from 'firebase';
 import Header from '../common/AuthHeader';
 import Footer from '../common/Footer';
 import img from '../../public/images/iconic.png';
-import verifyUser from '../../util/Authentication';
+import verifyUser from '../../util/verifyUser';
 import {
   getUserRecipes,
   getUserFavRecipes,

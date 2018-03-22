@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import RecipeCard from './recipeCard';
+import RecipeCard from './RecipeCard';
 
 const propTypes = {
   allRecipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
