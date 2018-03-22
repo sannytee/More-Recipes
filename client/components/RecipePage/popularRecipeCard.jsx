@@ -9,7 +9,7 @@ const propTypes = {
 };
 
 
-const popularRecipeCard = ({ recipeName, id, image }) => (
+const PopularRecipeCard = ({ recipeName, id, image }) => (
   <div className="side_recipes">
     <Link className="side_item" to={`/recipes/${id}`}>
       <div className="img">
@@ -34,6 +34,6 @@ const popularRecipeCard = ({ recipeName, id, image }) => (
   </div>
 );
 
-popularRecipeCard.propTypes = propTypes;
+PopularRecipeCard.propTypes = propTypes;
 
-export default popularRecipeCard;
+export default PopularRecipeCard;

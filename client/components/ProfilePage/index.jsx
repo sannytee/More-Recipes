@@ -6,8 +6,8 @@ import lodash from 'lodash';
 import ImageUploader from 'react-firebase-file-uploader';
 import Tooltip from 'react-tooltip';
 import firebase from 'firebase';
-import Header from '../common/authHeader';
-import Footer from '../common/footer';
+import Header from '../common/AuthHeader';
+import Footer from '../common/Footer';
 import img from '../../public/images/iconic.png';
 import verifyUser from '../../util/Authentication';
 import {
@@ -16,7 +16,7 @@ import {
   getUserProfile,
   updateUserProfile,
 } from '../../actionsCreator/recipes';
-import UserDetails from './userDetails';
+import UserDetails from './UserDetails';
 
 
 const propTypes = {
@@ -177,10 +177,9 @@ export class ProfilePage extends Component {
                       <div className="row pb-3 centered" style={{ marginTop: '10px' }}>
                         <div className="col-sm-12" >
                           <img
-                            clasName="img-fluid rounded-circle"
+                            className="img-fluid user-image rounded-circle"
                             style={{ height: '150px' }}
                             src={profile.image || img}
-                            className="user-image"
                             alt="profile"
                           />
                           {

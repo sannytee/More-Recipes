@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
-import PopularRecipeCard from './popularRecipeCard';
+import PopularRecipeCard from './PopularRecipeCard';
 
 const propTypes = {
   popularRecipes: PropTypes.arrayOf(PropTypes.shape()).isRequired
 };
 
-const popularRecipeCardList = props => (
+const PopularRecipeCardList = props => (
   <div className="col-lg-3 col-md-12">
     <aside className="sidebar">
       <div className="side_rec_area">
@@ -27,6 +27,6 @@ const popularRecipeCardList = props => (
   </div>
 );
 
-popularRecipeCardList.propTypes = propTypes;
+PopularRecipeCardList.propTypes = propTypes;
 
-export default popularRecipeCardList;
+export default PopularRecipeCardList;

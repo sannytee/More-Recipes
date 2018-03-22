@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Footer from './footer';
+import Footer from './Footer';
 
 
 const NotFound = () => (

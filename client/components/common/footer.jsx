@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 
-const Footer = props => (
+const Footer = () => (
   <footer className="footer-section" id="footer-below">
     <div className="container">
       <strong

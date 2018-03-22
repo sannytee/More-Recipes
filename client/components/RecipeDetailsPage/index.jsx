@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Spinner } from 'react-preloading-component';
 import lodash from 'lodash';
-import Header from '../common/authHeader';
+import Header from '../common/AuthHeader';
 import {
   getRecipeData,
   postReview,
@@ -12,7 +12,7 @@ import {
   favoriteRecipe,
   getFavoriteIds
 } from '../../actionsCreator/recipes';
-import Footer from '../common/footer';
+import Footer from '../common/Footer';
 import img from '../../public/images/recipe-10.jpg';
 import RecipeInfo from './RecipeInfo';
 import Reviews from './Reviews';

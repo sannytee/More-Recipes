@@ -41,11 +41,11 @@ const RecipeInfo = props => (
         <ul>
           <div className="row">
             {
-              props.recipeDetails.ingredients.split(',').map((ingredients, i) => (
+              props.recipeDetails.ingredients.split(',').map((ingredients, index) => (
                 <li
                   className="col-md-6"
                   style={{ paddingTop: '5px', fontSize: '18px' }}
-                  key={i}
+                  key={index}
                 >
                   {ingredients}
                 </li>
