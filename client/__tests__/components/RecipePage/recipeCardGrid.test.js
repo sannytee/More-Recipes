@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import MockData from '../../__mocks__/actions/recipes';
-import RecipeCardGrid from '../../../components/RecipePage/recipeCardGrid';
+import RecipeCardGrid from '../../../components/RecipePage/RecipeCardGrid';
 
 
 let props;

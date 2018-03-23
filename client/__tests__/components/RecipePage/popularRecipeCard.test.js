@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import PopularRecipeCard from '../../../components/RecipePage/popularRecipeCard';
+import PopularRecipeCard from '../../../components/RecipePage/PopularRecipeCard';
 
 let props;
 

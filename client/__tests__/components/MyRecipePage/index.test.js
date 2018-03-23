@@ -1,11 +1,7 @@
 import React from 'react';
-import {
-  shallow
-} from 'enzyme';
+import { shallow } from 'enzyme';
 import { Spinner } from 'react-preloading-component';
-import {
-  MyRecipePage
-} from '../../../components/MyRecipePage/index';
+import { MyRecipePage } from '../../../components/MyRecipePage';
 import MockData from '../../__mocks__/actions/recipes';
 
 let props;

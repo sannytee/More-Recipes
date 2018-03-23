@@ -472,11 +472,18 @@ describe('Recipe Actions', () => {
 
         type: types.FAVORITE_A_RECIPE_SUCCESS,
         payload: mockData.favoriteRecipeResponse.message,
-        index: 0
+        id: 20
       }
     ];
+
+    const recipe = {
+      recipeId: 20
+    };
+
+    const userId = 1;
+
     const store = mockStore({});
-    return store.dispatch(actions.favoriteARecipe(1, 20, 0))
+    return store.dispatch(actions.favoriteARecipe(userId, recipe))
       .then(() => {
         expect(store.getActions()).toEqual(expectedActions);
       });
@@ -564,7 +571,7 @@ describe('Recipe Actions', () => {
       {
         type: types.VOTE_RECIPE,
         payload: mockData.voteRecipeResponse,
-        index: 0
+        identifier: 27
       }
     ];
 
@@ -611,7 +618,6 @@ describe('Recipe Actions', () => {
       {
         type: types.EDIT_RECIPE,
         payload: mockData.editRecipeResponse,
-        index: 0
       }
     ];
 
@@ -634,7 +640,7 @@ describe('Recipe Actions', () => {
     const expectedActions = [
       {
         type: types.DELETE_RECIPE,
-        position: 0
+        recipeId: 27
       }
     ];
 

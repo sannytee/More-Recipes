@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import PopularRecipeCardList from '../../../components/RecipePage/popularRecipeCardList';
-import PopularRecipeCard from '../../../components/RecipePage/popularRecipeCard';
+import PopularRecipeCardList from '../../../components/RecipePage/PopularRecipeCardList';
+import PopularRecipeCard from '../../../components/RecipePage/PopularRecipeCard';
 import MockData from '../../__mocks__/actions/recipes';
 
 let props;

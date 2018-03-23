@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { RecipeCard } from '../../../components/RecipePage/recipeCard';
+import { RecipeCard } from '../../../components/RecipePage/RecipeCard';
 
 let props;
 const err = {
@@ -28,13 +28,14 @@ const setup = () => {
   return mount(<RecipeCard {...props} />, { context: {} });
 };
 
+
 describe('Recipe card component', () => {
   it('should render correctly', () => {
     const wrapper = setup();
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should toast error for upvoting recipe when session expired', () => {
+  it('should call upvoteRecipe method to upvote recipe', () => {
     const wrapper = setup();
     const action = wrapper.instance();
     const spy = jest.spyOn(wrapper.instance(), 'upvoteRecipe');
@@ -42,7 +43,7 @@ describe('Recipe card component', () => {
     expect(spy).toBeCalled();
   });
 
-  it('should toast error for downpvoting recipe when session expired', () => {
+  it('should call downvoteRecipe method to downvoting recipe', () => {
     const wrapper = setup();
     const action = wrapper.instance();
     const spy = jest.spyOn(wrapper.instance(), 'downvoteRecipe');

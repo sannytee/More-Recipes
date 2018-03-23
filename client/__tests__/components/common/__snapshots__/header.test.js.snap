@@ -33,16 +33,6 @@ exports[`Header Component should render correctly 1`] = `
       className="collapse navbar-collapse"
       id="navbarSupportedContent"
     >
-      <form
-        className="form-inline my-2 my-lg-0 ml-auto "
-      >
-        <input
-          aria-label="Search"
-          className="form-control mr-sm-2"
-          placeholder="Search"
-          type="search"
-        />
-      </form>
       <ul
         className="navbar-nav ml-auto"
       >

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Form from '../../../components/SignupPage/form';
+import Form from '../../../components/SignupPage/Form';
 
 const value = {
   usernameError: '',

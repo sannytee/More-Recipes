@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { SignupPage } from '../../../components/SignupPage/index';
+import { SignupPage } from '../../../components/SignupPage';
 
 
 describe('SignupPage component', () => {

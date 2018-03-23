@@ -24,7 +24,6 @@ exports[`Review Component should render correctly 1`] = `
   >
     <li
       className="review-list"
-      key="0"
     >
       <div>
         <div>
@@ -44,7 +43,7 @@ exports[`Review Component should render correctly 1`] = `
                 }
               }
             >
-              9 days ago
+              12 days ago
             </strong>
           </div>
           <p>
@@ -113,7 +112,6 @@ exports[`Review Component should render error if error exists 1`] = `
   >
     <li
       className="review-list"
-      key="0"
     >
       <div>
         <div>
@@ -133,7 +131,7 @@ exports[`Review Component should render error if error exists 1`] = `
                 }
               }
             >
-              9 days ago
+              12 days ago
             </strong>
           </div>
           <p>
