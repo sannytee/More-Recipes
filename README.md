@@ -1,5 +1,5 @@
 
-![Build Status](https://api.travis-ci.org/SannyTee/More-Recipes.svg?branch=develop) [![Coverage Status](https://coveralls.io/repos/github/SannyTee/More-Recipes/badge.svg?branch=develop)](https://coveralls.io/github/SannyTee/More-Recipes?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/3e149fce348f5b0eff09/maintainability)](https://codeclimate.com/github/SannyTee/More-Recipes/maintainability)
+![Build Status](https://api.travis-ci.org/SannyTee/More-Recipes.svg?branch=develop) [![Coverage Status](https://coveralls.io/repos/github/SannyTee/More-Recipes/badge.svg?branch=implement-lf-feedback)](https://coveralls.io/github/SannyTee/More-Recipes?branch=implement-lf-feedback) [![Maintainability](https://api.codeclimate.com/v1/badges/3e149fce348f5b0eff09/maintainability)](https://codeclimate.com/github/SannyTee/More-Recipes/maintainability)
 
 # More-Recipes
 More-Recipes provides a platform for users to share the awesome and exciting  recipe ideas they have invented or learnt.  Suppose a user comes up with a food recipe,  he/she can post it on More-Recipes and  get feedback in form of reviews and votes from other users who explore that recipe. Users can also keep a list of their favorite recipes on the application.
