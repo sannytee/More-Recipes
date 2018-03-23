@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Spinner } from 'react-preloading-component';
-import { ProfilePage } from '../../../components/ProfilePage/index';
+import { ProfilePage } from '../../../components/ProfilePage';
 import MockData from '../../__mocks__/actions/recipes';
 
 

@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
 
-/* eslint-disable react/no-array-index-key  */
 
 const propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.shape()).isRequired,
@@ -24,8 +23,8 @@ const Review = props => (
       :
         <ul style={{ maxHeight: '300px', overflowY: 'scroll' }}>
           {
-        props.reviews.map((review, i) => (
-          <li key={i} className="review-list">
+        props.reviews.map(review => (
+          <li key={review.id} className="review-list">
             <div>
               <div >
                 <div className="header">

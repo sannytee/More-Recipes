@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
-import RecipeCard from './recipeCard';
+import RecipeCard from './RecipeCard';
 
 const propTypes = {
   allRecipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
-const recipeCardGrid = props => (
+const RecipeCardGrid = props => (
   <div className="col-lg-9 col-md-12">
     <div className="row">
       <div className="col-md-12">
@@ -16,10 +16,9 @@ const recipeCardGrid = props => (
     </div>
     <div className="row">
       {
-      props.allRecipes.map((recipe, i) => (
+      props.allRecipes.map(recipe => (
         <RecipeCard
           key={recipe.id}
-          i={i}
           id={recipe.id}
           recipeName={recipe.recipeName}
           upvotes={recipe.upvotes}
@@ -33,6 +32,6 @@ const recipeCardGrid = props => (
   </div>
 );
 
-recipeCardGrid.propTypes = propTypes;
+RecipeCardGrid.propTypes = propTypes;
 
-export default recipeCardGrid;
+export default RecipeCardGrid;

@@ -3,9 +3,9 @@ import authReducer from './authReducer';
 import recipesReducer from './recipesReducer';
 
 
-const rootReducer = combineReducers({
+const reducers = combineReducers({
   auth: authReducer,
   recipes: recipesReducer,
 });
 
-export default rootReducer;
+export default reducers;

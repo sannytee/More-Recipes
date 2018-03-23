@@ -121,7 +121,7 @@ exports[`MyRecipePage Component should render correctly 1`] = `
   <div
     className="sticky-paginate"
   >
-    <Paginate
+    <Pagination
       handlePaginationChange={[Function]}
       page={2}
     />
@@ -200,7 +200,7 @@ exports[`MyRecipePage Component should render loader when \`isLoading\` is true 
   <div
     className="sticky-paginate"
   >
-    <Paginate
+    <Pagination
       handlePaginationChange={[Function]}
       page={2}
     />

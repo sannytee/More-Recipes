@@ -18,7 +18,7 @@ const setup = () => {
   return shallow(<FavoriteRecipeCard {...props} />);
 };
 
-describe('FavroiteRecipeCard', () => {
+describe('FavoriteRecipeCard', () => {
   it('should render correctly', () => {
     const wrapper = setup();
     expect(wrapper).toMatchSnapshot();

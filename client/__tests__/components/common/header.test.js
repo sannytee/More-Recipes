@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Header from '../../../components/common/header';
+import Header from '../../../components/common/Header';
 
 describe('Header Component', () => {
   it('should render correctly', () => {
@@ -11,3 +11,4 @@ describe('Header Component', () => {
     expect(wrapper.find('ul').length).toBe(1);
   });
 });
+

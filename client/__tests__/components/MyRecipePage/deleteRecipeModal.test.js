@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import DeleteRecipeModal from '../../../components/MyRecipePage/deleteRecipeModal';
+import DeleteRecipeModal from '../../../components/MyRecipePage/DeleteRecipeModal';
 
 describe('DeleteRecipeModal Component', () => {
   it('should render correctly', () => {

@@ -74,7 +74,7 @@ exports[`LandingPage Component should render correctly 1`] = `
         </nav>
       </div>
     </Header>
-    <carousel>
+    <Carousel>
       <div
         className="carousel slide"
         data-ride="carousel"
@@ -190,8 +190,8 @@ exports[`LandingPage Component should render correctly 1`] = `
           </span>
         </a>
       </div>
-    </carousel>
-    <aboutSection>
+    </Carousel>
+    <AboutSection>
       <div
         className="container"
       >
@@ -233,7 +233,7 @@ exports[`LandingPage Component should render correctly 1`] = `
           </div>
         </section>
       </div>
-    </aboutSection>
+    </AboutSection>
     <Footer>
       <footer
         className="footer-section"

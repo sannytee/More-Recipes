@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import toastr from 'toastr';
-import { logoutAction } from '../actions/authAction';
-import verifyUser from '../util/Authentication';
+import { logoutAction } from '../actions/signoutAction';
+import verifyUser from '../util/verifyUser';
 
 const propTypes = {
   actions: PropTypes.shape({

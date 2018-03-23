@@ -1,17 +1,21 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
-import rootReducer from '../reducers/index';
+import reducers from '../reducers';
 
-/* eslint-disable require-jsdoc */
-/* eslint-disable no-unused-vars */
+/**
+ * @description - creates the store
+ *
+ * @param  {Object} initialState
+ *
+ * @return {Object} store
+*/
 export default function configureStore(initialState = {}) {
   return createStore(
-    rootReducer,
+    reducers,
     initialState,
     compose(
       applyMiddleware(thunk, reduxImmutableStateInvariant()),
-      /* eslint-disable no-undef */
       window.devToolsExtension ? window.devToolsExtension() : f => f
     )
   );

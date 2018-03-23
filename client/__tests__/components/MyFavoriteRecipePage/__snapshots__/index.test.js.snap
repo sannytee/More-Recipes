@@ -33,7 +33,6 @@ exports[`MyFavoriteRecipePage Component should render correctly 1`] = `
       className="row pt-4"
     >
       <Connect(FavoriteRecipeCard)
-        index={0}
         key="50"
         recipe={
           Object {
@@ -55,7 +54,6 @@ exports[`MyFavoriteRecipePage Component should render correctly 1`] = `
         userId={1}
       />
       <Connect(FavoriteRecipeCard)
-        index={1}
         key="53"
         recipe={
           Object {

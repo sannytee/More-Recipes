@@ -2,11 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Spinner } from 'react-preloading-component';
-import Header from '../common/authHeader';
-import Footer from '../common/footer';
+import Header from '../common/AuthHeader';
+import Footer from '../common/Footer';
 import FavRecipeCard from './FavoriteRecipeCard';
 import { getUserFavRecipes } from '../../actionsCreator/recipes';
-import verifyUser from '../../util/Authentication';
+import verifyUser from '../../util/verifyUser';
 
 
 const propTypes = {
@@ -32,7 +32,7 @@ const defaultProps = {
  * @description A class to mount all components related to MyFavoriteRecipePage
  * @extends Component
  */
-export class FavoriteRecipePage extends Component {
+export class MyFavoriteRecipePage extends Component {
   /**
    * handles rendering favorite recipe
    * @param {object} props
@@ -86,11 +86,10 @@ export class FavoriteRecipePage extends Component {
         </h1>
       );
     }
-    return favoriteRecipes.favorited.map((favorites, i) => (
+    return favoriteRecipes.favorited.map(favorites => (
       <FavRecipeCard
         key={favorites.id}
         recipe={favorites.Recipe}
-        index={i}
         favorite={this.favoriteRecipe}
         userId={user.id}
       />
@@ -156,7 +155,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-FavoriteRecipePage.propTypes = propTypes;
-FavoriteRecipePage.defaultProps = defaultProps;
+MyFavoriteRecipePage.propTypes = propTypes;
+MyFavoriteRecipePage.defaultProps = defaultProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(FavoriteRecipePage);
+export default connect(mapStateToProps, mapDispatchToProps)(MyFavoriteRecipePage);

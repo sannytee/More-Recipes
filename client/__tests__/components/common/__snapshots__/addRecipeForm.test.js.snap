@@ -49,7 +49,7 @@ exports[`AddRecipeForm Component should render correctly 1`] = `
       >
         <form
           id="recipeForm"
-          onSubmit={[Function]}
+          onSubmit={[MockFunction]}
         >
           <div
             className="form-group"
@@ -64,8 +64,8 @@ exports[`AddRecipeForm Component should render correctly 1`] = `
               className="form-control"
               id="recipient-name"
               name="recipeName"
-              onChange={[Function]}
-              onFocus={[Function]}
+              onChange={[MockFunction]}
+              onFocus={[MockFunction]}
               required={true}
               type="text"
             />
@@ -83,8 +83,8 @@ exports[`AddRecipeForm Component should render correctly 1`] = `
               className="form-control"
               id="message-text"
               name="description"
-              onChange={[Function]}
-              onFocus={[Function]}
+              onChange={[MockFunction]}
+              onFocus={[MockFunction]}
               required={true}
             />
           </div>
@@ -134,8 +134,8 @@ exports[`AddRecipeForm Component should render correctly 1`] = `
               className="form-control"
               id="type-text"
               name="mealType"
-              onChange={[Function]}
-              onFocus={[Function]}
+              onChange={[MockFunction]}
+              onFocus={[MockFunction]}
               required={true}
               value=""
             >
@@ -189,8 +189,8 @@ exports[`AddRecipeForm Component should render correctly 1`] = `
               className="form-control"
               id="ingredients"
               name="ingredients"
-              onChange={[Function]}
-              onFocus={[Function]}
+              onChange={[MockFunction]}
+              onFocus={[MockFunction]}
               placeholder="separate each ingredient with a comma"
               required={true}
             />
@@ -208,8 +208,9 @@ exports[`AddRecipeForm Component should render correctly 1`] = `
               className="form-control"
               id="method-text"
               name="method"
-              onChange={[Function]}
-              onFocus={[Function]}
+              onChange={[MockFunction]}
+              onFocus={[MockFunction]}
+              placeholder="separate each method with a newline"
               required={true}
             />
           </div>
@@ -291,7 +292,7 @@ exports[`AddRecipeForm Component should render error if error exists 1`] = `
         </div>
         <form
           id="recipeForm"
-          onSubmit={[Function]}
+          onSubmit={[MockFunction]}
         >
           <div
             className="form-group"
@@ -306,8 +307,8 @@ exports[`AddRecipeForm Component should render error if error exists 1`] = `
               className="form-control"
               id="recipient-name"
               name="recipeName"
-              onChange={[Function]}
-              onFocus={[Function]}
+              onChange={[MockFunction]}
+              onFocus={[MockFunction]}
               required={true}
               type="text"
             />
@@ -325,8 +326,8 @@ exports[`AddRecipeForm Component should render error if error exists 1`] = `
               className="form-control"
               id="message-text"
               name="description"
-              onChange={[Function]}
-              onFocus={[Function]}
+              onChange={[MockFunction]}
+              onFocus={[MockFunction]}
               required={true}
             />
           </div>
@@ -384,8 +385,8 @@ exports[`AddRecipeForm Component should render error if error exists 1`] = `
               className="form-control"
               id="type-text"
               name="mealType"
-              onChange={[Function]}
-              onFocus={[Function]}
+              onChange={[MockFunction]}
+              onFocus={[MockFunction]}
               required={true}
               value=""
             >
@@ -439,8 +440,8 @@ exports[`AddRecipeForm Component should render error if error exists 1`] = `
               className="form-control"
               id="ingredients"
               name="ingredients"
-              onChange={[Function]}
-              onFocus={[Function]}
+              onChange={[MockFunction]}
+              onFocus={[MockFunction]}
               placeholder="separate each ingredient with a comma"
               required={true}
             />
@@ -458,8 +459,9 @@ exports[`AddRecipeForm Component should render error if error exists 1`] = `
               className="form-control"
               id="method-text"
               name="method"
-              onChange={[Function]}
-              onFocus={[Function]}
+              onChange={[MockFunction]}
+              onFocus={[MockFunction]}
+              placeholder="separate each method with a newline"
               required={true}
             />
           </div>

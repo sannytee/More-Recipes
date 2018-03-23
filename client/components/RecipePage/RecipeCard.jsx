@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import Tooltip from 'react-tooltip';
 import { voteRecipeAction } from '../../actionsCreator/recipes';
-import { changeAuthAction } from '../../actions/authAction';
+import { changeAuthAction } from '../../actions/signoutAction';
 
 
 const propTypes = {
@@ -14,7 +14,6 @@ const propTypes = {
     changeAuthAction: PropTypes.func,
   }).isRequired,
   id: PropTypes.number.isRequired,
-  i: PropTypes.number.isRequired,
   recipeName: PropTypes.string.isRequired,
   upvotes: PropTypes.number.isRequired,
   downvotes: PropTypes.number.isRequired,
@@ -52,7 +51,7 @@ export class RecipeCard extends Component {
   */
   upvoteRecipe(event) {
     event.preventDefault();
-    this.props.actions.voteRecipeAction(this.props.id, 'upvotes', this.props.i)
+    this.props.actions.voteRecipeAction(this.props.id, 'upvotes')
       .catch((err) => {
         const { data } = err.response;
         if (data.message !== 'Session has expired') {
@@ -77,7 +76,7 @@ export class RecipeCard extends Component {
   */
   downvoteRecipe(event) {
     event.preventDefault();
-    this.props.actions.voteRecipeAction(this.props.id, 'downvotes', this.props.i)
+    this.props.actions.voteRecipeAction(this.props.id, 'downvotes')
       .catch((err) => {
         const { data } = err.response;
         if (data.message !== 'Session has expired') {

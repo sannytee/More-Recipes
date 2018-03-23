@@ -25,7 +25,7 @@ const initialState = {
 
 
 /**
- * @description -modifies the state based on action type
+ * @description - modifies the state based on action type
  *
  * @param  {Object} state
  * @param  {Object} action
@@ -52,17 +52,15 @@ function recipeReducer(state = initialState, action) {
     case types.GET_POPULAR_RECIPES_FAILURE:
       return { ...state, error: action.payload, isLoading: action.isLoading };
     case types.VOTE_RECIPE:
-      const i = action.index;
-      const allRecipes = state.recipes;
-      const updatedRecipes = [
-        ...allRecipes.slice(0, i), // before the one we are updating
-        {
-          ...allRecipes[i],
-          upvotes: action.payload.recipe.upvotes,
-          downvotes: action.payload.recipe.downvotes
-        },
-        ...allRecipes.slice(i + 1), // after the one we are updating
-      ];
+      const { identifier } = action;
+      const recipeVoted = action.payload.recipe;
+      const allRecipes = [...state.recipes];
+      const updatedRecipes = allRecipes.map((recipe) => {
+        if (recipe.id === identifier) {
+          recipe = recipeVoted;
+        }
+        return recipe;
+      });
       return { ...state, recipes: updatedRecipes };
     case types.CREATE_RECIPE:
       if (state.recipes.length === 6 || state.userRecipes.length === 6) {
@@ -86,21 +84,19 @@ function recipeReducer(state = initialState, action) {
     case types.GET_USER_RECIPES_FAILURE:
       return { ...state, isLoading: action.isLoading, userRecipeError: action.payload };
     case types.EDIT_RECIPE:
-      const { index } = action;
-      const myRecipes = state.userRecipes;
-      const updatedUserRecipes = [
-        ...myRecipes.slice(0, index),
-        action.payload.Recipe,
-        ...myRecipes.slice(index + 1)
-      ];
+      const { Recipe } = action.payload;
+      const newRecipes = [...state.userRecipes];
+      const updatedUserRecipes = newRecipes.map((recipe) => {
+        if (recipe.id === Recipe.id) {
+          recipe = Recipe;
+        }
+        return recipe;
+      });
       return { ...state, userRecipes: updatedUserRecipes };
     case types.DELETE_RECIPE:
-      const { position } = action;
+      const { recipeId } = action;
       const currentRecipes = state.userRecipes;
-      const updatedRecipesArray = [
-        ...currentRecipes.slice(0, position),
-        ...currentRecipes.slice(position + 1)
-      ];
+      const updatedRecipesArray = currentRecipes.filter(recipe => recipe.id !== recipeId);
       return { ...state, userRecipes: updatedRecipesArray };
     case types.GET_RECIPE_DATA:
       return { ...state, isLoading: action.isLoading };
@@ -134,11 +130,8 @@ function recipeReducer(state = initialState, action) {
       return { ...state, voteError: action.payload };
     case types.FAVORITE_RECIPE_SUCCESS:
       if (action.payload === 'Recipe removed from favorites') {
-        const indexPosition = state.favoriteRecipesIds.indexOf(action.recipeId);
-        const updatedRecipesIdsArray = [
-          ...state.favoriteRecipesIds.slice(0, indexPosition),
-          ...state.favoriteRecipesIds.slice(indexPosition + 1)
-        ];
+        const newFavoriteRecipesIds = [...state.favoriteRecipesIds];
+        const updatedRecipesIdsArray = newFavoriteRecipesIds.filter(ids => ids !== action.recipeId);
         return { ...state, favMessage: action.payload, favoriteRecipesIds: updatedRecipesIdsArray };
       }
       return {
@@ -163,12 +156,11 @@ function recipeReducer(state = initialState, action) {
     case types.GET_USER_FAVORITE_RECIPE_FAILURE:
       return { ...state, isLoading: action.isLoading, favError: action.payload };
     case types.FAVORITE_A_RECIPE_SUCCESS:
-      const arrayIndex = action.index;
+      const { id } = action;
+      const { favorited } = state.favoriteRecipes;
+      const newFavorites = favorited.filter(favorite => favorite.recipeId !== id);
       const updatedFavoriteRecipes = {
-        favorited: [
-          ...state.favoriteRecipes.favorited.slice(0, arrayIndex),
-          ...state.favoriteRecipes.favorited.slice(arrayIndex + 1)
-        ]
+        favorited: newFavorites
       };
       return { ...state, favoriteRecipes: updatedFavoriteRecipes };
     case types.FAVORITE_A_RECIPE_FAILURE:

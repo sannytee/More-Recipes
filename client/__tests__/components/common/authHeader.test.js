@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { AuthHeader } from '../../../components/common/authHeader';
+import { AuthHeader } from '../../../components/common/AuthHeader';
 import MockData from '../../__mocks__/actions/recipes';
 
 
@@ -71,9 +71,11 @@ describe('AuthHeader Component', () => {
   it('should clear error when input field is focused on', () => {
     const wrapper = setup();
     const action = wrapper.instance();
+    wrapper.setState({ errorMessage: 'Upload an image' });
     const clearError = jest.spyOn(action, 'onFocus');
     action.onFocus({ preventDefault: () => {} });
     expect(clearError).toBeCalled();
+    expect(wrapper.state('errorMessage')).toBe('');
   });
 
   it('should set state of value when `onSearchChange` method is called', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Paginate from '../../../components/pagination/index';
+import Pagination from '../../../components/pagination';
 
 
 let props;
@@ -11,7 +11,7 @@ const setup = () => {
     page: 2,
   };
 
-  return shallow(<Paginate {...props} />);
+  return shallow(<Pagination {...props} />);
 };
 
 describe('Pagination Component', () => {

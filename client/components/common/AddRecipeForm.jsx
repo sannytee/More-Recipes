@@ -161,6 +161,7 @@ const AddRecipeForm = props => (
               </label>
               <textarea
                 name="method"
+                placeholder="separate each method with a newline"
                 required
                 onChange={props.handleChange}
                 onFocus={props.onFocus}

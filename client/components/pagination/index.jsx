@@ -6,7 +6,7 @@ const propTypes = {
   page: PropTypes.number.isRequired,
 };
 
-const Paginate = props => (
+const Pagination = props => (
   <div className="container">
     <ReactPaginate
       previousLabel="Previous"
@@ -29,7 +29,7 @@ const Paginate = props => (
   </div>
 );
 
-Paginate.propTypes = propTypes;
+Pagination.propTypes = propTypes;
 
-export default Paginate;
+export default Pagination;
 

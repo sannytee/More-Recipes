@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Header from '../../../components/LandingPage/header';
+import Header from '../../../components/LandingPage/Header';
 
 
 describe('Header Component', () => {

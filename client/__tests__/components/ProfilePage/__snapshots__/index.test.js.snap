@@ -47,8 +47,7 @@ exports[`ProfilePage Component should render correctly 1`] = `
             >
               <img
                 alt="profile"
-                clasName="img-fluid rounded-circle"
-                className="user-image"
+                className="img-fluid user-image rounded-circle"
                 src="test"
                 style={
                   Object {

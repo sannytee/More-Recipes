@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Spinner } from 'react-preloading-component';
-import { FavoriteRecipePage } from '../../../components/MyFavoriteRecipePage/index';
+import { MyFavoriteRecipePage } from '../../../components/MyFavoriteRecipePage';
 import MockData from '../../__mocks__/actions/recipes';
 
 
@@ -67,7 +67,7 @@ const setup = () => {
     isLoading: false
   };
 
-  return shallow(<FavoriteRecipePage {...props} />);
+  return shallow(<MyFavoriteRecipePage {...props} />);
 };
 
 localStorage.clear = () => {};

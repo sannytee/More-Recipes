@@ -12,7 +12,7 @@ exports[`RecipePage component should render correctly for logged in user 1`] = `
       <div
         className="row"
       >
-        <recipeCardGrid
+        <RecipeCardGrid
           allRecipes={
             Array [
               Object {
@@ -79,7 +79,7 @@ boil the water",
             ]
           }
         />
-        <popularRecipeCardList
+        <PopularRecipeCardList
           popularRecipes={
             Array [
               Object {
@@ -184,7 +184,7 @@ slice the fruits into small pieces",
   <div
     className="sticky-paginate"
   >
-    <Paginate
+    <Pagination
       handlePaginationChange={[Function]}
       page={2}
     />
@@ -205,7 +205,7 @@ exports[`RecipePage component should render correctly for user not logged in 1`]
       <div
         className="row"
       >
-        <recipeCardGrid
+        <RecipeCardGrid
           allRecipes={
             Array [
               Object {
@@ -272,7 +272,7 @@ boil the water",
             ]
           }
         />
-        <popularRecipeCardList
+        <PopularRecipeCardList
           popularRecipes={
             Array [
               Object {
@@ -377,7 +377,7 @@ slice the fruits into small pieces",
   <div
     className="sticky-paginate"
   >
-    <Paginate
+    <Pagination
       handlePaginationChange={[Function]}
       page={2}
     />

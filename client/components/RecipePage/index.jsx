@@ -13,18 +13,18 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Spinner } from 'react-preloading-component';
-import Paginate from '../pagination/index';
-import Header from '../common/header';
-import AuthHeader from '../common/authHeader';
-import Footer from '../common/footer';
-import RecipeCardGrid from './recipeCardGrid';
-import PopularRecipeCardList from './popularRecipeCardList';
+import Pagination from '../Pagination';
+import Header from '../common/Header';
+import AuthHeader from '../common/AuthHeader';
+import Footer from '../common/Footer';
+import RecipeCardGrid from './RecipeCardGrid';
+import PopularRecipeCardList from './PopularRecipeCardList';
 import {
   getAllRecipesAction,
   getPopularRecipesAction
 } from '../../actionsCreator/recipes';
-import { changeAuthAction } from '../../actions/authAction';
-import verifyUser from '../../util/Authentication';
+import { changeAuthAction } from '../../actions/signoutAction';
+import verifyUser from '../../util/verifyUser';
 import setToken from '../../util/setToken';
 
 const propTypes = {
@@ -161,7 +161,7 @@ export class RecipePage extends Component {
           </div>
         </div>
         <div className="sticky-paginate">
-          <Paginate
+          <Pagination
             handlePaginationChange={this.handlePaginationChange}
             page={this.props.page}
           />

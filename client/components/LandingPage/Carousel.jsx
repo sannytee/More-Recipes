@@ -3,7 +3,7 @@ import banner from '../../public/images/banner-img-4.jpg';
 import bannerTwo from '../../public/images/banner-img-2.jpg';
 import bannerOne from '../../public/images/banner-img-1.jpg';
 
-const carousel = () => (
+const Carousel = () => (
   <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
     <ol className="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" className="" />
@@ -51,4 +51,4 @@ const carousel = () => (
   </div>
 );
 
-export default carousel;
+export default Carousel;

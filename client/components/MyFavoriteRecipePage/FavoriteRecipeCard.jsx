@@ -17,7 +17,6 @@ const propTypes = {
     image: PropTypes.string,
     recipeName: PropTypes.string
   }).isRequired,
-  index: PropTypes.number.isRequired,
 };
 
 /**
@@ -45,8 +44,7 @@ export class FavoriteRecipeCard extends Component {
   favoriteRecipe() {
     const {
       userId,
-      recipe,
-      index
+      recipe
     } = this.props;
     const data = {
       recipeId: recipe.id
@@ -66,7 +64,7 @@ export class FavoriteRecipeCard extends Component {
       reverseButtons: true
     }).then((result) => {
       if (result.value) {
-        this.props.actions.favoriteARecipe(userId, data, index);
+        this.props.actions.favoriteARecipe(userId, data);
       } else if (
         result.dismiss === alert.DismissReason.cancel
       ) {

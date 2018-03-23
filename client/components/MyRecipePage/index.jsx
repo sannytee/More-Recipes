@@ -14,14 +14,14 @@ import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
 import firebase from 'firebase';
 import { Spinner } from 'react-preloading-component';
-import Header from '../common/authHeader';
-import Footer from '../common/footer';
+import Header from '../common/AuthHeader';
+import Footer from '../common/Footer';
 import { MyRecipeCard } from './MyRecipeCard';
 import EditRecipeModal from './EditRecipeModal';
-import DeleteRecipeModal from './deleteRecipeModal';
-import { logoutAction } from '../../actions/authAction';
-import verifyUser from '../../util/Authentication';
-import Paginate from '../pagination/index';
+import DeleteRecipeModal from './DeleteRecipeModal';
+import { logoutAction } from '../../actions/signoutAction';
+import verifyUser from '../../util/verifyUser';
+import Pagination from '../Pagination';
 import {
   getUserRecipes,
   editRecipeAction,
@@ -64,7 +64,6 @@ export class MyRecipePage extends Component {
       recipe: {
         recipeName: '',
       },
-      index: '',
       errorMessage: '',
       progress: 0,
       isUploading: false,
@@ -118,7 +117,6 @@ export class MyRecipePage extends Component {
   setRecipe(index) {
     this.setState({
       recipe: this.props.userRecipes[index],
-      index,
     });
   }
 
@@ -130,8 +128,8 @@ export class MyRecipePage extends Component {
    * @returns {void}
   */
   handleDeletion() {
-    const { recipe, index } = this.state;
-    this.props.actions.deleteRecipeAction(recipe.id, index)
+    const { recipe } = this.state;
+    this.props.actions.deleteRecipeAction(recipe.id)
       .then(() => {
         toastr.success('Recipe successfully deleted');
         $('#deleteModal').modal('hide');
@@ -148,9 +146,9 @@ export class MyRecipePage extends Component {
    * @returns {void}
   */
   handleSubmit(event) {
-    const { recipe, index } = this.state;
+    const { recipe } = this.state;
     event.preventDefault();
-    this.props.actions.editRecipeAction(recipe.id, recipe, index)
+    this.props.actions.editRecipeAction(recipe.id, recipe)
       .then(() => {
         toastr.success('Recipe successfully updated');
         $('#editModal').modal('hide');
@@ -282,10 +280,10 @@ export class MyRecipePage extends Component {
       );
     }
 
-    return this.props.userRecipes.map((recipes, i) => (
+    return this.props.userRecipes.map((recipes, index) => (
       <MyRecipeCard
         key={recipes.id}
-        index={i}
+        index={index}
         recipeDetails={recipes}
         getRecipe={this.setRecipe}
       />
@@ -337,7 +335,7 @@ export class MyRecipePage extends Component {
           pages === 1 || userRecipes.length === 0 ? <div />
           :
           <div className="sticky-paginate">
-            <Paginate
+            <Pagination
               page={this.props.pages}
               handlePaginationChange={this.handlePaginationChange}
             />

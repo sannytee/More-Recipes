@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Header from '../../../components/SigninPage/header';
+import Header from '../../../components/SigninPage/Header';
 
 describe('Header Component', () => {
   it('should render correctly', () => {

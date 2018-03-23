@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { RecipePage } from '../../../components/RecipePage/index';
+import { RecipePage } from '../../../components/RecipePage';
 import MockData from '../../__mocks__/actions/recipes';
 
 let props;

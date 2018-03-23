@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import Header from '../../../components/SignupPage/header';
+import Header from '../../../components/SignupPage/Header';
 
 
 describe('Header Component', () => {

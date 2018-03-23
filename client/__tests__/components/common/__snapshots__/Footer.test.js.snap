@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Component should render correctly 1`] = `
+<footer
+  className="footer-section"
+  id="footer-below"
+>
+  <div
+    className="container"
+  >
+    <strong
+      className="copyright"
+    >
+      More-Recipes © 2018, All Rights Reserved, Design & Developed By: SannyTee
+    </strong>
+  </div>
+</footer>
+`;

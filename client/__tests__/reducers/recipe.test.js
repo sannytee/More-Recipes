@@ -169,13 +169,12 @@ describe('Recipe Reducer', () => {
           updatedAt: '2018-03-10T21:13:05.249Z'
         }
       },
-      index: 1
+      identifier: 3
     };
     const recipeState = initialState;
     recipeState.recipes = allRecipes;
     const newState = RecipeReducer(recipeState, action);
-    expect(newState.recipes[action.index].upvotes).toEqual(action.payload.recipe.upvotes);
-    expect(newState.recipes[action.index].downvotes).toEqual(action.payload.recipe.downvotes);
+    expect(newState.recipes[1]).toEqual(action.payload.recipe);
   });
 
   it('should set recipes and userRecipes when CREATE_RECIPE is called', () => {
@@ -281,18 +280,17 @@ describe('Recipe Reducer', () => {
         },
         message: 'Recipe successfully updated'
       },
-      index: 0
     };
     const testState = initialState;
-    testState.recipes = allRecipes;
+    testState.userRecipes = allRecipes;
     const newState = RecipeReducer(testState, action);
-    expect(newState.userRecipes[action.index]).toEqual(action.payload.Recipe);
+    expect(newState.userRecipes[0]).toEqual(action.payload.Recipe);
   });
 
   it('should set userRecipes when DELETE_RECIPE is passed', () => {
     const action = {
       type: types.DELETE_RECIPE,
-      position: 0
+      recipeId: 1
     };
     const stateWithUserRecipes = initialState;
     stateWithUserRecipes.userRecipes = allRecipes;

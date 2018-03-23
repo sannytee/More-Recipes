@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Spinner } from 'react-preloading-component';
-import { RecipeDetailsPage } from '../../../components/RecipeDetailsPage/index';
+import { RecipeDetailsPage } from '../../../components/RecipeDetailsPage';
 import RecipeInfo from '../../../components/RecipeDetailsPage/RecipeInfo';
 import Reviews from '../../../components/RecipeDetailsPage/Reviews';
 import MockData from '../../__mocks__/actions/recipes';

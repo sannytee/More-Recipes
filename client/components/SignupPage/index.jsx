@@ -7,9 +7,9 @@ import {
   signUpAction,
   resetUserError
 } from '../../actionsCreator/signup';
-import Header from './header.jsx';
-import Form from './form.jsx';
-import Footer from '../common/footer.jsx';
+import Header from './Header';
+import Form from './Form';
+import Footer from '../common/Footer';
 import img from '../../public/images/banner-img-2.jpg';
 
 
