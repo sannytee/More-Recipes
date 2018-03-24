@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import App from './components/app';
+import App from './components/App';
 import LandingPage from './components/LandingPage';
 import SigninPage from './components/SigninPage';
 import SignupComponent from './components/SignupPage';
@@ -9,8 +9,8 @@ import myRecipePage from './components/MyRecipePage';
 import recipeDetailsPage from './components/RecipeDetailsPage';
 import FavoriteRecipePage from './components/MyFavoriteRecipePage';
 import ProfilePage from './components/ProfilePage';
-import checkUserState from './middlewares/checkUserState';
-import NotFound from './components/common/notFound';
+import checkUserState from './middlewares/CheckUserState';
+import NotFound from './components/common/NotFound';
 
 export default (
   <Route path="/" component={App}>
