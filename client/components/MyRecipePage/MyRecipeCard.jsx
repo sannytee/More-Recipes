@@ -81,6 +81,7 @@ export class MyRecipeCard extends Component {
               <div style={{ display: 'inline-flex', marginTop: '10px' }}>
                 <div>
                   <button
+                    id="modalEdit"
                     data-tip
                     data-for="edit"
                     data-toggle="modal"

@@ -62,7 +62,7 @@ exports[`AddRecipeForm Component should render correctly 1`] = `
             </label>
             <input
               className="form-control"
-              id="recipient-name"
+              id="recipe-name"
               name="recipeName"
               onChange={[MockFunction]}
               onFocus={[MockFunction]}
@@ -305,7 +305,7 @@ exports[`AddRecipeForm Component should render error if error exists 1`] = `
             </label>
             <input
               className="form-control"
-              id="recipient-name"
+              id="recipe-name"
               name="recipeName"
               onChange={[MockFunction]}
               onFocus={[MockFunction]}

@@ -1,278 +1,2079 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MyRecipePage Component should render correctly 1`] = `
-<div>
-  <Connect(AuthHeader)
-    user={
-      Object {
-        "createdAt": "2018-02-19T15:54:05.322Z",
-        "email": "tester@test.com",
-        "id": 1,
-        "image": null,
-        "username": "sannytee",
-      }
+<MyRecipePage
+  actions={
+    Object {
+      "deleteRecipeAction": [MockFunction],
+      "editRecipeAction": [MockFunction],
+      "getUserRecipes": [Function],
+      "logoutAction": [Function],
     }
-  />
-  <div
-    className="container"
-  >
+  }
+  isLoading={false}
+  pages={2}
+  user={
+    Object {
+      "createdAt": "2018-02-19T15:54:05.322Z",
+      "email": "tester@test.com",
+      "id": 1,
+      "image": null,
+      "username": "sannytee",
+    }
+  }
+  userRecipes={
+    Array [
+      Object {
+        "addedBy": "sannytee",
+        "createdAt": "2018-03-10T23:12:44.072Z",
+        "description": "amazing",
+        "downvotes": 0,
+        "id": 59,
+        "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F0672f71e-5018-4a19-8970-ecc6c835d827.jpg?alt=media&token=a9730299-fad9-45ba-a07f-3ef5742f9092",
+        "ingredients": "indomie",
+        "mealType": "breakfast",
+        "method": "google it",
+        "recipeName": "indomie",
+        "updatedAt": "2018-03-11T08:24:52.021Z",
+        "upvotes": 1,
+        "userId": 1,
+      },
+      Object {
+        "addedBy": "sannytee",
+        "createdAt": "2018-02-20T10:10:45.197Z",
+        "description": "amazing recipe",
+        "downvotes": 0,
+        "id": 26,
+        "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+        "ingredients": "rice,chicken,rice,chicken",
+        "mealType": "lunch",
+        "method": "research on that",
+        "recipeName": "rice and chicken",
+        "updatedAt": "2018-03-14T09:51:21.150Z",
+        "upvotes": 2,
+        "userId": 1,
+      },
+      Object {
+        "addedBy": "sannytee",
+        "createdAt": "2018-02-20T10:11:25.020Z",
+        "description": "amazing",
+        "downvotes": 0,
+        "id": 27,
+        "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+        "ingredients": "awesome",
+        "mealType": "breakfast",
+        "method": "great",
+        "recipeName": "new recipe",
+        "updatedAt": "2018-03-14T09:54:11.869Z",
+        "upvotes": 1,
+        "userId": 1,
+      },
+    ]
+  }
+>
+  <div>
+    <mockConstructor
+      user={
+        Object {
+          "createdAt": "2018-02-19T15:54:05.322Z",
+          "email": "tester@test.com",
+          "id": 1,
+          "image": null,
+          "username": "sannytee",
+        }
+      }
+    >
+      <div />
+    </mockConstructor>
     <div
-      className="row section-popular"
+      className="container"
     >
       <div
-        className="col-sm-12"
+        className="row section-popular"
       >
-        <h2
-          className="pt-3 headline centered"
+        <div
+          className="col-sm-12"
         >
-          My Recipes
-        </h2>
+          <h2
+            className="pt-3 headline centered"
+          >
+            My Recipes
+          </h2>
+        </div>
       </div>
+      <div
+        className="row pt-4"
+      >
+        <MyRecipeCard
+          getRecipe={[Function]}
+          index={0}
+          key="59"
+          recipeDetails={
+            Object {
+              "addedBy": "sannytee",
+              "createdAt": "2018-03-10T23:12:44.072Z",
+              "description": "amazing",
+              "downvotes": 0,
+              "id": 59,
+              "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F0672f71e-5018-4a19-8970-ecc6c835d827.jpg?alt=media&token=a9730299-fad9-45ba-a07f-3ef5742f9092",
+              "ingredients": "indomie",
+              "mealType": "breakfast",
+              "method": "google it",
+              "recipeName": "indomie",
+              "updatedAt": "2018-03-11T08:24:52.021Z",
+              "upvotes": 1,
+              "userId": 1,
+            }
+          }
+        >
+          <div
+            className="col-md-4 card-space"
+          >
+            <div
+              className="card-deck"
+            >
+              <article
+                className="card recipe-card"
+              >
+                <div
+                  className="my-recipe-img"
+                >
+                  <img
+                    alt="recipe"
+                    className="card-img-top img-fluid recipe-card-img"
+                    src="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F0672f71e-5018-4a19-8970-ecc6c835d827.jpg?alt=media&token=a9730299-fad9-45ba-a07f-3ef5742f9092"
+                  />
+                </div>
+                <div
+                  className="card-body"
+                >
+                  <h3
+                    className="card-title"
+                  >
+                    <Link
+                      id="remove-link"
+                      onlyActiveOnIndex={false}
+                      style={Object {}}
+                      to="/recipes/59"
+                    >
+                      <a
+                        id="remove-link"
+                        onClick={[Function]}
+                        style={Object {}}
+                      >
+                        indomie
+                      </a>
+                    </Link>
+                  </h3>
+                </div>
+                <div>
+                  <div
+                    style={
+                      Object {
+                        "display": "inline-flex",
+                        "marginTop": "10px",
+                      }
+                    }
+                  >
+                    <div>
+                      <button
+                        className="btn edit-btn"
+                        data-for="edit"
+                        data-target="#editModal"
+                        data-tip={true}
+                        data-toggle="modal"
+                        id="modalEdit"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="fa fa-pencil-square-o fa-lg"
+                        />
+                      </button>
+                      <ReactTooltip
+                        id="edit"
+                        insecure={true}
+                        place="left"
+                        resizeHide={true}
+                        type="dark"
+                        wrapper="div"
+                      >
+                        <div
+                          className="__react_component_tooltip place-top type-dark "
+                          data-id="tooltip"
+                        />
+                      </ReactTooltip>
+                    </div>
+                    <div
+                      style={
+                        Object {
+                          "marginLeft": "20px",
+                        }
+                      }
+                    >
+                      <button
+                        className="btn btn-danger"
+                        data-for="delete"
+                        data-target="#deleteModal"
+                        data-tip={true}
+                        data-toggle="modal"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="fa fa-trash-o fa-lg"
+                        />
+                      </button>
+                      <ReactTooltip
+                        id="delete"
+                        insecure={true}
+                        place="right"
+                        resizeHide={true}
+                        type="dark"
+                        wrapper="div"
+                      >
+                        <div
+                          className="__react_component_tooltip place-top type-dark "
+                          data-id="tooltip"
+                        />
+                      </ReactTooltip>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </MyRecipeCard>
+        <MyRecipeCard
+          getRecipe={[Function]}
+          index={1}
+          key="26"
+          recipeDetails={
+            Object {
+              "addedBy": "sannytee",
+              "createdAt": "2018-02-20T10:10:45.197Z",
+              "description": "amazing recipe",
+              "downvotes": 0,
+              "id": 26,
+              "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+              "ingredients": "rice,chicken,rice,chicken",
+              "mealType": "lunch",
+              "method": "research on that",
+              "recipeName": "rice and chicken",
+              "updatedAt": "2018-03-14T09:51:21.150Z",
+              "upvotes": 2,
+              "userId": 1,
+            }
+          }
+        >
+          <div
+            className="col-md-4 card-space"
+          >
+            <div
+              className="card-deck"
+            >
+              <article
+                className="card recipe-card"
+              >
+                <div
+                  className="my-recipe-img"
+                >
+                  <img
+                    alt="recipe"
+                    className="card-img-top img-fluid recipe-card-img"
+                    src="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212"
+                  />
+                </div>
+                <div
+                  className="card-body"
+                >
+                  <h3
+                    className="card-title"
+                  >
+                    <Link
+                      id="remove-link"
+                      onlyActiveOnIndex={false}
+                      style={Object {}}
+                      to="/recipes/26"
+                    >
+                      <a
+                        id="remove-link"
+                        onClick={[Function]}
+                        style={Object {}}
+                      >
+                        rice and chicken
+                      </a>
+                    </Link>
+                  </h3>
+                </div>
+                <div>
+                  <div
+                    style={
+                      Object {
+                        "display": "inline-flex",
+                        "marginTop": "10px",
+                      }
+                    }
+                  >
+                    <div>
+                      <button
+                        className="btn edit-btn"
+                        data-for="edit"
+                        data-target="#editModal"
+                        data-tip={true}
+                        data-toggle="modal"
+                        id="modalEdit"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="fa fa-pencil-square-o fa-lg"
+                        />
+                      </button>
+                      <ReactTooltip
+                        id="edit"
+                        insecure={true}
+                        place="left"
+                        resizeHide={true}
+                        type="dark"
+                        wrapper="div"
+                      >
+                        <div
+                          className="__react_component_tooltip place-top type-dark "
+                          data-id="tooltip"
+                        />
+                      </ReactTooltip>
+                    </div>
+                    <div
+                      style={
+                        Object {
+                          "marginLeft": "20px",
+                        }
+                      }
+                    >
+                      <button
+                        className="btn btn-danger"
+                        data-for="delete"
+                        data-target="#deleteModal"
+                        data-tip={true}
+                        data-toggle="modal"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="fa fa-trash-o fa-lg"
+                        />
+                      </button>
+                      <ReactTooltip
+                        id="delete"
+                        insecure={true}
+                        place="right"
+                        resizeHide={true}
+                        type="dark"
+                        wrapper="div"
+                      >
+                        <div
+                          className="__react_component_tooltip place-top type-dark "
+                          data-id="tooltip"
+                        />
+                      </ReactTooltip>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </MyRecipeCard>
+        <MyRecipeCard
+          getRecipe={[Function]}
+          index={2}
+          key="27"
+          recipeDetails={
+            Object {
+              "addedBy": "sannytee",
+              "createdAt": "2018-02-20T10:11:25.020Z",
+              "description": "amazing",
+              "downvotes": 0,
+              "id": 27,
+              "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+              "ingredients": "awesome",
+              "mealType": "breakfast",
+              "method": "great",
+              "recipeName": "new recipe",
+              "updatedAt": "2018-03-14T09:54:11.869Z",
+              "upvotes": 1,
+              "userId": 1,
+            }
+          }
+        >
+          <div
+            className="col-md-4 card-space"
+          >
+            <div
+              className="card-deck"
+            >
+              <article
+                className="card recipe-card"
+              >
+                <div
+                  className="my-recipe-img"
+                >
+                  <img
+                    alt="recipe"
+                    className="card-img-top img-fluid recipe-card-img"
+                    src="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212"
+                  />
+                </div>
+                <div
+                  className="card-body"
+                >
+                  <h3
+                    className="card-title"
+                  >
+                    <Link
+                      id="remove-link"
+                      onlyActiveOnIndex={false}
+                      style={Object {}}
+                      to="/recipes/27"
+                    >
+                      <a
+                        id="remove-link"
+                        onClick={[Function]}
+                        style={Object {}}
+                      >
+                        new recipe
+                      </a>
+                    </Link>
+                  </h3>
+                </div>
+                <div>
+                  <div
+                    style={
+                      Object {
+                        "display": "inline-flex",
+                        "marginTop": "10px",
+                      }
+                    }
+                  >
+                    <div>
+                      <button
+                        className="btn edit-btn"
+                        data-for="edit"
+                        data-target="#editModal"
+                        data-tip={true}
+                        data-toggle="modal"
+                        id="modalEdit"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="fa fa-pencil-square-o fa-lg"
+                        />
+                      </button>
+                      <ReactTooltip
+                        id="edit"
+                        insecure={true}
+                        place="left"
+                        resizeHide={true}
+                        type="dark"
+                        wrapper="div"
+                      >
+                        <div
+                          className="__react_component_tooltip place-top type-dark "
+                          data-id="tooltip"
+                        />
+                      </ReactTooltip>
+                    </div>
+                    <div
+                      style={
+                        Object {
+                          "marginLeft": "20px",
+                        }
+                      }
+                    >
+                      <button
+                        className="btn btn-danger"
+                        data-for="delete"
+                        data-target="#deleteModal"
+                        data-tip={true}
+                        data-toggle="modal"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="fa fa-trash-o fa-lg"
+                        />
+                      </button>
+                      <ReactTooltip
+                        id="delete"
+                        insecure={true}
+                        place="right"
+                        resizeHide={true}
+                        type="dark"
+                        wrapper="div"
+                      >
+                        <div
+                          className="__react_component_tooltip place-top type-dark "
+                          data-id="tooltip"
+                        />
+                      </ReactTooltip>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </MyRecipeCard>
+      </div>
+      <EditRecipeModal
+        details={
+          Object {
+            "recipeName": "",
+          }
+        }
+        errorMessage=""
+        handleChange={[Function]}
+        handleSubmit={[Function]}
+        isUploading={false}
+        onFocus={[Function]}
+        progress={0}
+        startUpload={[Function]}
+        upload={[Function]}
+      >
+        <div
+          aria-hidden="true"
+          aria-labelledby="editModalLabel"
+          className="modal fade"
+          data-backdrop="static"
+          id="editModal"
+          role="dialog"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+          tabIndex="-1"
+        >
+          <div
+            className="modal-dialog"
+            role="document"
+          >
+            <div
+              className="modal-content"
+            >
+              <div
+                className="modal-header black"
+              >
+                <h5
+                  className="modal-title black"
+                  id="editModalLabel"
+                >
+                  Edit Recipe
+                </h5>
+                <button
+                  aria-label="Close"
+                  className="close"
+                  data-dismiss="modal"
+                  type="button"
+                >
+                  <span
+                    aria-hidden="true"
+                  >
+                    ×
+                  </span>
+                </button>
+              </div>
+              <div
+                className="modal-body"
+              >
+                <form
+                  id="editRecipeForm"
+                  onSubmit={[Function]}
+                >
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="recipient-name"
+                    >
+                      Title:
+                    </label>
+                    <input
+                      className="form-control"
+                      id="recipeName"
+                      name="recipeName"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      required={true}
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="message-text"
+                    >
+                      Description:
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="message-text"
+                      name="description"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      required={true}
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="image"
+                    >
+                      Image:
+                    </label>
+                    <mockConstructor
+                      name="image"
+                      onUploadStart={[Function]}
+                      onUploadSuccess={[Function]}
+                      storageRef={
+                        Object {
+                          "ref": [MockFunction] {
+                            "calls": Array [
+                              Array [
+                                "images",
+                              ],
+                            ],
+                          },
+                          "storage": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                            ],
+                          },
+                        }
+                      }
+                    >
+                      <div />
+                    </mockConstructor>
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="type-text"
+                    >
+                      Type of meal:
+                    </label>
+                    <select
+                      className="form-control"
+                      id="type-text"
+                      name="mealType"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      required={true}
+                    >
+                      <option
+                        value="breakfast"
+                      >
+                        Breakfast
+                      </option>
+                      <option
+                        value="brunch"
+                      >
+                        Brunch
+                      </option>
+                      <option
+                        value="elevenses"
+                      >
+                        Elevenses
+                      </option>
+                      <option
+                        value="lunch"
+                      >
+                        Lunch
+                      </option>
+                      <option
+                        value="tea"
+                      >
+                        Tea
+                      </option>
+                      <option
+                        value="supper"
+                      >
+                        Supper
+                      </option>
+                      <option
+                        value="dinner"
+                      >
+                        Dinner
+                      </option>
+                    </select>
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="ingredients-text"
+                    >
+                      ingredients:
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="ingredients"
+                      name="ingredients"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      placeholder="separate each ingredient with a comma"
+                      required={true}
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="method-text"
+                    >
+                      Method of cooking:
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="method-text"
+                      name="method"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      required={true}
+                    />
+                  </div>
+                  <div
+                    className="modal-footer"
+                  >
+                    <button
+                      className="btn btn-secondary"
+                      data-dismiss="modal"
+                      type="button"
+                    >
+                      Close
+                    </button>
+                    <button
+                      className="btn vote-button"
+                      id="editButton"
+                      type="submit"
+                    >
+                      Update Recipe
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </EditRecipeModal>
+      <DeleteRecipeModal
+        handleDeletion={[Function]}
+      >
+        <div
+          aria-hidden="true"
+          aria-labelledby="deleteModalLabel"
+          className="modal fade"
+          data-backdrop="static"
+          id="deleteModal"
+          role="dialog"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+          tabIndex="-1"
+        >
+          <div
+            className="modal-dialog"
+            role="document"
+          >
+            <div
+              className="modal-content"
+            >
+              <div
+                className="modal-header black"
+              >
+                <h5
+                  className="modal-title black"
+                  id="deleteModalLabel"
+                >
+                  Delete recipe
+                </h5>
+                <button
+                  aria-label="Close"
+                  className="close"
+                  data-dismiss="modal"
+                  type="button"
+                >
+                  <span
+                    aria-hidden="true"
+                  >
+                    ×
+                  </span>
+                </button>
+              </div>
+              <div
+                className="modal-body"
+              >
+                This action cannot be reversed, proceed with caution.
+              </div>
+              <div
+                className="modal-footer"
+              >
+                <button
+                  className="btn btn-danger"
+                  id="deleteButton"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Delete
+                </button>
+                <button
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                  type="button"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </DeleteRecipeModal>
     </div>
     <div
-      className="row pt-4"
+      className="sticky-paginate"
     >
-      <MyRecipeCard
-        getRecipe={[Function]}
-        index={0}
-        key="59"
-        recipeDetails={
-          Object {
-            "addedBy": "sannytee",
-            "createdAt": "2018-03-10T23:12:44.072Z",
-            "description": "amazing",
-            "downvotes": 0,
-            "id": 59,
-            "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F0672f71e-5018-4a19-8970-ecc6c835d827.jpg?alt=media&token=a9730299-fad9-45ba-a07f-3ef5742f9092",
-            "ingredients": "indomie",
-            "mealType": "breakfast",
-            "method": "google it",
-            "recipeName": "indomie",
-            "updatedAt": "2018-03-11T08:24:52.021Z",
-            "upvotes": 1,
-            "userId": 1,
-          }
-        }
-      />
-      <MyRecipeCard
-        getRecipe={[Function]}
-        index={1}
-        key="26"
-        recipeDetails={
-          Object {
-            "addedBy": "sannytee",
-            "createdAt": "2018-02-20T10:10:45.197Z",
-            "description": "amazing recipe",
-            "downvotes": 0,
-            "id": 26,
-            "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
-            "ingredients": "rice,chicken,rice,chicken",
-            "mealType": "lunch",
-            "method": "research on that",
-            "recipeName": "rice and chicken",
-            "updatedAt": "2018-03-14T09:51:21.150Z",
-            "upvotes": 2,
-            "userId": 1,
-          }
-        }
-      />
-      <MyRecipeCard
-        getRecipe={[Function]}
-        index={2}
-        key="27"
-        recipeDetails={
-          Object {
-            "addedBy": "sannytee",
-            "createdAt": "2018-02-20T10:11:25.020Z",
-            "description": "amazing",
-            "downvotes": 0,
-            "id": 27,
-            "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
-            "ingredients": "awesome",
-            "mealType": "breakfast",
-            "method": "great",
-            "recipeName": "new recipe",
-            "updatedAt": "2018-03-14T09:54:11.869Z",
-            "upvotes": 1,
-            "userId": 1,
-          }
-        }
-      />
+      <Pagination
+        handlePaginationChange={[Function]}
+        page={2}
+      >
+        <div
+          className="container"
+        >
+          <PaginationBoxView
+            activeClassName="active"
+            breakClassName="page-link"
+            breakLabel={
+              <a
+                href=""
+              >
+                ...
+              </a>
+            }
+            containerClassName="pagination custom-pagination"
+            disableInitialCallback={false}
+            disabledClassName="disabled"
+            marginPagesDisplayed={3}
+            nextClassName="page-item"
+            nextLabel="Next"
+            nextLinkClassName="page-link custom-link"
+            onPageChange={[Function]}
+            pageClassName="page-item"
+            pageCount={2}
+            pageLinkClassName="page-link custom-link"
+            pageRangeDisplayed={2}
+            previousClassName="page-item"
+            previousLabel="Previous"
+            previousLinkClassName="page-link custom-link"
+            subContainerClassName="pages pagination"
+          >
+            <ul
+              className="pagination custom-pagination"
+            >
+              <li
+                className="page-item disabled"
+              >
+                <a
+                  className="page-link custom-link"
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  tabIndex="0"
+                >
+                  Previous
+                </a>
+              </li>
+              <PageView
+                activeClassName="active"
+                key="key0/.0"
+                onClick={[Function]}
+                page={1}
+                pageClassName="page-item"
+                pageLinkClassName="page-link custom-link"
+                selected={true}
+              >
+                <li
+                  className="page-item active"
+                >
+                  <a
+                    aria-current="page"
+                    aria-label="Page 1 is your current page"
+                    className="page-link custom-link"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="0"
+                  >
+                    1
+                  </a>
+                </li>
+              </PageView>
+              <PageView
+                activeClassName="active"
+                key="key1/.0"
+                onClick={[Function]}
+                page={2}
+                pageClassName="page-item"
+                pageLinkClassName="page-link custom-link"
+                selected={false}
+              >
+                <li
+                  className="page-item"
+                >
+                  <a
+                    aria-current={null}
+                    aria-label="Page 2"
+                    className="page-link custom-link"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="0"
+                  >
+                    2
+                  </a>
+                </li>
+              </PageView>
+              <li
+                className="page-item"
+              >
+                <a
+                  className="page-link custom-link"
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  tabIndex="0"
+                >
+                  Next
+                </a>
+              </li>
+            </ul>
+          </PaginationBoxView>
+        </div>
+      </Pagination>
     </div>
-    <EditRecipeModal
-      details={
-        Object {
-          "recipeName": "",
-        }
-      }
-      errorMessage=""
-      handleChange={[Function]}
-      handleSubmit={[Function]}
-      isUploading={false}
-      onFocus={[Function]}
-      progress={0}
-      startUpload={[Function]}
-      upload={[Function]}
-    />
-    <DeleteRecipeModal
-      handleDeletion={[Function]}
-    />
+    <Footer>
+      <footer
+        className="footer-section"
+        id="footer-below"
+      >
+        <div
+          className="container"
+        >
+          <strong
+            className="copyright"
+          >
+            More-Recipes © 2018, All Rights Reserved, Design & Developed By: SannyTee
+          </strong>
+        </div>
+      </footer>
+    </Footer>
   </div>
-  <div
-    className="sticky-paginate"
-  >
-    <Pagination
-      handlePaginationChange={[Function]}
-      page={2}
-    />
-  </div>
-  <Footer />
-</div>
+</MyRecipePage>
 `;
 
 exports[`MyRecipePage Component should render loader when \`isLoading\` is true 1`] = `
-<div>
-  <Connect(AuthHeader)
-    user={
-      Object {
-        "createdAt": "2018-02-19T15:54:05.322Z",
-        "email": "tester@test.com",
-        "id": 1,
-        "image": null,
-        "username": "sannytee",
-      }
+<MyRecipePage
+  actions={
+    Object {
+      "deleteRecipeAction": [MockFunction],
+      "editRecipeAction": [MockFunction],
+      "getUserRecipes": [Function],
+      "logoutAction": [Function],
     }
-  />
-  <div
-    className="container"
-  >
+  }
+  isLoading={true}
+  pages={2}
+  user={
+    Object {
+      "createdAt": "2018-02-19T15:54:05.322Z",
+      "email": "tester@test.com",
+      "id": 1,
+      "image": null,
+      "username": "sannytee",
+    }
+  }
+  userRecipes={
+    Array [
+      Object {
+        "addedBy": "sannytee",
+        "createdAt": "2018-03-10T23:12:44.072Z",
+        "description": "amazing",
+        "downvotes": 0,
+        "id": 59,
+        "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F0672f71e-5018-4a19-8970-ecc6c835d827.jpg?alt=media&token=a9730299-fad9-45ba-a07f-3ef5742f9092",
+        "ingredients": "indomie",
+        "mealType": "breakfast",
+        "method": "google it",
+        "recipeName": "indomie",
+        "updatedAt": "2018-03-11T08:24:52.021Z",
+        "upvotes": 1,
+        "userId": 1,
+      },
+      Object {
+        "addedBy": "sannytee",
+        "createdAt": "2018-02-20T10:10:45.197Z",
+        "description": "amazing recipe",
+        "downvotes": 0,
+        "id": 26,
+        "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+        "ingredients": "rice,chicken,rice,chicken",
+        "mealType": "lunch",
+        "method": "research on that",
+        "recipeName": "rice and chicken",
+        "updatedAt": "2018-03-14T09:51:21.150Z",
+        "upvotes": 2,
+        "userId": 1,
+      },
+      Object {
+        "addedBy": "sannytee",
+        "createdAt": "2018-02-20T10:11:25.020Z",
+        "description": "amazing",
+        "downvotes": 0,
+        "id": 27,
+        "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+        "ingredients": "awesome",
+        "mealType": "breakfast",
+        "method": "great",
+        "recipeName": "new recipe",
+        "updatedAt": "2018-03-14T09:54:11.869Z",
+        "upvotes": 1,
+        "userId": 1,
+      },
+    ]
+  }
+>
+  <div>
+    <mockConstructor
+      user={
+        Object {
+          "createdAt": "2018-02-19T15:54:05.322Z",
+          "email": "tester@test.com",
+          "id": 1,
+          "image": null,
+          "username": "sannytee",
+        }
+      }
+    >
+      <div />
+    </mockConstructor>
     <div
-      className="row section-popular"
+      className="container"
     >
       <div
-        className="col-sm-12"
+        className="row section-popular"
       >
-        <h2
-          className="pt-3 headline centered"
+        <div
+          className="col-sm-12"
         >
-          My Recipes
-        </h2>
+          <h2
+            className="pt-3 headline centered"
+          >
+            My Recipes
+          </h2>
+        </div>
       </div>
-    </div>
-    <div
-      className="row pt-4"
-    >
       <div
-        style={
+        className="row pt-4"
+      >
+        <div
+          style={
+            Object {
+              "marginLeft": "auto",
+              "marginRight": "auto",
+              "marginTop": "150px",
+            }
+          }
+        >
+          <n
+            color="#FF4601"
+            secondaryColor="#e6e6e6"
+            size={40}
+          >
+            <div
+              className="PreLoading-Spinner"
+            >
+              <span
+                className="Spinner-circle"
+                style={
+                  Object {
+                    "border": "6.0606060606060606px solid transparent",
+                    "borderColor": "#e6e6e6",
+                    "borderSize": 6.0606060606060606,
+                    "borderTopColor": "#FF4601",
+                    "height": 40,
+                    "width": 40,
+                  }
+                }
+              />
+            </div>
+          </n>
+        </div>
+      </div>
+      <EditRecipeModal
+        details={
           Object {
-            "marginLeft": "auto",
-            "marginRight": "auto",
-            "marginTop": "150px",
+            "recipeName": "",
           }
         }
+        errorMessage=""
+        handleChange={[Function]}
+        handleSubmit={[Function]}
+        isUploading={false}
+        onFocus={[Function]}
+        progress={0}
+        startUpload={[Function]}
+        upload={[Function]}
       >
-        <n
-          color="#FF4601"
-          secondaryColor="#e6e6e6"
-          size={40}
-        />
-      </div>
+        <div
+          aria-hidden="true"
+          aria-labelledby="editModalLabel"
+          className="modal fade"
+          data-backdrop="static"
+          id="editModal"
+          role="dialog"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+          tabIndex="-1"
+        >
+          <div
+            className="modal-dialog"
+            role="document"
+          >
+            <div
+              className="modal-content"
+            >
+              <div
+                className="modal-header black"
+              >
+                <h5
+                  className="modal-title black"
+                  id="editModalLabel"
+                >
+                  Edit Recipe
+                </h5>
+                <button
+                  aria-label="Close"
+                  className="close"
+                  data-dismiss="modal"
+                  type="button"
+                >
+                  <span
+                    aria-hidden="true"
+                  >
+                    ×
+                  </span>
+                </button>
+              </div>
+              <div
+                className="modal-body"
+              >
+                <form
+                  id="editRecipeForm"
+                  onSubmit={[Function]}
+                >
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="recipient-name"
+                    >
+                      Title:
+                    </label>
+                    <input
+                      className="form-control"
+                      id="recipeName"
+                      name="recipeName"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      required={true}
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="message-text"
+                    >
+                      Description:
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="message-text"
+                      name="description"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      required={true}
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="image"
+                    >
+                      Image:
+                    </label>
+                    <mockConstructor
+                      name="image"
+                      onUploadStart={[Function]}
+                      onUploadSuccess={[Function]}
+                      storageRef={
+                        Object {
+                          "ref": [MockFunction] {
+                            "calls": Array [
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                            ],
+                          },
+                          "storage": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                              Array [],
+                            ],
+                          },
+                        }
+                      }
+                    >
+                      <div />
+                    </mockConstructor>
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="type-text"
+                    >
+                      Type of meal:
+                    </label>
+                    <select
+                      className="form-control"
+                      id="type-text"
+                      name="mealType"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      required={true}
+                    >
+                      <option
+                        value="breakfast"
+                      >
+                        Breakfast
+                      </option>
+                      <option
+                        value="brunch"
+                      >
+                        Brunch
+                      </option>
+                      <option
+                        value="elevenses"
+                      >
+                        Elevenses
+                      </option>
+                      <option
+                        value="lunch"
+                      >
+                        Lunch
+                      </option>
+                      <option
+                        value="tea"
+                      >
+                        Tea
+                      </option>
+                      <option
+                        value="supper"
+                      >
+                        Supper
+                      </option>
+                      <option
+                        value="dinner"
+                      >
+                        Dinner
+                      </option>
+                    </select>
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="ingredients-text"
+                    >
+                      ingredients:
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="ingredients"
+                      name="ingredients"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      placeholder="separate each ingredient with a comma"
+                      required={true}
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="method-text"
+                    >
+                      Method of cooking:
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="method-text"
+                      name="method"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      required={true}
+                    />
+                  </div>
+                  <div
+                    className="modal-footer"
+                  >
+                    <button
+                      className="btn btn-secondary"
+                      data-dismiss="modal"
+                      type="button"
+                    >
+                      Close
+                    </button>
+                    <button
+                      className="btn vote-button"
+                      id="editButton"
+                      type="submit"
+                    >
+                      Update Recipe
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </EditRecipeModal>
+      <DeleteRecipeModal
+        handleDeletion={[Function]}
+      >
+        <div
+          aria-hidden="true"
+          aria-labelledby="deleteModalLabel"
+          className="modal fade"
+          data-backdrop="static"
+          id="deleteModal"
+          role="dialog"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+          tabIndex="-1"
+        >
+          <div
+            className="modal-dialog"
+            role="document"
+          >
+            <div
+              className="modal-content"
+            >
+              <div
+                className="modal-header black"
+              >
+                <h5
+                  className="modal-title black"
+                  id="deleteModalLabel"
+                >
+                  Delete recipe
+                </h5>
+                <button
+                  aria-label="Close"
+                  className="close"
+                  data-dismiss="modal"
+                  type="button"
+                >
+                  <span
+                    aria-hidden="true"
+                  >
+                    ×
+                  </span>
+                </button>
+              </div>
+              <div
+                className="modal-body"
+              >
+                This action cannot be reversed, proceed with caution.
+              </div>
+              <div
+                className="modal-footer"
+              >
+                <button
+                  className="btn btn-danger"
+                  id="deleteButton"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Delete
+                </button>
+                <button
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                  type="button"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </DeleteRecipeModal>
     </div>
-    <EditRecipeModal
-      details={
-        Object {
-          "recipeName": "",
-        }
-      }
-      errorMessage=""
-      handleChange={[Function]}
-      handleSubmit={[Function]}
-      isUploading={false}
-      onFocus={[Function]}
-      progress={0}
-      startUpload={[Function]}
-      upload={[Function]}
-    />
-    <DeleteRecipeModal
-      handleDeletion={[Function]}
-    />
+    <div
+      className="sticky-paginate"
+    >
+      <Pagination
+        handlePaginationChange={[Function]}
+        page={2}
+      >
+        <div
+          className="container"
+        >
+          <PaginationBoxView
+            activeClassName="active"
+            breakClassName="page-link"
+            breakLabel={
+              <a
+                href=""
+              >
+                ...
+              </a>
+            }
+            containerClassName="pagination custom-pagination"
+            disableInitialCallback={false}
+            disabledClassName="disabled"
+            marginPagesDisplayed={3}
+            nextClassName="page-item"
+            nextLabel="Next"
+            nextLinkClassName="page-link custom-link"
+            onPageChange={[Function]}
+            pageClassName="page-item"
+            pageCount={2}
+            pageLinkClassName="page-link custom-link"
+            pageRangeDisplayed={2}
+            previousClassName="page-item"
+            previousLabel="Previous"
+            previousLinkClassName="page-link custom-link"
+            subContainerClassName="pages pagination"
+          >
+            <ul
+              className="pagination custom-pagination"
+            >
+              <li
+                className="page-item disabled"
+              >
+                <a
+                  className="page-link custom-link"
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  tabIndex="0"
+                >
+                  Previous
+                </a>
+              </li>
+              <PageView
+                activeClassName="active"
+                key="key0/.0"
+                onClick={[Function]}
+                page={1}
+                pageClassName="page-item"
+                pageLinkClassName="page-link custom-link"
+                selected={true}
+              >
+                <li
+                  className="page-item active"
+                >
+                  <a
+                    aria-current="page"
+                    aria-label="Page 1 is your current page"
+                    className="page-link custom-link"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="0"
+                  >
+                    1
+                  </a>
+                </li>
+              </PageView>
+              <PageView
+                activeClassName="active"
+                key="key1/.0"
+                onClick={[Function]}
+                page={2}
+                pageClassName="page-item"
+                pageLinkClassName="page-link custom-link"
+                selected={false}
+              >
+                <li
+                  className="page-item"
+                >
+                  <a
+                    aria-current={null}
+                    aria-label="Page 2"
+                    className="page-link custom-link"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="0"
+                  >
+                    2
+                  </a>
+                </li>
+              </PageView>
+              <li
+                className="page-item"
+              >
+                <a
+                  className="page-link custom-link"
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  tabIndex="0"
+                >
+                  Next
+                </a>
+              </li>
+            </ul>
+          </PaginationBoxView>
+        </div>
+      </Pagination>
+    </div>
+    <Footer>
+      <footer
+        className="footer-section"
+        id="footer-below"
+      >
+        <div
+          className="container"
+        >
+          <strong
+            className="copyright"
+          >
+            More-Recipes © 2018, All Rights Reserved, Design & Developed By: SannyTee
+          </strong>
+        </div>
+      </footer>
+    </Footer>
   </div>
-  <div
-    className="sticky-paginate"
-  >
-    <Pagination
-      handlePaginationChange={[Function]}
-      page={2}
-    />
-  </div>
-  <Footer />
-</div>
+</MyRecipePage>
 `;
 
 exports[`MyRecipePage Component should render message if user have no recipe 1`] = `
-<div>
-  <Connect(AuthHeader)
-    user={
-      Object {
-        "createdAt": "2018-02-19T15:54:05.322Z",
-        "email": "tester@test.com",
-        "id": 1,
-        "image": null,
-        "username": "sannytee",
-      }
+<MyRecipePage
+  actions={
+    Object {
+      "deleteRecipeAction": [MockFunction],
+      "editRecipeAction": [MockFunction],
+      "getUserRecipes": [Function],
+      "logoutAction": [Function],
     }
-  />
-  <div
-    className="container"
-  >
+  }
+  isLoading={false}
+  pages={2}
+  user={
+    Object {
+      "createdAt": "2018-02-19T15:54:05.322Z",
+      "email": "tester@test.com",
+      "id": 1,
+      "image": null,
+      "username": "sannytee",
+    }
+  }
+  userRecipes={Array []}
+>
+  <div>
+    <mockConstructor
+      user={
+        Object {
+          "createdAt": "2018-02-19T15:54:05.322Z",
+          "email": "tester@test.com",
+          "id": 1,
+          "image": null,
+          "username": "sannytee",
+        }
+      }
+    >
+      <div />
+    </mockConstructor>
     <div
-      className="row section-popular"
+      className="container"
     >
       <div
-        className="col-sm-12"
+        className="row section-popular"
       >
-        <h2
-          className="pt-3 headline centered"
+        <div
+          className="col-sm-12"
         >
-          My Recipes
-        </h2>
+          <h2
+            className="pt-3 headline centered"
+          >
+            My Recipes
+          </h2>
+        </div>
       </div>
-    </div>
-    <div
-      className="row pt-4"
-    >
-      <h1
-        style={
+      <div
+        className="row pt-4"
+      >
+        <h1
+          style={
+            Object {
+              "margin": "150px auto 0",
+              "textAlign": "center",
+              "width": "100%",
+            }
+          }
+        >
+          You do not have any recipe
+        </h1>
+      </div>
+      <EditRecipeModal
+        details={
           Object {
-            "margin": "150px auto 0",
-            "textAlign": "center",
-            "width": "100%",
+            "recipeName": "",
           }
         }
+        errorMessage=""
+        handleChange={[Function]}
+        handleSubmit={[Function]}
+        isUploading={false}
+        onFocus={[Function]}
+        progress={0}
+        startUpload={[Function]}
+        upload={[Function]}
       >
-        You do not have any recipe
-      </h1>
+        <div
+          aria-hidden="true"
+          aria-labelledby="editModalLabel"
+          className="modal fade"
+          data-backdrop="static"
+          id="editModal"
+          role="dialog"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+          tabIndex="-1"
+        >
+          <div
+            className="modal-dialog"
+            role="document"
+          >
+            <div
+              className="modal-content"
+            >
+              <div
+                className="modal-header black"
+              >
+                <h5
+                  className="modal-title black"
+                  id="editModalLabel"
+                >
+                  Edit Recipe
+                </h5>
+                <button
+                  aria-label="Close"
+                  className="close"
+                  data-dismiss="modal"
+                  type="button"
+                >
+                  <span
+                    aria-hidden="true"
+                  >
+                    ×
+                  </span>
+                </button>
+              </div>
+              <div
+                className="modal-body"
+              >
+                <form
+                  id="editRecipeForm"
+                  onSubmit={[Function]}
+                >
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="recipient-name"
+                    >
+                      Title:
+                    </label>
+                    <input
+                      className="form-control"
+                      id="recipeName"
+                      name="recipeName"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      required={true}
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="message-text"
+                    >
+                      Description:
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="message-text"
+                      name="description"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      required={true}
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="image"
+                    >
+                      Image:
+                    </label>
+                    <mockConstructor
+                      name="image"
+                      onUploadStart={[Function]}
+                      onUploadSuccess={[Function]}
+                      storageRef={
+                        Object {
+                          "ref": [MockFunction] {
+                            "calls": Array [
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                              Array [
+                                "images",
+                              ],
+                            ],
+                          },
+                          "storage": [MockFunction] {
+                            "calls": Array [
+                              Array [],
+                              Array [],
+                              Array [],
+                            ],
+                          },
+                        }
+                      }
+                    >
+                      <div />
+                    </mockConstructor>
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="type-text"
+                    >
+                      Type of meal:
+                    </label>
+                    <select
+                      className="form-control"
+                      id="type-text"
+                      name="mealType"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      required={true}
+                    >
+                      <option
+                        value="breakfast"
+                      >
+                        Breakfast
+                      </option>
+                      <option
+                        value="brunch"
+                      >
+                        Brunch
+                      </option>
+                      <option
+                        value="elevenses"
+                      >
+                        Elevenses
+                      </option>
+                      <option
+                        value="lunch"
+                      >
+                        Lunch
+                      </option>
+                      <option
+                        value="tea"
+                      >
+                        Tea
+                      </option>
+                      <option
+                        value="supper"
+                      >
+                        Supper
+                      </option>
+                      <option
+                        value="dinner"
+                      >
+                        Dinner
+                      </option>
+                    </select>
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="ingredients-text"
+                    >
+                      ingredients:
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="ingredients"
+                      name="ingredients"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      placeholder="separate each ingredient with a comma"
+                      required={true}
+                    />
+                  </div>
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      className="col-form-label black"
+                      htmlFor="method-text"
+                    >
+                      Method of cooking:
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="method-text"
+                      name="method"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      required={true}
+                    />
+                  </div>
+                  <div
+                    className="modal-footer"
+                  >
+                    <button
+                      className="btn btn-secondary"
+                      data-dismiss="modal"
+                      type="button"
+                    >
+                      Close
+                    </button>
+                    <button
+                      className="btn vote-button"
+                      id="editButton"
+                      type="submit"
+                    >
+                      Update Recipe
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </EditRecipeModal>
+      <DeleteRecipeModal
+        handleDeletion={[Function]}
+      >
+        <div
+          aria-hidden="true"
+          aria-labelledby="deleteModalLabel"
+          className="modal fade"
+          data-backdrop="static"
+          id="deleteModal"
+          role="dialog"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+          tabIndex="-1"
+        >
+          <div
+            className="modal-dialog"
+            role="document"
+          >
+            <div
+              className="modal-content"
+            >
+              <div
+                className="modal-header black"
+              >
+                <h5
+                  className="modal-title black"
+                  id="deleteModalLabel"
+                >
+                  Delete recipe
+                </h5>
+                <button
+                  aria-label="Close"
+                  className="close"
+                  data-dismiss="modal"
+                  type="button"
+                >
+                  <span
+                    aria-hidden="true"
+                  >
+                    ×
+                  </span>
+                </button>
+              </div>
+              <div
+                className="modal-body"
+              >
+                This action cannot be reversed, proceed with caution.
+              </div>
+              <div
+                className="modal-footer"
+              >
+                <button
+                  className="btn btn-danger"
+                  id="deleteButton"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  Delete
+                </button>
+                <button
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                  type="button"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </DeleteRecipeModal>
     </div>
-    <EditRecipeModal
-      details={
-        Object {
-          "recipeName": "",
-        }
-      }
-      errorMessage=""
-      handleChange={[Function]}
-      handleSubmit={[Function]}
-      isUploading={false}
-      onFocus={[Function]}
-      progress={0}
-      startUpload={[Function]}
-      upload={[Function]}
-    />
-    <DeleteRecipeModal
-      handleDeletion={[Function]}
-    />
+    <div />
+    <Footer>
+      <footer
+        className="footer-section"
+        id="footer-below"
+      >
+        <div
+          className="container"
+        >
+          <strong
+            className="copyright"
+          >
+            More-Recipes © 2018, All Rights Reserved, Design & Developed By: SannyTee
+          </strong>
+        </div>
+      </footer>
+    </Footer>
   </div>
-  <div />
-  <Footer />
-</div>
+</MyRecipePage>
 `;

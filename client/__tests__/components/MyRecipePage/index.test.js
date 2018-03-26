@@ -1,10 +1,14 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { Spinner } from 'react-preloading-component';
 import { MyRecipePage } from '../../../components/MyRecipePage';
 import MockData from '../../__mocks__/actions/recipes';
 
 let props;
+
+jest.mock('../../../components/common/AuthHeader.jsx', () => jest.fn(() => <div />));
+jest.mock('react-firebase-image-uploader', () => jest.fn(() => <div />));
+
 
 const setup = () => {
   props = {
@@ -12,15 +16,15 @@ const setup = () => {
     actions: {
       logoutAction: () => {},
       getUserRecipes: () => {},
-      deleteRecipeAction: () => Promise.resolve(),
-      editRecipeAction: () => Promise.resolve(),
+      deleteRecipeAction: jest.fn(() => Promise.resolve()),
+      editRecipeAction: jest.fn(() => Promise.resolve()),
     },
     userRecipes: MockData.userRecipesSuccess.userRecipes,
     isLoading: false,
     pages: MockData.userRecipesSuccess.pages
   };
 
-  return shallow(<MyRecipePage {...props} />);
+  return mount(<MyRecipePage {...props} />);
 };
 
 localStorage.clear = () => {};
@@ -41,41 +45,35 @@ describe('MyRecipePage Component', () => {
 
   it('should delete recipe when the delete button is clicked', () => {
     const wrapper = setup();
-    const action = wrapper.instance();
-    const spy = jest.spyOn(action, 'handleDeletion');
-    action.handleDeletion();
-    expect(spy).toBeCalled();
+    const deleteButton = wrapper.find('#deleteButton');
+    deleteButton.simulate('click');
+    expect(wrapper.prop('actions').deleteRecipeAction).toBeCalled();
   });
 
-  it('should submit edit recipe form', () => {
+  it('should handle submitting edit recipe form', () => {
     const wrapper = setup();
-    const action = wrapper.instance();
-    const spy = jest.spyOn(action, 'handleSubmit');
-    action.handleSubmit({ preventDefault: () => {} });
-    expect(spy).toBeCalled();
+    const editRecipeForm = wrapper.find('#editRecipeForm');
+    editRecipeForm.simulate('submit');
+    expect(wrapper.prop('actions').editRecipeAction).toBeCalled();
   });
 
 
   it('should set state of input field', () => {
     const event = {
-      target: { name: 'recipeName', value: 'Rice' }
+      target: { name: 'recipeName', value: 'Beans' }
     };
     const wrapper = setup();
-    const action = wrapper.instance();
-    const spy = jest.spyOn(action, 'handleChange');
-    action.handleChange(event);
-    expect(spy).toBeCalled();
-    expect(wrapper.state('recipe').recipeName).toBe('Rice');
+    const editRecipeName = wrapper.find('#recipeName');
+    editRecipeName.simulate('change', event);
+    expect(wrapper.state('recipe').recipeName).toBe('Beans');
   });
 
 
   it('should clear error message when form input is focused on', () => {
     const wrapper = setup();
     wrapper.setState({ errorMessage: 'Invalid' });
-    const action = wrapper.instance();
-    const spy = jest.spyOn(action, 'onFocus');
-    action.onFocus();
-    expect(spy).toBeCalled();
+    const editRecipeName = wrapper.find('#recipeName');
+    editRecipeName.simulate('focus');
     expect(wrapper.state('errorMessage')).toBe('');
   });
 

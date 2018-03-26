@@ -43,7 +43,7 @@ exports[`Review Component should render correctly 1`] = `
                 }
               }
             >
-              12 days ago
+              15 days ago
             </strong>
           </div>
           <p>
@@ -131,7 +131,7 @@ exports[`Review Component should render error if error exists 1`] = `
                 }
               }
             >
-              12 days ago
+              15 days ago
             </strong>
           </div>
           <p>

@@ -61,7 +61,7 @@ const AddRecipeForm = props => (
                 type="text"
                 name="recipeName"
                 className="form-control"
-                id="recipient-name"
+                id="recipe-name"
                 required
                 onChange={props.handleChange}
                 onFocus={props.onFocus}

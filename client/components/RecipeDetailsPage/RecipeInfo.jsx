@@ -74,6 +74,7 @@ const RecipeInfo = props => (
       <div style={{ display: 'inline-flex' }}>
         <div>
           <button
+            id="upvote-button"
             className="btn vote-button"
             type="button"
             onClick={props.upvote}
@@ -98,6 +99,7 @@ const RecipeInfo = props => (
         </div>
         <div style={{ marginLeft: '8px', marginRight: '5px' }}>
           <button
+            id="downvote-button"
             data-tip
             data-for="downvote"
             className="btn vote-button"

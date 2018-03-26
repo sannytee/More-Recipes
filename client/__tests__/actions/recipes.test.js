@@ -10,11 +10,31 @@ import mockData from '../__mocks__/actions/recipes';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
+const description = {
+  message1: 'when request to get all recipes',
+  message2: 'should dispatch GET_ALL_RECIPES',
+  message3: 'should dispatch GET_POPULAR_RECIPES',
+  message4: 'when request to get popular recipes',
+  message5: 'should dispatch GET_RECIPE_DATA',
+  message6: 'when request to get recipe details',
+  message7: 'should dispatch CREATE_REVIEW',
+  message8: 'when request to post review',
+  message9: 'when request to vote a recipe',
+  newMessage1: 'should dispatch GET_USER_RECIPES',
+  newMessage2: 'when request to get user recipes',
+  newMessage3: 'should dispatch GET_USER_FAVORITE_RECIPES',
+  newMessage4: 'when request to get user favorite recipes',
+  newMessage5: 'when request to remove favorite recipe',
+  newMessage6: 'when request to get favorite recipes id',
+  newMessage7: 'should dispatch GET_USER_DATA',
+  newMessage8: 'when request to get user data'
+};
+
 describe('Recipe Actions', () => {
   beforeEach(() => moxios.install());
   afterEach(() => moxios.uninstall());
 
-  it('should dispatch GET_ALL_RECIPES and GET_ALL_RECIPES_SUCCESS when request to get all recipes is successful', () => {
+  it(`${description.message2} and GET_ALL_RECIPES_SUCCESS ${description.message1} passed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -43,7 +63,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch GET_ALL_RECIPES and GET_ALL_RECIPES_FAILURE when request to get all recipes failed', () => {
+  it(`${description.message2} and GET_ALL_RECIPES_FAILURE ${description.message1} failed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -71,7 +91,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch GET_POPULAR_RECIPES and GET_POPULAR_RECIPES_SUCCESS when request to get popular recipes is successful', () => {
+  it(`${description.message3} and GET_POPULAR_RECIPES_SUCCESS ${description.message4} passed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -99,7 +119,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch GET_POPULAR_RECIPES and GET_POPULAR_RECIPES_FAILURE when request to get popular recipes failed', () => {
+  it(`${description.message3} and GET_POPULAR_RECIPES_FAILURE ${description.message4}  failed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -127,7 +147,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch GET_RECIPE_DATA and GET_RECIPE_DATA_SUCCESS when request to get recipe details is successful', () => {
+  it(`${description.message5} and GET_RECIPE_DATA_SUCCESS ${description.message6} passed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -155,7 +175,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch GET_RECIPE_DATA and GET_RECIPE_DATA_FAILURE when request to get recipe details failed', () => {
+  it(`${description.message5} and GET_RECIPE_DATA_FAILURE ${description.message6} failed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -183,7 +203,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch CREATE_REVIEW and CREATE_REVIEW_SUCCESS when request to post review is successful', () => {
+  it(`${describe.message7} and CREATE_REVIEW_SUCCESS ${description.message8} passed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -210,7 +230,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch CREATE_REVIEW and CREATE_REVIEW_FAILURE when request to post review failed', () => {
+  it(`${describe.message7} and CREATE_REVIEW_FAILURE ${description.message8} failed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -237,7 +257,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch VOTE_A_RECIPE_SUCCESS when request to vote a recipe is successful', () => {
+  it(`should dispatch VOTE_A_RECIPE_SUCCESS ${description.message9} is successful`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -260,7 +280,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch VOTE_A_RECIPE_FAILURE when request to vote a recipe failed', () => {
+  it(`should dispatch VOTE_A_RECIPE_FAILURE ${description.message9} failed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -297,7 +317,7 @@ describe('Recipe Actions', () => {
     expect(store.getActions()).toEqual(expectedActions);
   });
 
-  it('should dispatch FAVORITE_RECIPE_SUCCESS when request to favorite recipe is successful', () => {
+  it('should dispatch FAVORITE_RECIPE_SUCCESS when request to favorite recipe passed', () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -346,7 +366,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch GET_USER_RECIPES and GET_USER_RECIPES_SUCCESS when request to get user recipes is successful', () => {
+  it(`${description.newMessage1} and GET_USER_RECIPES_SUCCESS ${description.newMessage2} passed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -374,7 +394,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch GET_USER_RECIPES and GET_USER_RECIPES_FAILURE when request to get user recipes is successful', () => {
+  it(`${description.newMessage1} and GET_USER_RECIPES_FAILURE ${description.newMessage2} failed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -402,7 +422,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch GET_USER_FAVORITE_RECIPES and GET_USER_FAVORITE_RECIPES_SUCCESS when request to get user favorite recipes is successful', () => {
+  it(`${description.newMessage3} and GET_USER_FAVORITE_RECIPES_SUCCESS ${description.newMessage4} passed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -430,7 +450,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch GET_USER_FAVORITE_RECIPES and GET_USER_FAVORITE_RECIPES_ERROR when request to get user favorite recipes failed', () => {
+  it(`${description.newMessage3} and GET_USER_FAVORITE_RECIPES_ERROR ${description.newMessage4} failed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -458,7 +478,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch FAVORITE_RECIPE_SUCCESS when request to remove favorite recipe is successful', () => {
+  it(`should dispatch FAVORITE_RECIPE_SUCCESS ${description.newMessage5} passed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -489,7 +509,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch FAVORITE_RECIPE_FAILURE when request to remove favorite recipe is successful', () => {
+  it(`should dispatch FAVORITE_RECIPE_FAILURE ${description.newMessage5} failed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -512,7 +532,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch  GET_USER_FAVORITE_RECIPE_IDS when request to get favorite recipes id is successful', () => {
+  it(`should dispatch  GET_USER_FAVORITE_RECIPE_IDS ${description.newMessage6} passed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -535,7 +555,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch  GET_USER_FAVORITE_RECIPE_IDS_FAILURE when request to get favorite recipes id failed', () => {
+  it(`should dispatch  GET_USER_FAVORITE_RECIPE_IDS_FAILURE ${description.newMessage6} failed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -651,7 +671,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch GET_USER_DATA and GET_USER_DATA_SUCCESS when request to get user data is successful', () => {
+  it(`${description.newMessage7} and GET_USER_DATA_SUCCESS ${description.newMessage7} passed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
@@ -679,7 +699,7 @@ describe('Recipe Actions', () => {
       });
   });
 
-  it('should dispatch GET_USER_DATA and GET_USER_DATA_FAILURE when request to get user data failed', () => {
+  it(`${description.newMessage7} and GET_USER_DATA_FAILURE ${description.newMessage7} failed`, () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({

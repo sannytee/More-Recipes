@@ -1,180 +1,624 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AuthHeader Component should render correctly 1`] = `
-<header>
-  <nav
-    className="navbar fixed-top  navbar-expand-lg navbar-dark"
-    style={
-      Object {
-        "backgroundColor": "#2b3034",
-      }
+<AuthHeader
+  actions={
+    Object {
+      "createRecipeAction": [MockFunction],
+      "logoutAction": [MockFunction],
     }
-  >
-    <Link
-      className="navbar-brand"
-      onlyActiveOnIndex={false}
-      style={Object {}}
-      to="/recipes"
+  }
+  user={
+    Object {
+      "createdAt": "2018-02-19T15:54:05.322Z",
+      "email": "tester@test.com",
+      "id": 1,
+      "image": null,
+      "username": "sannytee",
+    }
+  }
+>
+  <header>
+    <nav
+      className="navbar fixed-top  navbar-expand-lg navbar-dark"
+      style={
+        Object {
+          "backgroundColor": "#2b3034",
+        }
+      }
     >
-      More-Recipes
-    </Link>
-    <button
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-      className="navbar-toggler"
-      data-target="#navbarSupportedContent"
-      data-toggle="collapse"
-      type="button"
-    >
-      <span
-        className="navbar-toggler-icon"
-      />
-    </button>
-    <div
-      className="collapse navbar-collapse"
-      id="navbarSupportedContent"
-    >
+      <Link
+        className="navbar-brand"
+        onlyActiveOnIndex={false}
+        style={Object {}}
+        to="/recipes"
+      >
+        <a
+          className="navbar-brand"
+          onClick={[Function]}
+          style={Object {}}
+        >
+          More-Recipes
+        </a>
+      </Link>
+      <button
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        className="navbar-toggler"
+        data-target="#navbarSupportedContent"
+        data-toggle="collapse"
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
       <div
-        className="form-inline my-2 my-lg-0 ml-auto "
+        className="collapse navbar-collapse"
+        id="navbarSupportedContent"
       >
         <div
-          className="section"
-          style={
-            Object {
-              "width": "300px",
-            }
-          }
+          className="form-inline my-2 my-lg-0 ml-auto "
         >
-          <Async
-            autoload={true}
-            backspaceRemoves={true}
-            cache={Object {}}
-            filterOptions={false}
-            ignoreAccents={true}
-            ignoreCase={true}
-            labelKey="recipeName"
-            loadOptions={[Function]}
-            loadingPlaceholder="Loading..."
-            multi={false}
-            noResultsText="No recipe found"
-            onChange={[Function]}
-            onValueClick={[Function]}
-            options={Array []}
-            placeholder="Search for recipe"
-            searchPromptText="Type to search for recipe"
-            value=""
-            valueKey="id"
-          />
-        </div>
-      </div>
-      <ul
-        className="navbar-nav ml-auto"
-      >
-        <li
-          className="nav-item"
-        >
-          <button
-            className="btn vote-button rfloat"
-            data-target="#exampleModal"
-            data-toggle="modal"
+          <div
+            className="section"
             style={
               Object {
-                "float": "right",
+                "width": "300px",
               }
             }
-            type="button"
           >
-            Add Recipe
-          </button>
-        </li>
-        <li
-          className="nav-item"
-        >
-          <span
-            className="nav-link"
-          >
-            Logged in as 
-            sannytee
-          </span>
-        </li>
-        <li
-          className="nav-item"
-        >
-          <Link
-            className="nav-link"
-            onlyActiveOnIndex={false}
-            style={Object {}}
-            to="/my-profile"
-          >
-            Profile
-          </Link>
-        </li>
-        <li
-          className="nav-item dropdown show"
-        >
-          <Link
-            aria-expanded="true"
-            aria-haspopup="true"
-            className="nav-link dropdown-toggle"
-            data-toggle="dropdown"
-            id="navlink"
-            onlyActiveOnIndex={false}
-            role="button"
-            style={Object {}}
-            to="#"
-          >
-            Recipes
-          </Link>
-          <div
-            aria-labelledby="navlink"
-            className="dropdown-menu"
-          >
-            <Link
-              className="dropdown-item"
-              onlyActiveOnIndex={false}
-              style={Object {}}
-              to="/my-recipes"
+            <Async
+              autoload={true}
+              backspaceRemoves={true}
+              cache={Object {}}
+              filterOptions={false}
+              ignoreAccents={true}
+              ignoreCase={true}
+              labelKey="recipeName"
+              loadOptions={[Function]}
+              loadingPlaceholder="Loading..."
+              multi={false}
+              noResultsText="No recipe found"
+              onChange={[Function]}
+              onValueClick={[Function]}
+              options={Array []}
+              placeholder="Search for recipe"
+              searchPromptText="Type to search for recipe"
+              value=""
+              valueKey="id"
             >
-              My Recipes
-            </Link>
-            <Link
-              className="dropdown-item nav-text"
-              onlyActiveOnIndex={false}
-              style={Object {}}
-              to="/my-favorite"
-            >
-              Favorite recipes
-            </Link>
+              <Select
+                arrowRenderer={[Function]}
+                autoload={true}
+                autosize={true}
+                backspaceRemoves={true}
+                backspaceToRemoveMessage="Press backspace to remove {label}"
+                cache={Object {}}
+                clearAllText="Clear all"
+                clearRenderer={[Function]}
+                clearValueText="Clear value"
+                clearable={true}
+                closeOnSelect={true}
+                deleteRemoves={true}
+                delimiter=","
+                disabled={false}
+                escapeClearsValue={true}
+                filterOptions={false}
+                ignoreAccents={true}
+                ignoreCase={true}
+                inputProps={Object {}}
+                isLoading={true}
+                joinValues={false}
+                labelKey="recipeName"
+                loadOptions={[Function]}
+                loadingPlaceholder="Loading..."
+                matchPos="any"
+                matchProp="any"
+                menuBuffer={0}
+                menuRenderer={[Function]}
+                multi={false}
+                noResultsText="Loading..."
+                onBlurResetsInput={true}
+                onChange={[Function]}
+                onCloseResetsInput={true}
+                onInputChange={[Function]}
+                onSelectResetsInput={true}
+                onValueClick={[Function]}
+                openOnClick={true}
+                optionComponent={[Function]}
+                options={Array []}
+                pageSize={5}
+                placeholder="Loading..."
+                removeSelected={true}
+                required={false}
+                rtl={false}
+                scrollMenuIntoView={true}
+                searchPromptText="Type to search for recipe"
+                searchable={true}
+                simpleValue={false}
+                tabSelectsValue={true}
+                trimFilter={true}
+                value=""
+                valueComponent={[Function]}
+                valueKey="id"
+              >
+                <div
+                  className="Select is-clearable is-loading is-searchable Select--single"
+                >
+                  <div
+                    className="Select-control"
+                    onKeyDown={[Function]}
+                    onMouseDown={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                  >
+                    <span
+                      className="Select-multi-value-wrapper"
+                      id="react-select-2--value"
+                    >
+                      <div
+                        className="Select-placeholder"
+                      >
+                        Loading...
+                      </div>
+                      <AutosizeInput
+                        aria-activedescendant="react-select-2--value"
+                        aria-expanded="false"
+                        aria-haspopup="false"
+                        aria-owns=""
+                        className="Select-input"
+                        injectStyles={true}
+                        minWidth="5"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        required={false}
+                        role="combobox"
+                        value=""
+                      >
+                        <div
+                          className="Select-input"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                            }
+                          }
+                        >
+                          <input
+                            aria-activedescendant="react-select-2--value"
+                            aria-expanded="false"
+                            aria-haspopup="false"
+                            aria-owns=""
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onFocus={[Function]}
+                            required={false}
+                            role="combobox"
+                            style={
+                              Object {
+                                "boxSizing": "content-box",
+                                "width": "5px",
+                              }
+                            }
+                            value=""
+                          />
+                          <div
+                            style={
+                              Object {
+                                "height": 0,
+                                "left": 0,
+                                "overflow": "scroll",
+                                "position": "absolute",
+                                "top": 0,
+                                "visibility": "hidden",
+                                "whiteSpace": "pre",
+                              }
+                            }
+                          />
+                        </div>
+                      </AutosizeInput>
+                    </span>
+                    <span
+                      aria-hidden="true"
+                      className="Select-loading-zone"
+                    >
+                      <span
+                        className="Select-loading"
+                      />
+                    </span>
+                    <span
+                      className="Select-arrow-zone"
+                      onMouseDown={[Function]}
+                    >
+                      <span
+                        className="Select-arrow"
+                        onMouseDown={[Function]}
+                      />
+                    </span>
+                  </div>
+                </div>
+              </Select>
+            </Async>
           </div>
-        </li>
-        <li
-          className="nav-item"
+        </div>
+        <ul
+          className="navbar-nav ml-auto"
         >
-          <a
-            className="nav-link"
-            id="logout"
-            onClick={[Function]}
-            role="none"
+          <li
+            className="nav-item"
           >
-            Signout
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <AddRecipeForm
-    errorMessage=""
-    handleChange={[Function]}
-    handleProgress={[Function]}
-    handleSubmit={[Function]}
-    handleUploadStart={[Function]}
-    handleUploadSuccess={[Function]}
-    isUploading={false}
-    mealType="breakfast"
-    notReady={true}
-    onFocus={[Function]}
-    progress={0}
-  />
-</header>
+            <button
+              className="btn vote-button rfloat"
+              data-target="#exampleModal"
+              data-toggle="modal"
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+              type="button"
+            >
+              Add Recipe
+            </button>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <span
+              className="nav-link"
+            >
+              Logged in as 
+              sannytee
+            </span>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <Link
+              className="nav-link"
+              onlyActiveOnIndex={false}
+              style={Object {}}
+              to="/my-profile"
+            >
+              <a
+                className="nav-link"
+                onClick={[Function]}
+                style={Object {}}
+              >
+                Profile
+              </a>
+            </Link>
+          </li>
+          <li
+            className="nav-item dropdown show"
+          >
+            <Link
+              aria-expanded="true"
+              aria-haspopup="true"
+              className="nav-link dropdown-toggle"
+              data-toggle="dropdown"
+              id="navlink"
+              onlyActiveOnIndex={false}
+              role="button"
+              style={Object {}}
+              to="#"
+            >
+              <a
+                aria-expanded="true"
+                aria-haspopup="true"
+                className="nav-link dropdown-toggle"
+                data-toggle="dropdown"
+                id="navlink"
+                onClick={[Function]}
+                role="button"
+                style={Object {}}
+              >
+                Recipes
+              </a>
+            </Link>
+            <div
+              aria-labelledby="navlink"
+              className="dropdown-menu"
+            >
+              <Link
+                className="dropdown-item"
+                onlyActiveOnIndex={false}
+                style={Object {}}
+                to="/my-recipes"
+              >
+                <a
+                  className="dropdown-item"
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  My Recipes
+                </a>
+              </Link>
+              <Link
+                className="dropdown-item nav-text"
+                onlyActiveOnIndex={false}
+                style={Object {}}
+                to="/my-favorite"
+              >
+                <a
+                  className="dropdown-item nav-text"
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  Favorite recipes
+                </a>
+              </Link>
+            </div>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              id="logout"
+              onClick={[Function]}
+              role="none"
+            >
+              Signout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <AddRecipeForm
+      errorMessage=""
+      handleChange={[Function]}
+      handleProgress={[Function]}
+      handleSubmit={[Function]}
+      handleUploadStart={[Function]}
+      handleUploadSuccess={[Function]}
+      isUploading={false}
+      mealType="breakfast"
+      notReady={true}
+      onFocus={[Function]}
+      progress={0}
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="exampleModalLabel"
+        className="modal fade"
+        data-backdrop="static"
+        id="exampleModal"
+        role="dialog"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content"
+          >
+            <div
+              className="modal-header black"
+            >
+              <h5
+                className="modal-title black"
+                id="exampleModalLabel"
+              >
+                Add new recipe
+              </h5>
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            >
+              <form
+                id="recipeForm"
+                onSubmit={[Function]}
+              >
+                <div
+                  className="form-group"
+                >
+                  <label
+                    className="col-form-label black"
+                    htmlFor="recipient-name"
+                  >
+                    Title:
+                  </label>
+                  <input
+                    className="form-control"
+                    id="recipe-name"
+                    name="recipeName"
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={true}
+                    type="text"
+                  />
+                </div>
+                <div
+                  className="form-group"
+                >
+                  <label
+                    className="col-form-label black"
+                    htmlFor="message-text"
+                  >
+                    Description:
+                  </label>
+                  <textarea
+                    className="form-control"
+                    id="message-text"
+                    name="description"
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={true}
+                  />
+                </div>
+                <div
+                  className="form-group"
+                >
+                  <label
+                    className="col-form-label black"
+                    htmlFor="image"
+                  >
+                    Image:
+                  </label>
+                  <mockConstructor
+                    id="uploadImage"
+                    name="image"
+                    onProgress={[Function]}
+                    onUploadStart={[Function]}
+                    onUploadSuccess={[Function]}
+                    storageRef={
+                      Object {
+                        "ref": [MockFunction] {
+                          "calls": Array [
+                            Array [
+                              "images",
+                            ],
+                          ],
+                        },
+                        "storage": [MockFunction] {
+                          "calls": Array [
+                            Array [],
+                          ],
+                        },
+                      }
+                    }
+                  >
+                    <div />
+                  </mockConstructor>
+                </div>
+                <div
+                  className="form-group"
+                >
+                  <label
+                    className="col-form-label black"
+                    htmlFor="type-text"
+                  >
+                    Type of meal:
+                  </label>
+                  <select
+                    className="form-control"
+                    id="type-text"
+                    name="mealType"
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    required={true}
+                    value="breakfast"
+                  >
+                    <option
+                      defaultValue="breakfast"
+                    >
+                      Breakfast
+                    </option>
+                    <option
+                      value="brunch"
+                    >
+                      Brunch
+                    </option>
+                    <option
+                      value="elevenses"
+                    >
+                      Elevenses
+                    </option>
+                    <option
+                      value="lunch"
+                    >
+                      Lunch
+                    </option>
+                    <option
+                      value="tea"
+                    >
+                      Tea
+                    </option>
+                    <option
+                      value="supper"
+                    >
+                      Supper
+                    </option>
+                    <option
+                      value="dinner"
+                    >
+                      Dinner
+                    </option>
+                  </select>
+                </div>
+                <div
+                  className="form-group"
+                >
+                  <label
+                    className="col-form-label black"
+                    htmlFor="ingredients-text"
+                  >
+                    Ingredients:
+                  </label>
+                  <textarea
+                    className="form-control"
+                    id="ingredients"
+                    name="ingredients"
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    placeholder="separate each ingredient with a comma"
+                    required={true}
+                  />
+                </div>
+                <div
+                  className="form-group"
+                >
+                  <label
+                    className="col-form-label black"
+                    htmlFor="method-text"
+                  >
+                    Method of cooking:
+                  </label>
+                  <textarea
+                    className="form-control"
+                    id="method-text"
+                    name="method"
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    placeholder="separate each method with a newline"
+                    required={true}
+                  />
+                </div>
+                <div
+                  className="modal-footer"
+                >
+                  <button
+                    className="btn btn-secondary"
+                    data-dismiss="modal"
+                    type="button"
+                  >
+                    Close
+                  </button>
+                  <button
+                    className="btn vote-button"
+                    type="submit"
+                  >
+                    Add recipe
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </AddRecipeForm>
+  </header>
+</AuthHeader>
 `;

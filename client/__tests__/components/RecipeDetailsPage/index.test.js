@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { Spinner } from 'react-preloading-component';
 import { RecipeDetailsPage } from '../../../components/RecipeDetailsPage';
 import RecipeInfo from '../../../components/RecipeDetailsPage/RecipeInfo';
@@ -8,14 +8,16 @@ import MockData from '../../__mocks__/actions/recipes';
 
 let props;
 
+
+jest.mock('../../../components/common/AuthHeader.jsx', () => jest.fn(() => <div />));
 const setup = () => {
   props = {
     actions: {
       getRecipeData: () => {},
-      resetReviewError: () => {},
+      resetReviewError: jest.fn(),
       postReview: () => {},
-      voteARecipe: () => {},
-      favoriteRecipe: () => {},
+      voteARecipe: jest.fn(),
+      favoriteRecipe: jest.fn(),
     },
     params: {
       recipeId: 2
@@ -28,7 +30,7 @@ const setup = () => {
     favoriteIds: MockData.userFavoriteIds.recipeIds
   };
 
-  return shallow(<RecipeDetailsPage {...props} />);
+  return mount(<RecipeDetailsPage {...props} />);
 };
 
 localStorage.clear = () => {};
@@ -46,20 +48,20 @@ describe('RecipeDetailsPage Component', () => {
 
   it('should submit review', () => {
     const wrapper = setup();
-    wrapper.setState({ review: 'This is awesome' });
     const action = wrapper.instance();
     const submitReview = jest.spyOn(action, 'handleSubmit');
-    action.handleSubmit({ preventDefault: () => {} });
+    wrapper.setState({ review: 'This is awesome' });
+    const review = wrapper.find('#review-form');
+    review.simulate('submit', { preventDefault: () => {} });
     expect(submitReview).toBeCalled();
     expect(wrapper.state('review')).toBe('');
   });
 
   it('should clear error when input field is focused on', () => {
     const wrapper = setup();
-    const action = wrapper.instance();
-    const clearError = jest.spyOn(action, 'onFocus');
-    action.onFocus({ preventDefault: () => {} });
-    expect(clearError).toBeCalled();
+    const review = wrapper.find('.form-control');
+    review.simulate('focus');
+    expect(wrapper.prop('actions').resetReviewError).toBeCalled();
   });
 
   it('should set review when review input changes', () => {
@@ -67,36 +69,30 @@ describe('RecipeDetailsPage Component', () => {
     const event = {
       target: { name: 'review', value: 'awesome stuff' }
     };
-
-    const action = wrapper.instance();
-    const setReview = jest.spyOn(action, 'handleChange');
-    action.handleChange(event);
-    expect(setReview).toBeCalled();
+    const review = wrapper.find('.form-control');
+    review.simulate('change', event);
     expect(wrapper.state('review')).toBe('awesome stuff');
   });
 
-  it('should upvote recipe when upvote method is called', () => {
+  it('should upvote recipe when upvote button is clicked', () => {
     const wrapper = setup();
-    const action = wrapper.instance();
-    const upvoteRecipe = jest.spyOn(action, 'upvoteARecipe');
-    action.upvoteARecipe();
-    expect(upvoteRecipe).toBeCalled();
+    const upvote = wrapper.find('#upvote-button');
+    upvote.simulate('click');
+    expect(wrapper.prop('actions').voteARecipe).toBeCalled();
   });
 
-  it('should downvote recipe when downvote method is called', () => {
+  it('should downvote recipe when downvote button is clicked', () => {
     const wrapper = setup();
-    const action = wrapper.instance();
-    const downvoteRecipe = jest.spyOn(action, 'downvoteARecipe');
-    action.downvoteARecipe();
-    expect(downvoteRecipe).toBeCalled();
+    const downvote = wrapper.find('#downvote-button');
+    downvote.simulate('click');
+    expect(wrapper.prop('actions').voteARecipe).toBeCalled();
   });
 
-  it('should favorite recipe when favorite method is called', () => {
+  it('should favorite recipe when favorite button is clicked', () => {
     const wrapper = setup();
-    const action = wrapper.instance();
-    const favoriteRecipe = jest.spyOn(action, 'favoriteRecipe');
-    action.favoriteRecipe();
-    expect(favoriteRecipe).toBeCalled();
+    const favorite = wrapper.find('#favoriteButton');
+    favorite.simulate('click');
+    expect(wrapper.prop('actions').favoriteRecipe).toBeCalled();
   });
 
   it('should render loader when `isLoading` is true', () => {

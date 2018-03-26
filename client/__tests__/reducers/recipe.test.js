@@ -72,6 +72,21 @@ const currentRecipe = {
   createdAt: '2018-03-10T21:12:36.834Z',
   updatedAt: '2018-03-10T21:13:24.409Z'
 };
+
+const message = {
+  description1: 'should set error and isLoading',
+  description2: 'should set isLoading',
+  description3: 'popular recipes  when GET_POPULAR_RECIPES_SUCCESS is passed',
+  description4: 'when CREATE_RECIPE is called with length of recipe array  exceeding 6',
+  description5: 'when GET_ALL_RECIPES_SUCCESS is passed',
+  description6: 'userRecipeCount when GET_USER_RECIPES_SUCCESS is passed',
+  description7: 'when GET_RECIPE_DATA_SUCCESS is passed',
+  description8: 'when FAVORITE_RECIPE_SUCCESS is passed',
+  description9: 'when recipe is removed from favorites',
+  description10: 'when GET_USER_FAVORITE_RECIPE_FAILURE is passed',
+  newDescription: 'favoriteRecipeCount when GET_USER_FAVORITE_RECIPE_SUCCESS is passed'
+};
+
 describe('Recipe Reducer', () => {
   it('should return update default state when no state is passed', () => {
     const action = {
@@ -80,7 +95,7 @@ describe('Recipe Reducer', () => {
     const newState = RecipeReducer(undefined, action);
     expect(newState).toEqual(initialState);
   });
-  it('should  set isLoading when GET_ALL_RECIPES is passed', () => {
+  it(`${message.description2} when GET_ALL_RECIPES is passed`, () => {
     const action = {
       type: types.GET_ALL_RECIPES,
       isLoading: true
@@ -89,7 +104,7 @@ describe('Recipe Reducer', () => {
     expect(newState.isLoading).toEqual(action.isLoading);
   });
 
-  it('should  set recipes, pages and isLoading when GET_ALL_RECIPES_SUCCESS is passed', () => {
+  it(`${message.description2}, recipes and pages ${message.description5}`, () => {
     const action = {
       type: types.GET_ALL_RECIPES_SUCCESS,
       payload: {
@@ -105,7 +120,7 @@ describe('Recipe Reducer', () => {
     expect(newState.recipes).toEqual(action.payload.allRecipes);
   });
 
-  it('should set error and isLoading when GET_ALL_RECIPES_FAILURE is passed', () => {
+  it(`${message.description1} when GET_ALL_RECIPES_FAILURE is passed`, () => {
     const action = {
       type: types.GET_ALL_RECIPES_FAILURE,
       payload: 'Server error occured',
@@ -116,7 +131,7 @@ describe('Recipe Reducer', () => {
     expect(newState.error).toEqual(action.payload);
   });
 
-  it('should  set isLoading when GET_POPULAR_RECIPES is passed', () => {
+  it(`${message.description2} when GET_POPULAR_RECIPES is passed`, () => {
     const action = {
       type: types.GET_POPULAR_RECIPES,
       isLoading: true
@@ -125,7 +140,7 @@ describe('Recipe Reducer', () => {
     expect(newState.isLoading).toEqual(action.isLoading);
   });
 
-  it('should  set popular recipes and isLoading when GET_POPULAR_RECIPES_SUCCESS is passed', () => {
+  it(`${message.description2} and  ${message.description3}`, () => {
     const action = {
       type: types.GET_POPULAR_RECIPES_SUCCESS,
       payload: allRecipes,
@@ -137,7 +152,7 @@ describe('Recipe Reducer', () => {
     expect(newState.popularRecipes).toEqual(action.payload);
   });
 
-  it('should set error and isLoading when GET_POPULAR_RECIPES_FAILURE is passed', () => {
+  it(`${message.description1} when GET_POPULAR_RECIPES_FAILURE is passed`, () => {
     const action = {
       type: types.GET_POPULAR_RECIPES_FAILURE,
       payload: 'Server error occured',
@@ -205,7 +220,7 @@ describe('Recipe Reducer', () => {
     expect(newState.userRecipes).toContainEqual(action.payload.Recipe);
   });
 
-  it('should not set recipes and userRecipes when CREATE_RECIPE is called with recipe length exceeding 6', () => {
+  it(`should not set recipes and userRecipes ${message.description4}`, () => {
     const action = {
       type: types.CREATE_RECIPE,
       payload: {
@@ -222,7 +237,7 @@ describe('Recipe Reducer', () => {
     expect(newState).toEqual(initialState);
   });
 
-  it('should  set isLoading when GET_USER_RECIPES is passed', () => {
+  it(`${message.description2} when GET_USER_RECIPES is passed`, () => {
     const action = {
       type: types.GET_USER_RECIPES,
       isLoading: true
@@ -231,7 +246,7 @@ describe('Recipe Reducer', () => {
     expect(newState.isLoading).toEqual(action.isLoading);
   });
 
-  it('should  set userRecipes, pages, userRecipeCount and isLoading when GET_USER_RECIPES_SUCCESS is passed', () => {
+  it(`${message.description2}, userRecipes, pages, and ${message.description6}`, () => {
     const action = {
       type: types.GET_USER_RECIPES_SUCCESS,
       payload: {
@@ -248,7 +263,7 @@ describe('Recipe Reducer', () => {
     expect(newState.pages).toEqual(action.payload.pages);
   });
 
-  it('should set error and isLoading when GET_USER_RECIPES_FAILURE is passed', () => {
+  it(`${message.description1} when GET_USER_RECIPES_FAILURE is passed`, () => {
     const action = {
       type: types.GET_USER_RECIPES_FAILURE,
       payload: 'Server error occured',
@@ -299,7 +314,7 @@ describe('Recipe Reducer', () => {
     expect(newState.userRecipes).not.toEqual(expect.arrayContaining(expected));
   });
 
-  it('should  set isLoading when GET_RECIPE_DATA is passed', () => {
+  it(`${message.description2} when GET_RECIPE_DATA is passed`, () => {
     const action = {
       type: types.GET_RECIPE_DATA,
       isLoading: true
@@ -308,7 +323,7 @@ describe('Recipe Reducer', () => {
     expect(newState.isLoading).toEqual(action.isLoading);
   });
 
-  it('should  set isLoading and currentRecipe when GET_RECIPE_DATA_SUCCESS is passed', () => {
+  it(`${message.description2} and currentRecipe ${message.description7}`, () => {
     const action = {
       type: types.GET_RECIPE_DATA_SUCCESS,
       payload: {
@@ -333,7 +348,7 @@ describe('Recipe Reducer', () => {
     expect(newState.currentRecipe).toEqual(action.payload);
   });
 
-  it('should set error and isLoading when GET_RECIPE_DATA_FAILURE is passed', () => {
+  it(`${message.description1} when GET_RECIPE_DATA_FAILURE is passed`, () => {
     const action = {
       type: types.GET_RECIPE_DATA_FAILURE,
       payload: 'Server error occured',
@@ -412,7 +427,7 @@ describe('Recipe Reducer', () => {
     expect(newState.voteError).toEqual(action.payload);
   });
 
-  it('should set favMessage and favoriteRecipesIds when FAVORITE_RECIPE_SUCCESS is passed', () => {
+  it(`should set favMessage and favoriteRecipesIds ${message.description8}`, () => {
     const action = {
       type: types.FAVORITE_RECIPE_SUCCESS,
       payload: 'Recipe Favorited',
@@ -423,7 +438,7 @@ describe('Recipe Reducer', () => {
     expect(newState.favoriteRecipesIds).toContain(action.recipeId);
   });
 
-  it('should set favMessage and favoriteRecipesIds when recipe is removed from favorites', () => {
+  it(`should set favMessage and favoriteRecipesIds ${message.description9}`, () => {
     const action = {
       type: types.FAVORITE_RECIPE_SUCCESS,
       payload: 'Recipe removed from favorites',
@@ -443,7 +458,7 @@ describe('Recipe Reducer', () => {
     expect(newState.favError).toEqual(action.payload);
   });
 
-  it('should set isLoading when GET_USER_FAVORITE_RECIPE is passed', () => {
+  it(`${message.description2} when GET_USER_FAVORITE_RECIPE is passed`, () => {
     const action = {
       type: types.GET_USER_FAVORITE_RECIPE,
       isLoading: true
@@ -452,7 +467,7 @@ describe('Recipe Reducer', () => {
     expect(newState.isLoading).toEqual(action.isLoading);
   });
 
-  it('should set isLoading, favoriteRecipes and favoriteRecipeCount when GET_USER_FAVORITE_RECIPE_SUCCESS is passed', () => {
+  it(`${message.description2}, favoriteRecipes and ${message.newDescription}`, () => {
     const action = {
       type: types.GET_USER_FAVORITE_RECIPE_SUCCESS,
       payload: {
@@ -465,7 +480,7 @@ describe('Recipe Reducer', () => {
     expect(newState.favoriteRecipes).toEqual(action.payload);
   });
 
-  it('should set isLoading and favError when GET_USER_FAVORITE_RECIPE_FAILURE is passed', () => {
+  it(`${message.description2} and favError ${message.description10}`, () => {
     const action = {
       type: types.GET_USER_FAVORITE_RECIPE_FAILURE,
       isLoading: false,

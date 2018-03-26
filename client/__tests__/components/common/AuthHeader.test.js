@@ -1,21 +1,23 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { AuthHeader } from '../../../components/common/AuthHeader';
 import MockData from '../../__mocks__/actions/recipes';
 
+
+jest.mock('react-firebase-image-uploader', () => jest.fn(() => <div />));
 
 let props;
 
 const setup = () => {
   props = {
     actions: {
-      createRecipeAction: () => Promise.resolve(),
-      logoutAction: () => {},
+      createRecipeAction: jest.fn(() => Promise.resolve()),
+      logoutAction: jest.fn(),
     },
     user: MockData.userData.profile
   };
 
-  return shallow(<AuthHeader {...props} />);
+  return mount(<AuthHeader {...props} />);
 };
 
 describe('AuthHeader Component', () => {
@@ -24,7 +26,7 @@ describe('AuthHeader Component', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('header').length).toBe(1);
     expect(wrapper.find('nav').length).toBe(1);
-    expect(wrapper.find('button').length).toBe(2);
+    expect(wrapper.find('button').length).toBe(5);
     expect(wrapper.find('ul').length).toBe(1);
   });
 
@@ -41,9 +43,7 @@ describe('AuthHeader Component', () => {
   it('should track state of progress when image is uploading', () => {
     const wrapper = setup();
     const action = wrapper.instance();
-    const trackProgress = jest.spyOn(action, 'handleProgress');
     action.handleProgress(20);
-    expect(trackProgress).toBeCalled();
     expect(wrapper.state('progress')).toBe(20);
   });
 
@@ -52,29 +52,23 @@ describe('AuthHeader Component', () => {
       target: { name: 'recipeName', value: 'Rice' }
     };
     const wrapper = setup();
-    const action = wrapper.instance();
-    const spy = jest.spyOn(action, 'handleChange');
-    action.handleChange(event);
-    expect(spy).toBeCalled();
+    const editRecipeName = wrapper.find('#recipe-name');
+    editRecipeName.simulate('change', event);
     expect(wrapper.state('recipeName')).toBe('Rice');
   });
 
   it('should set state of backspaceRemoves when `toggleBackspaceRemoves` method is called', () => {
     const wrapper = setup();
     const action = wrapper.instance();
-    const toggleBackspace = jest.spyOn(action, 'toggleBackspaceRemoves');
     action.toggleBackspaceRemoves();
-    expect(toggleBackspace).toBeCalled();
     expect(wrapper.state('backspaceRemoves')).toBe(false);
   });
 
   it('should clear error when input field is focused on', () => {
     const wrapper = setup();
-    const action = wrapper.instance();
     wrapper.setState({ errorMessage: 'Upload an image' });
-    const clearError = jest.spyOn(action, 'onFocus');
-    action.onFocus({ preventDefault: () => {} });
-    expect(clearError).toBeCalled();
+    const editRecipeName = wrapper.find('#recipe-name');
+    editRecipeName.simulate('focus');
     expect(wrapper.state('errorMessage')).toBe('');
   });
 
@@ -90,9 +84,8 @@ describe('AuthHeader Component', () => {
   it('should submit form to add recipe', () => {
     document.getElementById = () => ({ reset: jest.fn() });
     const wrapper = setup();
-    const action = wrapper.instance();
-    const spy = jest.spyOn(action, 'handleSubmit');
-    action.handleSubmit({ preventDefault: () => {} });
-    expect(spy).toBeCalled();
+    const addRecipeForm = wrapper.find('#recipeForm');
+    addRecipeForm.simulate('submit');
+    expect(wrapper.prop('actions').createRecipeAction).toBeCalled();
   });
 });

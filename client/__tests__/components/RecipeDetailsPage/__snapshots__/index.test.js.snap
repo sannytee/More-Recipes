@@ -1,56 +1,356 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RecipeDetailsPage Component should render correctly 1`] = `
-<div>
-  <Connect(AuthHeader)
-    user={
-      Object {
-        "createdAt": "2018-02-19T15:54:05.322Z",
-        "email": "tester@test.com",
-        "id": 1,
-        "image": null,
-        "username": "sannytee",
-      }
+<RecipeDetailsPage
+  actions={
+    Object {
+      "favoriteRecipe": [MockFunction],
+      "getRecipeData": [Function],
+      "postReview": [Function],
+      "resetReviewError": [MockFunction],
+      "voteARecipe": [MockFunction],
     }
-  />
-  <div
-    className="container recipe-details"
-  >
-    <section
-      className="row"
+  }
+  error={null}
+  favoriteIds={
+    Array [
+      26,
+      33,
+      27,
+      48,
+      52,
+    ]
+  }
+  isLoading={false}
+  params={
+    Object {
+      "recipeId": 2,
+    }
+  }
+  recipeDetails={
+    Object {
+      "addedBy": "sannytee",
+      "createdAt": "2018-02-20T10:11:25.020Z",
+      "description": "amazing",
+      "downvotes": 1,
+      "id": 27,
+      "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+      "ingredients": "awesome",
+      "mealType": "breakfast",
+      "method": "great",
+      "recipeName": "new recipe",
+      "reviews": Array [
+        Object {
+          "createdAt": "2018-03-11T06:20:58.315Z",
+          "recipeId": 27,
+          "review": "hi there
+",
+          "userId": 5,
+          "username": "sannikay",
+        },
+      ],
+      "updatedAt": "2018-03-06T11:08:34.739Z",
+      "upvotes": 0,
+      "userId": 1,
+    }
+  }
+  reviewError=""
+  user={
+    Object {
+      "createdAt": "2018-02-19T15:54:05.322Z",
+      "email": "tester@test.com",
+      "id": 1,
+      "image": null,
+      "username": "sannytee",
+    }
+  }
+>
+  <div>
+    <mockConstructor
+      user={
+        Object {
+          "createdAt": "2018-02-19T15:54:05.322Z",
+          "email": "tester@test.com",
+          "id": 1,
+          "image": null,
+          "username": "sannytee",
+        }
+      }
     >
-      <div
-        className="col-sm-2"
-      />
-      <div
-        className="col-sm-8"
+      <div />
+    </mockConstructor>
+    <div
+      className="container recipe-details"
+    >
+      <section
+        className="row"
       >
         <div
-          className="card w-100"
-          style={
-            Object {
-              "width": "20rem",
-            }
-          }
+          className="col-sm-2"
+        />
+        <div
+          className="col-sm-8"
         >
-          <RecipeInfo
-            downvote={[Function]}
-            favorite={[Function]}
-            favorited={true}
-            img="test"
-            recipeDetails={
+          <div
+            className="card w-100"
+            style={
               Object {
-                "addedBy": "sannytee",
-                "createdAt": "2018-02-20T10:11:25.020Z",
-                "description": "amazing",
-                "downvotes": 1,
-                "id": 27,
-                "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
-                "ingredients": "awesome",
-                "mealType": "breakfast",
-                "method": "great",
-                "recipeName": "new recipe",
-                "reviews": Array [
+                "width": "20rem",
+              }
+            }
+          >
+            <RecipeInfo
+              downvote={[Function]}
+              favorite={[Function]}
+              favorited={true}
+              img="test"
+              recipeDetails={
+                Object {
+                  "addedBy": "sannytee",
+                  "createdAt": "2018-02-20T10:11:25.020Z",
+                  "description": "amazing",
+                  "downvotes": 1,
+                  "id": 27,
+                  "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+                  "ingredients": "awesome",
+                  "mealType": "breakfast",
+                  "method": "great",
+                  "recipeName": "new recipe",
+                  "reviews": Array [
+                    Object {
+                      "createdAt": "2018-03-11T06:20:58.315Z",
+                      "recipeId": 27,
+                      "review": "hi there
+",
+                      "userId": 5,
+                      "username": "sannikay",
+                    },
+                  ],
+                  "updatedAt": "2018-03-06T11:08:34.739Z",
+                  "upvotes": 0,
+                  "userId": 1,
+                }
+              }
+              upvote={[Function]}
+            >
+              <div>
+                <img
+                  alt="Card pic cap"
+                  className="card-img-top"
+                  src="https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212"
+                  style={
+                    Object {
+                      "maxHeight": "350px",
+                    }
+                  }
+                />
+                <div
+                  className="card-body"
+                >
+                  <h4
+                    className="card-title"
+                  >
+                    new recipe
+                  </h4>
+                  <p
+                    className="card-text"
+                  >
+                    amazing
+                  </p>
+                  <hr />
+                  <div>
+                    <h6>
+                      Type of Meal
+                    </h6>
+                    <ul>
+                      <li>
+                         
+                        breakfast
+                         
+                      </li>
+                    </ul>
+                  </div>
+                  <hr />
+                  <div>
+                    <h6>
+                      Ingredients
+                    </h6>
+                    <ul>
+                      <div
+                        className="row"
+                      >
+                        <li
+                          className="col-md-6"
+                          key="0"
+                          style={
+                            Object {
+                              "fontSize": "18px",
+                              "paddingTop": "5px",
+                            }
+                          }
+                        >
+                          awesome
+                        </li>
+                      </div>
+                    </ul>
+                  </div>
+                  <hr />
+                  <div>
+                    <h6>
+                      Method of Cooking
+                    </h6>
+                    <ol>
+                      <li
+                        key="0"
+                      >
+                        great
+                      </li>
+                    </ol>
+                  </div>
+                  <hr />
+                  <div
+                    style={
+                      Object {
+                        "display": "inline-flex",
+                      }
+                    }
+                  >
+                    <div>
+                      <button
+                        className="btn vote-button"
+                        data-for="upvote"
+                        data-tip={true}
+                        id="upvote-button"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="fa fa-thumbs-up fa-lg"
+                        >
+                          <span
+                            style={
+                              Object {
+                                "marginLeft": "5px",
+                                "marginRight": "5px",
+                              }
+                            }
+                          >
+                            0
+                          </span>
+                        </i>
+                      </button>
+                      <ReactTooltip
+                        id="upvote"
+                        insecure={true}
+                        place="top"
+                        resizeHide={true}
+                        type="dark"
+                        wrapper="div"
+                      >
+                        <div
+                          className="__react_component_tooltip place-top type-dark "
+                          data-id="tooltip"
+                        />
+                      </ReactTooltip>
+                    </div>
+                    <div
+                      style={
+                        Object {
+                          "marginLeft": "8px",
+                          "marginRight": "5px",
+                        }
+                      }
+                    >
+                      <button
+                        className="btn vote-button"
+                        data-for="downvote"
+                        data-tip={true}
+                        id="downvote-button"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="fa fa-thumbs-down fa-lg"
+                        >
+                          <span
+                            style={
+                              Object {
+                                "marginLeft": "5px",
+                                "marginRight": "5px",
+                              }
+                            }
+                          >
+                            1
+                          </span>
+                        </i>
+                      </button>
+                      <ReactTooltip
+                        id="downvote"
+                        insecure={true}
+                        place="bottom"
+                        resizeHide={true}
+                        type="dark"
+                        wrapper="div"
+                      >
+                        <div
+                          className="__react_component_tooltip place-top type-dark "
+                          data-id="tooltip"
+                        />
+                      </ReactTooltip>
+                    </div>
+                    <div
+                      style={
+                        Object {
+                          "marginLeft": "8px",
+                          "marginRight": "5px",
+                        }
+                      }
+                    >
+                      <button
+                        className="btn vote-button"
+                        data-for="favorite"
+                        data-tip={true}
+                        id="favoriteButton"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        <i
+                          className="fa fa-heart"
+                          style={
+                            Object {
+                              "color": "white",
+                            }
+                          }
+                        />
+                      </button>
+                      <ReactTooltip
+                        id="favorite"
+                        insecure={true}
+                        place="right"
+                        resizeHide={true}
+                        type="dark"
+                        wrapper="div"
+                      >
+                        <div
+                          className="__react_component_tooltip place-top type-dark "
+                          data-id="tooltip"
+                        />
+                      </ReactTooltip>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+              </div>
+            </RecipeInfo>
+            <Review
+              handleChange={[Function]}
+              handleSubmit={[Function]}
+              onFocus={[Function]}
+              reviewError=""
+              reviews={
+                Array [
                   Object {
                     "createdAt": "2018-03-11T06:20:58.315Z",
                     "recipeId": 27,
@@ -59,92 +359,353 @@ exports[`RecipeDetailsPage Component should render correctly 1`] = `
                     "userId": 5,
                     "username": "sannikay",
                   },
-                ],
-                "updatedAt": "2018-03-06T11:08:34.739Z",
-                "upvotes": 0,
-                "userId": 1,
+                ]
               }
-            }
-            upvote={[Function]}
-          />
-          <Review
-            handleChange={[Function]}
-            handleSubmit={[Function]}
-            onFocus={[Function]}
-            reviewError=""
-            reviews={
-              Array [
-                Object {
-                  "createdAt": "2018-03-11T06:20:58.315Z",
-                  "recipeId": 27,
-                  "review": "hi there
-",
-                  "userId": 5,
-                  "username": "sannikay",
-                },
-              ]
-            }
-          />
+            >
+              <section
+                className="border-recipes"
+              >
+                <h4
+                  className="section-reviews centered"
+                  style={
+                    Object {
+                      "backgroundColor": "#2b3034",
+                    }
+                  }
+                >
+                  Reviews
+                </h4>
+                <ul
+                  style={
+                    Object {
+                      "maxHeight": "300px",
+                      "overflowY": "scroll",
+                    }
+                  }
+                >
+                  <li
+                    className="review-list"
+                  >
+                    <div>
+                      <div>
+                        <div
+                          className="header"
+                        >
+                          <strong
+                            className="primary-font username"
+                          >
+                            sannikay
+                          </strong>
+                          <strong
+                            className="primary-font pull-right"
+                            style={
+                              Object {
+                                "paddingRight": "10px",
+                              }
+                            }
+                          >
+                            15 days ago
+                          </strong>
+                        </div>
+                        <p>
+                          hi there
+
+                        </p>
+                        <hr />
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <form
+                  id="review-form"
+                  onSubmit={[Function]}
+                >
+                  <div
+                    className="form-group"
+                  >
+                    <label
+                      htmlFor="comment"
+                    >
+                      Post a review
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="comment"
+                      name="review"
+                      onChange={[Function]}
+                      onFocus={[Function]}
+                      required={true}
+                      rows="5"
+                    />
+                  </div>
+                  <button
+                    className="btn vote-button pull-right"
+                    id="reviewButton"
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </form>
+              </section>
+            </Review>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
+    <Footer>
+      <footer
+        className="footer-section"
+        id="footer-below"
+      >
+        <div
+          className="container"
+        >
+          <strong
+            className="copyright"
+          >
+            More-Recipes © 2018, All Rights Reserved, Design & Developed By: SannyTee
+          </strong>
+        </div>
+      </footer>
+    </Footer>
   </div>
-  <Footer />
-</div>
+</RecipeDetailsPage>
 `;
 
 exports[`RecipeDetailsPage Component should render error when error exists 1`] = `
-<div>
-  <Connect(AuthHeader)
-    user={
-      Object {
-        "createdAt": "2018-02-19T15:54:05.322Z",
-        "email": "tester@test.com",
-        "id": 1,
-        "image": null,
-        "username": "sannytee",
-      }
+<RecipeDetailsPage
+  actions={
+    Object {
+      "favoriteRecipe": [MockFunction],
+      "getRecipeData": [Function],
+      "postReview": [Function],
+      "resetReviewError": [MockFunction],
+      "voteARecipe": [MockFunction],
     }
-  />
-  <h1
-    style={
-      Object {
-        "paddingTop": "150px",
-      }
+  }
+  error="Recipe not found"
+  favoriteIds={
+    Array [
+      26,
+      33,
+      27,
+      48,
+      52,
+    ]
+  }
+  isLoading={false}
+  params={
+    Object {
+      "recipeId": 2,
     }
-  >
-    404 Not found
-  </h1>
-  <Footer />
-</div>
+  }
+  recipeDetails={
+    Object {
+      "addedBy": "sannytee",
+      "createdAt": "2018-02-20T10:11:25.020Z",
+      "description": "amazing",
+      "downvotes": 1,
+      "id": 27,
+      "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+      "ingredients": "awesome",
+      "mealType": "breakfast",
+      "method": "great",
+      "recipeName": "new recipe",
+      "reviews": Array [
+        Object {
+          "createdAt": "2018-03-11T06:20:58.315Z",
+          "recipeId": 27,
+          "review": "hi there
+",
+          "userId": 5,
+          "username": "sannikay",
+        },
+      ],
+      "updatedAt": "2018-03-06T11:08:34.739Z",
+      "upvotes": 0,
+      "userId": 1,
+    }
+  }
+  reviewError=""
+  user={
+    Object {
+      "createdAt": "2018-02-19T15:54:05.322Z",
+      "email": "tester@test.com",
+      "id": 1,
+      "image": null,
+      "username": "sannytee",
+    }
+  }
+>
+  <div>
+    <mockConstructor
+      user={
+        Object {
+          "createdAt": "2018-02-19T15:54:05.322Z",
+          "email": "tester@test.com",
+          "id": 1,
+          "image": null,
+          "username": "sannytee",
+        }
+      }
+    >
+      <div />
+    </mockConstructor>
+    <h1
+      style={
+        Object {
+          "paddingTop": "150px",
+        }
+      }
+    >
+      404 Not found
+    </h1>
+    <Footer>
+      <footer
+        className="footer-section"
+        id="footer-below"
+      >
+        <div
+          className="container"
+        >
+          <strong
+            className="copyright"
+          >
+            More-Recipes © 2018, All Rights Reserved, Design & Developed By: SannyTee
+          </strong>
+        </div>
+      </footer>
+    </Footer>
+  </div>
+</RecipeDetailsPage>
 `;
 
 exports[`RecipeDetailsPage Component should render loader when \`isLoading\` is true 1`] = `
-<div>
-  <Connect(AuthHeader)
-    user={
-      Object {
-        "createdAt": "2018-02-19T15:54:05.322Z",
-        "email": "tester@test.com",
-        "id": 1,
-        "image": null,
-        "username": "sannytee",
-      }
+<RecipeDetailsPage
+  actions={
+    Object {
+      "favoriteRecipe": [MockFunction],
+      "getRecipeData": [Function],
+      "postReview": [Function],
+      "resetReviewError": [MockFunction],
+      "voteARecipe": [MockFunction],
     }
-  />
-  <div
-    style={
-      Object {
-        "paddingTop": "350px",
-      }
+  }
+  error={null}
+  favoriteIds={
+    Array [
+      26,
+      33,
+      27,
+      48,
+      52,
+    ]
+  }
+  isLoading={true}
+  params={
+    Object {
+      "recipeId": 2,
     }
-  >
-    <n
-      color="#FF4601"
-      secondaryColor="#e6e6e6"
-      size={40}
-    />
+  }
+  recipeDetails={
+    Object {
+      "addedBy": "sannytee",
+      "createdAt": "2018-02-20T10:11:25.020Z",
+      "description": "amazing",
+      "downvotes": 1,
+      "id": 27,
+      "image": "https://firebasestorage.googleapis.com/v0/b/more-recipes-3be20.appspot.com/o/images%2F702446f3-a2c2-48c7-a9d1-af20be9281d7.jpeg?alt=media&token=1827adb2-4108-4939-9fe0-778e27dd5212",
+      "ingredients": "awesome",
+      "mealType": "breakfast",
+      "method": "great",
+      "recipeName": "new recipe",
+      "reviews": Array [
+        Object {
+          "createdAt": "2018-03-11T06:20:58.315Z",
+          "recipeId": 27,
+          "review": "hi there
+",
+          "userId": 5,
+          "username": "sannikay",
+        },
+      ],
+      "updatedAt": "2018-03-06T11:08:34.739Z",
+      "upvotes": 0,
+      "userId": 1,
+    }
+  }
+  reviewError=""
+  user={
+    Object {
+      "createdAt": "2018-02-19T15:54:05.322Z",
+      "email": "tester@test.com",
+      "id": 1,
+      "image": null,
+      "username": "sannytee",
+    }
+  }
+>
+  <div>
+    <mockConstructor
+      user={
+        Object {
+          "createdAt": "2018-02-19T15:54:05.322Z",
+          "email": "tester@test.com",
+          "id": 1,
+          "image": null,
+          "username": "sannytee",
+        }
+      }
+    >
+      <div />
+    </mockConstructor>
+    <div
+      style={
+        Object {
+          "paddingTop": "350px",
+        }
+      }
+    >
+      <n
+        color="#FF4601"
+        secondaryColor="#e6e6e6"
+        size={40}
+      >
+        <div
+          className="PreLoading-Spinner"
+        >
+          <span
+            className="Spinner-circle"
+            style={
+              Object {
+                "border": "6.0606060606060606px solid transparent",
+                "borderColor": "#e6e6e6",
+                "borderSize": 6.0606060606060606,
+                "borderTopColor": "#FF4601",
+                "height": 40,
+                "width": 40,
+              }
+            }
+          />
+        </div>
+      </n>
+    </div>
+    <Footer>
+      <footer
+        className="footer-section"
+        id="footer-below"
+      >
+        <div
+          className="container"
+        >
+          <strong
+            className="copyright"
+          >
+            More-Recipes © 2018, All Rights Reserved, Design & Developed By: SannyTee
+          </strong>
+        </div>
+      </footer>
+    </Footer>
   </div>
-  <Footer />
-</div>
+</RecipeDetailsPage>
 `;

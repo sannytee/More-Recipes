@@ -88,6 +88,7 @@ exports[`RecipeInfo should render correctly 1`] = `
           className="btn vote-button"
           data-for="upvote"
           data-tip={true}
+          id="upvote-button"
           onClick={[Function]}
           type="button"
         >
@@ -132,6 +133,7 @@ exports[`RecipeInfo should render correctly 1`] = `
           className="btn vote-button"
           data-for="downvote"
           data-tip={true}
+          id="downvote-button"
           onClick={[Function]}
           type="button"
         >
