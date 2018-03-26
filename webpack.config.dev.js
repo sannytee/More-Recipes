@@ -2,6 +2,8 @@ import webpack from 'webpack';
 import path from 'path';
 import Dotenv from 'dotenv-webpack';
 
+const extractTextPlugin = require('extract-text-webpack-plugin');
+
 export default {
   devtool: 'cheap-module-eval-source-map',
   entry: [
@@ -19,6 +21,7 @@ export default {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new Dotenv(),
+    new extractTextPlugin('style.css')
   ],
   module: {
     loaders: [
@@ -29,7 +32,10 @@ export default {
       },
       {
         test: /(\.s?css)$/,
-        loader: ['style-loader', 'css-loader', 'sass-loader']
+        use: extractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,

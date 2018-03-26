@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+const extractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   cache: true,
@@ -42,7 +43,9 @@ module.exports = {
       output: {
         comments: false
       }
-    })
+    }),
+    new extractTextPlugin('style.css')
+
   ],
   devServer: {
     contentBase: './client/dist'
@@ -58,7 +61,10 @@ module.exports = {
       },
       {
         test: /(\.s?css)$/,
-        loader: ['style-loader', 'css-loader', 'sass-loader']
+        use: extractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
