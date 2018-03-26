@@ -35,6 +35,9 @@ router(app);
 app.get('/bundle.js', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/bundle.js'));
 });
+app.get('/style.css', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/style.css'));
+});
 // set up a default catch-all route
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));

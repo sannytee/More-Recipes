@@ -32,10 +32,7 @@ export default {
       },
       {
         test: /(\.s?css)$/,
-        use: extractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        })
+        loader: extractTextPlugin.extract(['css-loader', 'sass-loader'])
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
